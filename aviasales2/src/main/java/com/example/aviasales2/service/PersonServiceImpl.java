@@ -5,6 +5,7 @@ import com.example.aviasales2.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,8 +29,8 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Person findByLastName(String lastName) {
-        return personRepository.findByLastName(lastName);
+    public List<Person> findAllByLastName(String lastName) {
+        return personRepository.findAllByLastName(lastName);
     }
 
     @Override

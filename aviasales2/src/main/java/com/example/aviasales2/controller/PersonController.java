@@ -5,6 +5,7 @@ import com.example.aviasales2.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -29,9 +30,9 @@ public class PersonController {
         return personService.findByEmail(email);
     }
 
-    @GetMapping("/getByLastName")
-    private Person findByLastName(@RequestParam String lastName) {
-        return personService.findByLastName(lastName);
+    @GetMapping("/getAllByLastName")
+    private List<Person> findByLastName(@RequestParam String lastName) {
+        return personService.findAllByLastName(lastName);
     }
 
     @PostMapping("/update")
