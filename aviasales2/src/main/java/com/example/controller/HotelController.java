@@ -37,15 +37,9 @@ public class HotelController {
     @PutMapping
     public Hotel updateHotel(@RequestBody Hotel hotel) {
         Hotel old = hotelService.findByHotelId(hotel.getHotelId());
-        if(old != null) {
-            //проверка на null?
-            old.setAddress(hotel.getAddress());
-            old.setCountry(hotel.getCountry());
-            old.setHotelName(hotel.getHotelName());
-            old.setRating(hotel.getRating());
-            old.setPhoneNumber(hotel.getPhoneNumber());
-        }
-        return hotelService.save(old);
+        if(old != null)
+            return hotelService.save(hotel);
+        return null;
     }
 
     @DeleteMapping("/{id:\\d+}")
