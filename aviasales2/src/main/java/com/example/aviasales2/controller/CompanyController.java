@@ -1,7 +1,7 @@
-package com.example.aviasales2.Controller;
+package com.example.aviasales2.controller;
 
-import com.example.aviasales2.Entity.Company;
-import com.example.aviasales2.Service.CompanyService;
+import com.example.aviasales2.entity.Company;
+import com.example.aviasales2.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +35,9 @@ public class CompanyController {
 
     @GetMapping("/getByRating")
     private List<Company> getCompanyByRating(@RequestParam("rating")int rating){return companyService.findByRating(rating);}
+
+    @GetMapping("/getAll")
+    private List<Company> getAllCompany(){return companyService.findAll();}
 
 
 }

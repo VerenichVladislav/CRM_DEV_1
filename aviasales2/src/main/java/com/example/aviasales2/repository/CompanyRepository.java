@@ -1,6 +1,6 @@
-package com.example.aviasales2.Repository;
+package com.example.aviasales2.repository;
 
-import com.example.aviasales2.Entity.Company;
+import com.example.aviasales2.entity.Company;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +17,8 @@ public interface CompanyRepository extends CrudRepository<Company, Long> {
     List<Company> findAllByTransportId(long id);
 
     List<Company> findByRating(int rating);
+
+    List<Company> findAll();
 
 
 

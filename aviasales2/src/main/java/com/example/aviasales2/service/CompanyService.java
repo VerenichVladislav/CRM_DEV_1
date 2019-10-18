@@ -1,6 +1,6 @@
-package com.example.aviasales2.Service;
+package com.example.aviasales2.service;
 
-import com.example.aviasales2.Entity.Company;
+import com.example.aviasales2.entity.Company;
 
 import java.util.List;
 
@@ -16,6 +16,8 @@ public interface CompanyService {
     List<Company> findAllByTransportId(long id);
 
     List<Company> findByRating(int rating);
+
+    List<Company> findAll();
 
 
 }

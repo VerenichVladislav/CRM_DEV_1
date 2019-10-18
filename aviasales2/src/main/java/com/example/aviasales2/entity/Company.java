@@ -1,4 +1,4 @@
-package com.example.aviasales2.Entity;
+package com.example.aviasales2.entity;
 
 import lombok.AllArgsConstructor;
 

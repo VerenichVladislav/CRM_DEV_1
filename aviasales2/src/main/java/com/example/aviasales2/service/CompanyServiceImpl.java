@@ -1,7 +1,7 @@
-package com.example.aviasales2.Service;
+package com.example.aviasales2.service;
 
-import com.example.aviasales2.Entity.Company;
-import com.example.aviasales2.Repository.CompanyRepository;
+import com.example.aviasales2.entity.Company;
+import com.example.aviasales2.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +30,9 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<Company> findByRating(int rating){return companyRepository.findByRating(rating);}
+
+    @Override
+    public List<Company> findAll(){return companyRepository.findAll();}
 
 
 }
