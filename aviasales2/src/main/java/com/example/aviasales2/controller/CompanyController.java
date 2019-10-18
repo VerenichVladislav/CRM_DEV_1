@@ -22,7 +22,8 @@ public class CompanyController {
     private Company saveCompany(@RequestBody Company company){return companyService.save(company);}
 
     @GetMapping("/delete")
-    private String deleteCompany(@RequestParam("id") long id){return companyService.delete(id);}
+    private
+    String deleteCompany(@RequestParam("id") long id){return companyService.delete(id);}
 
     @GetMapping("/getByName")
     private Company getCompanyByName(@RequestParam(name = "name")String name){return companyService.findByCompanyName(name);}
