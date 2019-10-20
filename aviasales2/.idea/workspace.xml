@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b1daf7f5-b8ab-46b3-874b-b239723296ea" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,10 +13,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -122,6 +121,7 @@
       <workItem from="1571415047946" duration="1096000" />
       <workItem from="1571416285743" duration="321000" />
       <workItem from="1571416627277" duration="241000" />
+      <workItem from="1571587039307" duration="811000" />
     </task>
     <servers />
   </component>
