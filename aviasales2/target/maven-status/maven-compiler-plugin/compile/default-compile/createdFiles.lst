@@ -1,0 +1,7 @@
+com\example\aviasales2\controller\CityController.class
+com\example\aviasales2\entity\City.class
+com\example\aviasales2\repository\ICityRepository.class
+com\example\aviasales2\Aviasales2Application.class
+com\example\aviasales2\entity\City$CityBuilder.class
+com\example\aviasales2\service\ICityService.class
+com\example\aviasales2\service\impl\CityServiceImpl.class

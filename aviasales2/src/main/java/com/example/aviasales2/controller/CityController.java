@@ -19,6 +19,7 @@ public class CityController {
 
     @GetMapping("/all")
     public List<City> findAll(){
+        System.out.println(cityService.findAll());
         return cityService.findAll();
     }
 
@@ -47,7 +48,7 @@ public class CityController {
         cityService.delete(city);
     }
 
-    @PostMapping("/save/")
+    @PostMapping("/save")
     public City save(@RequestBody City city){
         return cityService.save(city);
     }
