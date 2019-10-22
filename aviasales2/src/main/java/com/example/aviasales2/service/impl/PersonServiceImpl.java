@@ -1,4 +1,4 @@
-package com.example.aviasales2.service.Impl;
+package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.entity.Person;
 import com.example.aviasales2.repository.PersonRepository;

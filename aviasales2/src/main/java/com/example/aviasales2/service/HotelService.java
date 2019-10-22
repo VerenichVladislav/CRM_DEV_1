@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.aviasales2.service;
 
 import com.example.entity.Hotel;
 

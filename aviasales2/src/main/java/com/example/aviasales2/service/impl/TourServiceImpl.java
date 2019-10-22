@@ -1,7 +1,8 @@
-package com.example.aviasales2.service;
+package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.entity.Tour;
 import com.example.aviasales2.repository.TourRepository;
+import com.example.aviasales2.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

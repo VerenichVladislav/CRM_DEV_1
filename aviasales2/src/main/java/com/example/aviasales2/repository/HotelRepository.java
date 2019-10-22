@@ -1,4 +1,4 @@
-package com.example.repository;
+package com.example.aviasales2.repository;
 
 import com.example.entity.Hotel;
 import org.springframework.data.repository.CrudRepository;

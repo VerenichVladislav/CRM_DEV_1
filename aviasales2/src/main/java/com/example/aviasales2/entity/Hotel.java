@@ -23,4 +23,8 @@ public class Hotel{
     String phoneNumber;
 
     public Hotel(){}
+
+    public long getHotelId() {
+        return hotelId;
+    }
 }

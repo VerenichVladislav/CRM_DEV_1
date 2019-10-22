@@ -1,7 +1,8 @@
-package com.example.aviasales2.service;
+package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.entity.Transport;
 import com.example.aviasales2.repository.TransportRepository;
+import com.example.aviasales2.service.TransportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
