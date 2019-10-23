@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,6 +24,11 @@ public class City {
     private String country;
     private Integer foundationDate;
     private Long population;
+
+    @OneToMany(mappedBy = "city_from", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    Set<Trip> trip_from;
+    @OneToMany(mappedBy = "city_dest", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    Set<Trip> trip_dest;
 
     public City() {
     }

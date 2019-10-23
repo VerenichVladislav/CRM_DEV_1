@@ -1,7 +1,7 @@
 package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.repository.HotelRepository;
-import com.example.entity.Hotel;
+import com.example.aviasales2.entity.Hotel;
 import com.example.aviasales2.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

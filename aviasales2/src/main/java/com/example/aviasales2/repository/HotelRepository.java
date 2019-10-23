@@ -1,6 +1,6 @@
 package com.example.aviasales2.repository;
 
-import com.example.entity.Hotel;
+import com.example.aviasales2.entity.Hotel;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

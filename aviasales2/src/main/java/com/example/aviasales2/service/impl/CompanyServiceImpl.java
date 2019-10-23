@@ -27,9 +27,6 @@ public class CompanyServiceImpl implements CompanyService {
     public Company findByCompanyName(String name){return companyRepository.findByCompanyName(name);}
 
     @Override
-    public List<Company> findAllByTransportId(long id){return companyRepository.findAllByTransportId(id);}
-
-    @Override
     public List<Company> findByRating(int rating){return companyRepository.findByRating(rating);}
 
     @Override
