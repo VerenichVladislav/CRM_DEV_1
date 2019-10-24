@@ -26,10 +26,13 @@ public class City {
 
     @OneToMany(mappedBy = "city_from", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JsonManagedReference(value = "cityRef1")
-    Set<Trip> trip_from;
+    private Set<Trip> trip_from;
     @OneToMany(mappedBy = "city_dest", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JsonManagedReference(value = "cityRef2")
-    Set<Trip> trip_dest;
+    private Set<Trip> trip_dest;
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "cityRef3")
+    private Set<Tour> tours;
 
     public Long getId() {
         return id;
