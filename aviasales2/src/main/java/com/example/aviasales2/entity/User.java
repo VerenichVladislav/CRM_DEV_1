@@ -5,8 +5,8 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "person")
-public class Person {
+@Table(name = "user_t")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -23,9 +23,9 @@ public class Person {
     private Integer walletId;
     private Integer hashPass;
 
-    public Person(){}
+    public User(){}
 
-    public Person(String email, String currency, String role, Integer historyId, String firstName, String lastName, Integer walletId, Integer hashPass) {
+    public User(String email, String currency, String role, Integer historyId, String firstName, String lastName, Integer walletId, Integer hashPass) {
         this.email = email;
         this.currency = currency;
         this.role = role;
