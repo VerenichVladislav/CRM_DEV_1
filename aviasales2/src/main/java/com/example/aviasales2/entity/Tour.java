@@ -1,36 +1,35 @@
 package com.example.aviasales2.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @Entity
+@NoArgsConstructor
 public class Tour {
     @Id
     @GeneratedValue
 
-    long id;
-    String name;
-    int price;
-    String date;
-    long user_id;
-    int duration;
-    String city_destination;
-    short rating;
-    int hotel_id;
-    int company_id;
+    private long id;
+    private String name;
+    private int price;
+    private String date;
+    private int duration;
+    private short rating;
+    private int hotel_id;
+    private int company_id;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference(value = "cityRef3")
+    private City cityId;
     enum status{
         ONLINE,
         OFFLINE
-    };
-
-    public Tour(){
     }
 }
