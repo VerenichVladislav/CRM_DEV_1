@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1daf7f5-b8ab-46b3-874b-b239723296ea" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/CompanyServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/City.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Transport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Transport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Trip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/City.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/City.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Transport.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Transport.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Trip.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Trip.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/CompanyServiceImpl.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -134,6 +144,8 @@
       <workItem from="1571848540114" duration="1911000" />
       <workItem from="1571856006268" duration="1057000" />
       <workItem from="1571859608025" duration="6199000" />
+      <workItem from="1571905591270" duration="2091000" />
+      <workItem from="1571913561647" duration="6981000" />
     </task>
     <servers />
   </component>

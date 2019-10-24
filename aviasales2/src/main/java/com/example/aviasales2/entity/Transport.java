@@ -1,6 +1,7 @@
 package com.example.aviasales2.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,11 +20,12 @@ public class Transport {
     public long id;
     String name;
     int baggage;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonBackReference(value = "compRef")
     @JoinColumn(name = "company_id")
     Company company;
     @OneToMany(mappedBy = "transport", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @JsonManagedReference(value = "transRef")
     Set<Trip> trips;
 
     public Transport(){
@@ -47,5 +49,25 @@ public class Transport {
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getBaggage() {
+        return baggage;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public Set<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(Set<Trip> trips) {
+        this.trips = trips;
     }
 }

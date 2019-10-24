@@ -1,15 +1,13 @@
 package com.example.aviasales2.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Getter
-@Setter
+
 @AllArgsConstructor
 @Entity
 public class Company {
@@ -26,56 +24,56 @@ public class Company {
     int transportCount;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JsonManagedReference
+    @JsonManagedReference(value = "compRef")
     private Set<Transport> transportId;
 
     public Company(){}
 
-    public void setCompanyId(long companyId) {
-        this.companyId = companyId;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public void setCommentId(long commentId) {
-        this.commentId = commentId;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public void setTransportId(Set<Transport> transportId) {
-        this.transportId = transportId;
-    }
-
     public long getCompanyId() {
         return companyId;
+    }
+
+    public void setCompanyId(long companyId) {
+        this.companyId = companyId;
     }
 
     public String getCompanyName() {
         return companyName;
     }
 
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
     public long getCommentId() {
         return commentId;
+    }
+
+    public void setCommentId(long commentId) {
+        this.commentId = commentId;
     }
 
     public int getRating() {
         return rating;
     }
 
-    public Set<Transport> getTransportId() {
-        return transportId;
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public int getTransportCount() {
         return transportCount;
     }
 
-    public void setTransportCount(int transport_count) {
-        this.transportCount = transport_count;
+    public void setTransportCount(int transportCount) {
+        this.transportCount = transportCount;
+    }
+
+    public Set<Transport> getTransportId() {
+        return transportId;
+    }
+
+    public void setTransportId(Set<Transport> transportId) {
+        this.transportId = transportId;
     }
 }

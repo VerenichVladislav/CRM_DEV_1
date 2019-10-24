@@ -1,5 +1,6 @@
 package com.example.aviasales2.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,8 +9,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Set;
 
-@Getter
-@Setter
 @AllArgsConstructor
 @Entity
 @Builder
@@ -26,9 +25,67 @@ public class City {
     private Long population;
 
     @OneToMany(mappedBy = "city_from", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @JsonManagedReference(value = "cityRef1")
     Set<Trip> trip_from;
     @OneToMany(mappedBy = "city_dest", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @JsonManagedReference(value = "cityRef2")
     Set<Trip> trip_dest;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Integer getFoundationDate() {
+        return foundationDate;
+    }
+
+    public void setFoundationDate(Integer foundationDate) {
+        this.foundationDate = foundationDate;
+    }
+
+    public Long getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(Long population) {
+        this.population = population;
+    }
+
+    public Set<Trip> getTrip_from() {
+        return trip_from;
+    }
+
+    public void setTrip_from(Set<Trip> trip_from) {
+        this.trip_from = trip_from;
+    }
+
+    public Set<Trip> getTrip_dest() {
+        return trip_dest;
+    }
+
+    public void setTrip_dest(Set<Trip> trip_dest) {
+        this.trip_dest = trip_dest;
+    }
 
     public City() {
     }

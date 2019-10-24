@@ -1,6 +1,8 @@
 package com.example.aviasales2.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -12,16 +14,19 @@ public class Trip {
     long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference(value = "cityRef1")
     @JoinColumn(name = "city_from")
     City city_from;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference(value = "cityRef2")
     @JoinColumn(name = "city_dest")
     City city_dest;
 
     int price;
     int full_count_seats;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference(value = "transRef")
     @JoinColumn(name = "transport_id")
     Transport transport;
 
