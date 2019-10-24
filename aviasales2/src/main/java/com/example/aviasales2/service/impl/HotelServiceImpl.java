@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class HotelServiceImpl implements HotelService {
+
     @Autowired
     private HotelRepository hotelRepository;
     @Override
