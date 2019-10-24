@@ -1,6 +1,6 @@
 package com.example.aviasales2.service;
 
-import com.example.entity.Hotel;
+import com.example.aviasales2.entity.Hotel;
 
 import java.util.List;
 

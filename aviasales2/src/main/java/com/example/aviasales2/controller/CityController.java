@@ -19,7 +19,6 @@ public class CityController {
 
     @GetMapping("/all")
     public List<City> findAll(){
-        System.out.println(cityService.findAll());
         return cityService.findAll();
     }
 

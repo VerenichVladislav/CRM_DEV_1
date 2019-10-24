@@ -5,7 +5,6 @@ import com.example.aviasales2.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
 
 
@@ -15,8 +14,8 @@ public class CompanyController {
     @Autowired
     CompanyService companyService;
 
-    @GetMapping("/getById")
-    private Company getCompanyById(@RequestParam("id")long id){return companyService.findByCompanyId(id);}
+    @GetMapping("/{id:\\d+}")
+    private Company getCompanyById(@PathVariable(name = "id") long id){return companyService.findByCompanyId(id);}
 
     @PostMapping("/save")
     private Company saveCompany(@RequestBody Company company){return companyService.save(company);}
@@ -27,9 +26,6 @@ public class CompanyController {
 
     @GetMapping("/getByName")
     private Company getCompanyByName(@RequestParam(name = "name")String name){return companyService.findByCompanyName(name);}
-
-    @GetMapping("/getByTransId")
-    private List<Company> getCompanyByTransId(@RequestParam("id")long id){return companyService.findAllByTransportId(id);}
 
     @PostMapping("/update")
     private Company updateCompany(@RequestBody Company updatedCompany){return companyService.save(updatedCompany);}

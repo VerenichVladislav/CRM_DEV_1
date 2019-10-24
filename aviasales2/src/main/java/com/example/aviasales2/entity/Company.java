@@ -1,11 +1,11 @@
 package com.example.aviasales2.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 
 @AllArgsConstructor
@@ -17,11 +17,15 @@ public class Company {
 
     String companyName;
 
-    long transportId;
-
     long commentId;
 
     int rating;
+
+    int transportCount;
+
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @JsonManagedReference(value = "compRef")
+    private Set<Transport> transportId;
 
     public Company(){}
 
@@ -41,14 +45,6 @@ public class Company {
         this.companyName = companyName;
     }
 
-    public long getTransportId() {
-        return transportId;
-    }
-
-    public void setTransportId(long transportId) {
-        this.transportId = transportId;
-    }
-
     public long getCommentId() {
         return commentId;
     }
@@ -63,5 +59,21 @@ public class Company {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public int getTransportCount() {
+        return transportCount;
+    }
+
+    public void setTransportCount(int transportCount) {
+        this.transportCount = transportCount;
+    }
+
+    public Set<Transport> getTransportId() {
+        return transportId;
+    }
+
+    public void setTransportId(Set<Transport> transportId) {
+        this.transportId = transportId;
     }
 }

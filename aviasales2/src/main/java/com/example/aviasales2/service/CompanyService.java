@@ -13,8 +13,6 @@ public interface CompanyService {
 
     Company findByCompanyName(String name);
 
-    List<Company> findAllByTransportId(long id);
-
     List<Company> findByRating(int rating);
 
     List<Company> findAll();
