@@ -2,74 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1daf7f5-b8ab-46b3-874b-b239723296ea" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/dataSources/2d0adb06-8ebf-491b-af3d-2010ddb76fe8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/dataSources/2d0adb06-8ebf-491b-af3d-2010ddb76fe8/storage_v2/_src_/database/test-db.mU82qw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/dataSources/2d0adb06-8ebf-491b-af3d-2010ddb76fe8/storage_v2/_src_/database/test-db.mU82qw/schema/public.abK9xQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Ticket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Wallet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/repository/WalletRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/service/IWalletService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/service/impl/WalletServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/UserController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Ticket$TicketBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Ticket.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Wallet$WalletBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Wallet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/UserRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/WalletRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/IWalletService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/UserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/UserServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/WalletServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/controller/PersonController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/City.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Company.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Tour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Tour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/repository/PersonRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/service/PersonService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/service/impl/PersonServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/aviasales2.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/CityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/CityController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/CompanyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/CompanyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/HotelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/HotelController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/PersonController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/TransportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/TransportController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/TripController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/TripController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/aviasales2/entity/Trip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/City.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/City.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Company.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Hotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Hotel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Transport.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Transport.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Ticket$TicketBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Ticket$TicketBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Ticket.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Trip.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Trip.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/CompanyRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/CompanyRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/HotelRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/HotelRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/PersonRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/TripRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/TripRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/CompanyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/CompanyService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/HotelService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/HotelService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/PersonService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/TripService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/TripService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/CompanyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/CompanyServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Wallet$WalletBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Wallet$WalletBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Wallet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Wallet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/WalletRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/WalletRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/IWalletService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/IWalletService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/HotelServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/HotelServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/PersonServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/TripServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/TripServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/WalletServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/WalletServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/entity/Tour$status.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/entity/Tour$status.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/entity/Tour.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/entity/Tour.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/entity/Hotel.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

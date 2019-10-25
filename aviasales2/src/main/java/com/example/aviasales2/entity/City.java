@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -37,13 +35,13 @@ public class City {
     @JsonManagedReference(value = "cityRef3")
     private Set<Tour> tours;
 
-    @OneToOne(optional = false, mappedBy = "city")
-    private Tour tour;
+//    @OneToOne(optional = false, mappedBy = "city")
+//    private Tour tour;
 
-    @JsonIgnore
-    public Tour getTour() {
-        return tour;
-    }
+//    @JsonIgnore
+//    public Tour getTour() {
+//        return tour;
+//    }
 
     public Long getId() {
         return id;

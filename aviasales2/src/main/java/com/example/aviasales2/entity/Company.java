@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 
@@ -16,7 +17,9 @@ public class Company {
 
     String companyName;
 
-    long commentId;
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "compcomm")
+    List<Comments> comments;
 
     int rating;
 
@@ -44,14 +47,6 @@ public class Company {
         this.companyName = companyName;
     }
 
-    public long getCommentId() {
-        return commentId;
-    }
-
-    public void setCommentId(long commentId) {
-        this.commentId = commentId;
-    }
-
     public int getRating() {
         return rating;
     }
@@ -74,5 +69,13 @@ public class Company {
 
     public void setTransportId(Set<Transport> transportId) {
         this.transportId = transportId;
+    }
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
     }
 }

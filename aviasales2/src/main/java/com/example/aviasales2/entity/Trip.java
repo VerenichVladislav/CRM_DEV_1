@@ -34,6 +34,8 @@ public class Trip {
 
     Timestamp date_dest;
 
+    public Trip (){}
+
     public long getId() {
         return id;
     }

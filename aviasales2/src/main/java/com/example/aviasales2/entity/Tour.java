@@ -1,18 +1,15 @@
 package com.example.aviasales2.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-
 import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.util.List;
 
 
@@ -52,6 +49,10 @@ public class Tour {
     @JsonBackReference(value = "cityRef3")
     private City cityId;
 
+    @OneToMany(mappedBy = "tour", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "tourcomm")
+    List<Comments> comments;
+
     enum status{
         ONLINE,
         OFFLINE
@@ -64,5 +65,13 @@ public class Tour {
 
     public Tour(City cityId) {
         this.cityId = cityId;
+    }
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
     }
 }
