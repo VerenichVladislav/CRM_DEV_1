@@ -1,20 +1,28 @@
 package com.example.aviasales2.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.util.List;
+
+
 
 @Getter
 @Setter
 @AllArgsConstructor
 @Entity
 @Table(name = "tour")
+@NoArgsConstructor
 public class Tour {
 
     @Id
@@ -35,21 +43,18 @@ public class Tour {
             inverseJoinColumns=@JoinColumn(name="user_id"))
     private List<User> users;
 
-    @OneToOne(optional = false, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "city_id")
-    private City city;
-
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "tour_id")
     private Hotel hotel;
 
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference(value = "cityRef3")
+    private City cityId;
+
     enum status{
         ONLINE,
         OFFLINE
-    };
-
-    public Tour(){
     }
 
     @JsonIgnore
@@ -57,9 +62,7 @@ public class Tour {
         return users;
     }
 
-    @JsonIgnore
-    public City getCity() {
-        return city;
+    public Tour(City cityId) {
+        this.cityId = cityId;
     }
-
 }
