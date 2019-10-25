@@ -1,5 +1,6 @@
 package com.example.aviasales2.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,12 +25,25 @@ public class City {
     private Integer foundationDate;
     private Long population;
 
-    @OneToMany(mappedBy = "city_from", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "city_from", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JsonManagedReference(value = "cityRef1")
-    Set<Trip> trip_from;
-    @OneToMany(mappedBy = "city_dest", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private Set<Trip> trip_from;
+
+
+    @OneToMany(mappedBy = "city_dest", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JsonManagedReference(value = "cityRef2")
-    Set<Trip> trip_dest;
+    private Set<Trip> trip_dest;
+    @OneToMany(mappedBy = "cityId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "cityRef3")
+    private Set<Tour> tours;
+
+    @OneToOne(optional = false, mappedBy = "city")
+    private Tour tour;
+
+    @JsonIgnore
+    public Tour getTour() {
+        return tour;
+    }
 
     public Long getId() {
         return id;
