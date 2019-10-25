@@ -2,35 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6979cffe-8677-4ecb-b115-d7a0d587da14" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Wallet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/WalletRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/IWalletService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/WalletServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d0adb06-8ebf-491b-af3d-2010ddb76fe8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d0adb06-8ebf-491b-af3d-2010ddb76fe8.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d0adb06-8ebf-491b-af3d-2010ddb76fe8/storage_v2/_src_/database/test-db.mU82qw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2d0adb06-8ebf-491b-af3d-2010ddb76fe8/storage_v2/_src_/database/test-db.mU82qw/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/City.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Tour.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Tour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/PersonController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/City.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/City.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Hotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Hotel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Ticket$TicketBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Ticket$TicketBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Ticket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/entity/Tour$status.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/entity/Tour$status.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/entity/Tour.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/entity/Tour.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/aviasales2/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -117,76 +90,9 @@
             <state>
               <ID>DATABASE</ID>
               <OriginalElement>2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.active_booking</OriginalElement>
-              <nodes>
-                <node x="568.5" y="413.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.user_t</node>
-                <node x="402.5" y="0.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.company</node>
-                <node x="50.5" y="402.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.tour</node>
-                <node x="768.5" y="479.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.ticket</node>
-                <node x="309.4469696969697" y="413.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.trip</node>
-                <node x="225.0" y="201.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.city</node>
-                <node x="704.5151515151515" y="680.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.active_booking</node>
-                <node x="430.0" y="212.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.transport</node>
-                <node x="0.0" y="190.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.hotel</node>
-                <node x="603.0" y="234.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.wallet</node>
-                <node x="318.0151515151515" y="680.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.history</node>
-              </nodes>
+              <nodes />
               <notes />
-              <edges>
-                <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.active_booking" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.user_t">
-                  <point x="-33.25" y="-36.5" />
-                  <point x="737.7651515151515" y="655.0" />
-                  <point x="703.5" y="655.0" />
-                  <point x="45.0" y="103.0" />
-                </edge>
-                <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.transport" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.company">
-                  <point x="0.0" y="-59.0" />
-                  <point x="0.0" y="70.0" />
-                </edge>
-                <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.history" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.tour">
-                  <point x="-31.5" y="-36.5" />
-                  <point x="349.5151515151515" y="655.0" />
-                  <point x="154.5" y="655.0" />
-                  <point x="0.0" y="114.0" />
-                </edge>
-                <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.trip" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.city">
-                  <point x="-60.33333333333337" y="-103.0" />
-                  <point x="339.6136363636363" y="377.0" />
-                  <point x="317.5" y="377.0" />
-                  <point x="0.0" y="70.0" />
-                </edge>
-                <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.tour" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.hotel">
-                  <point x="-52.0" y="-114.0" />
-                  <point x="0.0" y="81.0" />
-                </edge>
-                <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.active_booking" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.ticket">
-                  <point x="33.25" y="-36.5" />
-                  <point x="804.2651515151515" y="655.0" />
-                  <point x="844.5" y="655.0" />
-                  <point x="0.0" y="37.0" />
-                </edge>
-                <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.user_t" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.wallet">
-                  <point x="0.0" y="-103.0" />
-                  <point x="0.0" y="37.0" />
-                </edge>
-                <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.trip" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.transport">
-                  <point x="60.33333333333337" y="-103.0" />
-                  <point x="460.28030303030306" y="377.0" />
-                  <point x="506.5" y="377.0" />
-                  <point x="0.0" y="59.0" />
-                </edge>
-                <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.tour" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.city">
-                  <point x="52.0" y="-114.0" />
-                  <point x="206.5" y="377.0" />
-                  <point x="255.83333333333337" y="377.0" />
-                  <point x="-61.66666666666663" y="70.0" />
-                </edge>
-                <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.history" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.user_t">
-                  <point x="31.5" y="-36.5" />
-                  <point x="412.5151515151515" y="655.0" />
-                  <point x="613.5" y="655.0" />
-                  <point x="-45.0" y="103.0" />
-                </edge>
-              </edges>
+              <edges />
               <settings layout="Hierarchic Group" zoom="0.820754716981132" x="219.49693800640665" y="362.4137931034483" />
               <SelectedNodes />
               <Categories>
@@ -218,7 +124,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Hotel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Hotel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Hotel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="280">
@@ -227,8 +133,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hotel" pinned="false" current-in-tab="false">
-        <entry file="das://2d0adb06-8ebf-491b-af3d-2010ddb76fe8/database/test-db/schema/public/table/hotel">
+      <file leaf-file-name="active_booking" pinned="false" current-in-tab="false">
+        <entry file="das://2d0adb06-8ebf-491b-af3d-2010ddb76fe8/database/test-db/schema/public/table/active_booking">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+              <column-attributes>
+                <column name="ctid" enabled="false" />
+              </column-attributes>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ticket" pinned="false" current-in-tab="false">
+        <entry file="das://2d0adb06-8ebf-491b-af3d-2010ddb76fe8/database/test-db/schema/public/table/ticket">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Company.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Company.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="trip" pinned="false" current-in-tab="false">
+        <entry file="das://2d0adb06-8ebf-491b-af3d-2010ddb76fe8/database/test-db/schema/public/table/trip">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
               <filtering enabled="true" />
@@ -545,16 +484,15 @@
       <workItem from="1571717659792" duration="1371000" />
       <workItem from="1571842681739" duration="1585000" />
       <workItem from="1571887610028" duration="2210000" />
-      <workItem from="1571933448152" duration="25007000" />
+      <workItem from="1571933448152" duration="25954000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30173000" />
+    <option name="totallyTimeSpent" value="31120000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -566,7 +504,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.16442049" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.23854448" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32884097" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
@@ -576,9 +514,9 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32884097" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.03369272" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32884097" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32884097" />
       <window_info anchor="bottom" id="Database Console" weight="0.32884097" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25302014" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25302014" />
       <window_info anchor="right" id="Bean Validation" order="3" weight="0.3295302" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -615,16 +553,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/WalletRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/IWalletService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -758,27 +686,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://2d0adb06-8ebf-491b-af3d-2010ddb76fe8/database/test-db/schema/public/table/ticket">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://2d0adb06-8ebf-491b-af3d-2010ddb76fe8/database/test-db/schema/public/table/wallet">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://2d0adb06-8ebf-491b-af3d-2010ddb76fe8/database/test-db/schema/public/table/active_booking">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ctid" enabled="false" />
-          </column-attributes>
         </state>
       </provider>
     </entry>
@@ -834,16 +745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
           <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Company.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -969,76 +870,9 @@
         <state>
           <ID>DATABASE</ID>
           <OriginalElement>2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.active_booking</OriginalElement>
-          <nodes>
-            <node x="568.5" y="413.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.user_t</node>
-            <node x="402.5" y="0.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.company</node>
-            <node x="50.5" y="402.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.tour</node>
-            <node x="768.5" y="479.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.ticket</node>
-            <node x="309.4469696969697" y="413.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.trip</node>
-            <node x="225.0" y="201.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.city</node>
-            <node x="704.5151515151515" y="680.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.active_booking</node>
-            <node x="430.0" y="212.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.transport</node>
-            <node x="0.0" y="190.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.hotel</node>
-            <node x="603.0" y="234.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.wallet</node>
-            <node x="318.0151515151515" y="680.0">2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.history</node>
-          </nodes>
+          <nodes />
           <notes />
-          <edges>
-            <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.active_booking" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.user_t">
-              <point x="-33.25" y="-36.5" />
-              <point x="737.7651515151515" y="655.0" />
-              <point x="703.5" y="655.0" />
-              <point x="45.0" y="103.0" />
-            </edge>
-            <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.transport" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.company">
-              <point x="0.0" y="-59.0" />
-              <point x="0.0" y="70.0" />
-            </edge>
-            <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.history" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.tour">
-              <point x="-31.5" y="-36.5" />
-              <point x="349.5151515151515" y="655.0" />
-              <point x="154.5" y="655.0" />
-              <point x="0.0" y="114.0" />
-            </edge>
-            <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.trip" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.city">
-              <point x="-60.33333333333337" y="-103.0" />
-              <point x="339.6136363636363" y="377.0" />
-              <point x="317.5" y="377.0" />
-              <point x="0.0" y="70.0" />
-            </edge>
-            <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.tour" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.hotel">
-              <point x="-52.0" y="-114.0" />
-              <point x="0.0" y="81.0" />
-            </edge>
-            <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.active_booking" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.ticket">
-              <point x="33.25" y="-36.5" />
-              <point x="804.2651515151515" y="655.0" />
-              <point x="844.5" y="655.0" />
-              <point x="0.0" y="37.0" />
-            </edge>
-            <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.user_t" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.wallet">
-              <point x="0.0" y="-103.0" />
-              <point x="0.0" y="37.0" />
-            </edge>
-            <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.trip" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.transport">
-              <point x="60.33333333333337" y="-103.0" />
-              <point x="460.28030303030306" y="377.0" />
-              <point x="506.5" y="377.0" />
-              <point x="0.0" y="59.0" />
-            </edge>
-            <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.tour" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.city">
-              <point x="52.0" y="-114.0" />
-              <point x="206.5" y="377.0" />
-              <point x="255.83333333333337" y="377.0" />
-              <point x="-61.66666666666663" y="70.0" />
-            </edge>
-            <edge source="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.history" target="2d0adb06-8ebf-491b-af3d-2010ddb76fe8.TABLE:test-db.public.user_t">
-              <point x="31.5" y="-36.5" />
-              <point x="412.5151515151515" y="655.0" />
-              <point x="613.5" y="655.0" />
-              <point x="-45.0" y="103.0" />
-            </edge>
-          </edges>
+          <edges />
           <settings layout="Hierarchic Group" zoom="0.820754716981132" x="219.49693800640665" y="362.4137931034483" />
           <SelectedNodes />
           <Categories>
@@ -1126,6 +960,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://2d0adb06-8ebf-491b-af3d-2010ddb76fe8/database/test-db/schema/public/table/active_booking">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+          <column-attributes>
+            <column name="ctid" enabled="false" />
+          </column-attributes>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://2d0adb06-8ebf-491b-af3d-2010ddb76fe8/database/test-db/schema/public/table/ticket">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://2d0adb06-8ebf-491b-af3d-2010ddb76fe8/database/test-db/schema/public/table/trip">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Company.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
