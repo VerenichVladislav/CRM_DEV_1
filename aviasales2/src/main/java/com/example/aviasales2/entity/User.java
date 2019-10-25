@@ -1,110 +1,69 @@
 package com.example.aviasales2.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Data
+@AllArgsConstructor
 @Table(name = "user_t")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @NotNull
     private String email;
     private String currency;
     private String role;
-    private Integer historyId;
+
     @NotNull
     private String firstName;
     @NotNull
     private String lastName;
-    private Integer walletId;
     private Integer hashPass;
 
-    public User(){}
 
-    public User(String email, String currency, String role, Integer historyId, String firstName, String lastName, Integer walletId, Integer hashPass) {
-        this.email = email;
-        this.currency = currency;
-        this.role = role;
-        this.historyId = historyId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.walletId = walletId;
-        this.hashPass = hashPass;
+
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "wallet_id")
+    private Wallet wallet;
+
+    @ManyToMany
+    @JoinTable (name="active_booking",
+            joinColumns=@JoinColumn (name="user_id"),
+            inverseJoinColumns=@JoinColumn(name="ticket_id"))
+    private List<Ticket> tickets;
+
+
+    @ManyToMany
+    @JoinTable (name="history",
+            joinColumns=@JoinColumn (name="user_id"),
+            inverseJoinColumns=@JoinColumn(name="tour_id"))
+    private List<Tour> tours;
+
+
+    public User() {
     }
 
-    public Integer getId() {
-        return id;
+
+    public Wallet getWallet() {
+        return wallet;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public List<Ticket> getTickets() {
+        return tickets;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public Integer getHistoryId() {
-        return historyId;
-    }
-
-    public void setHistoryId(Integer historyId) {
-        this.historyId = historyId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Integer getWalletId() {
-        return walletId;
-    }
-
-    public void setWalletId(Integer walletId) {
-        this.walletId = walletId;
-    }
-
-    public Integer getHashPass() {
-        return hashPass;
-    }
-
-    public void setHashPass(Integer hashPass) {
-        this.hashPass = hashPass;
+    public List<Tour> getTours() {
+        return tours;
     }
 }

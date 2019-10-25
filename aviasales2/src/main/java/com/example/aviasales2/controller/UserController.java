@@ -1,10 +1,13 @@
 package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.User;
+import com.example.aviasales2.entity.Wallet;
+import com.example.aviasales2.service.IWalletService;
 import com.example.aviasales2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.WatchService;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,14 +18,19 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private IWalletService walletService;
+
     @PostMapping("/save")
     public User savePerson(@RequestBody User user) {
         return userService.save(user);
     }
 
-    @GetMapping("/getById")
-    private Optional<User> findById(@RequestParam Integer id) {
-        return userService.findById(id);
+    @GetMapping("/getById/{id}")
+    private User findById(@PathVariable(name = "id") Long id) {
+
+        User user = userService.findById(id);
+        return user;
     }
 
     @GetMapping("/getByEmail")
@@ -44,4 +52,6 @@ public class UserController {
     private void deleteById(@RequestParam Integer id) {
         userService.deleteById(id);
     }
+
+
 }

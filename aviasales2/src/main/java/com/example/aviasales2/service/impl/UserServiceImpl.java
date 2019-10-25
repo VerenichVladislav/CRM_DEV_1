@@ -1,6 +1,7 @@
 package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.entity.User;
+import com.example.aviasales2.entity.Wallet;
 import com.example.aviasales2.repository.UserRepository;
 import com.example.aviasales2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findById(Integer id) {
+    public User findById(Long id) {
         return userRepository.findById(id);
     }
 
@@ -53,4 +54,6 @@ public class UserServiceImpl implements UserService {
     public void deleteById(Integer id) {
         userRepository.deleteById(id);
     }
+
+
 }
