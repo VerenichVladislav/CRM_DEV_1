@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 public class Company {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long companyId;
 
     String companyName;
@@ -23,7 +23,7 @@ public class Company {
 
     int transportCount;
 
-    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "compRef")
     private Set<Transport> transportId;
 

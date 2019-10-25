@@ -21,7 +21,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 
     @Override
-    public String delete(long id){companyRepository.delete(companyRepository.findByCompanyId(id)); return "deleted";}
+    public void delete(long id){ companyRepository.delete(companyRepository.findByCompanyId(id));}
 
     @Override
     public Company findByCompanyName(String name){return companyRepository.findByCompanyName(name);}
