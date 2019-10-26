@@ -24,17 +24,19 @@ import java.util.List;
 @Table(name = "tour")
 @NoArgsConstructor
 public class Tour {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private  String name;
+    @GeneratedValue
+
+    private long id;
+    private String name;
     private int price;
     Timestamp date;
 
     private int duration;
     private String city_destination;
     private short rating;
+    private long hotelId;
+
 
 
     @ManyToMany
@@ -51,6 +53,11 @@ public class Tour {
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonBackReference(value = "cityRef3")
     private City cityId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id")
+    @JsonBackReference
+    Company company;
 
     enum status{
         ONLINE,

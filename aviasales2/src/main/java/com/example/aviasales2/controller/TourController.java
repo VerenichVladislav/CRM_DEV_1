@@ -1,6 +1,8 @@
 package com.example.aviasales2.controller;
 
+import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.Tour;
+import com.example.aviasales2.service.CompanyService;
 import com.example.aviasales2.service.TourService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,9 @@ public class TourController {
 
     @Autowired
     private TourService tourService;
+
+    @Autowired
+    private CompanyService companyService;
 
     @GetMapping("/id/{id}")
     public Tour getTourById(@PathVariable long id) {
@@ -34,8 +39,11 @@ public class TourController {
         return tourService.deleteById(id);
     }
 
-    @PostMapping("/save")
-    public Tour save(@RequestBody Tour tour) {
+    @PostMapping("/save/{companyId}")
+    public Tour save(@PathVariable(name = "companyId") long companyId, @RequestBody Tour tour) {
+        Company company = companyService.findByCompanyId(companyId);
+        tour.setCompany(company);
+        company.getTourId().add(tour);
         return tourService.save(tour);
     }
 

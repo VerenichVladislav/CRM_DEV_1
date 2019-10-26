@@ -13,18 +13,20 @@ public class Company {
     @Id
     @GeneratedValue
     long companyId;
-
     String companyName;
-
     long commentId;
-
     int rating;
-
     int transportCount;
 
-    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "company",
+            fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JsonManagedReference(value = "compRef")
     private Set<Transport> transportId;
+
+    @OneToMany(mappedBy = "company",
+            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Set<Tour> tourId;
 
     public Company(){}
 
@@ -70,6 +72,10 @@ public class Company {
 
     public Set<Transport> getTransportId() {
         return transportId;
+    }
+
+    public Set<Tour> getTourId() {
+        return tourId;
     }
 
     public void setTransportId(Set<Transport> transportId) {
