@@ -24,7 +24,7 @@ public class Transport {
     @JsonBackReference(value = "compRef")
     @JoinColumn(name = "company_id")
     Company company;
-    @OneToMany(mappedBy = "transport", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "transport", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "transRef")
     Set<Trip> trips;
 

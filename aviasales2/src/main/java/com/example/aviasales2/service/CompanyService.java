@@ -9,7 +9,7 @@ public interface CompanyService {
 
     Company findByCompanyId(long id);
 
-    String delete(long id);
+    void delete(long id);
 
     Company findByCompanyName(String name);
 

@@ -10,22 +10,22 @@ import java.sql.Timestamp;
 public class Trip {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonBackReference(value = "cityRef1")
     @JoinColumn(name = "city_from")
     City city_from;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonBackReference(value = "cityRef2")
     @JoinColumn(name = "city_dest")
     City city_dest;
 
     int price;
     int full_count_seats;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonBackReference(value = "transRef")
     @JoinColumn(name = "transport_id")
     Transport transport;
@@ -33,6 +33,8 @@ public class Trip {
     Timestamp date_from;
 
     Timestamp date_dest;
+
+    public Trip (){}
 
     public long getId() {
         return id;

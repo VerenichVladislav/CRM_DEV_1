@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 
@@ -11,22 +12,22 @@ import java.util.Set;
 @Entity
 public class Company {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long companyId;
+
     String companyName;
-    long commentId;
+
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "compcomm")
+    List<Comments> comments;
+
     int rating;
+
     int transportCount;
 
-    @OneToMany(mappedBy = "company",
-            fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "compRef")
     private Set<Transport> transportId;
-
-    @OneToMany(mappedBy = "company",
-            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Tour> tourId;
 
     public Company(){}
 
@@ -44,14 +45,6 @@ public class Company {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
-    }
-
-    public long getCommentId() {
-        return commentId;
-    }
-
-    public void setCommentId(long commentId) {
-        this.commentId = commentId;
     }
 
     public int getRating() {
@@ -74,11 +67,15 @@ public class Company {
         return transportId;
     }
 
-    public Set<Tour> getTourId() {
-        return tourId;
-    }
-
     public void setTransportId(Set<Transport> transportId) {
         this.transportId = transportId;
+    }
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
     }
 }
