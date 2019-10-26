@@ -1,7 +1,10 @@
 package com.example.aviasales2.controller;
 
+import com.example.aviasales2.entity.Comments;
 import com.example.aviasales2.entity.Company;
+import com.example.aviasales2.repository.CommentsRepository;
 import com.example.aviasales2.repository.CompanyRepository;
+import com.example.aviasales2.service.CommentsService;
 import com.example.aviasales2.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +19,10 @@ public class CompanyController {
     private CompanyService companyService;
     @Autowired
     private CompanyRepository companyRepository;
+    @Autowired
+    private CommentsService commentsService;
+    @Autowired
+    private CommentsRepository commentsRepository;
 
     @GetMapping("/{id}")
     private Company getCompanyById(@PathVariable(name = "id") long id){
@@ -40,6 +47,15 @@ public class CompanyController {
         }
     }
 
+    @PostMapping("/company_comment/{comp_id}")
+    private Comments saveComment(@PathVariable("comp_id") long comp_id, @RequestBody Comments comment){
+        Company company = companyService.findByCompanyId(comp_id);
+        company.getComments().add(comment);
+        comment.setCompany(company);
+        return commentsService.save(comment);
+    }
+
+
     @GetMapping("/getByName")
     private Company getCompanyByName(@RequestParam(name = "name")String name){return companyService.findByCompanyName(name);}
 
@@ -55,7 +71,20 @@ public class CompanyController {
     @GetMapping("/getByRating")
     private List<Company> getCompanyByRating(@RequestParam("rating")int rating){return companyService.findByRating(rating);}
 
-    @GetMapping("/getAll")
+    @PutMapping("/update_comment/{comment_id}")
+    private String update(@PathVariable("comment_id") long comment_id, @RequestBody Comments comments){
+        comments.setId(comment_id);
+        Comments old = commentsRepository.findCommentsById(comments.getId());
+        if(old!=null){
+            Company company = old.getCompany();
+            old.setText(comments.getText());
+            old.setCompany(company);
+            commentsService.save(old);
+            return "Updated";}
+        return "Error!";
+    }
+
+    @GetMapping()
     private List<Company> getAllCompany(){return companyService.findAll();}
 
 

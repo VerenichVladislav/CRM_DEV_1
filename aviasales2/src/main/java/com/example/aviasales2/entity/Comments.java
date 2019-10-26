@@ -3,7 +3,6 @@ package com.example.aviasales2.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import java.util.Optional;
 
 @Entity
 public class Comments {
@@ -18,7 +17,7 @@ public class Comments {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference(value = "tourcomm")
     @JoinColumn(name = "tour_id")
-    Optional<Tour> tour;
+    Tour tour;
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference(value = "compcomm")
     @JoinColumn(name = "company_id")
@@ -54,11 +53,11 @@ public class Comments {
         this.type = type;
     }
 
-    public Optional<Tour> getTour() {
+    public Tour getTour() {
         return tour;
     }
 
-    public void setTour(Optional<Tour> tour) {
+    public void setTour(Tour tour) {
         this.tour = tour;
     }
 
