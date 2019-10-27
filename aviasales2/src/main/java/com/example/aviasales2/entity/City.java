@@ -23,12 +23,12 @@ public class City {
     private Integer foundationDate;
     private Long population;
 
-    @OneToMany(mappedBy = "city_from", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "cityFrom", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JsonManagedReference(value = "cityRef1")
     private Set<Trip> trip_from;
 
 
-    @OneToMany(mappedBy = "city_dest", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "cityDest", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JsonManagedReference(value = "cityRef2")
     private Set<Trip> trip_dest;
     @OneToMany(mappedBy = "cityId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -42,6 +42,7 @@ public class City {
 //    public Tour getTour() {
 //        return tour;
 //    }
+
 
     public Long getId() {
         return id;
@@ -97,6 +98,14 @@ public class City {
 
     public void setTrip_dest(Set<Trip> trip_dest) {
         this.trip_dest = trip_dest;
+    }
+
+    public Set<Tour> getTours() {
+        return tours;
+    }
+
+    public void setTours(Set<Tour> tours) {
+        this.tours = tours;
     }
 
     public City() {

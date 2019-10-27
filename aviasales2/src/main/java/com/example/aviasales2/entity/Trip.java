@@ -16,12 +16,12 @@ public class Trip {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonBackReference(value = "cityRef1")
     @JoinColumn(name = "city_from")
-    City city_from;
+    City cityFrom;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonBackReference(value = "cityRef2")
     @JoinColumn(name = "city_dest")
-    City city_dest;
+    City cityDest;
 
     int price;
     int full_count_seats;
@@ -30,9 +30,9 @@ public class Trip {
     @JoinColumn(name = "transport_id")
     Transport transport;
 
-    Timestamp date_from;
+    Timestamp dateFrom;
 
-    Timestamp date_dest;
+    Timestamp dateDest;
 
     public Trip (){}
 
@@ -44,6 +44,21 @@ public class Trip {
         this.id = id;
     }
 
+    public City getCityFrom() {
+        return cityFrom;
+    }
+
+    public void setCityFrom(City cityFrom) {
+        this.cityFrom = cityFrom;
+    }
+
+    public City getCityDest() {
+        return cityDest;
+    }
+
+    public void setCityDest(City cityDest) {
+        this.cityDest = cityDest;
+    }
 
     public int getPrice() {
         return price;
@@ -61,43 +76,27 @@ public class Trip {
         this.full_count_seats = full_count_seats;
     }
 
-    public Timestamp getDate_from() {
-        return date_from;
-    }
-
-    public void setDate_from(Timestamp date_from) {
-        this.date_from = date_from;
-    }
-
-    public Timestamp getDate_dest() {
-        return date_dest;
-    }
-
-    public void setDate_dest(Timestamp date_dest) {
-        this.date_dest = date_dest;
-    }
-
-    public City getCity_from() {
-        return city_from;
-    }
-
-    public void setCity_from(City city_from) {
-        this.city_from = city_from;
-    }
-
-    public City getCity_dest() {
-        return city_dest;
-    }
-
-    public void setCity_dest(City city_dest) {
-        this.city_dest = city_dest;
-    }
-
     public Transport getTransport() {
         return transport;
     }
 
     public void setTransport(Transport transport) {
         this.transport = transport;
+    }
+
+    public Timestamp getDateFrom() {
+        return dateFrom;
+    }
+
+    public void setDateFrom(Timestamp dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public Timestamp getDateDest() {
+        return dateDest;
+    }
+
+    public void setDateDest(Timestamp dateDest) {
+        this.dateDest = dateDest;
     }
 }

@@ -2,6 +2,7 @@ package com.example.aviasales2.service;
 
 import com.example.aviasales2.entity.Trip;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface TripService {
@@ -10,5 +11,9 @@ public interface TripService {
     String deleteById(long id);
     String update(Trip trip);
     Trip findById(long id);
+    List<Trip> findAllByCityFromAndCityDest(String cityFrom, String cityDest);
+    List<Trip> findAllByCityFrom(String cityFrom);
+    List<Trip> findAllByCityDest(String cityDest);
+    List<Trip> findAllByDateFrom(Timestamp date);
 
 }
