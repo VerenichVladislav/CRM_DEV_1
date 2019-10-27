@@ -3,6 +3,10 @@ package com.example.aviasales2.entity;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Entity
 @Table(name = "person")
@@ -10,7 +14,8 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
+    @NotNull
+    private String username;
     @NotNull
     private String email;
     private String currency;
@@ -21,11 +26,12 @@ public class Person {
     @NotNull
     private String lastName;
     private Integer walletId;
-    private Integer hashPass;
+    private String password;
+    private String permissions;
 
     public Person(){}
 
-    public Person(String email, String currency, String role, Integer historyId, String firstName, String lastName, Integer walletId, Integer hashPass) {
+    public Person(String email, String currency, String role, Integer historyId, String firstName, String lastName, Integer walletId, String hashPass,String permissions,String userName) {
         this.email = email;
         this.currency = currency;
         this.role = role;
@@ -33,11 +39,32 @@ public class Person {
         this.firstName = firstName;
         this.lastName = lastName;
         this.walletId = walletId;
-        this.hashPass = hashPass;
+        this.password = hashPass;
+        this.permissions = permissions;
+        this.username = userName;
     }
-
+    public String getUserName(){
+        return username;
+    }
     public Integer getId() {
         return id;
+    }
+
+    public String getPermissions(){
+        return  permissions;
+    }
+
+    public List<String> getRoleList(){
+        if(this.role.length() > 0){
+            return Arrays.asList(this.role.split(","));
+        }
+        return  new ArrayList<>();
+    }
+    public List<String> getPermissionList(){
+        if(this.permissions.length() > 0){
+            return Arrays.asList(this.permissions.split(","));
+        }
+        return  new ArrayList<>();
     }
 
     public void setId(Integer id) {
@@ -100,11 +127,11 @@ public class Person {
         this.walletId = walletId;
     }
 
-    public Integer getHashPass() {
-        return hashPass;
+    public String getHashPass() {
+        return password;
     }
 
-    public void setHashPass(Integer hashPass) {
-        this.hashPass = hashPass;
+    public void setHashPass(String hashPass) {
+        this.password = hashPass;
     }
 }

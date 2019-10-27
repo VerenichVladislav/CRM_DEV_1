@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b9595531-99e8-4792-930a-f85f9321c84e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/libraries/Maven__com_auth0_java_jwt_3_4_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/libraries/Maven__commons_codec_commons_codec_1_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_1_9_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/libraries/Maven__org_springframework_security_spring_security_config_5_1_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/libraries/Maven__org_springframework_security_spring_security_core_5_1_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/libraries/Maven__org_springframework_security_spring_security_web_5_1_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java/com/example/aviasales2/entity/LoginViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java/com/example/aviasales2/security/DbInit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java/com/example/aviasales2/security/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java/com/example/aviasales2/security/JwtAuthorizationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java/com/example/aviasales2/security/JwtProterties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java/com/example/aviasales2/security/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java/com/example/aviasales2/security/UserPrincipal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java/com/example/aviasales2/security/UserPrincipalDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssl-server.jks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../aviasales2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../aviasales2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/example/aviasales2/Aviasales2Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/example/aviasales2/Aviasales2Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/example/aviasales2/entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/example/aviasales2/entity/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/example/aviasales2/repository/PersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/example/aviasales2/repository/PersonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/Aviasales2Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/Aviasales2Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Controller/CityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Controller/CityController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Controller/CompanyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Controller/CompanyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Controller/HotelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Controller/HotelController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Controller/PersonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Controller/PersonController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Controller/TransportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Controller/TransportController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Entity/City.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Entity/City.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Entity/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Entity/Company.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Entity/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Entity/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Entity/Transport.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Entity/Transport.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Repository/CompanyRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Repository/CompanyRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Repository/HotelRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Repository/HotelRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Repository/ICityRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Repository/ICityRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Repository/PersonRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Repository/PersonRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Repository/TransportRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Repository/TransportRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/CompanyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/CompanyService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/HotelService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/HotelService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/ICityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/ICityService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/PersonService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/PersonService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/TransportService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/TransportService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/impl/CityServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/impl/CityServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/impl/CompanyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/impl/CompanyServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/impl/HotelServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/impl/HotelServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/impl/PersonServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/impl/PersonServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/impl/TourServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/impl/TourServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/impl/TransportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/Service/impl/TransportServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/controller/TourController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/controller/TourController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/entity/Tour$status.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/entity/Tour$status.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/entity/Tour.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/entity/Tour.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/repository/TourRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/repository/TourRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/service/TourService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/aviasales2/service/TourService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/classes/com/example/entity/Hotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/classes/com/example/entity/Hotel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../target/test-classes/com/example/Aviasales2ApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../target/test-classes/com/example/Aviasales2ApplicationTests.class" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="1Sn6NlqCmIjuApjMhGH6QgykGHZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b9595531-99e8-4792-930a-f85f9321c84e" name="Default Changelist" comment="" />
+      <created>1572186974354</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572186974354</updated>
+      <workItem from="1572186975585" duration="18000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
