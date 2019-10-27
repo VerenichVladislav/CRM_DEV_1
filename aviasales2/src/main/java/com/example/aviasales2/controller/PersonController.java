@@ -3,6 +3,7 @@ package com.example.aviasales2.controller;
 import com.example.aviasales2.entity.Person;
 import com.example.aviasales2.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +17,12 @@ public class PersonController {
     private PersonService personService;
 
     @PostMapping("/save")
-    public Person savePerson(@RequestBody Person person) {
+    public Person savePerson(@RequestBody Person person)
+    {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        person.setHashPass(bCryptPasswordEncoder.encode(person.getHashPass()));
+        if (person.getUserName() == null)
+            person.setUsername("default");
         return personService.save(person);
     }
 
@@ -43,5 +49,9 @@ public class PersonController {
     @GetMapping("/deleteById")
     private void deleteById(@RequestParam Integer id) {
         personService.deleteById(id);
+    }
+    @GetMapping("/findAll")
+    private  Iterable<Person> findAll(){
+        return personService.findAll();
     }
 }

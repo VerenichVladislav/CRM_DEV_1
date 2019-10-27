@@ -40,7 +40,7 @@ public class Person {
         this.lastName = lastName;
         this.walletId = walletId;
         this.password = hashPass;
-        this.permissions = permissions;
+        //this.permissions = permissions;
         this.username = userName;
     }
     public String getUserName(){
@@ -50,8 +50,8 @@ public class Person {
         return id;
     }
 
-    public String getPermissions(){
-        return  permissions;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public List<String> getRoleList(){
@@ -60,12 +60,7 @@ public class Person {
         }
         return  new ArrayList<>();
     }
-    public List<String> getPermissionList(){
-        if(this.permissions.length() > 0){
-            return Arrays.asList(this.permissions.split(","));
-        }
-        return  new ArrayList<>();
-    }
+
 
     public void setId(Integer id) {
         this.id = id;

@@ -42,9 +42,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), this.personRepository))
                 .authorizeRequests()
-
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
-                // add some role path
+                .antMatchers(HttpMethod.POST,"/person/save").permitAll()
+                .antMatchers(HttpMethod.GET,"/person/findAll").hasRole("USER")
+                .antMatchers("/Transport/getAllTransport").hasRole("USER")
+                //.antMatchers(HttpMethod.GET).permitAll()
                 .anyRequest().authenticated();
     }
 

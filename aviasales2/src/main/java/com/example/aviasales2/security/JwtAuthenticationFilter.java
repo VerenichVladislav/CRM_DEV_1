@@ -9,12 +9,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import javax.naming.AuthenticationException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -57,9 +55,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         //Create Token
         String token = JWT.create()
                 .withSubject(principal.getUsername())
-                .withExpiresAt(new Date(System.currentTimeMillis()+JwtProterties.EXPIRATION_TIME))
-                .sign(HMAC512(JwtProterties.SECRET.getBytes()));
-        response.addHeader(JwtProterties.HEADER_STRING,JwtProterties.TOKEN_PREFIX + token);
+                .withExpiresAt(new Date(System.currentTimeMillis()+ JwtProperties.EXPIRATION_TIME))
+                .sign(HMAC512(JwtProperties.SECRET.getBytes()));
+        response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + token);
     }
 
 }
