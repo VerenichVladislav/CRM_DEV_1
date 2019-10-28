@@ -18,14 +18,9 @@ public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private Long sum;
-
-
     @OneToOne(optional = false, mappedBy = "wallet")
     private User owner;
-
-
     public Wallet(){
 
     }

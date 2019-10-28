@@ -5,6 +5,7 @@ import com.example.aviasales2.entity.Wallet;
 import com.example.aviasales2.service.IWalletService;
 import com.example.aviasales2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.WatchService;
@@ -23,6 +24,8 @@ public class UserController {
 
     @PostMapping("/save")
     public User savePerson(@RequestBody User user) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        user.setHashPass(bCryptPasswordEncoder.encode(user.getHashPass()));
         return userService.save(user);
     }
 

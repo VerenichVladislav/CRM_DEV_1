@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -24,12 +26,14 @@ public class User {
     private String email;
     private String currency;
     private String role;
-
+    @NotNull
+    private String userName;
     @NotNull
     private String firstName;
     @NotNull
     private String lastName;
-    private Integer hashPass;
+    @NotNull
+    private String hashPass;
 
 
 
@@ -43,17 +47,36 @@ public class User {
             inverseJoinColumns=@JoinColumn(name="ticket_id"))
     private List<Ticket> tickets;
 
-
     @ManyToMany
     @JoinTable (name="history",
             joinColumns=@JoinColumn (name="user_id"),
             inverseJoinColumns=@JoinColumn(name="tour_id"))
     private List<Tour> tours;
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public List<String> getRoleList(){
+        if(this.role.length() > 0){
+            return Arrays.asList(this.role.split(","));
+        }
+        return  new ArrayList<>();
+    }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public User() {
     }
 
+    public String getHashPass() {
+        return hashPass;
+    }
+
+    public void setHashPass(String hashPass) {
+        this.hashPass = hashPass;
+    }
 
     public Wallet getWallet() {
         return wallet;
