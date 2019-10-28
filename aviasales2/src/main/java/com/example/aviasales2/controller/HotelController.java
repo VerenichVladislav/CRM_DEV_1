@@ -25,7 +25,7 @@ public class HotelController {
     }
 
     @GetMapping
-    public List<Hotel> getAllHotel() {
+    public List<Hotel> getAllHotels() {
         return hotelService.findAll();
     }
 

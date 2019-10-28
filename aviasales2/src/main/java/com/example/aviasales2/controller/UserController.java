@@ -32,7 +32,7 @@ public class UserController {
 
 
     @GetMapping("/")
-    public List<User> findByLastName(
+    public List<User> findByLastNameAndEmail(
             @RequestParam(required = false) String lastName,
             @RequestParam(required = false) String email) {
         if(lastName != null && email != null) {

@@ -27,14 +27,14 @@ public class CompanyController {
     }
 
     @GetMapping("/")
-    public List<Company> getCompanyByRating(
+    public List<Company> getCompanyByNameAndRating(
             @RequestParam(required = false) String name,
             @RequestParam(required = false) Long rating){
         if(name != null && rating != null) {
             return companyService.findByCompanyNameAndRating(name, Math.toIntExact(rating));
         } else if(name != null) {
             return Collections.singletonList(companyService.findByCompanyName(name));
-        } else if(rating != 0) {
+        } else if(rating != null) {
             return companyService.findByRating(Math.toIntExact(rating));
         }
         return null;
