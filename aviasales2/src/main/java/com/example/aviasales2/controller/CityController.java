@@ -11,48 +11,48 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/city")
+@RequestMapping("/cities")
 public class CityController {
 
     @Autowired
     private ICityService cityService;
 
-    @GetMapping("/all")
+    @GetMapping
     public List<City> findAll(){
         return cityService.findAll();
     }
 
-    @GetMapping("/id/{id}")
-    public Optional<City> findAll(@PathVariable Long id){
+    @GetMapping("/{id}")
+    public Optional<City> findById(@PathVariable("id") Long id){
         return cityService.findById(id);
     }
 
-    @GetMapping("/name/{name}")
-    public City findByName(@PathVariable(name = "name") String cityName ){
+    @GetMapping("/")
+    public City findByName(@RequestParam String cityName ){
         return cityService.findByCityName(cityName);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Long id){
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id){
         cityService.deleteById(id);
     }
 
-    @DeleteMapping("/delete/{name}")
-    public void deleteByCityName(@PathVariable(name = "name") String cityName){
+    @DeleteMapping("/")
+    public void deleteByCityName(@RequestParam String cityName){
         cityService.deleteByCityName(cityName);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping
     public void delete(@RequestBody City city){
         cityService.delete(city);
     }
 
-    @PostMapping("/save")
+    @PostMapping
     public City save(@RequestBody City city){
         return cityService.save(city);
     }
 
-    @PutMapping("/update")
+    @PutMapping
     public void update(@RequestBody City newCity){
         cityService.update(newCity);
     }

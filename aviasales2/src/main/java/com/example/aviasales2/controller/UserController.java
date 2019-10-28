@@ -1,18 +1,16 @@
 package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.User;
-import com.example.aviasales2.entity.Wallet;
 import com.example.aviasales2.service.IWalletService;
 import com.example.aviasales2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.nio.file.WatchService;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -21,35 +19,39 @@ public class UserController {
     @Autowired
     private IWalletService walletService;
 
-    @PostMapping("/save")
+    @PostMapping
     public User savePerson(@RequestBody User user) {
         return userService.save(user);
     }
 
-    @GetMapping("/getById/{id}")
-    private User findById(@PathVariable(name = "id") Long id) {
-
+    @GetMapping("/{id}")
+    public User findById(@PathVariable(name = "id") Long id) {
         User user = userService.findById(id);
         return user;
     }
 
-    @GetMapping("/getByEmail")
-    private User findByEmail(@RequestParam String email) {
-        return userService.findByEmail(email);
+
+    @GetMapping("/")
+    public List<User> findByLastName(
+            @RequestParam(required = false) String lastName,
+            @RequestParam(required = false) String email) {
+        if(lastName != null && email != null) {
+            return userService.findByLastNameAndEmail(lastName, email);
+        } else if(lastName != null) {
+            return userService.findAllByLastName(lastName);
+        } else if (email != null) {
+            return Collections.singletonList(userService.findByEmail(email));
+        }
+        return null;
     }
 
-    @GetMapping("/getAllByLastName")
-    private List<User> findByLastName(@RequestParam String lastName) {
-        return userService.findAllByLastName(lastName);
-    }
-
-    @PostMapping("/update")
-    private void update(@RequestBody User newUser) {
+    @PutMapping
+    public void update(@RequestBody User newUser) {
         userService.save(newUser);
     }
 
-    @GetMapping("/deleteById")
-    private void deleteById(@RequestParam Integer id) {
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable("id") Integer id) {
         userService.deleteById(id);
     }
 

@@ -53,6 +53,12 @@ public class Tour {
     @JsonManagedReference(value = "tourcomm")
     List<Comments> comments;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id")
+    @JsonBackReference
+    Company company;
+
+
     enum status{
         ONLINE,
         OFFLINE
@@ -73,5 +79,9 @@ public class Tour {
 
     public void setComments(List<Comments> comments) {
         this.comments = comments;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }

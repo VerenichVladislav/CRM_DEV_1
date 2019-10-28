@@ -1,14 +1,12 @@
 package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.entity.User;
-import com.example.aviasales2.entity.Wallet;
 import com.example.aviasales2.repository.UserRepository;
 import com.example.aviasales2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -38,6 +36,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public List<User> findByLastNameAndEmail(String lastName, String email) {
+        return userRepository.findByLastNameAndEmail(lastName, email);
     }
 
     @Override
