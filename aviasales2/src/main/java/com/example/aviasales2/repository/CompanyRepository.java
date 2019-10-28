@@ -16,6 +16,8 @@ public interface CompanyRepository extends CrudRepository<Company, Long> {
 
     List<Company> findByRating(int rating);
 
+    List<Company> findByCompanyNameAndRating(String name, int rating);
+
     List<Company> findAll();
 
 

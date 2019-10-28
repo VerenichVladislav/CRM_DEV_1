@@ -30,6 +30,11 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Company> findByRating(int rating){return companyRepository.findByRating(rating);}
 
     @Override
+    public List<Company> findByCompanyNameAndRating(String name, int rating) {
+        return companyRepository.findByCompanyNameAndRating(name, rating);
+    }
+
+    @Override
     public List<Company> findAll(){return companyRepository.findAll();}
 
 

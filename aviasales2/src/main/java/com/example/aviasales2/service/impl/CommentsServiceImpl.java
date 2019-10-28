@@ -15,7 +15,14 @@ public class CommentsServiceImpl implements CommentsService {
     @Override
     public Comments save(Comments comments){return commentsRepository.save(comments);}
     @Override
-    public List<Comments> findAll(){return commentsRepository.findAll();};
+    public List<Comments> findAll(){return commentsRepository.findAll();}
+
+    @Override
+    public Comments findCommentsById(long id) {
+        return commentsRepository.findCommentsById(id);
+    }
+
+    ;
     @Override
     public String deleteById(long id){commentsRepository.deleteById(id); return "Deleted";}
 

@@ -12,6 +12,7 @@ public interface UserService {
     Iterable<User> findAll();
     List<User> findAllByLastName(String lastName);
     User findByEmail(String email);
+    List<User> findByLastNameAndEmail(String lastName, String email);
     void update(User user);
     void delete(User user);
     void deleteById(Integer id);

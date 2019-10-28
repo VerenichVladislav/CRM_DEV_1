@@ -21,6 +21,11 @@ public class Company {
     @JsonManagedReference(value = "compcomm")
     List<Comments> comments;
 
+    @OneToMany(mappedBy = "company",
+            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Set<Tour> tours;
+
     int rating;
 
     int transportCount;
@@ -77,5 +82,9 @@ public class Company {
 
     public void setComments(List<Comments> comments) {
         this.comments = comments;
+    }
+
+    public Set<Tour> getTours() {
+        return tours;
     }
 }

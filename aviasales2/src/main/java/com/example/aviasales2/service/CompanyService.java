@@ -15,7 +15,7 @@ public interface CompanyService {
 
     List<Company> findByRating(int rating);
 
+    List<Company> findByCompanyNameAndRating(String name, int rating);
+
     List<Company> findAll();
-
-
 }
