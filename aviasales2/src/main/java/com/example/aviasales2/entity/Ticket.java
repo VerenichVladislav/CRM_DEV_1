@@ -29,7 +29,8 @@ public class Ticket {
     public Ticket (){
 
     }
-    public Ticket (int id){
+    public Ticket (User user) {
+        owners.add(user);
     }
 
     @JsonIgnore

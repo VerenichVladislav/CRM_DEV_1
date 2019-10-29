@@ -85,6 +85,8 @@ public class TripController {
         return tripService.findAllByCityFromAndCityDest(city_from, city_dest);
     }
 
-
-
+    @GetMapping("/{user_id}/trip/{trip_id}/buy")
+    public Trip buy(@PathVariable long user_id, @PathVariable long trip_id, @RequestParam(name = "count") int count) {
+        return tripService.buy(trip_id, user_id, count);
+    }
 }

@@ -24,7 +24,7 @@ public class Trip {
     City cityDest;
 
     int price;
-    int full_count_seats;
+    public int full_count_seats;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonBackReference(value = "transRef")
     @JoinColumn(name = "transport_id")

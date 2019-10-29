@@ -3,6 +3,7 @@ package com.example.aviasales2.service.impl;
 import com.example.aviasales2.entity.*;
 import com.example.aviasales2.repository.ICityRepository;
 import com.example.aviasales2.repository.TripRepository;
+import com.example.aviasales2.repository.UserRepository;
 import com.example.aviasales2.repository.WalletRepository;
 import com.example.aviasales2.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class TripServiceImpl implements TripService {
     private TripRepository tripRepository;
     @Autowired
     private ICityRepository iCityRepository;
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private WalletRepository walletRepository;
     @Override
@@ -55,21 +58,19 @@ public class TripServiceImpl implements TripService {
         return tripRepository.findAllByDateFrom(date);
     }
 
-    @Override
-    public Trip buy(long id,int count) {
-        Trip trip = tripRepository.findById(id);
-        Wallet wallet = walletRepository.findById(id);
-        double sum = wallet.getSum();
+    public Trip buy(long trip_id, long user_id, int count) {
+        Trip trip = tripRepository.findById(trip_id);
+        User user = userRepository.findById(user_id);
+        Wallet uw = user.getWallet();
+        double sum = uw.getSum();
         double price = trip.getPrice();
-
         if(sum>=price){
             sum-=price;
-            Ticket ticket = new Ticket();
+            Ticket ticket = new Ticket(user);
+            trip.full_count_seats--;
         }
-        for(int i=0;i<count;i++){
-            Ticket T= new Ticket(i);
-        }
+        walletRepository.save(uw);
+        tripRepository.save(trip);
         return null;
     }
-
 }
