@@ -1,6 +1,6 @@
 package com.example.aviasales2.controller;
 
-import com.example.entity.Hotel;
+import com.example.aviasales2.entity.Hotel;
 import com.example.aviasales2.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
