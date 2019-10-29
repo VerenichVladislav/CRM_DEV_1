@@ -15,5 +15,5 @@ public interface TripService {
     List<Trip> findAllByCityFrom(String cityFrom);
     List<Trip> findAllByCityDest(String cityDest);
     List<Trip> findAllByDateFrom(Timestamp date);
-
+    Trip buy(long id,int count);
 }

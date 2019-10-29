@@ -16,7 +16,7 @@ public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     private Integer countSets;
 
@@ -28,6 +28,8 @@ public class Ticket {
 
     public Ticket (){
 
+    }
+    public Ticket (int id){
     }
 
     @JsonIgnore

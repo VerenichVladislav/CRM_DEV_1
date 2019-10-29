@@ -1,9 +1,9 @@
 package com.example.aviasales2.service.impl;
 
-import com.example.aviasales2.entity.City;
-import com.example.aviasales2.entity.Trip;
+import com.example.aviasales2.entity.*;
 import com.example.aviasales2.repository.ICityRepository;
 import com.example.aviasales2.repository.TripRepository;
+import com.example.aviasales2.repository.WalletRepository;
 import com.example.aviasales2.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +17,8 @@ public class TripServiceImpl implements TripService {
     private TripRepository tripRepository;
     @Autowired
     private ICityRepository iCityRepository;
+    @Autowired
+    private WalletRepository walletRepository;
     @Override
     public List<Trip> findAll(){return tripRepository.findAll();}
 
@@ -52,4 +54,22 @@ public class TripServiceImpl implements TripService {
     public List<Trip> findAllByDateFrom(Timestamp date){
         return tripRepository.findAllByDateFrom(date);
     }
+
+    @Override
+    public Trip buy(long id,int count) {
+        Trip trip = tripRepository.findById(id);
+        Wallet wallet = walletRepository.findById(id);
+        double sum = wallet.getSum();
+        double price = trip.getPrice();
+
+        if(sum>=price){
+            sum-=price;
+            Ticket ticket = new Ticket();
+        }
+        for(int i=0;i<count;i++){
+            Ticket T= new Ticket(i);
+        }
+        return null;
+    }
+
 }

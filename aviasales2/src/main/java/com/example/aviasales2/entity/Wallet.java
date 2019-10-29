@@ -17,8 +17,8 @@ public class Wallet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private Long sum;
+    public long id;
+    public double sum;
     @OneToOne(optional = false, mappedBy = "wallet")
     private User owner;
     public Wallet(){
@@ -28,5 +28,9 @@ public class Wallet {
    @JsonIgnore
     public User getOwner() {
         return owner;
+    }
+
+    public double getSum() {
+        return sum;
     }
 }
