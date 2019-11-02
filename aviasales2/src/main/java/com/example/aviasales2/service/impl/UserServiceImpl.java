@@ -58,5 +58,15 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
+    @Override
+    public User findByUserName(String userName) {
+        return userRepository.findAllByUserName(userName);
+    }
+
+    @Override
+    public User findByHashConfirm(String hashConfirm) {
+        return userRepository.findByConfirmingHash(hashConfirm);
+    }
+
 
 }

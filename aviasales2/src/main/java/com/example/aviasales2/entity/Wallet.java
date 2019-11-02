@@ -19,14 +19,14 @@ public class Wallet {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long sum;
-    @OneToOne(optional = false, mappedBy = "wallet")
-    private User owner;
+  //  @OneToOne(optional = false, mappedBy = "wallet")
+   // private User owner;
     public Wallet(){
 
     }
 
-   @JsonIgnore
-    public User getOwner() {
-        return owner;
-    }
+  // @JsonIgnore
+  //  public User getOwner() {
+     //   return owner;
+   // }
 }

@@ -17,7 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "user_t")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -36,10 +35,31 @@ public class User {
     private String hashPass;
 
 
+    private String state = "Confirmed";
+    private String confirmingHash;
 
     @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "wallet_id")
     private Wallet wallet;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+    public void setConfirmingHash(String confirmingHash) {
+        this.confirmingHash = confirmingHash;
+    }
+
+    public String getConfirmingHash() {
+        return confirmingHash;
+    }
+
+    public String getState() {
+        return state;
+    }
 
     @ManyToMany
     @JoinTable (name="active_booking",

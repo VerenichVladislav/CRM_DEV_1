@@ -16,5 +16,6 @@ public interface UserService {
     void update(User user);
     void delete(User user);
     void deleteById(Integer id);
-
+    User findByUserName(String userName);
+    User findByHashConfirm(String hashConfirm);
 }
