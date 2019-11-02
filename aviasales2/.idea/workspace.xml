@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b1daf7f5-b8ab-46b3-874b-b239723296ea" name="Default" comment="add Spring-boot Security" />
+    <list default="true" id="b1daf7f5-b8ab-46b3-874b-b239723296ea" name="Default" comment="add Spring-boot Security">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/CityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/CityController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/CommentsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/CommentsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/CompanyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/CompanyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/HotelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/HotelController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/TransportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/TransportController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/TripController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/TripController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/City.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/City.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Company.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Wallet$WalletBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Wallet$WalletBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Wallet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Entity/Wallet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/CompanyRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/CompanyRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/CommentsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/CommentsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/CompanyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/CompanyService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/CommentsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/CommentsServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/CompanyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/CompanyServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/Service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/controller/TourController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/controller/TourController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/entity/Tour$status.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/entity/Tour$status.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/aviasales2/entity/Tour.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/aviasales2/entity/Tour.class" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +69,7 @@
     <property name="SearchEverywhereHistoryKey" value="securerandom&#9;FILE&#9;jrt://C:/Program Files/Java/jdk-10.0.2!/java.base/java/security/SecureRandom.class&#10;SecureRandom&#9;PSI&#9;JAVA://java.security.SecureRandom" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Новая папка/CRM_DEV_1/aviasales2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -54,7 +83,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -151,6 +180,7 @@
       <workItem from="1572124932239" duration="4596000" />
       <workItem from="1572172278873" duration="5469000" />
       <workItem from="1572257193442" duration="6355000" />
+      <workItem from="1572585027604" duration="16377000" />
     </task>
     <task id="LOCAL-00001" summary="add Spring-boot Security">
       <created>1572270793952</created>
@@ -159,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572270793952</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add Spring-boot Security">
+      <created>1572704369218</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1572704369218</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

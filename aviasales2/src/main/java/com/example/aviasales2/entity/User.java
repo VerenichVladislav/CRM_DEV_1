@@ -35,7 +35,7 @@ public class User {
     private String hashPass;
 
 
-    private String state = "Confirmed";
+    private String state = "UnConfirmed";
     private String confirmingHash;
 
     @OneToOne(optional = false, cascade = CascadeType.ALL)
