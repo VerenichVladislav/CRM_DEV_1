@@ -6,14 +6,10 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public interface TripService {
-    List<Trip> findAll();
+    List<Trip> findAll(String cityFrom, String cityDest, String date);
     String  save(Trip trip);
     String deleteById(long id);
     String update(Trip trip);
     Trip findById(long id);
-    List<Trip> findAllByCityFromAndCityDest(String cityFrom, String cityDest);
-    List<Trip> findAllByCityFrom(String cityFrom);
-    List<Trip> findAllByCityDest(String cityDest);
-    List<Trip> findAllByDateFrom(Timestamp date);
 
 }

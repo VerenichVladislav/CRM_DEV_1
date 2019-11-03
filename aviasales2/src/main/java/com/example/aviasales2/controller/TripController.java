@@ -22,8 +22,6 @@ public class TripController {
     @Autowired
     private TransportService transportService;
 
-    @GetMapping
-    public List<Trip> findAll(){return tripService.findAll();}
 
     @GetMapping("/{id}")
     public Trip findById(@PathVariable("id") long id){return tripService.findById(id);}
@@ -70,19 +68,11 @@ public class TripController {
     }
 
     @GetMapping("/")
-    public List<Trip> findByCity(@RequestParam(name = "city_from", required = false)String city_from,
-                                  @RequestParam(name = "city_dest", required = false)String city_dest
-                                  //                        @RequestParam(name = "date", required = false)@DateTimeFormat(pattern = "DD/MM/YYYY") Timestamp date
+    public List<Trip> findByCity(@RequestParam(name = "cityFrom", required = false)String cityFrom,
+                                  @RequestParam(name = "cityDest", required = false)String cityDest,
+                                  @RequestParam(name = "date", required = false) String date
     ){
-        if(city_dest == null && city_from == null) {
-            return tripService.findAll();}
-        if(city_dest == null) {
-            return tripService.findAllByCityFrom(city_from);
-        }
-        if(city_from == null) {
-            return tripService.findAllByCityDest(city_dest);
-        }
-        return tripService.findAllByCityFromAndCityDest(city_from, city_dest);
+        return tripService.findAll(cityFrom, cityDest, date);
     }
 
 

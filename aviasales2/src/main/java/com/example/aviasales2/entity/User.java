@@ -38,7 +38,7 @@ public class User {
     private String state = "UnConfirmed";
     private String confirmingHash;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "wallet_id")
     private Wallet wallet;
 
