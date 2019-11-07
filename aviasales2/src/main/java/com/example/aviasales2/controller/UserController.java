@@ -21,6 +21,11 @@ public class UserController {
     @Autowired
     private IWalletService walletService;
 
+    @GetMapping
+    public List<User> getAll() {
+        return userService.findAll();
+    }
+
     @PostMapping
     public User savePerson(@RequestBody User user) {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
@@ -34,20 +39,24 @@ public class UserController {
         return user;
     }
 
-
     @GetMapping("/")
-    public List<User> findByLastNameAndEmail(
-            @RequestParam(required = false) String lastName,
-            @RequestParam(required = false) String email) {
-        if(lastName != null && email != null) {
-            return userService.findByLastNameAndEmail(lastName, email);
-        } else if(lastName != null) {
-            return userService.findAllByLastName(lastName);
-        } else if (email != null) {
-            return Collections.singletonList(userService.findByEmail(email));
-        }
-        return null;
+    public User findByUserName(@RequestParam String userName) {
+        return userService.findByUserName(userName);
     }
+
+//    @GetMapping("/")
+//    public List<User> findByLastNameAndEmail(
+//            @RequestParam(required = false) String lastName,
+//            @RequestParam(required = false) String email) {
+//        if(lastName != null && email != null) {
+//            return userService.findByLastNameAndEmail(lastName, email);
+//        } else if(lastName != null) {
+//            return userService.findAllByLastName(lastName);
+//        } else if (email != null) {
+//            return Collections.singletonList(userService.findByEmail(email));
+//        }
+//        return null;
+//    }
 
     @PutMapping
     public void update(@RequestBody User newUser) {
