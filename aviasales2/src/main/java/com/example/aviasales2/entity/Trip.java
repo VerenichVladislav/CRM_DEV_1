@@ -1,7 +1,10 @@
 package com.example.aviasales2.entity;
 
 
+import com.example.aviasales2.entity.transferObjects.TransportDTO;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -26,7 +29,6 @@ public class Trip {
     int price;
     int full_count_seats;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JsonBackReference(value = "transRef")
     @JoinColumn(name = "transport_id")
     Transport transport;
 
@@ -76,8 +78,10 @@ public class Trip {
         this.full_count_seats = full_count_seats;
     }
 
-    public Transport getTransport() {
-        return transport;
+    public TransportDTO getTransport() {
+        Mapper mapper = new DozerBeanMapper();
+        TransportDTO transportDTO = mapper.map(transport, TransportDTO.class);
+        return transportDTO;
     }
 
     public void setTransport(Transport transport) {

@@ -1,24 +1,45 @@
 package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.entity.City;
+import com.example.aviasales2.entity.QTrip;
 import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.repository.ICityRepository;
 import com.example.aviasales2.repository.TripRepository;
 import com.example.aviasales2.service.TripService;
+import com.querydsl.core.BooleanBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class TripServiceImpl implements TripService {
+    private final QTrip qTrip = QTrip.trip;
     @Autowired
     private TripRepository tripRepository;
     @Autowired
     private ICityRepository iCityRepository;
     @Override
-    public List<Trip> findAll(){return tripRepository.findAll();}
+    public List<Trip> findAll(String cityFrom, String cityDest, String date){
+
+        BooleanBuilder builder = new BooleanBuilder(qTrip.isNotNull());
+        if(cityFrom != null){
+            builder.and(qTrip.cityFrom.eq(iCityRepository.findByCityName(cityFrom)));
+        }
+        if (cityDest != null){
+            builder.and(qTrip.cityDest.eq(iCityRepository.findByCityName(cityDest)));
+        }
+        if (date != null){
+
+            builder.and(qTrip.dateFrom.eq(Timestamp.valueOf(date)));
+        }
+        return (List<Trip>) tripRepository.findAll(builder);
+    }
 
     @Override
     public String save(Trip trip){tripRepository.save(trip); return "Saved";}
@@ -32,24 +53,20 @@ public class TripServiceImpl implements TripService {
     @Override
     public Trip findById(long id){return tripRepository.findById(id);}
 
-    @Override
-    public List<Trip> findAllByCityFromAndCityDest(String cityFrom, String cityDest){
-        City city1 = iCityRepository.findByCityName(cityFrom);
-        City city2 = iCityRepository.findByCityName(cityDest);
-        return tripRepository.findAllByCityFromAndCityDest(city1, city2);
-    }
-    @Override
-    public List<Trip> findAllByCityFrom(String cityFrom){
-        City city = iCityRepository.findByCityName(cityFrom);
-        return tripRepository.findAllByCityFrom(city);
-    }
-    @Override
-    public List<Trip> findAllByCityDest(String cityDest){
-        City city = iCityRepository.findByCityName(cityDest);
-        return tripRepository.findAllByCityDest(city);
-    }
-    @Override
-    public List<Trip> findAllByDateFrom(Timestamp date){
-        return tripRepository.findAllByDateFrom(date);
-    }
+//    @Override
+//    public List<Trip> findAllByCityFromAndCityDest(String cityFrom, String cityDest){
+//        City city1 = iCityRepository.findByCityName(cityFrom);
+//        City city2 = iCityRepository.findByCityName(cityDest);
+//        return tripRepository.findAllByCityFromAndCityDest(city1, city2);
+//    }
+//    @Override
+//    public List<Trip> findAllByCityFrom(String cityFrom){
+//        City city = iCityRepository.findByCityName(cityFrom);
+//        return tripRepository.findAllByCityFrom(city);
+//    }
+//    @Override
+//    public List<Trip> findAllByCityDest(String cityDest){
+//        City city = iCityRepository.findByCityName(cityDest);
+//        return tripRepository.findAllByCityDest(city);
+//    }
 }
