@@ -18,14 +18,22 @@ public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long sum;
+    private Double sum;
     @OneToOne(mappedBy = "wallet")
     private User owner;
     public Wallet(){
 
     }
 
-  // @JsonIgnore
+    public Double getSum() {
+        return sum;
+    }
+
+    public void setSum(Double sum) {
+        this.sum = sum;
+    }
+
+    // @JsonIgnore
   //  public User getOwner() {
      //   return owner;
    // }

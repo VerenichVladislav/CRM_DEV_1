@@ -64,11 +64,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUserName(String userName) {
-        return userRepository.findAllByUserName(userName);
-    }
-
-    @Override
     public User findByHashConfirm(String hashConfirm) {
         return userRepository.findByConfirmingHash(hashConfirm);
     }

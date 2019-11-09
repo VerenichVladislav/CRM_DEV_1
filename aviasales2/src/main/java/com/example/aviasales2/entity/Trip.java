@@ -26,7 +26,7 @@ public class Trip {
     @JoinColumn(name = "city_dest")
     City cityDest;
 
-    int price;
+    Double price;
     int full_count_seats;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "transport_id")
@@ -35,6 +35,7 @@ public class Trip {
     Timestamp dateFrom;
 
     Timestamp dateDest;
+
 
     public Trip (){}
 
@@ -62,21 +63,14 @@ public class Trip {
         this.cityDest = cityDest;
     }
 
-    public int getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public int getFull_count_seats() {
-        return full_count_seats;
-    }
-
-    public void setFull_count_seats(int full_count_seats) {
-        this.full_count_seats = full_count_seats;
-    }
 
     public TransportDTO getTransport() {
         Mapper mapper = new DozerBeanMapper();
@@ -102,5 +96,13 @@ public class Trip {
 
     public void setDateDest(Timestamp dateDest) {
         this.dateDest = dateDest;
+    }
+
+    public void setFullCountSeats(int full_count_seats) {
+        this.full_count_seats = full_count_seats;
+    }
+
+    public int getFullCountSeats() {
+        return full_count_seats;
     }
 }

@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface WalletRepository extends CrudRepository<Wallet, Long> {
 
-    Wallet findById(Integer id);
+    Wallet findById(long id);
 }

@@ -11,5 +11,6 @@ public interface TripService {
     String deleteById(long id);
     String update(Trip trip);
     Trip findById(long id);
-
+    Double getPrice (long tripId);
+    int getFullCountSeats(long tripId);
 }
