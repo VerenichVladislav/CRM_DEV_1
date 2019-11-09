@@ -2,9 +2,7 @@ package com.example.aviasales2.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +10,8 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @Builder
+@Getter
+@Setter
 @Table(name = "wallet")
 public class Wallet {
 

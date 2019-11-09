@@ -2,6 +2,7 @@ package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.Tour;
+import com.example.aviasales2.entity.transferObjects.TourDTO;
 import com.example.aviasales2.service.CompanyService;
 import com.example.aviasales2.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class TourController {
     }
 
     @GetMapping
-    public List <Tour> findAll() {
+    public List <TourDTO> findAll() {
         return tourService.findAll();
     }
 

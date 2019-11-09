@@ -2,6 +2,7 @@ package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.Sender;
 import com.example.aviasales2.entity.User;
+import com.example.aviasales2.entity.transferObjects.UserDTO;
 import com.example.aviasales2.service.IWalletService;
 import com.example.aviasales2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class UserController {
 
     @Autowired
     private IWalletService walletService;
+
+    @GetMapping
+    public List<UserDTO> findAll (){return userService.findAll();}
 
     @PostMapping
     public User savePerson(@RequestBody User user) {
@@ -80,7 +84,7 @@ public class UserController {
         userService.save(newUser);
     }
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable("id") Integer id) {
+    public void deleteById(@PathVariable("id") int id) {
         userService.deleteById(id);
     }
 

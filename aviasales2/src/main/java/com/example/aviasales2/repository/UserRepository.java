@@ -11,10 +11,11 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     User findById(Long id);
     User findByEmail(String email);
-    void deleteById(Integer id);
+    void deleteById(long id);
     User findUserByFirstName(User user);
     List<User> findByLastNameAndEmail(String lastName, String email);
     List<User> findAllByLastName(String lastName);
     User findAllByUserName(String userName);
     User findByConfirmingHash(String confirmHash);
+    List<User> findAll();
 }

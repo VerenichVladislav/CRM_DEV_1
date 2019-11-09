@@ -1,6 +1,7 @@
 package com.example.aviasales2.controller;
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.Transport;
+import com.example.aviasales2.entity.transferObjects.TransportDTO;
 import com.example.aviasales2.service.CompanyService;
 import com.example.aviasales2.service.TransportService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class TransportController {
     private CompanyService companyService;
 
     @GetMapping
-    public List<Transport> getAllTransport()
+    public List<TransportDTO> getAllTransport()
     {
         return transportService.findAll();
     }

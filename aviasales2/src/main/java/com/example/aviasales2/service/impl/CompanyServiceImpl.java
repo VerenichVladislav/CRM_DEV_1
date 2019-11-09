@@ -1,17 +1,22 @@
 package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.entity.Company;
+import com.example.aviasales2.entity.transferObjects.CompanyDTO;
 import com.example.aviasales2.repository.CompanyRepository;
 import com.example.aviasales2.service.CompanyService;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
     @Autowired
     CompanyRepository companyRepository;
+    @Autowired
+    DozerBeanMapper mapper;
 
     @Override
     public Company save(Company company){return companyRepository.save(company);}
@@ -35,7 +40,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public List<Company> findAll(){return companyRepository.findAll();}
+    public List<CompanyDTO> findAll(){return companyRepository.findAll().stream().map(entity -> mapper.map(entity, CompanyDTO.class)).collect(Collectors.toList());}
 
 
 }

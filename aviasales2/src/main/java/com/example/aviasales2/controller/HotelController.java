@@ -1,6 +1,7 @@
 package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.Hotel;
+import com.example.aviasales2.entity.transferObjects.HotelDTO;
 import com.example.aviasales2.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class HotelController {
     }
 
     @GetMapping
-    public List<Hotel> getAllHotels() {
+    public List<HotelDTO> getAllHotels() {
         return hotelService.findAll();
     }
 

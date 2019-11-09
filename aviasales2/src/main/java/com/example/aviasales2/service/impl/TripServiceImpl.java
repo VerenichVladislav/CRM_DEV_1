@@ -2,47 +2,76 @@ package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.entity.City;
 import com.example.aviasales2.entity.QTrip;
+import com.example.aviasales2.entity.Transport;
 import com.example.aviasales2.entity.Trip;
+import com.example.aviasales2.entity.transferObjects.TripDTO;
 import com.example.aviasales2.repository.ICityRepository;
+import com.example.aviasales2.repository.TransportRepository;
 import com.example.aviasales2.repository.TripRepository;
 import com.example.aviasales2.service.TripService;
 import com.querydsl.core.BooleanBuilder;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TripServiceImpl implements TripService {
-    private final QTrip qTrip = QTrip.trip;
+
     @Autowired
     private TripRepository tripRepository;
     @Autowired
     private ICityRepository iCityRepository;
+    @Autowired
+    private TransportRepository transportRepository;
+    @Autowired
+    private DozerBeanMapper mapper;
     @Override
-    public List<Trip> findAll(String cityFrom, String cityDest, String date){
+    public List<TripDTO> findAll(String cityFrom, String cityDest, String date){
+        final QTrip qTrip = QTrip.trip;
 
         BooleanBuilder builder = new BooleanBuilder(qTrip.isNotNull());
         if(cityFrom != null){
-            builder.and(qTrip.cityFrom.eq(iCityRepository.findByCityName(cityFrom)));
+            builder.and(qTrip.cityFrom.cityName.eq(cityFrom));
         }
         if (cityDest != null){
-            builder.and(qTrip.cityDest.eq(iCityRepository.findByCityName(cityDest)));
+            builder.and(qTrip.cityDest.cityName.eq(cityDest));
         }
         if (date != null){
-
             builder.and(qTrip.dateFrom.eq(Timestamp.valueOf(date)));
         }
-        return (List<Trip>) tripRepository.findAll(builder);
+        List<Trip> trips = (List<Trip>) tripRepository.findAll(builder);
+        return trips.stream()
+                .map(entity -> mapper.map(entity, TripDTO.class))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public String save(Trip trip){tripRepository.save(trip); return "Saved";}
+    public String save(long cityFromId, long cityDestId, long transportId, Trip trip){
+        Optional<City> cityFrom = iCityRepository.findById(cityFromId);
+        Optional<City> cityDest = iCityRepository.findById(cityDestId);
+        Optional<Transport> transport = transportRepository.findById(transportId);
+        if(cityFrom.isPresent()){
+            trip.setCityFrom(cityFrom.get());
+            cityFrom.get().getTrip_from().add(trip);
+        }
+        else {return "City_From does not exist!";}
+        if (cityDest.isPresent()){
+            trip.setCityDest(cityDest.get());
+            cityDest.get().getTrip_dest().add(trip);
+        }
+        else {return "City_Dest does not exist!";}
+        if (transport.isPresent()){
+            trip.setTransport(transport.get());
+            transport.get().getTrips().add(trip);
+        }
+        else {return "Transport does not exist";}
+        tripRepository.save(trip);
+        return "Saved";}
 
     @Override
     public String deleteById(long id){tripRepository.deleteById(id); return "Deleted";}
@@ -53,20 +82,6 @@ public class TripServiceImpl implements TripService {
     @Override
     public Trip findById(long id){return tripRepository.findById(id);}
 
-//    @Override
-//    public List<Trip> findAllByCityFromAndCityDest(String cityFrom, String cityDest){
-//        City city1 = iCityRepository.findByCityName(cityFrom);
-//        City city2 = iCityRepository.findByCityName(cityDest);
-//        return tripRepository.findAllByCityFromAndCityDest(city1, city2);
-//    }
-//    @Override
-//    public List<Trip> findAllByCityFrom(String cityFrom){
-//        City city = iCityRepository.findByCityName(cityFrom);
-//        return tripRepository.findAllByCityFrom(city);
-//    }
-//    @Override
-//    public List<Trip> findAllByCityDest(String cityDest){
-//        City city = iCityRepository.findByCityName(cityDest);
-//        return tripRepository.findAllByCityDest(city);
-//    }
+
+
 }

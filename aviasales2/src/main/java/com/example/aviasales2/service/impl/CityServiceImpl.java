@@ -2,13 +2,16 @@ package com.example.aviasales2.service.impl;
 
 
 import com.example.aviasales2.entity.City;
+import com.example.aviasales2.entity.transferObjects.CityDTO;
 import com.example.aviasales2.repository.ICityRepository;
 import com.example.aviasales2.service.ICityService;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CityServiceImpl implements ICityService {
@@ -16,6 +19,8 @@ public class CityServiceImpl implements ICityService {
 
     @Autowired
     private ICityRepository cityRepository;
+    @Autowired
+    DozerBeanMapper mapper;
 
     @Override
     public City save(City city) {
@@ -28,8 +33,8 @@ public class CityServiceImpl implements ICityService {
     }
 
     @Override
-    public List<City> findAll() {
-        return cityRepository.findAll();
+    public List<CityDTO> findAll() {
+        return cityRepository.findAll().stream().map(entity -> mapper.map(entity, CityDTO.class)).collect(Collectors.toList());
     }
 
     @Override

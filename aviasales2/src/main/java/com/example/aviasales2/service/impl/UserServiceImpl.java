@@ -1,17 +1,22 @@
 package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.entity.User;
+import com.example.aviasales2.entity.transferObjects.UserDTO;
 import com.example.aviasales2.repository.UserRepository;
 import com.example.aviasales2.service.UserService;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private DozerBeanMapper mapper;
 
     @Override
     public User save(User user) {
@@ -24,8 +29,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Iterable<User> findAll() {
-        return userRepository.findAll();
+    public List<UserDTO> findAll() {
+        return userRepository.findAll().stream().map(entity -> mapper.map(entity, UserDTO.class)).collect(Collectors.toList());
     }
 
     @Override

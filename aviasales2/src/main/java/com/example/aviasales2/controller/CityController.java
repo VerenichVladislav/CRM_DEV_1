@@ -2,6 +2,7 @@ package com.example.aviasales2.controller;
 
 
 import com.example.aviasales2.entity.City;
+import com.example.aviasales2.entity.transferObjects.CityDTO;
 import com.example.aviasales2.service.ICityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class CityController {
     private ICityService cityService;
 
     @GetMapping
-    public List<City> findAll(){
+    public List<CityDTO> findAll(){
         return cityService.findAll();
     }
 

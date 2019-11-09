@@ -1,6 +1,7 @@
 package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.Company;
+import com.example.aviasales2.entity.transferObjects.CompanyDTO;
 import com.example.aviasales2.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class CompanyController {
     public CompanyService companyService;
 
     @GetMapping()
-    public List<Company> getAllCompany(){return companyService.findAll();}
+    public List<CompanyDTO> getAllCompany(){return companyService.findAll();}
 
     @GetMapping("/{id}")
     public Company getCompanyById(@PathVariable(name = "id") long id){

@@ -1,16 +1,21 @@
 package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.entity.Tour;
+import com.example.aviasales2.entity.transferObjects.TourDTO;
 import com.example.aviasales2.repository.TourRepository;
 import com.example.aviasales2.service.TourService;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TourServiceImpl implements TourService {
     @Autowired
     TourRepository tourRepository;
+    @Autowired
+    DozerBeanMapper mapper;
 
     @Override
     public Tour save(Tour tour) {
@@ -18,8 +23,8 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public List <Tour> findAll() {
-        return tourRepository.findAll();
+    public List<TourDTO> findAll() {
+        return tourRepository.findAll().stream().map(entity -> mapper.map(entity, TourDTO.class)).collect(Collectors.toList());
     }
 
     @Override

@@ -1,9 +1,13 @@
 package com.example.aviasales2.entity.transferObjects;
 
+import java.util.List;
+
 public class TransportDTO {
     public long id;
     String name;
     int baggage;
+    int company;
+    //List<Long> trips;
 
     public TransportDTO() {
     }
@@ -31,4 +35,20 @@ public class TransportDTO {
     public void setBaggage(int baggage) {
         this.baggage = baggage;
     }
+
+    public int getCompany() {
+        return company;
+    }
+
+    public void setCompany(int company) {
+        this.company = company;
+    }
+
+//    public List<Long> getTrips() {
+//        return trips;
+//    }
+//
+//    public void setTrips(List<Long> trips) {
+//        this.trips = trips;
+//    }
 }

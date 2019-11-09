@@ -2,6 +2,7 @@ package com.example.aviasales2.service;
 
 
 import com.example.aviasales2.entity.City;
+import com.example.aviasales2.entity.transferObjects.CityDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +11,7 @@ public interface ICityService {
 
     City save(City city);
     Optional<City> findById(Long id);
-    List<City> findAll();
+    List<CityDTO> findAll();
     City findByCityName(String name);
     void delete(City city);
     void update(City city);

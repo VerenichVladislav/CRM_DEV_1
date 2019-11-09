@@ -40,7 +40,7 @@ public class Tour {
             inverseJoinColumns=@JoinColumn(name="user_id"))
     private List<User> users;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tour_id")
     private Hotel hotel;
 
@@ -59,10 +59,10 @@ public class Tour {
     Company company;
 
 
-    enum status{
-        ONLINE,
-        OFFLINE
-    }
+//    enum status{
+//        ONLINE,
+//        OFFLINE
+//    }
 
     @JsonIgnore
     public List<User> getUsers() {

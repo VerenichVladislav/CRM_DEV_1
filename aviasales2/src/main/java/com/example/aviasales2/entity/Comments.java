@@ -1,79 +1,36 @@
 package com.example.aviasales2.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 public class Comments {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    private long id;
 
-    String text;
+    private String text;
 
-    String type;
+    private String type;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference(value = "tourcomm")
     @JoinColumn(name = "tour_id")
-    Tour tour;
+    private Tour tour;
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference(value = "compcomm")
     @JoinColumn(name = "company_id")
-    Company company;
+    private Company company;
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference(value = "hotelcomm")
     @JoinColumn(name = "hotel_id")
-    Hotel hotel;
+    private Hotel hotel;
 
     public Comments(){}
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Tour getTour() {
-        return tour;
-    }
-
-    public void setTour(Tour tour) {
-        this.tour = tour;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    public Hotel getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
-    }
 }

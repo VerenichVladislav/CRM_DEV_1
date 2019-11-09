@@ -1,6 +1,7 @@
 package com.example.aviasales2.service;
 
 import com.example.aviasales2.entity.Company;
+import com.example.aviasales2.entity.transferObjects.CompanyDTO;
 
 import java.util.List;
 
@@ -17,5 +18,5 @@ public interface CompanyService {
 
     List<Company> findByCompanyNameAndRating(String name, int rating);
 
-    List<Company> findAll();
+    List<CompanyDTO> findAll();
 }
