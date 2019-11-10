@@ -14,6 +14,8 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
@@ -83,5 +85,29 @@ public class TripServiceImpl implements TripService {
     public Trip findById(long id){return tripRepository.findById(id);}
 
 
+    @Override
+    public BigDecimal getPrice(long tripId) {
+      Trip trip = tripRepository.findById(tripId);
+      BigDecimal price = trip.getPrice();
+      return price;
+    }
+
+    @Override
+    public int getFullCountSeats(long tripId) {
+      Trip trip = tripRepository.findById(tripId);
+      int fullCountSeats = trip.getFullCountSeats();
+      return fullCountSeats;
+    }
+
+    @Override
+    public BigDecimal calculateCost(int count, long tripId) {
+        Trip trip = tripRepository.findById(tripId);
+        BigDecimal price = trip.getPrice();
+        BigDecimal totalCost = new BigDecimal(BigInteger.ZERO, 2);
+        BigDecimal itemCost = price.multiply(new BigDecimal(count));
+        return totalCost.add(itemCost);
+
+
+    }
 
 }

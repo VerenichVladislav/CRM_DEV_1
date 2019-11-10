@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
@@ -27,7 +28,7 @@ public class Trip {
     @JoinColumn(name = "city_dest")
     private City cityDest;
 
-    private int price;
+    BigDecimal price;
     private int fullCountSeats;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "transport_id")

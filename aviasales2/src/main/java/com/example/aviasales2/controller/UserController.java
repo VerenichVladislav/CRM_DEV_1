@@ -8,14 +8,8 @@ import com.example.aviasales2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import java.util.Properties;
-import javax.mail.*;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
-
-import java.util.Collections;
+import javax.mail.MessagingException;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 10000)
@@ -67,24 +61,16 @@ public class UserController {
 
 
     @GetMapping("/")
-    public List<User> findByLastNameAndEmail(
-            @RequestParam(required = false) String lastName,
-            @RequestParam(required = false) String email) {
-        if(lastName != null && email != null) {
-            return userService.findByLastNameAndEmail(lastName, email);
-        } else if(lastName != null) {
-            return userService.findAllByLastName(lastName);
-        } else if (email != null) {
-            return Collections.singletonList(userService.findByEmail(email));
-        }
-        return null;
+    public User findByUserName(@RequestParam String userName) {
+        return userService.findByUserName(userName);
     }
     @PutMapping
     public void update(@RequestBody User newUser) {
         userService.save(newUser);
     }
+
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable("id") int id) {
+    public void deleteById(@PathVariable("id") Integer id) {
         userService.deleteById(id);
     }
 

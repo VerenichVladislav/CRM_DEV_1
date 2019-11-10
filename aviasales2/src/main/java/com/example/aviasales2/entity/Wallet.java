@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Data
@@ -18,14 +19,22 @@ public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long sum;
+    private BigDecimal sum;
     @OneToOne(mappedBy = "wallet")
     private User owner;
     public Wallet(){
 
     }
 
-  // @JsonIgnore
+    public BigDecimal getSum() {
+        return sum;
+    }
+
+    public void setSum(BigDecimal sum) {
+        this.sum = sum;
+    }
+
+    // @JsonIgnore
   //  public User getOwner() {
      //   return owner;
    // }

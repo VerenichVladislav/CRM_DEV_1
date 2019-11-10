@@ -30,7 +30,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDTO> findAll() {
-        return userRepository.findAll().stream().map(entity -> mapper.map(entity, UserDTO.class)).collect(Collectors.toList());
+        return userRepository.findAll().stream()
+                .map(entity -> mapper.map(entity, UserDTO.class))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -49,6 +51,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByUserName(String userName) {
+        return userRepository.findByUserName(userName);
+    }
+
+    @Override
     public void update(User user) {
         userRepository.save(user);
     }
@@ -61,11 +68,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(Integer id) {
         userRepository.deleteById(id);
-    }
-
-    @Override
-    public User findByUserName(String userName) {
-        return userRepository.findAllByUserName(userName);
     }
 
     @Override

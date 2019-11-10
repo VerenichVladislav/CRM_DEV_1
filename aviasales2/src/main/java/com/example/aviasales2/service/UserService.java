@@ -12,9 +12,9 @@ public interface UserService {
     List<User> findAllByLastName(String lastName);
     User findByEmail(String email);
     List<User> findByLastNameAndEmail(String lastName, String email);
+    User findByUserName(String userName);
     void update(User user);
     void delete(User user);
     void deleteById(Integer id);
-    User findByUserName(String userName);
     User findByHashConfirm(String hashConfirm);
 }

@@ -106,4 +106,12 @@ public class User {
     public List<Tour> getTours() {
         return tours;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

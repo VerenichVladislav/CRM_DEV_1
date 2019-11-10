@@ -3,6 +3,7 @@ package com.example.aviasales2.service;
 import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.entity.transferObjects.TripDTO;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface TripService {
@@ -11,6 +12,7 @@ public interface TripService {
     String deleteById(long id);
     String update(Trip trip);
     Trip findById(long id);
-
-
+    BigDecimal getPrice (long tripId);
+    int getFullCountSeats(long tripId);
+    BigDecimal calculateCost(int count, long tripId);
 }

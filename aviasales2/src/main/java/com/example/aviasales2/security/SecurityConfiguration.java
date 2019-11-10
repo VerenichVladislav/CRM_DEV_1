@@ -24,8 +24,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public SecurityConfiguration(UserRepository userRepository, UserPrincipalDetailsService userPrincipalDetailsService){
         this.userRepository = userRepository;
         this.userPrincipalDetailsService = userPrincipalDetailsService;
-
-
     }
 
     @Override
@@ -46,7 +44,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
                 .antMatchers(HttpMethod.POST,"/users").permitAll()
+                .antMatchers(HttpMethod.POST).permitAll()
+                .antMatchers("/*").permitAll()
+                .antMatchers("/login").permitAll()
                 .antMatchers("/transports").hasRole("USER")
+
                 .antMatchers("/users").permitAll()
                 .antMatchers("/cities").permitAll()
                 .antMatchers("/comments").permitAll()
@@ -58,7 +60,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users/confirm/").permitAll()
                 .antMatchers(HttpMethod.GET,"/users").permitAll()
                 .antMatchers(HttpMethod.GET,"/users/*").permitAll()
-                //.antMatchers(HttpMethod.GET).permitAll()
+                .antMatchers(HttpMethod.GET).permitAll()
                 .anyRequest().authenticated();
     }
 

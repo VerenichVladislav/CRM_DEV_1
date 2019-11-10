@@ -8,6 +8,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -27,6 +30,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         this.authenticationManager = authenticationManager;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200", maxAge = 10000)
+    @PostMapping("/login")
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)  {
 
@@ -41,6 +46,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 credentials.getUsername(),
                 credentials.getPassword(),
                 new ArrayList<>());
+
+        response.setHeader("Access-Control-Expose-Headers", "Origin, X-Requested-With, " +
+                "Content-Type, Accept, Accept-Encoding, Accept-Language, Host," +
+                "Referer, Connection, User-Agent, Authorization, sw-useragent, sw-version");
 
         //Authenticate user
         Authentication auth  = authenticationManager.authenticate(authenticationToken);
