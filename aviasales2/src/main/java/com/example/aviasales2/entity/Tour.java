@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class Tour {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private  String name;
-    private int price;
+    BigDecimal price;
     Timestamp date;
 
     private int duration;

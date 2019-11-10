@@ -2,6 +2,7 @@ package com.example.aviasales2.entity;
 
 import lombok.*;
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Setter
@@ -31,13 +32,13 @@ public class Ticket {
 
     private long cityDest;
     private long cityFrom;
-    private Double price;
+    private BigDecimal price;
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public Ticket(String name, String lastName, long tripId, Timestamp date, long cityFrom, long cityDest, Double price, User buyer) {
+    public Ticket(String name, String lastName, long tripId, Timestamp date, long cityFrom, long cityDest, BigDecimal price, User buyer) {
         this.name = name;
         this.lastName = lastName;
         this.date = date;

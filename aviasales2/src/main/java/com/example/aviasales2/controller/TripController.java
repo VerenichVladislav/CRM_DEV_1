@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -91,13 +93,14 @@ public class TripController {
 
         if(validation.checkSeats(tripId, count ) != 1.0){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Not enought seats!");
+                    .body("Not enough seats!");
         }
         if(validation.checkSum(userId,tripId,count) != 1.0) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Not enought money!");
+                    .body("Insufficient funds! Replenish your wallet!");
         }
-        walletService.pay(userId, tripId, count);
+        BigDecimal totalCost=tripService.calculateCost(count,tripId);
+        walletService.pay(userId,totalCost);
         String list = ticketService.save(userId,tripId,count,passengers);
         senderService.buyEmail(userId,tripId,list,count);
         return ResponseEntity.status(HttpStatus.OK)

@@ -7,6 +7,7 @@ import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
@@ -26,7 +27,7 @@ public class Trip {
     @JoinColumn(name = "city_dest")
     City cityDest;
 
-    Double price;
+    BigDecimal price;
     int full_count_seats;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "transport_id")
@@ -63,11 +64,11 @@ public class Trip {
         this.cityDest = cityDest;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

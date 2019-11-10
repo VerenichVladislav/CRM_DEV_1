@@ -2,6 +2,8 @@ package com.example.aviasales2.service;
 
 import com.example.aviasales2.PersonRequest;
 import com.example.aviasales2.entity.Ticket;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface TicketService {
@@ -10,5 +12,5 @@ public interface TicketService {
     void delete(Ticket ticket);
     void deleteById(long ticketId);
     Ticket findById(long id);
-    Double getSum(long id);
+    BigDecimal getSum(long id);
 }

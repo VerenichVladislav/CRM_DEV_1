@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+
 @RestController
 public class TicketController {
     @Autowired
@@ -27,7 +29,7 @@ public class TicketController {
     @GetMapping("/{user_id}/delete")
     ResponseEntity<String> deleteTicket(@PathVariable("user_id") long userId,
                                         @RequestParam long ticketId){
-        Double price = ticketService.getSum(ticketId);
+        BigDecimal price = ticketService.getSum(ticketId);
         walletService.backMoney(price,userId,ticketId);
         ticketService.deleteById(ticketId);
         return ResponseEntity.status(HttpStatus.OK)

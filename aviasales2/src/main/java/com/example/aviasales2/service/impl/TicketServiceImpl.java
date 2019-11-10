@@ -8,6 +8,8 @@ import com.example.aviasales2.repository.UserRepository;
 import com.example.aviasales2.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -49,9 +51,9 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public Double getSum(long id) {
+    public BigDecimal getSum(long id) {
         Ticket ticket = ticketRepository.findById(id);
-        Double price = ticket.getPrice();
+        BigDecimal price = ticket.getPrice();
         return price;
     }
 
