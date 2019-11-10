@@ -22,21 +22,15 @@ public class Ticket {
     private Timestamp date;
     private long tripId;
 
-    public long getTripId() {
-        return tripId;
-    }
-
-    public void setTripId(long tripId) {
-        this.tripId = tripId;
-    }
-
     private long cityDest;
+
     private long cityFrom;
     private BigDecimal price;
-
-    public BigDecimal getPrice() {
-        return price;
-    }
+    @ManyToOne
+    @JoinTable (name="active_booking",
+            joinColumns=@JoinColumn (name="ticket_id"),
+            inverseJoinColumns=@JoinColumn(name="user_id"))
+    private User buyer;
 
     public Ticket(String name, String lastName, long tripId, Timestamp date, long cityFrom, long cityDest, BigDecimal price, User buyer) {
         this.name = name;
@@ -49,25 +43,31 @@ public class Ticket {
         this.buyer = buyer;
     }
 
-    @ManyToOne
-    @JoinTable (name="active_booking",
-            joinColumns=@JoinColumn (name="ticket_id"),
-            inverseJoinColumns=@JoinColumn(name="user_id"))
-    private User buyer;
-
     public User getBuyer(){
         return buyer;
     }
+
     public Long getBuyerId() {
         return buyer.getId();
     }
-
     public Ticket(String name, String lastName) {
         this.name = name;
         this.lastName = lastName;
     }
 
     public Ticket (){}
+
+    public long getTripId() {
+        return tripId;
+    }
+
+    public void setTripId(long tripId) {
+        this.tripId = tripId;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
 
     public void setBuyer(User user) {
         this.buyer=buyer;

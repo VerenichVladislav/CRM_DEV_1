@@ -1,5 +1,13 @@
 package com.example.aviasales2.entity.transferObjects;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+import java.util.Set;
+
+@Getter
+@Setter
 public class CompanyDTO {
     private long companyId;
 
@@ -8,39 +16,12 @@ public class CompanyDTO {
     private int rating;
 
     private int transportCount;
+    private List<CommentsDTO> comments;
+
+    private Set<TourDTO> tours;
+
+    private Set<TransportDTO> transport;
 
     public CompanyDTO() {
-    }
-
-    public long getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(long companyId) {
-        this.companyId = companyId;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public int getTransportCount() {
-        return transportCount;
-    }
-
-    public void setTransportCount(int transportCount) {
-        this.transportCount = transportCount;
     }
 }

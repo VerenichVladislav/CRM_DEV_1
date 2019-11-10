@@ -29,7 +29,8 @@ public class MappingConfig {
                         .fields("company.companyId", "company")
                         .fields("tour.id", "tour")
                         .fields("hotel.hotelId", "hotel");
-                mapping(Company.class, CompanyDTO.class);
+                mapping(Company.class, CompanyDTO.class)
+                .fields("transportId", "transport");
                 mapping(Hotel.class, HotelDTO.class);
                 mapping(Person.class, PersonDTO.class);
                 mapping(Ticket.class, TicketDTO.class);

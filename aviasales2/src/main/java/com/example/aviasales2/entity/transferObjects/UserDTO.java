@@ -3,6 +3,8 @@ package com.example.aviasales2.entity.transferObjects;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class UserDTO {
@@ -19,6 +21,8 @@ public class UserDTO {
     private String state = "UnConfirmed";
     private String confirmingHash;
     private long wallet;
+    private List<TicketDTO> tickets;
+    private List<TourDTO> tours;
 
     public UserDTO() {
     }

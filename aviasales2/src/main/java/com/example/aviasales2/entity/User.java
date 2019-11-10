@@ -39,25 +39,6 @@ public class User {
     @JoinColumn(name = "wallet_id")
     private Wallet wallet;
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-    public void setConfirmingHash(String confirmingHash) {
-        this.confirmingHash = confirmingHash;
-    }
-
-    public String getConfirmingHash() {
-        return confirmingHash;
-    }
-
-    public String getState() {
-        return state;
-    }
-
     @ManyToMany
     @JoinTable (name="active_booking",
             joinColumns=@JoinColumn (name="user_id"),
@@ -70,21 +51,40 @@ public class User {
             inverseJoinColumns=@JoinColumn(name="tour_id"))
     private List<Tour> tours;
 
+    public User() {
+    }
+
     public String getUserName() {
         return userName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setConfirmingHash(String confirmingHash) {
+        this.confirmingHash = confirmingHash;
+    }
+
+    public String getConfirmingHash() {
+        return confirmingHash;
+    }
+
+    public String getState() {
+        return state;
+    }
     public List<String> getRoleList(){
         if(this.role.length() > 0){
             return Arrays.asList(this.role.split(","));
         }
         return  new ArrayList<>();
     }
+
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public User() {
     }
 
     public String getHashPass() {
