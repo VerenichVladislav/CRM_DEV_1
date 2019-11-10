@@ -1,6 +1,7 @@
 package com.example.aviasales2.controller;
 
 import com.example.aviasales2.PersonRequest;
+import com.example.aviasales2.config.filterConfig.TripFilter;
 import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.entity.transferObjects.TripDTO;
 import com.example.aviasales2.service.*;
@@ -47,12 +48,9 @@ public class TripController {
         return "Trip does not exist";
     }
 
-    @GetMapping("/")
-    public List<TripDTO> findByCity(@RequestParam(name = "cityFrom", required = false)String cityFrom,
-                                    @RequestParam(name = "cityDest", required = false)String cityDest,
-                                    @RequestParam(name = "date", required = false) String date
-    ){
-        return tripService.findAll(cityFrom, cityDest, date);
+    @PostMapping
+    public List<TripDTO> findAll(@RequestBody TripFilter tripFilter){
+        return tripService.findAll(tripFilter);
     }
 
     @PostMapping("/{user_id}/{trid_id}/buy")

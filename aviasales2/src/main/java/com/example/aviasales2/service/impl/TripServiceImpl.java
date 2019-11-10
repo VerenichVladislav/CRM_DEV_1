@@ -1,5 +1,6 @@
 package com.example.aviasales2.service.impl;
 
+import com.example.aviasales2.config.filterConfig.TripFilter;
 import com.example.aviasales2.entity.City;
 import com.example.aviasales2.entity.QTrip;
 import com.example.aviasales2.entity.Transport;
@@ -36,19 +37,19 @@ public class TripServiceImpl implements TripService {
     @Autowired
     private DozerBeanMapper mapper;
     @Override
-    public List<TripDTO> findAll(String cityFrom, String cityDest, String date){
+    public List<TripDTO> findAll(TripFilter tripFilter){
         final QTrip qTrip = QTrip.trip;
 
         BooleanBuilder builder = new BooleanBuilder(qTrip.isNotNull());
-        if(cityFrom != null){
-            builder.and(qTrip.cityFrom.cityName.eq(cityFrom));
+        if(tripFilter.getCityFrom() != null){
+            builder.and(qTrip.cityFrom.cityName.eq(tripFilter.getCityFrom()));
         }
-        if (cityDest != null){
-            builder.and(qTrip.cityDest.cityName.eq(cityDest));
+        if (tripFilter.getCityDest() != null){
+            builder.and(qTrip.cityDest.cityName.eq(tripFilter.getCityDest()));
         }
-        if (date != null){
+        if (tripFilter.getDateFrom() != null){
             LocalTime localTime = LocalTime.of(0, 0, 0);
-            LocalDate localDate = LocalDate.parse(date);
+            LocalDate localDate = LocalDate.parse(tripFilter.getDateFrom());
             LocalDateTime localDateTime = localTime.atDate(localDate);
             Timestamp timestamp;
             Timestamp timestamp1;
