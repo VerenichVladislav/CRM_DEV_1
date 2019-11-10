@@ -17,6 +17,9 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -44,7 +47,15 @@ public class TripServiceImpl implements TripService {
             builder.and(qTrip.cityDest.cityName.eq(cityDest));
         }
         if (date != null){
-            builder.and(qTrip.dateFrom.eq(Timestamp.valueOf(date)));
+            LocalTime localTime = LocalTime.of(0, 0, 0);
+            LocalDate localDate = LocalDate.parse(date);
+            LocalDateTime localDateTime = localTime.atDate(localDate);
+            Timestamp timestamp;
+            Timestamp timestamp1;
+            timestamp = Timestamp.valueOf(localDateTime.plusHours(3));
+            timestamp1 = Timestamp.valueOf(localDateTime.plusHours(26).plusMinutes(59).plusSeconds(59).plusNanos(999999999));
+
+            builder.and(qTrip.dateFrom.between(timestamp, timestamp1));
         }
         List<Trip> trips = (List<Trip>) tripRepository.findAll(builder);
         return trips.stream()
