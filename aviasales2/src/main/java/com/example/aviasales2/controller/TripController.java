@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -58,7 +59,7 @@ public class TripController {
     public List<TripDTO> findAll(@RequestBody TripFilter tripFilter) {
         return tripService.findAll(tripFilter);
     }
-
+    @Transactional
     @PostMapping("/{user_id}/{trid_id}/buy")
     ResponseEntity<String> buy(@PathVariable("trid_id") long tripId,
                                @PathVariable("user_id") long userId,
@@ -80,6 +81,4 @@ public class TripController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body("You bought " + count + " ticket(s)! Check your email!");
     }
-
-
 }
