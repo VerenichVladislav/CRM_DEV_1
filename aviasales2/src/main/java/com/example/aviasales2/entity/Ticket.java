@@ -1,5 +1,6 @@
 package com.example.aviasales2.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -22,9 +23,16 @@ public class Ticket {
     private Timestamp date;
     private long tripId;
 
-    private long cityDest;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonBackReference(value = "cityRef2")
+    @JoinColumn(name = "city_dest")
+    private City cityDest;
 
-    private long cityFrom;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonBackReference(value = "cityRef1")
+    @JoinColumn(name = "city_from")
+    private City cityFrom;
+
     private BigDecimal price;
     @ManyToOne
     @JoinTable (name="active_booking",
@@ -32,7 +40,7 @@ public class Ticket {
             inverseJoinColumns=@JoinColumn(name="user_id"))
     private User buyer;
 
-    public Ticket(String name, String lastName, long tripId, Timestamp date, long cityFrom, long cityDest, BigDecimal price, User buyer) {
+    public Ticket(String name, String lastName, long tripId, Timestamp date, City cityFrom, City cityDest, BigDecimal price, User buyer) {
         this.name = name;
         this.lastName = lastName;
         this.date = date;
@@ -73,11 +81,11 @@ public class Ticket {
         this.buyer=buyer;
     }
 
-    public void setCityFrom(long cityFrom) {
+    public void setCityFrom(City cityFrom) {
         this.cityFrom = cityFrom;
     }
 
-    public void setCityDest(long cityDest) {
+    public void setCityDest(City cityDest) {
         this.cityDest = cityDest;
     }
 
