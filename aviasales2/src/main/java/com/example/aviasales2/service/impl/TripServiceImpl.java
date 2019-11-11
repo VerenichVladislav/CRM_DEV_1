@@ -118,8 +118,6 @@ public class TripServiceImpl implements TripService {
         BigDecimal totalCost = new BigDecimal(BigInteger.ZERO, 2);
         BigDecimal itemCost = price.multiply(new BigDecimal(count));
         return totalCost.add(itemCost);
-
-
     }
 
 }

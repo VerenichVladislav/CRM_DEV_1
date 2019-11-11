@@ -28,28 +28,34 @@ public class TripController {
     private SenderService senderService;
 
     @GetMapping("/{id}")
-    public Trip findById(@PathVariable("id") long id){return tripService.findById(id);}
+    public Trip findById(@PathVariable("id") long id) {
+        return tripService.findById(id);
+    }
+
     @PostMapping("/city/{city_f_id}/{city_d_id}/transport/{tr_id}")
     public String save(@PathVariable("city_f_id") long cityFromId,
-                        @PathVariable("city_d_id") long cityDestId,
-                        @PathVariable("tr_id") long transportId,
-                        @RequestBody Trip trip){
+                       @PathVariable("city_d_id") long cityDestId,
+                       @PathVariable("tr_id") long transportId,
+                       @RequestBody Trip trip) {
         return tripService.save(cityFromId, cityDestId, transportId, trip);
     }
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") long id){tripService.deleteById(id); return "Deleted";}
+    public String delete(@PathVariable("id") long id) {
+        tripService.deleteById(id);
+        return "Deleted";
+    }
 
     @PutMapping
-    public String update(@RequestBody Trip trip){
+    public String update(@RequestBody Trip trip) {
         Trip oldTrip = tripService.findById(trip.getId());
-        if (oldTrip != null){
+        if (oldTrip != null) {
             return tripService.update(trip);
         }
         return "Trip does not exist";
     }
 
     @PostMapping
-    public List<TripDTO> findAll(@RequestBody TripFilter tripFilter){
+    public List<TripDTO> findAll(@RequestBody TripFilter tripFilter) {
         return tripService.findAll(tripFilter);
     }
 
@@ -57,20 +63,20 @@ public class TripController {
     ResponseEntity<String> buy(@PathVariable("trid_id") long tripId,
                                @PathVariable("user_id") long userId,
                                @RequestBody List<PersonRequest> passengers,
-                               @RequestParam int count){
+                               @RequestParam int count) {
 
-        if(validation.checkSeats(tripId, count ) != 1.0){
+        if (validation.checkSeats(tripId, count) != 1.0) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("Not enough seats!");
         }
-        if(validation.checkSum(userId,tripId,count) != 1.0) {
+        if (validation.checkSum(userId, tripId, count) != 1.0) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("Insufficient funds! Replenish your wallet!");
         }
-        BigDecimal totalCost=tripService.calculateCost(count,tripId);
-        walletService.pay(userId,totalCost);
-        String list = ticketService.save(userId,tripId,count,passengers);
-        senderService.buyEmail(userId,tripId,list,count);
+        BigDecimal totalCost = tripService.calculateCost(count, tripId);
+        walletService.pay(userId, totalCost);
+        String list = ticketService.save(userId, tripId, count, passengers);
+        senderService.buyEmail(userId, tripId, list, count);
         return ResponseEntity.status(HttpStatus.OK)
                 .body("You bought " + count + " ticket(s)! Check your email!");
     }

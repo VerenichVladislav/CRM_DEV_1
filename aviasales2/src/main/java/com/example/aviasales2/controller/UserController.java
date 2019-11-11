@@ -1,9 +1,11 @@
 package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.Sender;
+import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.entity.User;
 import com.example.aviasales2.entity.transferObjects.UserDTO;
 import com.example.aviasales2.service.IWalletService;
+import com.example.aviasales2.service.TripService;
 import com.example.aviasales2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,7 +23,7 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private IWalletService walletService;
+    private TripService tripService;
 
     @GetMapping
     public List<UserDTO> findAll (){return userService.findAll();}
@@ -35,8 +37,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User findById(@PathVariable(name = "id") Long id) {
-        User user = userService.findById(id);
-        return user;
+        return userService.findById(id);
     }
     @GetMapping("confirm/{hashConfirm}")
     public void confirmUser(@PathVariable(name = "hashConfirm") String hashConfirm){
@@ -74,5 +75,11 @@ public class UserController {
         userService.deleteById(id);
     }
 
-
+    @PostMapping("/city/{city_f_id}/{city_d_id}/transport/{tr_id}/saveTrip")
+    public void tripSave(@PathVariable("city_f_id") long cityFromId,
+                         @PathVariable("city_d_id") long cityDestId,
+                         @PathVariable("tr_id") long transportId,
+                         @RequestBody Trip trip) {
+        tripService.save(cityFromId, cityDestId, transportId, trip);
+    }
 }

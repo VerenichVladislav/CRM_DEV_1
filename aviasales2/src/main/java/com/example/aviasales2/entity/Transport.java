@@ -16,7 +16,7 @@ import java.util.Set;
 @Entity
 public class Transport {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
     private String name;
     private int baggage;
