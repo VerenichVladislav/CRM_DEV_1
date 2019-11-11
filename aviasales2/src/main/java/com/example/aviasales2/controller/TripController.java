@@ -59,6 +59,7 @@ public class TripController {
     public List<TripDTO> findAll(@RequestBody TripFilter tripFilter) {
         return tripService.findAll(tripFilter);
     }
+
     @Transactional
     @PostMapping("/{user_id}/{trid_id}/buy")
     ResponseEntity<String> buy(@PathVariable("trid_id") long tripId,

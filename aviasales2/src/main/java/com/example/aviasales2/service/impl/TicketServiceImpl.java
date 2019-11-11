@@ -1,7 +1,8 @@
 package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.PersonRequest;
-import com.example.aviasales2.entity.*;
+import com.example.aviasales2.entity.Ticket;
+import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.repository.TicketRepository;
 import com.example.aviasales2.repository.TripRepository;
 import com.example.aviasales2.repository.UserRepository;
@@ -32,16 +33,16 @@ public class TicketServiceImpl implements TicketService {
     }
 
 
-    public String save(long userId, long tripId, int count, List<PersonRequest> passangers)
-    {   Trip trip = tripRepository.findById(tripId);
+    public String save(long userId, long tripId, int count, List <PersonRequest> passangers) {
+        Trip trip = tripRepository.findById(tripId);
         String listt = ("");
         String newLine = System.getProperty("line.separator");
-        int fcs=trip.getFullCountSeats();
-        for(int i=0;i<count;i++){
+        int fcs = trip.getFullCountSeats();
+        for (int i = 0; i < count; i++) {
             String name = passangers.get(i).getName();
             String lastname = passangers.get(i).getLastName();
-            listt = listt + (i+1 +". " + lastname + " " + name + newLine );
-            Ticket ticket = new Ticket(name,lastname,tripId,trip.getDateFrom(),trip.getCityFrom().getId(),trip.getCityDest().getId(),trip.getPrice(),userRepository.findById(userId));
+            listt = listt + (i + 1 + ". " + lastname + " " + name + newLine);
+            Ticket ticket = new Ticket(name, lastname, tripId, trip.getDateFrom(), trip.getCityFrom().getId(), trip.getCityDest().getId(), trip.getPrice(), userRepository.findById(userId));
             ticketRepository.save(ticket);
             fcs--;
         }
