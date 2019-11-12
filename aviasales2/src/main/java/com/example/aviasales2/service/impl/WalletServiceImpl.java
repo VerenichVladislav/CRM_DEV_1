@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,18 +34,13 @@ public class WalletServiceImpl implements IWalletService {
     UserRepository userRepository;
 
 
-
     @Override
-    public void pay(long userId,BigDecimal totalCost) {
-        User user = userRepository.findById(userId);
-        Wallet userWallet = user.getWallet();
+    public void pay(long userId, BigDecimal totalCost) {
+        Wallet userWallet = userRepository.findById(userId).getWallet();
         Wallet adminWallet = walletRepository.findById(0);
-        BigDecimal adminWalletSum = adminWallet.getSum();
-        BigDecimal userWalletSum = userWallet.getSum();
-        adminWalletSum=adminWalletSum.add(totalCost);
-        userWalletSum=userWalletSum.subtract(totalCost);
-        adminWallet.setSum(adminWalletSum);
-        userWallet.setSum(userWalletSum);
+        adminWallet.setSum(adminWallet.getSum().add(totalCost));
+        userWallet.setSum(userWallet.getSum().subtract(totalCost));
+        walletRepository.saveAll(Arrays.asList(adminWallet,userWallet));
     }
 
     @Override
@@ -62,8 +58,8 @@ public class WalletServiceImpl implements IWalletService {
         Wallet userWallet = user.getWallet();
         BigDecimal adminWalletSum = adminWallet.getSum();
         BigDecimal userWalletSum = userWallet.getSum();
-        adminWalletSum=adminWalletSum.subtract(price);
-        userWalletSum=userWalletSum.add(price);
+        adminWalletSum = adminWalletSum.subtract(price);
+        userWalletSum = userWalletSum.add(price);
         adminWallet.setSum(adminWalletSum);
         userWallet.setSum(userWalletSum);
         Ticket ticket = ticketService.findById(ticketId);
@@ -80,7 +76,9 @@ public class WalletServiceImpl implements IWalletService {
     }
 
     @Override
-    public List<WalletDTO> findAll(){return walletRepository.findAll().stream()
-            .map(entity -> mapper.map(entity, WalletDTO.class))
-            .collect(Collectors.toList());}
+    public List <WalletDTO> findAll() {
+        return walletRepository.findAll().stream()
+                .map(entity -> mapper.map(entity, WalletDTO.class))
+                .collect(Collectors.toList());
+    }
 }

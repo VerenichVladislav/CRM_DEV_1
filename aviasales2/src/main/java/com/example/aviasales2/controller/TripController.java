@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -63,6 +64,7 @@ public class TripController {
         return tripService.findAll(tripFilter);
     }
 
+    @Transactional
     @PostMapping("/{user_id}/{trid_id}/buy")
     ResponseEntity <String> buy(@PathVariable("trid_id") long tripId,
                                 @PathVariable("user_id") long userId,

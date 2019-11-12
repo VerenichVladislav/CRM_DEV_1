@@ -14,14 +14,15 @@ public class ValidationImpl implements Validation {
     TripService tripService;
     @Autowired
     IWalletService walletService;
+
     @Override
-    public int checkSum(long userId,long tripId,int count){
-        BigDecimal sum = tripService.calculateCost(count,tripId);
+    public int checkSum(long userId, long tripId, int count) {
+        BigDecimal sum = tripService.calculateCost(count, tripId);
         BigDecimal userSum = walletService.getSum(userId);
-        int k=userSum.compareTo(sum);
-        if(k<=0) {
-            k=0;
-        } else k=1;
+        int k = userSum.compareTo(sum);
+        if (k <= 0) {
+            k = 0;
+        } else k = 1;
         return k;
     }
 
@@ -30,8 +31,8 @@ public class ValidationImpl implements Validation {
         int fullCountSeats = tripService.getFullCountSeats(tripId);
         int k;
         if (fullCountSeats < count) {
-            k=0;
-        } else k=1;
+            k = 0;
+        } else k = 1;
         return k;
     }
 }
