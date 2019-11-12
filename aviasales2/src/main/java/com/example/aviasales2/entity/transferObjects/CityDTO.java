@@ -15,6 +15,7 @@ public class CityDTO {
     private Set<TripDTO> trip_from;
     private Set<TripDTO> trip_dest;
     private Set<TourDTO> tours;
+    private Set<HotelDTO> hotels;
 
     public CityDTO() {
     }

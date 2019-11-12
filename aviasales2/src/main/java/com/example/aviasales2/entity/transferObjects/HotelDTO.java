@@ -15,8 +15,10 @@ public class HotelDTO {
     private Short rating;
     private String hotelName;
     private String phoneNumber;
+    private List<RoomDTO> rooms;
     private List<TourDTO> tours;
-    List<CommentsDTO> comments;
+    private List<CommentsDTO> comments;
+    private CityDTO city;
 
 
     public HotelDTO() {
