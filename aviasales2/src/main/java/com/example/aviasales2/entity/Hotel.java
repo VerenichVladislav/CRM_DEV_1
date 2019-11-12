@@ -1,5 +1,6 @@
 package com.example.aviasales2.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,10 +13,10 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Hotel{
+public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long hotelId;
+    private Long hotelId;
 
     private String country;
     private String address;
@@ -23,13 +24,27 @@ public class Hotel{
     private String hotelName;
     private String phoneNumber;
 
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "hotelRoom")
+    private List<Room> rooms;
+
     @OneToMany(mappedBy = "hotel", fetch = FetchType.EAGER)
     private List<Tour> tours;
 
     @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "hotelcomm")
-    List<Comments> comments;
+    private List<Comments> comments;
 
-    public Hotel(){}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference(value = "hotelRef")
+    @JoinColumn(name = "city")
+    private City city;
+
+    private enum HotelConveniences {
+
+    }
+
+    public Hotel() {
+    }
 
 }

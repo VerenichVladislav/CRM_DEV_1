@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="test-db@localhost">
-  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.9">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.15">
     <root id="1">
       <ServerVersion>10.10</ServerVersion>
     </root>
@@ -49,8 +49,8 @@
       <CreateRole>1</CreateRole>
       <CreateDb>1</CreateDb>
       <CanLogin>1</CanLogin>
-      <Replication>1</Replication>
       <ConnectionLimit>-1</ConnectionLimit>
+      <Replication>1</Replication>
       <BypassRls>1</BypassRls>
     </role>
     <schema id="11" parent="4" name="information_schema">
@@ -242,8 +242,8 @@
     <key id="45" parent="25" name="city_pkey">
       <ObjectId>17758</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>city_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>city_pkey</UnderlyingIndexName>
     </key>
     <column id="46" parent="26" name="company_id">
       <Position>1</Position>
@@ -287,8 +287,8 @@
     <key id="52" parent="26" name="company_pkey">
       <ObjectId>17763</ObjectId>
       <ColNames>company_id</ColNames>
-      <UnderlyingIndexName>company_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>company_pkey</UnderlyingIndexName>
     </key>
     <column id="53" parent="27" name="tour_id">
       <Position>1</Position>
@@ -367,8 +367,8 @@
     <key id="64" parent="28" name="hotel_pkey">
       <ObjectId>17774</ObjectId>
       <ColNames>hotel_id</ColNames>
-      <UnderlyingIndexName>hotel_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>hotel_pkey</UnderlyingIndexName>
     </key>
     <column id="65" parent="29" name="id">
       <Position>1</Position>
@@ -391,8 +391,8 @@
     <key id="68" parent="29" name="ticket_pkey">
       <ObjectId>17779</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>ticket_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>ticket_pkey</UnderlyingIndexName>
     </key>
     <column id="69" parent="30" name="id">
       <Position>1</Position>
@@ -467,8 +467,8 @@
     <key id="80" parent="30" name="tour_pkey">
       <ObjectId>17787</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>tour_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>tour_pkey</UnderlyingIndexName>
     </key>
     <key id="81" parent="30" name="uk_hbpqopcjnr84i9qtakxu53c58">
       <ObjectId>17812</ObjectId>
@@ -528,8 +528,8 @@
     <key id="89" parent="31" name="transport_pkey">
       <ObjectId>17792</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>transport_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>transport_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="90" parent="31" name="fk2gggq9es5hg8dw3mo8n8uhqcj">
       <ObjectId>17845</ObjectId>
@@ -599,8 +599,8 @@
     <key id="100" parent="32" name="trip_pkey">
       <ObjectId>17797</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>trip_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>trip_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="101" parent="32" name="fkdulu1c6tn0v4yrw35jlre406t">
       <ObjectId>17850</ObjectId>
@@ -692,8 +692,8 @@
     <key id="114" parent="33" name="user_t_pkey">
       <ObjectId>17805</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>user_t_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>user_t_pkey</UnderlyingIndexName>
     </key>
     <key id="115" parent="33" name="uk_n9yyvqqjykyt1ukcxo3kuga89">
       <ObjectId>17814</ObjectId>
@@ -730,8 +730,8 @@
     <key id="120" parent="34" name="wallet_pkey">
       <ObjectId>17810</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>wallet_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>wallet_pkey</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
