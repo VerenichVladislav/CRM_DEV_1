@@ -66,14 +66,11 @@ public class TripController {
 
     @Transactional
     @PostMapping("/{user_id}/{trid_id}/buy")
-    ResponseEntity <String> buy(@PathVariable("trid_id") long tripId,
-                                @PathVariable("user_id") long userId,
-                                @RequestBody List <PersonRequest> passengers,
-                                @RequestParam int count) throws SQLException {
+    ResponseEntity<String> buy(@PathVariable("trid_id") long tripId,
+                               @PathVariable("user_id") long userId,
+                               @RequestBody List<PersonRequest> passengers,
+                               @RequestParam int count) {
 
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/aviasales", "postgres", "123");
-        connection.setAutoCommit(false);
-        Savepoint savepointOne = connection.setSavepoint("SavepointOne");
         if (validation.checkSeats(tripId, count) != 1.0) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("Not enough seats!");
@@ -82,19 +79,12 @@ public class TripController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("Insufficient funds! Replenish your wallet!");
         }
-        try {
-            BigDecimal totalCost = tripService.calculateCost(count, tripId);
-            walletService.pay(userId, totalCost);
-            String list = ticketService.save(userId, tripId, count, passengers);
-            senderService.buyEmail(userId, tripId, list, count);
-
-            connection.commit();
-
-        } catch (SQLException e) {
-            System.out.println("SQLException. Executing rollback to savepoint...");
-            connection.rollback(savepointOne);
-        }
+        BigDecimal totalCost = tripService.calculateCost(count, tripId);
+        walletService.pay(userId, totalCost);
+        String list = ticketService.save(userId, tripId, count, passengers);
+        senderService.buyEmail(userId, tripId, list, count);
         return ResponseEntity.status(HttpStatus.OK)
                 .body("You bought " + count + " ticket(s)! Check your email!");
     }
 }
+
