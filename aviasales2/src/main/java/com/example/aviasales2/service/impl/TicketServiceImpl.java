@@ -42,7 +42,7 @@ public class TicketServiceImpl implements TicketService {
             String name = passangers.get(i).getName();
             String lastname = passangers.get(i).getLastName();
             listt = listt + (i + 1 + ". " + lastname + " " + name + newLine);
-            Ticket ticket = new Ticket(name, lastname, tripId, trip.getDateFrom(), trip.getCityFrom().getId(), trip.getCityDest().getId(), trip.getPrice(), userRepository.findById(userId));
+            Ticket ticket = new Ticket(name, lastname, tripId, trip.getDateFrom(), trip.getCityFrom(), trip.getCityDest(), trip.getPrice(), userRepository.findById(userId));
             ticketRepository.save(ticket);
             fcs--;
         }

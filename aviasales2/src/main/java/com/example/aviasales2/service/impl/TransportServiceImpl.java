@@ -16,8 +16,7 @@ import java.util.stream.Collectors;
 public class TransportServiceImpl implements TransportService {
     @Autowired
     TransportRepository transportRepository;
-    @Autowired
-    DozerBeanMapper mapper;
+
 
     @Override public Transport save(Transport transport) {
         return transportRepository.save(transport);
@@ -30,10 +29,8 @@ public class TransportServiceImpl implements TransportService {
         return transportRepository.findById(id);
     }
     @Override
-    public List<TransportDTO> findAll() {
-        return transportRepository.findAll().stream()
-                .map(entity -> mapper.map(entity, TransportDTO.class))
-                .collect(Collectors.toList());
+    public List<Transport> findAll() {
+        return transportRepository.findAll();
     }
 
     @Override

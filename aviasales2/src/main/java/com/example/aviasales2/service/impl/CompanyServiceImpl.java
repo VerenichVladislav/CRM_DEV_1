@@ -15,9 +15,6 @@ import java.util.stream.Collectors;
 public class CompanyServiceImpl implements CompanyService {
     @Autowired
     CompanyRepository companyRepository;
-    @Autowired
-    DozerBeanMapper mapper;
-
     @Override
     public Company save(Company company){return companyRepository.save(company);}
 
@@ -40,7 +37,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public List<CompanyDTO> findAll(){return companyRepository.findAll().stream().map(entity -> mapper.map(entity, CompanyDTO.class)).collect(Collectors.toList());}
+    public List<Company> findAll(){return companyRepository.findAll();}
 
 
 }

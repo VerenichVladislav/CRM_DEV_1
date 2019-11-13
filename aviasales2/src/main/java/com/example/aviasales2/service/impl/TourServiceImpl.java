@@ -23,8 +23,8 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public List<TourDTO> findAll() {
-        return tourRepository.findAll().stream().map(entity -> mapper.map(entity, TourDTO.class)).collect(Collectors.toList());
+    public List<Tour> findAll() {
+        return tourRepository.findAll();
     }
 
     @Override

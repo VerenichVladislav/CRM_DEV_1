@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CommentsService {
     Comments save(Comments comments);
-    List<CommentsDTO> findAll();
+    List<Comments> findAll();
     Comments findCommentsById(long id);
     String deleteById(long id);
 }

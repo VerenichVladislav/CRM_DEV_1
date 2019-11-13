@@ -42,6 +42,10 @@ public class MappingConfig {
                         .fields("wallet.id", "wallet");
                 mapping(Wallet.class, WalletDTO.class)
                         .fields("owner.id", "owner");
+                mapping(Ticket.class, TicketDTO.class)
+                        .fields("cityFrom.id", "cityFrom")
+                        .fields("cityDest.id", "cityDest")
+                        .fields("buyer.id", "buyer");
 
             }
         };

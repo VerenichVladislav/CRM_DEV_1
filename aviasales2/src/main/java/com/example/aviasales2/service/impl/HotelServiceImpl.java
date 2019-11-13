@@ -39,9 +39,9 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<HotelDTO> findAll() {
-        List<Hotel> hotels = (List<Hotel>) hotelRepository.findAll();
-        return hotels.stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
+    public List<Hotel> findAll() {
+
+        return (List<Hotel>) hotelRepository.findAll();
     }
 
     @Override

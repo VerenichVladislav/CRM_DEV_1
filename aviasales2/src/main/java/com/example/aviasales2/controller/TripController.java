@@ -5,6 +5,7 @@ import com.example.aviasales2.config.filterConfig.TripFilter;
 import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.entity.transferObjects.TripDTO;
 import com.example.aviasales2.service.*;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Savepoint;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/trips")
@@ -31,6 +33,8 @@ public class TripController {
     private Validation validation;
     @Autowired
     private SenderService senderService;
+    @Autowired
+    private DozerBeanMapper mapper;
 
     @GetMapping("/{id}")
     public Trip findById(@PathVariable("id") long id) {
@@ -61,7 +65,9 @@ public class TripController {
 
     @PostMapping
     public List<TripDTO> findAll(@RequestBody TripFilter tripFilter) {
-        return tripService.findAll(tripFilter);
+        return tripService.findAll(tripFilter).stream()
+                .map(entity -> mapper.map(entity, TripDTO.class))
+                .collect(Collectors.toList());
     }
 
     @Transactional

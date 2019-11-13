@@ -18,5 +18,5 @@ public interface CompanyService {
 
     List<Company> findByCompanyNameAndRating(String name, int rating);
 
-    List<CompanyDTO> findAll();
+    List<Company> findAll();
 }

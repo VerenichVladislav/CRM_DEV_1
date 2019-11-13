@@ -3,10 +3,12 @@ package com.example.aviasales2.controller;
 import com.example.aviasales2.entity.Hotel;
 import com.example.aviasales2.entity.transferObjects.HotelDTO;
 import com.example.aviasales2.service.HotelService;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/hotels")
@@ -14,6 +16,8 @@ public class HotelController {
 
     @Autowired
     private HotelService hotelService;
+    @Autowired
+    private DozerBeanMapper mapper;
 
     @GetMapping("/{id}")
     public Hotel getHotelById(@PathVariable("id") long id) {
@@ -27,7 +31,7 @@ public class HotelController {
 
     @GetMapping
     public List<HotelDTO> getAllHotels() {
-        return hotelService.findAll();
+        return hotelService.findAll().stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
     }
 
     @PostMapping()

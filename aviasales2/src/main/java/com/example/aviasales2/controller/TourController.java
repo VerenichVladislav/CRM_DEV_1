@@ -5,10 +5,12 @@ import com.example.aviasales2.entity.Tour;
 import com.example.aviasales2.entity.transferObjects.TourDTO;
 import com.example.aviasales2.service.CompanyService;
 import com.example.aviasales2.service.TourService;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/tours")
@@ -18,6 +20,8 @@ public class TourController {
     private TourService tourService;
     @Autowired
     private CompanyService companyService;
+    @Autowired
+    private DozerBeanMapper mapper;
 
     @GetMapping("/{id}")
     public Tour getTourById(@PathVariable("id") long id) {
@@ -31,7 +35,7 @@ public class TourController {
 
     @GetMapping
     public List <TourDTO> findAll() {
-        return tourService.findAll();
+        return tourService.findAll().stream().map(entity -> mapper.map(entity, TourDTO.class)).collect(Collectors.toList());
     }
 
     @DeleteMapping("/{id}")

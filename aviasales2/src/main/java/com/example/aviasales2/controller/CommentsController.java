@@ -4,6 +4,7 @@ import com.example.aviasales2.entity.Comments;
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.Hotel;
 import com.example.aviasales2.entity.Tour;
+import com.example.aviasales2.entity.transferObjects.CityDTO;
 import com.example.aviasales2.entity.transferObjects.CommentsDTO;
 import com.example.aviasales2.repository.CommentsRepository;
 import com.example.aviasales2.service.CommentsService;
@@ -11,10 +12,12 @@ import com.example.aviasales2.service.CompanyService;
 import com.example.aviasales2.service.HotelService;
 import com.example.aviasales2.service.TourService;
 import com.example.aviasales2.service.impl.CommentsServiceImpl;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/comments")
@@ -27,6 +30,8 @@ public class CommentsController {
     private CompanyService companyService;
     @Autowired
     private HotelService hotelService;
+    @Autowired
+    private DozerBeanMapper mapper;
 
     @PostMapping
     public Comments save(@RequestBody Comments comments){
@@ -34,7 +39,7 @@ public class CommentsController {
     }
 
     @GetMapping
-    public List<CommentsDTO> findAll(){return commentsServiceImpl.findAll();}
+    public List<CommentsDTO> findAll(){return commentsServiceImpl.findAll().stream().map(entity -> mapper.map(entity, CommentsDTO.class)).collect(Collectors.toList());}
 
     @PutMapping("/tour/{tourId}")
     public String updateTourComment(@PathVariable("tourId") long tourId, @RequestBody Comments comments){

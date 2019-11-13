@@ -11,7 +11,7 @@ public interface ICityService {
 
     City save(City city);
     Optional<City> findById(Long id);
-    List<CityDTO> findAll();
+    List<City> findAll();
     City findByCityName(String name);
     void delete(City city);
     void update(City city);

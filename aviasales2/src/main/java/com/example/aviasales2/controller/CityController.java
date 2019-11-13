@@ -4,11 +4,13 @@ package com.example.aviasales2.controller;
 import com.example.aviasales2.entity.City;
 import com.example.aviasales2.entity.transferObjects.CityDTO;
 import com.example.aviasales2.service.ICityService;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -17,10 +19,13 @@ public class CityController {
 
     @Autowired
     private ICityService cityService;
+    @Autowired
+    private DozerBeanMapper mapper;
+
 
     @GetMapping
     public List<CityDTO> findAll(){
-        return cityService.findAll();
+        return cityService.findAll().stream().map(entity -> mapper.map(entity, CityDTO.class)).collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")

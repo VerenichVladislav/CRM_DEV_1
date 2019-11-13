@@ -19,8 +19,6 @@ public class CityServiceImpl implements ICityService {
 
     @Autowired
     private ICityRepository cityRepository;
-    @Autowired
-    DozerBeanMapper mapper;
 
     @Override
     public City save(City city) {
@@ -33,8 +31,8 @@ public class CityServiceImpl implements ICityService {
     }
 
     @Override
-    public List<CityDTO> findAll() {
-        return cityRepository.findAll().stream().map(entity -> mapper.map(entity, CityDTO.class)).collect(Collectors.toList());
+    public List<City> findAll() {
+        return cityRepository.findAll();
     }
 
     @Override

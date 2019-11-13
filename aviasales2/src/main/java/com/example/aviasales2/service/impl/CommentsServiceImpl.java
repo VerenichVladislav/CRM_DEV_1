@@ -15,12 +15,10 @@ import java.util.stream.Collectors;
 public class CommentsServiceImpl implements CommentsService {
     @Autowired
     private CommentsRepository commentsRepository;
-    @Autowired
-    DozerBeanMapper mapper;
     @Override
     public Comments save(Comments comments){return commentsRepository.save(comments);}
     @Override
-    public List<CommentsDTO> findAll(){return commentsRepository.findAll().stream().map(entity -> mapper.map(entity, CommentsDTO.class)).collect(Collectors.toList());}
+    public List<Comments> findAll(){return commentsRepository.findAll();}
 
     @Override
     public Comments findCommentsById(long id) {
