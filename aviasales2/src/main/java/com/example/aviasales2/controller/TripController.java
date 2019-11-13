@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 10000)
 @RestController
 @RequestMapping("/trips")
 public class TripController {

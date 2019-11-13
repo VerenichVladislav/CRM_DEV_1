@@ -36,7 +36,9 @@ public class User {
     private String confirmingHash;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "wallet_id")
+    @JoinTable(name = "user_wallet",
+            joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name="wallet_id"))
     private Wallet wallet;
 
     @ManyToMany

@@ -23,7 +23,7 @@ public class MappingConfig {
                 mapping(Trip.class, TripDTO.class)
                         .fields("cityFrom.cityName", "cityFrom")
                         .fields("cityDest.cityName", "cityDest")
-                        .fields("transport.id", "transport");
+                        .fields("transport.name", "transport");
                 mapping(City.class, CityDTO.class);
                 mapping(Comments.class, CommentsDTO.class)
                         .fields("company.companyId", "company")

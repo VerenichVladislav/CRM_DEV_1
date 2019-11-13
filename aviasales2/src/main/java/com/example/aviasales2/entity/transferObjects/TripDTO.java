@@ -14,7 +14,7 @@ public class TripDTO {
     private String cityDest;
     private BigDecimal price;
     private int fullCountSeats;
-    private long transport;
+    private String transport;
     private Timestamp dateFrom;
     private Timestamp dateDest;
 
