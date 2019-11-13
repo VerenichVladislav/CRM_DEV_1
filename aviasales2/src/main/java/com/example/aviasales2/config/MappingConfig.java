@@ -33,7 +33,6 @@ public class MappingConfig {
                 .fields("transportId", "transport");
                 mapping(Hotel.class, HotelDTO.class);
                 mapping(Person.class, PersonDTO.class);
-                mapping(Ticket.class, TicketDTO.class);
                 mapping(Tour.class, TourDTO.class)
                 .fields("hotel.hotelId", "hotel")
                 .fields("cityId.id", "cityId")
