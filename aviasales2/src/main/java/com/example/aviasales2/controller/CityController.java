@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -29,13 +28,13 @@ public class CityController {
     }
 
     @GetMapping("/{id}")
-    public Optional<City> findById(@PathVariable("id") Long id){
-        return cityService.findById(id);
+    public CityDTO findById(@PathVariable("id") Long id){
+        return mapper.map(cityService.findById(id), CityDTO.class);
     }
 
     @GetMapping("/")
-    public City findByName(@RequestParam String cityName ){
-        return cityService.findByCityName(cityName);
+    public CityDTO findByName(@RequestParam String cityName ){
+        return mapper.map(cityService.findByCityName(cityName), CityDTO.class);
     }
 
     @DeleteMapping("/{id}")

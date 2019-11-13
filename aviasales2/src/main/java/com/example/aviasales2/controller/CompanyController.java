@@ -24,9 +24,9 @@ public class CompanyController {
     public List<CompanyDTO> getAllCompany(){return companyService.findAll().stream().map(entity -> mapper.map(entity, CompanyDTO.class)).collect(Collectors.toList());}
 
     @GetMapping("/{id}")
-    public Company getCompanyById(@PathVariable(name = "id") long id){
+    public CompanyDTO getCompanyById(@PathVariable(name = "id") long id){
         if(id > 0 && companyService.findByCompanyId(id) != null){
-        return companyService.findByCompanyId(id);}
+        return mapper.map(companyService.findByCompanyId(id),CompanyDTO.class);}
         else {return null;}
 
     }

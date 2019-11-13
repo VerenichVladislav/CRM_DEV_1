@@ -10,8 +10,8 @@ import java.sql.Timestamp;
 @Setter
 public class TripDTO {
     private long id;
-    private long cityFrom;
-    private long cityDest;
+    private String cityFrom;
+    private String cityDest;
     private BigDecimal price;
     private int fullCountSeats;
     private long transport;

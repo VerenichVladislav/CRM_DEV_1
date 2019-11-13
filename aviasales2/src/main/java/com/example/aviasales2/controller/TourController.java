@@ -24,13 +24,13 @@ public class TourController {
     private DozerBeanMapper mapper;
 
     @GetMapping("/{id}")
-    public Tour getTourById(@PathVariable("id") long id) {
-        return tourService.findByTourId(id);
+    public TourDTO getTourById(@PathVariable("id") long id) {
+        return mapper.map(tourService.findByTourId(id), TourDTO.class);
     }
 
     @GetMapping("/")
-    public Tour getTourByTourName(@RequestParam String name) {
-        return tourService.findByName(name);
+    public TourDTO getTourByTourName(@RequestParam String name) {
+        return mapper.map(tourService.findByName(name),TourDTO.class);
     }
 
     @GetMapping

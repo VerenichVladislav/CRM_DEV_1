@@ -1,8 +1,10 @@
 package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.Ticket;
+import com.example.aviasales2.entity.transferObjects.TicketDTO;
 import com.example.aviasales2.service.IWalletService;
 import com.example.aviasales2.service.TicketService;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +18,16 @@ public class TicketController {
     TicketService ticketService;
     @Autowired
     IWalletService walletService;
+    @Autowired
+    private DozerBeanMapper mapper;
     @PostMapping()
     public Ticket save(@RequestBody Ticket ticket) {
         return ticketService.save(ticket);
     }
 
     @GetMapping("/{id}")
-    public Ticket findById(@PathVariable("id") long id) {
-        return ticketService.findById(id);
+    public TicketDTO findById(@PathVariable("id") long id) {
+        return mapper.map(ticketService.findById(id), TicketDTO.class);
     }
 
     @GetMapping("/{user_id}/delete")

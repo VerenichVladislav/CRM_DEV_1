@@ -20,13 +20,13 @@ public class HotelController {
     private DozerBeanMapper mapper;
 
     @GetMapping("/{id}")
-    public Hotel getHotelById(@PathVariable("id") long id) {
-        return hotelService.findByHotelId(id);
+    public HotelDTO getHotelById(@PathVariable("id") long id) {
+        return mapper.map(hotelService.findByHotelId(id),HotelDTO.class);
     }
 
     @GetMapping("/")
-    public Hotel getHotelByName(@RequestParam String hotelName) {
-        return hotelService.findByHotelName(hotelName);
+    public HotelDTO getHotelByName(@RequestParam String hotelName) {
+        return mapper.map(hotelService.findByHotelName(hotelName), HotelDTO.class);
     }
 
     @GetMapping

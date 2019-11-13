@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Savepoint;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,8 +33,8 @@ public class TripController {
     private DozerBeanMapper mapper;
 
     @GetMapping("/{id}")
-    public Trip findById(@PathVariable("id") long id) {
-        return tripService.findById(id);
+    public TripDTO findById(@PathVariable("id") long id) {
+        return mapper.map(tripService.findById(id), TripDTO.class);
     }
 
     @PostMapping("/city/{city_f_id}/{city_d_id}/transport/{tr_id}")

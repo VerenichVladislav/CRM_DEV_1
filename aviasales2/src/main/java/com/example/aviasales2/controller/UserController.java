@@ -4,7 +4,6 @@ import com.example.aviasales2.entity.Sender;
 import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.entity.User;
 import com.example.aviasales2.entity.transferObjects.UserDTO;
-import com.example.aviasales2.service.IWalletService;
 import com.example.aviasales2.service.TripService;
 import com.example.aviasales2.service.UserService;
 import org.dozer.DozerBeanMapper;
@@ -43,8 +42,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User findById(@PathVariable(name = "id") Long id) {
-        return userService.findById(id);
+    public UserDTO findById(@PathVariable(name = "id") Long id) {
+        return mapper.map(userService.findById(id),UserDTO.class);
     }
     @GetMapping("confirm/{hashConfirm}")
     public void confirmUser(@PathVariable(name = "hashConfirm") String hashConfirm){
@@ -69,8 +68,8 @@ public class UserController {
 
 
     @GetMapping("/")
-    public User findByUserName(@RequestParam String userName) {
-        return userService.findByUserName(userName);
+    public UserDTO findByUserName(@RequestParam String userName) {
+        return mapper.map(userService.findByUserName(userName), UserDTO.class);
     }
     @PutMapping
     public void update(@RequestBody User newUser) {

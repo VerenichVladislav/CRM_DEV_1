@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequestMapping("/transports")
@@ -31,8 +30,8 @@ public class TransportController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Transport> getTransportById(@PathVariable("id") Long id) {
-        return transportService.findById(id);
+    public TransportDTO getTransportById(@PathVariable("id") Long id) {
+        return mapper.map(transportService.findById(id), TransportDTO.class);
     }
 
     @PutMapping

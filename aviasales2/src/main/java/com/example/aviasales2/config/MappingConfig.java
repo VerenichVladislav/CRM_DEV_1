@@ -21,8 +21,8 @@ public class MappingConfig {
                 mapping(Transport.class, TransportDTO.class)
                         .fields("company.companyID", "company");
                 mapping(Trip.class, TripDTO.class)
-                        .fields("cityFrom.id", "cityFrom")
-                        .fields("cityDest.id", "cityDest")
+                        .fields("cityFrom.cityName", "cityFrom")
+                        .fields("cityDest.cityName", "cityDest")
                         .fields("transport.id", "transport");
                 mapping(City.class, CityDTO.class);
                 mapping(Comments.class, CommentsDTO.class)

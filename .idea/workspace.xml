@@ -2,7 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6979cffe-8677-4ecb-b115-d7a0d587da14" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/MappingConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/MappingConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/CityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/CityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/CompanyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/HotelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TicketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TourController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TourController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TransportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TransportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TripController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TripController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/CityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/CityController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/CompanyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/CompanyController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/HotelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/HotelController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/TransportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/TransportController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/TripController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/TripController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/controller/TourController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/controller/TourController.class" afterDir="false" />
     </list>
     <list id="9698d249-466d-426b-88a1-62a4cc9dc9fb" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -93,11 +109,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="915" />
-    <option name="width" value="1010" />
-    <option name="height" value="1040" />
-  </component>
+  <component name="ProjectId" id="1TZ6UbUKdkuETNETDScRHRuwUdB" />
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -200,6 +212,8 @@
       <workItem from="1573551131090" duration="185000" />
       <workItem from="1573551418189" duration="3959000" />
       <workItem from="1573568757624" duration="609000" />
+      <workItem from="1573655296344" duration="1458000" />
+      <workItem from="1573675235429" duration="528000" />
     </task>
     <task id="LOCAL-00001" summary="Added city-tour foreign key. Added encapsulation.">
       <created>1571937388779</created>
@@ -277,6 +291,13 @@
     <MESSAGE value="Admin trip save added (bug fixed)" />
     <MESSAGE value="New entity Room. Hotel changed." />
     <option name="LAST_COMMIT_MESSAGE" value="New entity Room. Hotel changed." />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="timestamp" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
