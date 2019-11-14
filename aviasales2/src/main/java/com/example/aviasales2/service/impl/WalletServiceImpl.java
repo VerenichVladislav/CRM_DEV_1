@@ -35,8 +35,9 @@ public class WalletServiceImpl implements WalletService {
 
 
     @Override
+
     public void pay(long userId, BigDecimal totalCost) {
-        Wallet userWallet = userRepository.findById(userId).getWallet();
+        Wallet userWallet = walletRepository.findByOwnerId(userId);
         Wallet adminWallet = walletRepository.findById(0);
         adminWallet.setSum(adminWallet.getSum().add(totalCost));
         userWallet.setSum(userWallet.getSum().subtract(totalCost));
@@ -45,17 +46,15 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public BigDecimal getSum(long id) {
-        User user = userRepository.findById(id);
-        Wallet wallet = user.getWallet();
-        BigDecimal userSum = wallet.getSum();
+        Wallet userWallet = walletRepository.findByOwnerId(id);
+        BigDecimal userSum = userWallet.getSum();
         return userSum;
     }
 
     @Override
     public void backMoney(BigDecimal price, long userId, long ticketId) {
-        User user = userRepository.findById(userId);
         Wallet adminWallet = walletRepository.findById(0);
-        Wallet userWallet = user.getWallet();
+        Wallet userWallet = walletRepository.findByOwnerId(userId);
         BigDecimal adminWalletSum = adminWallet.getSum();
         BigDecimal userWalletSum = userWallet.getSum();
         adminWalletSum = adminWalletSum.subtract(price);
