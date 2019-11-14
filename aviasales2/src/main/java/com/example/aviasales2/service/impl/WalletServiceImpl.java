@@ -7,7 +7,7 @@ import com.example.aviasales2.entity.Wallet;
 import com.example.aviasales2.entity.transferObjects.WalletDTO;
 import com.example.aviasales2.repository.UserRepository;
 import com.example.aviasales2.repository.WalletRepository;
-import com.example.aviasales2.service.IWalletService;
+import com.example.aviasales2.service.WalletService;
 import com.example.aviasales2.service.TicketService;
 import com.example.aviasales2.service.TripService;
 import org.dozer.DozerBeanMapper;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class WalletServiceImpl implements IWalletService {
+public class WalletServiceImpl implements WalletService {
 
     @Autowired
     WalletRepository walletRepository;

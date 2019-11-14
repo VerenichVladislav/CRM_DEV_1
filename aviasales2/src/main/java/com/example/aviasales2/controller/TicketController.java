@@ -2,7 +2,7 @@ package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.Ticket;
 import com.example.aviasales2.entity.transferObjects.TicketDTO;
-import com.example.aviasales2.service.IWalletService;
+import com.example.aviasales2.service.WalletService;
 import com.example.aviasales2.service.TicketService;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class TicketController {
     @Autowired
     TicketService ticketService;
     @Autowired
-    IWalletService walletService;
+    WalletService walletService;
     @Autowired
     private DozerBeanMapper mapper;
     @PostMapping()

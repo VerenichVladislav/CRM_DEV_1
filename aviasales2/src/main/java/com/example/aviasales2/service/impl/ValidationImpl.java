@@ -1,6 +1,6 @@
 package com.example.aviasales2.service.impl;
 
-import com.example.aviasales2.service.IWalletService;
+import com.example.aviasales2.service.WalletService;
 import com.example.aviasales2.service.TripService;
 import com.example.aviasales2.service.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ public class ValidationImpl implements Validation {
     @Autowired
     TripService tripService;
     @Autowired
-    IWalletService walletService;
+    WalletService walletService;
 
     @Override
     public int checkSum(long userId, long tripId, int count) {

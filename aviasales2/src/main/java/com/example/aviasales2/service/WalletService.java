@@ -7,7 +7,7 @@ import com.example.aviasales2.entity.transferObjects.WalletDTO;
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface IWalletService {
+public interface WalletService {
 
     Wallet findById(long id);
     List<WalletDTO> findAll();

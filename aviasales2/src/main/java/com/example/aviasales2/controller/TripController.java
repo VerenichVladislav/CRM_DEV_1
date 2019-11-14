@@ -22,7 +22,7 @@ public class TripController {
     @Autowired
     private TripService tripService;
     @Autowired
-    private IWalletService walletService;
+    private WalletService walletService;
     @Autowired
     private TicketService ticketService;
     @Autowired
