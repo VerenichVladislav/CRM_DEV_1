@@ -5,6 +5,7 @@ import com.example.aviasales2.entity.LoginViewModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -52,8 +53,23 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 "Referer, Connection, User-Agent, Authorization, sw-useragent, sw-version");
 
         //Authenticate user
-        Authentication auth  = authenticationManager.authenticate(authenticationToken);
-        return  auth;
+        try {
+            Authentication auth  = authenticationManager.authenticate(authenticationToken);
+            return  auth;
+        } catch (BadCredentialsException e) {
+            try {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Wrong password");
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        } catch (NullPointerException e) {
+            try {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Wrong userName");
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return null;
     }
 
     @Override

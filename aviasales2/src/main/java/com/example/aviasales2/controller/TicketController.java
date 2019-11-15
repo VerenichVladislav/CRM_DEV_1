@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 
 @RestController
+@RequestMapping("/tickets")
 public class TicketController {
     @Autowired
     TicketService ticketService;
