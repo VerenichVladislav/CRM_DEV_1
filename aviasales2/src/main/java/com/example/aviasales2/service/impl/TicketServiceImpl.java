@@ -36,6 +36,7 @@ public class TicketServiceImpl implements TicketService {
     public String save(long userId, long tripId, int count, List <PersonRequest> passangers) {
         Trip trip = tripRepository.findById(tripId);
         String listt = ("");
+
         String newLine = System.getProperty("line.separator");
         int fcs = trip.getFullCountSeats();
         for (int i = 0; i < count; i++) {
@@ -48,6 +49,7 @@ public class TicketServiceImpl implements TicketService {
         }
         trip.setFullCountSeats(fcs);
         tripRepository.save(trip);
+
         return listt;
     }
 

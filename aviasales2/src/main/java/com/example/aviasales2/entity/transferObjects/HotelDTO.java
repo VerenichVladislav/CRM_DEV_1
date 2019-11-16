@@ -9,7 +9,6 @@ import java.util.List;
 @Setter
 public class HotelDTO {
     private Long hotelId;
-
     private String country;
     private String address;
     private Short rating;

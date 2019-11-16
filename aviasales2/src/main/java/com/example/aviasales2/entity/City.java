@@ -38,11 +38,20 @@ public class City {
     @JsonManagedReference(value = "cityRef3")
     private Set<Tour> tours;
 
-    @OneToMany(mappedBy = "hotelId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "hotelRef")
-    private Set<Hotel> hotels;
+//    @OneToMany(mappedBy = "hotelId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JsonManagedReference(value = "hotelRef")
+//    private Set<Hotel> hotels;
 
-//    @OneToOne(optional = false, mappedBy = "city")
+
+    public String getCityName() {
+        return cityName;
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+    //    @OneToOne(optional = false, mappedBy = "city")
 //    private Tour tour;
 
 //    @JsonIgnore

@@ -27,8 +27,27 @@ public class Transport {
     @OneToMany(mappedBy = "transport", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Trip> trips;
 
+    public long getId() {
+        return id;
+    }
+
     public Transport(){
 
     }
 
+    public Set<Trip> getTrips() {
+        return trips;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public int getBaggage() {
+        return baggage;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

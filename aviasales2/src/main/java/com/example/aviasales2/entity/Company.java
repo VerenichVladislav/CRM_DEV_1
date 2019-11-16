@@ -40,4 +40,32 @@ public class Company {
 
     public Company(){}
 
+    public Set<Tour> getTours() {
+        return tours;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public long getCompanyId() {
+        return companyId;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public int getTransportCount() {
+        return transportCount;
+    }
+
+    public Set<Transport> getTransportId() {
+        return transportId;
+    }
+
 }

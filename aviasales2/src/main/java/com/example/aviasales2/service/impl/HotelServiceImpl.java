@@ -40,7 +40,6 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public List<Hotel> findAll() {
-
         return (List<Hotel>) hotelRepository.findAll();
     }
 
