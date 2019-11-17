@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.NonUniqueResultException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -65,6 +67,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         } catch (NullPointerException e) {
             try {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Wrong userName");
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        } catch (InternalAuthenticationServiceException e){
+            try {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "NonUnique userName");
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
