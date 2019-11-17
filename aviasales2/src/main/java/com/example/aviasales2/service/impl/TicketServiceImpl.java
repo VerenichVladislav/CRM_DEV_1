@@ -3,6 +3,7 @@ package com.example.aviasales2.service.impl;
 import com.example.aviasales2.PersonRequest;
 import com.example.aviasales2.entity.Ticket;
 import com.example.aviasales2.entity.Trip;
+import com.example.aviasales2.entity.User;
 import com.example.aviasales2.repository.TicketRepository;
 import com.example.aviasales2.repository.TripRepository;
 import com.example.aviasales2.repository.UserRepository;
@@ -25,6 +26,11 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public Ticket findById(long id) {
         return ticketRepository.findById(id);
+    }
+
+    @Override
+    public List<Ticket> findAllByBuyer(User buyer) {
+        return ticketRepository.findAllByBuyer(buyer);
     }
 
     @Override

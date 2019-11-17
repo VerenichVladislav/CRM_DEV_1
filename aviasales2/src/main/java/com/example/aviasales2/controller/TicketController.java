@@ -1,7 +1,9 @@
 package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.Ticket;
+import com.example.aviasales2.entity.User;
 import com.example.aviasales2.entity.transferObjects.TicketDTO;
+import com.example.aviasales2.service.UserService;
 import com.example.aviasales2.service.WalletService;
 import com.example.aviasales2.service.TicketService;
 import org.dozer.DozerBeanMapper;
@@ -11,7 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 10000)
 @RestController
 @RequestMapping("/tickets")
 public class TicketController {
@@ -19,6 +24,8 @@ public class TicketController {
     TicketService ticketService;
     @Autowired
     WalletService walletService;
+    @Autowired
+    UserService userService;
     @Autowired
     private DozerBeanMapper mapper;
     @PostMapping()
@@ -29,6 +36,14 @@ public class TicketController {
     @GetMapping("/{id}")
     public TicketDTO findById(@PathVariable("id") long id) {
         return mapper.map(ticketService.findById(id), TicketDTO.class);
+    }
+
+    @GetMapping("/buyer/{buyer_id}")
+    public List<TicketDTO> findAllByBuyerId(@PathVariable("buyer_id") Long id) {
+        User user = userService.findById(id);
+        return ticketService.findAllByBuyer(user).stream()
+                .map(entity -> mapper.map(entity, TicketDTO.class))
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/{user_id}/delete")

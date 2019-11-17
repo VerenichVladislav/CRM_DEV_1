@@ -21,4 +21,8 @@ public class TicketDTO {
 
     public TicketDTO() {
     }
+
+    void setDate(Timestamp date) {
+        this.date = date;
+    }
 }
