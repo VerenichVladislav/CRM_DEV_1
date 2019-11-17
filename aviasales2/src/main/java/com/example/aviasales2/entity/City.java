@@ -42,16 +42,7 @@ public class City {
 //    @JsonManagedReference(value = "hotelRef")
 //    private Set<Hotel> hotels;
 
-
-    public String getCityName() {
-        return cityName;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-    //    @OneToOne(optional = false, mappedBy = "city")
+//    @OneToOne(optional = false, mappedBy = "city")
 //    private Tour tour;
 
 //    @JsonIgnore

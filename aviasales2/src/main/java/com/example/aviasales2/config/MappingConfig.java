@@ -32,6 +32,10 @@ public class MappingConfig {
                 mapping(Company.class, CompanyDTO.class)
                 .fields("transportId", "transport");
                 mapping(Hotel.class, HotelDTO.class);
+
+                mapping(Room.class, RoomDTO.class)
+                        .fields("hotel.hotelId", "hotel");
+
                 mapping(Person.class, PersonDTO.class);
                 mapping(Tour.class, TourDTO.class)
                 .fields("hotel.hotelId", "hotel")

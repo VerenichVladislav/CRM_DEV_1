@@ -1,7 +1,12 @@
 package com.example.aviasales2.entity.transferObjects;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.sql.Timestamp;
 
+@Getter
+@Setter
 public class RoomDTO {
     private Long roomId;
     private int roomCapacity;
@@ -9,7 +14,9 @@ public class RoomDTO {
     private Timestamp checkOutDate;
     private Double dailyCost;
     private String status;
-    private HotelDTO hotel;
+    private long hotel;
+    private double description;
+    private String image;
 
     public RoomDTO() {
     }

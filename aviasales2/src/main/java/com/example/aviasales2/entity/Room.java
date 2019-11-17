@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 
 @Entity
@@ -19,6 +20,8 @@ public class Room {
     private Long roomId;
 
     private int roomCapacity;
+    private Timestamp checkInDate;
+    private Timestamp checkOutDate;
     private BigDecimal dailyCost;
     private String status;
 
@@ -26,10 +29,6 @@ public class Room {
     @JsonBackReference(value = "hotelRoom")
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
-
-    public BigDecimal getDailyCost() {
-        return dailyCost;
-    }
 
     private enum RoomConveniences {
 

@@ -3,10 +3,7 @@ package com.example.aviasales2.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -15,8 +12,7 @@ import java.util.List;
 
 
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @Entity
 @Table(name = "tour")
@@ -42,7 +38,7 @@ public class Tour {
     private List<User> users;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tour_id")
+    @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
 
@@ -68,21 +64,5 @@ public class Tour {
     @JsonIgnore
     public List<User> getUsers() {
         return users;
-    }
-
-    public Tour(City cityId) {
-        this.cityId = cityId;
-    }
-
-    public List<Comments> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comments> comments) {
-        this.comments = comments;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
     }
 }

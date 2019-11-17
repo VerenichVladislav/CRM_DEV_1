@@ -43,7 +43,7 @@ public class HotelController {
 
     @GetMapping("/{id}")
     public HotelDTO getHotelById(@PathVariable("id") long id) {
-        return mapper.map(hotelService.findByHotelId(id),HotelDTO.class);
+        return mapper.map(hotelService.findByHotelId(id), HotelDTO.class);
     }
 
     @GetMapping("/")
@@ -54,36 +54,36 @@ public class HotelController {
     @GetMapping
     public List<Hotel> getAllHotels() {
         return hotelService.findAll();
-       // return hotelService.findAll().stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
+        // return hotelService.findAll().stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
+
     }
 
-
-
-    @PostMapping
+    @PostMapping("/save")
     public Hotel saveHotel(@RequestBody Hotel hotel) {
         return hotelService.save(hotel);
     }
+
     @Transactional
     @PostMapping("/{user_id}/{hotel_id}/{checkIn}/{checkOut}/{roomId}")
     public ResponseEntity<String> addReservation(@PathVariable("user_id") Long userId,
                                                  @PathVariable("hotel_id") Long hotelId,
                                                  @PathVariable("checkIn") Timestamp checkIn,
-                                                 @PathVariable("checkOut")Timestamp checkOut,
+                                                 @PathVariable("checkOut") Timestamp checkOut,
                                                  @PathVariable("roomId") Long roomId
-                                                 ){
+    ) {
         Hotel hotel = hotelService.findByHotelId(hotelId);
         Room room = roomService.findByRoomId(roomId);
-        if(hotel!= null){
+        if (hotel != null) {
             Reservation reservation = new Reservation();
             reservation.setCheckIn(checkIn);
             reservation.setCheckOut(checkOut);
             reservation.setRoomId(roomId);
             reservation.setHotel(hotel);
-            List<Reservation> reservations =  hotel.getReservations();
+            List<Reservation> reservations = hotel.getReservations();
             reservations.add(reservation);
             hotel.setReservations(reservations);
             hotelService.save(hotel);
-          //  walletService.pay(userId,room.getDailyCost());
+            //  walletService.pay(userId,room.getDailyCost());
 
             return ResponseEntity.status(HttpStatus.OK)
                     .body("You reserv hotel ");
@@ -92,16 +92,17 @@ public class HotelController {
                 .body("Error");
 
     }
+
     @PutMapping()
     public Hotel updateHotel(@RequestBody Hotel hotel) {
         Hotel old = hotelService.findByHotelId(hotel.getHotelId());
-        if(old != null)
+        if (old != null)
             return hotelService.save(hotel);
         return null;
     }
 
     @DeleteMapping("/{id}")
-    public void deleteHotel(@PathVariable("id") long id){
+    public void deleteHotel(@PathVariable("id") long id) {
         hotelService.deleteById(id);
     }
 
