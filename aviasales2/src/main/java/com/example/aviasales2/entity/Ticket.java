@@ -24,20 +24,16 @@ public class Ticket {
     private long tripId;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JsonBackReference(value = "cityRef2")
     @JoinColumn(name = "city_dest")
     private City cityDest;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JsonBackReference(value = "cityRef1")
     @JoinColumn(name = "city_from")
     private City cityFrom;
 
     private BigDecimal price;
-    @ManyToOne
-    @JoinTable (name="active_booking",
-            joinColumns=@JoinColumn (name="ticket_id"),
-            inverseJoinColumns=@JoinColumn(name="user_id"))
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id")
     private User buyer;
 
     public Ticket(String name, String lastName, long tripId, Timestamp date, City cityFrom, City cityDest, BigDecimal price, User buyer) {
@@ -65,6 +61,10 @@ public class Ticket {
 
     public Ticket (){}
 
+    public void setDate(Timestamp date) {
+        this.date = date;
+    }
+
     public long getTripId() {
         return tripId;
     }
@@ -78,7 +78,7 @@ public class Ticket {
     }
 
     public void setBuyer(User user) {
-        this.buyer=buyer;
+        this.buyer=user;
     }
 
     public void setCityFrom(City cityFrom) {

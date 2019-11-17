@@ -47,16 +47,13 @@ public class Tour {
 
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference(value = "cityRef3")
     private City cityId;
 
     @OneToMany(mappedBy = "tour", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "tourcomm")
     List<Comments> comments;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
-    @JsonBackReference
     Company company;
 
 
