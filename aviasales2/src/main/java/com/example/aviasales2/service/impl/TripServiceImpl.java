@@ -68,13 +68,13 @@ public class TripServiceImpl implements TripService {
         Optional<Transport> transport = transportRepository.findById(transportId);
         if (cityFrom.isPresent()) {
             trip.setCityFrom(cityFrom.get());
-            cityFrom.get().getTrip_from().add(trip);
+            //cityFrom.get().getTrip_from().add(trip);
         } else {
             return "City_From does not exist!";
         }
         if (cityDest.isPresent()) {
             trip.setCityDest(cityDest.get());
-            cityDest.get().getTrip_dest().add(trip);
+            //cityDest.get().getTrip_dest().add(trip);
         } else {
             return "City_Dest does not exist!";
         }
@@ -87,6 +87,8 @@ public class TripServiceImpl implements TripService {
         tripRepository.save(trip);
         return "Saved";
     }
+
+
 
     @Override
     public String deleteById(long id) {

@@ -40,4 +40,69 @@ public class Trip {
 
     public Trip (){}
 
+    public City getCityDest() {
+        return cityDest;
+    }
+
+    public City getCityFrom() {
+        return cityFrom;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Timestamp getDateDest() {
+        return dateDest;
+    }
+
+
+    public Timestamp getDateFrom() {
+        return dateFrom;
+    }
+
+    public void setFullCountSeats(int fullCountSeats) {
+        this.fullCountSeats = fullCountSeats;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public int getFullCountSeats() {
+        return fullCountSeats;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setCityDest(City cityDest) {
+        this.cityDest = cityDest;
+    }
+
+    public void setCityFrom(City cityFrom) {
+        this.cityFrom = cityFrom;
+    }
+
+    public void setDateDest(Timestamp dateDest) {
+        this.dateDest = dateDest;
+    }
+
+    public void setDateFrom(Timestamp dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setTransport(Transport transport) {
+        this.transport = transport;
+    }
+
+    public Transport getTransport() {
+        return transport;
+    }
+
 }

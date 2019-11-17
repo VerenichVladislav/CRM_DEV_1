@@ -49,6 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/*").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/transports").hasRole("USER")
+                .antMatchers("/{user_id}/{hotel_id}/{checkIn}/{checkOut}/{roomId}").permitAll()
 
                 .antMatchers("/users").permitAll()
                 .antMatchers("/cities").permitAll()

@@ -12,4 +12,27 @@ public class TripFilter {
 
     public TripFilter (){}
 
+    public String getCityDest() {
+        return cityDest;
+    }
+
+    public String getCityFrom() {
+        return cityFrom;
+    }
+
+    public String getDateFrom() {
+        return dateFrom;
+    }
+
+    public void setDateFrom(String dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public void setCityFrom(String cityFrom) {
+        this.cityFrom = cityFrom;
+    }
+
+    public void setCityDest(String cityDest) {
+        this.cityDest = cityDest;
+    }
 }
