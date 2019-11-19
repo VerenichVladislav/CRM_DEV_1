@@ -24,8 +24,8 @@ public class SenderServiceImpl implements SenderService {
     public void buyEmail(long userId, long tripId, String list, int count) {
         Trip trip = tripRepository.findByTripId(tripId);
         User buyer = userRepository.findByUserId(userId);
-        City cityFrom = trip.getCityDest();
-        City cityDest = trip.getCityFrom();
+        City cityFrom = trip.getCityFrom();
+        City cityDest = trip.getCityDest();
         StringBuffer sb = new StringBuffer();
         sb.append("Hello, " + buyer.getUserName() + "!\n\n");
         sb.append("You bought " + count + " ticket(s) from " + cityFrom.getCityName() +

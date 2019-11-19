@@ -46,7 +46,7 @@ public class TicketServiceImpl implements TicketService {
         String newLine = System.getProperty("line.separator");
         int fcs = trip.getFullCountSeats();
         for (int i = 0; i < count; i++) {
-            String name = passangers.get(i).getName();
+            String name = passangers.get(i).getFirstName();
             String lastname = passangers.get(i).getLastName();
             listt = listt + (i + 1 + ". " + lastname + " " + name + newLine);
             Ticket ticket = new Ticket(name, lastname, tripId, trip.getDateFrom(), trip.getCityFrom(), trip.getCityDest(), trip.getPrice(), userRepository.findByUserId(userId));
