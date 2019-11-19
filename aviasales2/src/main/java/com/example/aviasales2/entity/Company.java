@@ -17,7 +17,7 @@ import java.util.Set;
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long companyId;
+    Long companyId;
 
     private String companyName;
 

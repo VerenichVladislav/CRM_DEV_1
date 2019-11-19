@@ -10,6 +10,6 @@ public interface TourService {
     void update(Tour tour);
     List<Tour> findAll();
     Tour findByName(String name);
-    Tour findByTourId(long id);
-    Tour deleteById(long id);
+    Tour findByTourId(Long id);
+    Tour deleteById(Long id);
 }

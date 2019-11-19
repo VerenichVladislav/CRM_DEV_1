@@ -16,7 +16,7 @@ public class Trip {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    Long tripId;
     BigDecimal price;
     private int fullCountSeats;
     private Timestamp dateFrom;

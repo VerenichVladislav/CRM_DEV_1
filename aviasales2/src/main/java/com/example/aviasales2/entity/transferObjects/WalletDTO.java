@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Getter
 @Setter
 public class WalletDTO {
-    private Long id;
+    private Long walletId;
     private Long sum;
     private long owner;
 

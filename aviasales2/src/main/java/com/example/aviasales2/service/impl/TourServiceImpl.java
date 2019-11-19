@@ -33,8 +33,8 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public Tour deleteById(long id) {
-        return tourRepository.deleteById(id);
+    public Tour deleteById(Long id) {
+        return tourRepository.deleteByTourId(id);
     }
 
     @Override
@@ -43,8 +43,7 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public Tour findByTourId(long id) {
-        Tour obj = tourRepository.findById(id).get();
-        return obj;
+    public Tour findByTourId(Long id) {
+        return tourRepository.findByTourId(id);
     }
 }

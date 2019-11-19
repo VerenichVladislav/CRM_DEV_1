@@ -16,7 +16,7 @@ public class Wallet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long walletId;
     private BigDecimal sum;
 
     @OneToOne(mappedBy = "wallet")

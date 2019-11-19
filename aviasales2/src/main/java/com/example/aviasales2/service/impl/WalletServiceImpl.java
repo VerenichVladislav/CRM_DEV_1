@@ -37,8 +37,8 @@ public class WalletServiceImpl implements WalletService {
     @Override
 
     public void pay(long userId, BigDecimal totalCost) {
-        Wallet userWallet = walletRepository.findByOwnerId(userId);
-        Wallet adminWallet = walletRepository.findById(0);
+        Wallet userWallet = walletRepository.findByOwnerUserId(userId);
+        Wallet adminWallet = walletRepository.findByWalletId(0L);
         adminWallet.setSum(adminWallet.getSum().add(totalCost));
         userWallet.setSum(userWallet.getSum().subtract(totalCost));
         walletRepository.saveAll(Arrays.asList(adminWallet,userWallet));
@@ -46,22 +46,22 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public BigDecimal getSum(long id) {
-        Wallet userWallet = walletRepository.findByOwnerId(id);
+        Wallet userWallet = walletRepository.findByOwnerUserId(id);
         BigDecimal userSum = userWallet.getSum();
         return userSum;
     }
 
     @Override
     public void backMoney(BigDecimal price, long userId, long ticketId) {
-        Wallet adminWallet = walletRepository.findById(0);
-        Wallet userWallet = walletRepository.findByOwnerId(userId);
+        Wallet adminWallet = walletRepository.findByWalletId(0L);
+        Wallet userWallet = walletRepository.findByOwnerUserId(userId);
         BigDecimal adminWalletSum = adminWallet.getSum();
         BigDecimal userWalletSum = userWallet.getSum();
         adminWalletSum = adminWalletSum.subtract(price);
         userWalletSum = userWalletSum.add(price);
         adminWallet.setSum(adminWalletSum);
         userWallet.setSum(userWalletSum);
-        Ticket ticket = ticketService.findById(ticketId);
+        Ticket ticket = ticketService.findByTicketId(ticketId);
         long tripId = ticket.getTripId();
         Trip trip = tripService.findById(tripId);
         int k = trip.getFullCountSeats();
@@ -71,7 +71,7 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public Wallet findById(long id) {
-        return walletRepository.findById(id);
+        return walletRepository.findByWalletId(id);
     }
 
     @Override

@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface TripRepository extends CrudRepository<Trip, Long>, QuerydslPredicateExecutor<Trip> {
-    Trip deleteById(long id);
-    Trip findById(long id);
+    Trip findByTripId(Long id);
+    void deleteByTripId(Long id);
 }

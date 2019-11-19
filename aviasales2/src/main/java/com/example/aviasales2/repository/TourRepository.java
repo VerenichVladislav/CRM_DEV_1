@@ -9,6 +9,7 @@ package com.example.aviasales2.repository;
 public interface TourRepository extends CrudRepository<Tour, Long> {
     Tour findByName(String name);
     List<Tour> findAll();
-    Tour deleteById(long id);
+    Tour findByTourId(Long id);
+    Tour deleteByTourId(Long id);
 
 }

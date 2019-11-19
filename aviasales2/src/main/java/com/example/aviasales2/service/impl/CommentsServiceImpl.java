@@ -21,12 +21,11 @@ public class CommentsServiceImpl implements CommentsService {
     public List<Comments> findAll(){return commentsRepository.findAll();}
 
     @Override
-    public Comments findCommentsById(long id) {
-        return commentsRepository.findCommentsById(id);
+    public Comments findCommentsById(Long id) {
+        return commentsRepository.findByCommentId(id);
     }
 
-    ;
     @Override
-    public String deleteById(long id){commentsRepository.deleteById(id); return "Deleted";}
+    public void deleteById(Long id){commentsRepository.deleteByCommentId(id); }
 
 }

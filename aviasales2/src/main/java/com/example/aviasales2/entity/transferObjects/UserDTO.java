@@ -9,7 +9,7 @@ import java.util.List;
 @Setter
 public class UserDTO {
 
-    private Long id;
+    private Long userId;
 
     private String email;
     private String currency;

@@ -22,8 +22,8 @@ public class SenderServiceImpl implements SenderService {
 
     @Override
     public void buyEmail(long userId, long tripId, String list, int count) {
-        Trip trip = tripRepository.findById(tripId);
-        User buyer = userRepository.findById(userId);
+        Trip trip = tripRepository.findByTripId(tripId);
+        User buyer = userRepository.findByUserId(userId);
         City cityFrom = trip.getCityDest();
         City cityDest = trip.getCityFrom();
         StringBuffer sb = new StringBuffer();

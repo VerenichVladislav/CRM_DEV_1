@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 public class TourDTO {
-    private Long id;
+    private Long tourId;
     private String name;
     private BigDecimal price;
     private int duration;

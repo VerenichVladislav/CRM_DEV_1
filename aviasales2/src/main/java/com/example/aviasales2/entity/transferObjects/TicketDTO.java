@@ -9,7 +9,7 @@ import java.security.Timestamp;
 @Setter
 @Getter
 public class TicketDTO {
-    private long id;
+    private Long ticketId;
     private String name;
     private String lastName;
     private Timestamp date;

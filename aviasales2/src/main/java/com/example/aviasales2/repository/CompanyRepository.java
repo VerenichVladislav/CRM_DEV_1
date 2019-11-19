@@ -10,7 +10,7 @@ import java.util.List;
 public interface CompanyRepository extends CrudRepository<Company, Long> {
     Company findByCompanyId(long id);
 
-    void delete(Company company);
+    void deleteByCompanyId(Long id);
 
     Company findByCompanyName(String name);
 

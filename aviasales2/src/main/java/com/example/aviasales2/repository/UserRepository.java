@@ -8,10 +8,9 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
-
-    User findById(Long id);
+    User findByUserId(Long id);
     User findByEmail(String email);
-    void deleteById(Integer id);
+    void deleteByUserId(Long id);
     User findByUserName(String userName);
     List<User> findByLastNameAndEmail(String lastName, String email);
     List<User> findAllByLastName(String lastName);

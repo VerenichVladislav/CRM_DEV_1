@@ -19,7 +19,7 @@ public class MappingConfig {
             @Override
             protected void configure() {
                 mapping(Transport.class, TransportDTO.class)
-                        .fields("company.companyID", "company");
+                        .fields("company.companyId", "company");
                 mapping(Trip.class, TripDTO.class)
                         .fields("cityFrom.cityName", "cityFrom")
                         .fields("cityDest.cityName", "cityDest")
@@ -27,7 +27,7 @@ public class MappingConfig {
                 mapping(City.class, CityDTO.class);
                 mapping(Comments.class, CommentsDTO.class)
                         .fields("company.companyId", "company")
-                        .fields("tour.id", "tour")
+                        .fields("tour.tourId", "tour")
                         .fields("hotel.hotelId", "hotel");
                 mapping(Company.class, CompanyDTO.class)
                 .fields("transportId", "transport");
@@ -38,16 +38,16 @@ public class MappingConfig {
 
                 mapping(Tour.class, TourDTO.class)
                 .fields("hotel.hotelId", "hotel")
-                .fields("cityId.id", "cityId")
+                .fields("cityId.cityId", "cityId")
                 .fields("company.companyId", "company");
                 mapping(User.class, UserDTO.class)
-                        .fields("wallet.id", "wallet");
+                        .fields("wallet.walletId", "wallet");
                 mapping(Wallet.class, WalletDTO.class)
-                        .fields("owner.id", "owner");
+                        .fields("owner.userId", "owner");
                 mapping(Ticket.class, TicketDTO.class)
-                        .fields("cityFrom.id", "cityFrom")
-                        .fields("cityDest.id", "cityDest")
-                        .fields("buyer.id", "buyer");
+                        .fields("cityFrom.cityId", "cityFrom")
+                        .fields("cityDest.cityId", "cityDest")
+                        .fields("buyer.userId", "buyer");
 
             }
         };

@@ -17,7 +17,7 @@ public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long ticketId;
     private String name;
     private String lastName;
     private Timestamp date;
@@ -52,7 +52,7 @@ public class Ticket {
     }
 
     public Long getBuyerId() {
-        return buyer.getId();
+        return buyer.getUserId();
     }
     public Ticket(String name, String lastName) {
         this.name = name;

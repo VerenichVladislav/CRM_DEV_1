@@ -12,8 +12,8 @@ public interface TripService {
     String  save(long cityFromId, long cityDestId, long transportId, Trip trip);
     String deleteById(long id);
     String update(Trip trip);
-    Trip findById(long id);
-    BigDecimal getPrice (long tripId);
-    int getFullCountSeats(long tripId);
-    BigDecimal calculateCost(int count, long tripId);
+    Trip findById(Long id);
+    BigDecimal getPrice (Long tripId);
+    int getFullCountSeats(Long tripId);
+    BigDecimal calculateCost(int count, Long tripId);
 }

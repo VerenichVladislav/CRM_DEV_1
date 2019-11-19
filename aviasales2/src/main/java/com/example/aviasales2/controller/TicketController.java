@@ -35,7 +35,7 @@ public class TicketController {
 
     @GetMapping("/{id}")
     public TicketDTO findById(@PathVariable("id") long id) {
-        return mapper.map(ticketService.findById(id), TicketDTO.class);
+        return mapper.map(ticketService.findByTicketId(id), TicketDTO.class);
     }
 
     @GetMapping("/buyer/{buyer_id}")

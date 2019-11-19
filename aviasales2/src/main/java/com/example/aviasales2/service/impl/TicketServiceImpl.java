@@ -24,8 +24,8 @@ public class TicketServiceImpl implements TicketService {
     private TripRepository tripRepository;
 
     @Override
-    public Ticket findById(long id) {
-        return ticketRepository.findById(id);
+    public Ticket findByTicketId(Long id) {
+        return ticketRepository.findByTicketId(id);
     }
 
     @Override
@@ -39,8 +39,8 @@ public class TicketServiceImpl implements TicketService {
     }
 
 
-    public String save(long userId, long tripId, int count, List <PersonRequest> passangers) {
-        Trip trip = tripRepository.findById(tripId);
+    public String save(Long userId, Long tripId, int count, List <PersonRequest> passangers) {
+        Trip trip = tripRepository.findByTripId(tripId);
         String listt = ("");
 
         String newLine = System.getProperty("line.separator");
@@ -49,7 +49,7 @@ public class TicketServiceImpl implements TicketService {
             String name = passangers.get(i).getName();
             String lastname = passangers.get(i).getLastName();
             listt = listt + (i + 1 + ". " + lastname + " " + name + newLine);
-            Ticket ticket = new Ticket(name, lastname, tripId, trip.getDateFrom(), trip.getCityFrom(), trip.getCityDest(), trip.getPrice(), userRepository.findById(userId));
+            Ticket ticket = new Ticket(name, lastname, tripId, trip.getDateFrom(), trip.getCityFrom(), trip.getCityDest(), trip.getPrice(), userRepository.findByUserId(userId));
             ticketRepository.save(ticket);
             fcs--;
         }
@@ -61,13 +61,13 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public BigDecimal getSum(long id) {
-        Ticket ticket = ticketRepository.findById(id);
+        Ticket ticket = ticketRepository.findByTicketId(id);
         BigDecimal price = ticket.getPrice();
         return price;
     }
 
     @Override
-    public void deleteById(long ticketId) {
+    public void deleteById(Long ticketId) {
         ticketRepository.deleteById(ticketId);
     }
 

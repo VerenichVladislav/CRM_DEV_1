@@ -43,7 +43,7 @@ public class CommentsController {
 
     @PutMapping("/tour/{tourId}")
     public String updateTourComment(@PathVariable("tourId") long tourId, @RequestBody Comments comments){
-        Comments old = commentsServiceImpl.findCommentsById(comments.getId());
+        Comments old = commentsServiceImpl.findCommentsById(comments.getCommentId());
         if(old != null){
             Tour tour = tourService.findByTourId(tourId);
             comments.setTour(tour);
@@ -56,7 +56,7 @@ public class CommentsController {
 
     @PutMapping("/company/{companyId}")
     public String updateCompanyComment(@PathVariable("companyId") long companyId, @RequestBody Comments comments){
-        Comments old = commentsServiceImpl.findCommentsById(comments.getId());
+        Comments old = commentsServiceImpl.findCommentsById(comments.getCommentId());
         if(old != null){
             Company company = companyService.findByCompanyId(companyId);
             comments.setCompany(company);
@@ -69,7 +69,7 @@ public class CommentsController {
 
     @PutMapping("/hotel/{hotelId}")
     public String updateHotelComment(@PathVariable("hotelId") long hotelId, @RequestBody Comments comments){
-        Comments old = commentsServiceImpl.findCommentsById(comments.getId());
+        Comments old = commentsServiceImpl.findCommentsById(comments.getCommentId());
         if(old != null){
             Hotel hotel = hotelService.findByHotelId(hotelId);
             comments.setHotel(hotel);
@@ -81,6 +81,6 @@ public class CommentsController {
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") long id){return commentsServiceImpl.deleteById(id);}
+    public void delete(@PathVariable("id") Long id){ commentsServiceImpl.deleteById(id);}
 
 }

@@ -12,6 +12,6 @@ import java.util.List;
 public interface WalletRepository extends CrudRepository<Wallet, Long> {
 
     List<Wallet> findAll();
-    Wallet findById(long id);
-    Wallet findByOwnerId(long id);
+    Wallet findByWalletId(Long id);
+    Wallet findByOwnerUserId(Long id);
 }

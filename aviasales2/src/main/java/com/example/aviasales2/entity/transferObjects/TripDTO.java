@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 public class TripDTO {
-    private long id;
+    private Long tripId;
     private String cityFrom;
     private String cityDest;
     private BigDecimal price;

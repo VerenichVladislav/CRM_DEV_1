@@ -9,7 +9,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class CompanyDTO {
-    private long companyId;
+    private Long companyId;
 
     private String companyName;
 

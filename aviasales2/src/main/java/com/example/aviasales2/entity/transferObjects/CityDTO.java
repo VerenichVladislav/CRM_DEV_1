@@ -7,7 +7,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class CityDTO {
-    private Long id;
+    private Long cityId;
     private String cityName;
     private String country;
     private Integer foundationDate;

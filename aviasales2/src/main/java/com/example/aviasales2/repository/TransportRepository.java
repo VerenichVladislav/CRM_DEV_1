@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface TransportRepository extends CrudRepository<Transport,Long> {
-    Optional<Transport> findById(Long id);
+    Transport findByTransportId(Long id);
     List<Transport> findAll();
     Transport deleteAllByName(String name);
 }

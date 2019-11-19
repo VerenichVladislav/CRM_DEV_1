@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface CommentsRepository extends CrudRepository<Comments, Long> {
 List<Comments> findAll();
-Comments deleteById(long id);
-Comments findCommentsById(long id);
+Comments deleteByCommentId(Long id);
+Comments findByCommentId(Long id);
 }

@@ -35,7 +35,7 @@ public class TransportServiceImpl implements TransportService {
 
     @Override
     public void update(Transport transport) {
-        if(transportRepository.existsById(transport.getId())){
+        if(transportRepository.existsById(transport.getTransportId())){
             transportRepository.save(transport);}
     }
 

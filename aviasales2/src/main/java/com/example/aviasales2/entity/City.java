@@ -19,7 +19,7 @@ public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long cityId;
 
     private String cityName;
     private String country;

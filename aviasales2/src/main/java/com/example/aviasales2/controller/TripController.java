@@ -52,7 +52,7 @@ public class TripController {
 
     @PutMapping
     public String update(@RequestBody Trip trip) {
-        Trip oldTrip = tripService.findById(trip.getId());
+        Trip oldTrip = tripService.findById(trip.getTripId());
         if (oldTrip != null) {
             return tripService.update(trip);
         }

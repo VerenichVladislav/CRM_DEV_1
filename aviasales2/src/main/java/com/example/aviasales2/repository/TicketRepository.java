@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface TicketRepository extends CrudRepository<Ticket, Long> {
-    Ticket findById(long id);
+    Ticket findByTicketId(Long id);
     List<Ticket> findAllByBuyer(User Buyer);
 }

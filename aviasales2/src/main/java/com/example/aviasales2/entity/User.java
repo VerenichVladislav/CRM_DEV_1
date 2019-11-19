@@ -1,10 +1,7 @@
 package com.example.aviasales2.entity;
 
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,11 +12,12 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "user_t")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long userId;
 
     @NotNull
     private String email;
@@ -42,22 +40,19 @@ public class User {
     @JoinTable(name = "user_wallet",
             joinColumns = @JoinColumn(name="user_id"),
             inverseJoinColumns = @JoinColumn(name="wallet_id"))
-    private Wallet wallet;
+    private Wallet wallet = new Wallet();
 
     @ManyToMany
     @JoinTable (name="active_booking",
             joinColumns=@JoinColumn (name="user_id"),
             inverseJoinColumns=@JoinColumn(name="ticket_id"))
-    private List<Ticket> tickets;
+    private List<Ticket> tickets = new ArrayList<>();
 
     @ManyToMany
     @JoinTable (name="history",
             joinColumns=@JoinColumn (name="user_id"),
             inverseJoinColumns=@JoinColumn(name="tour_id"))
-    private List<Tour> tours;
-
-    public User() {
-    }
+    private List<Tour> tours = new ArrayList<>();
 
     public List<String> getRoleList(){
         if(this.role.length() > 0){

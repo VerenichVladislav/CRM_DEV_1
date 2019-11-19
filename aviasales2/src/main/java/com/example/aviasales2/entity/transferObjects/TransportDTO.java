@@ -7,7 +7,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class TransportDTO {
-    public long id;
+    public Long transportId;
     String name;
     int baggage;
     int company;
