@@ -52,9 +52,8 @@ public class HotelController {
     }
 
     @GetMapping
-    public List<Hotel> getAllHotels() {
-        return hotelService.findAll();
-        // return hotelService.findAll().stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
+    public List<HotelDTO> getAllHotels() {
+        return hotelService.findAll().stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
 
     }
 
