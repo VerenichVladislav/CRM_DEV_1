@@ -22,6 +22,7 @@ public class Ticket {
     private String lastName;
     private Timestamp date;
     private long tripId;
+    private BigDecimal price;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "city_dest")
@@ -31,7 +32,6 @@ public class Ticket {
     @JoinColumn(name = "city_from")
     private City cityFrom;
 
-    private BigDecimal price;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User buyer;

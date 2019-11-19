@@ -21,15 +21,14 @@ public class Comments {
     private String type;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference(value = "tourcomm")
     @JoinColumn(name = "tour_id")
     private Tour tour;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference(value = "compcomm")
     @JoinColumn(name = "company_id")
     private Company company;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference(value = "hotelcomm")
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 

@@ -12,7 +12,8 @@ import java.util.List;
 
 
 
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @Entity
 @Table(name = "tour")
@@ -21,7 +22,7 @@ public class Tour {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long tourId;
     private  String name;
     BigDecimal price;
     Timestamp date;
@@ -58,8 +59,4 @@ public class Tour {
 //        OFFLINE
 //    }
 
-    @JsonIgnore
-    public List<User> getUsers() {
-        return users;
-    }
 }

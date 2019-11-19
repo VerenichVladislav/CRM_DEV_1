@@ -22,12 +22,11 @@ public class Company {
     private String companyName;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "compcomm")
     private List<Comments> comments;
 
     @OneToMany(mappedBy = "company",
             fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+
     private Set<Tour> tours;
 
     private int rating;
@@ -35,7 +34,6 @@ public class Company {
     private int transportCount;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "compRef")
     private Set<Transport> transportId;
 
     public Company(){}

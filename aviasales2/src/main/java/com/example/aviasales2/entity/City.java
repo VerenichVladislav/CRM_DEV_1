@@ -32,24 +32,12 @@ public class City {
     @OneToMany(mappedBy = "cityDest", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     private Set<Trip> trip_dest;
 
-    @OneToMany(mappedBy = "cityId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tourId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Tour> tours;
 
-//    @OneToMany(mappedBy = "hotelId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JsonManagedReference(value = "hotelRef")
-//    private Set<Hotel> hotels;
-
-//    @OneToOne(optional = false, mappedBy = "city")
-//    private Tour tour;
-
-//    @JsonIgnore
-//    public Tour getTour() {
-//        return tour;
-//    }
-
+    @OneToMany(mappedBy = "hotelId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Hotel> hotels;
 
     public City() {
     }
-
-
 }

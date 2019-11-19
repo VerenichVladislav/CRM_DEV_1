@@ -18,22 +18,11 @@ public class Wallet {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private BigDecimal sum;
+
     @OneToOne(mappedBy = "wallet")
     private User owner;
+
     public Wallet(){
 
     }
-
-    public BigDecimal getSum() {
-        return sum;
-    }
-
-    public void setSum(BigDecimal sum) {
-        this.sum = sum;
-    }
-
-    // @JsonIgnore
-  //  public User getOwner() {
-     //   return owner;
-   // }
 }

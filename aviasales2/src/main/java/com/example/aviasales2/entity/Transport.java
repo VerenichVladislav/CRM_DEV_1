@@ -20,34 +20,16 @@ public class Transport {
     public long id;
     private String name;
     private int baggage;
+
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JsonBackReference(value = "compRef")
     @JoinColumn(name = "company_id")
     private Company company;
+
     @OneToMany(mappedBy = "transport", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Trip> trips;
 
-    public long getId() {
-        return id;
-    }
 
     public Transport(){
 
-    }
-
-    public Set<Trip> getTrips() {
-        return trips;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public int getBaggage() {
-        return baggage;
-    }
-
-    public String getName() {
-        return name;
     }
 }

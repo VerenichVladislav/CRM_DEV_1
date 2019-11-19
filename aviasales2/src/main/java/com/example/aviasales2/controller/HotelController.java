@@ -75,8 +75,8 @@ public class HotelController {
         Room room = roomService.findByRoomId(roomId);
         if (hotel != null) {
             Reservation reservation = new Reservation();
-            reservation.setCheckIn(checkIn);
-            reservation.setCheckOut(checkOut);
+            reservation.setСheckIn(checkIn);
+            reservation.setСheckOut(checkOut);
             reservation.setRoomId(roomId);
             reservation.setHotel(hotel);
             List<Reservation> reservations = hotel.getReservations();

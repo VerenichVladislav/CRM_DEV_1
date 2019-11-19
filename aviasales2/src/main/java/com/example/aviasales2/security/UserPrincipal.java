@@ -1,6 +1,5 @@
 package com.example.aviasales2.security;
 
-import com.example.aviasales2.entity.Person;
 import com.example.aviasales2.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

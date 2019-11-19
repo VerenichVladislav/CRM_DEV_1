@@ -26,7 +26,6 @@ public class Room {
     private String status;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference(value = "hotelRoom")
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
