@@ -1,9 +1,12 @@
 package com.example.aviasales2.service.impl;
 
+import com.example.aviasales2.config.filterConfig.HotelFilter;
+import com.example.aviasales2.entity.QHotel;
 import com.example.aviasales2.entity.transferObjects.HotelDTO;
 import com.example.aviasales2.repository.HotelRepository;
 import com.example.aviasales2.entity.Hotel;
 import com.example.aviasales2.service.HotelService;
+import com.querydsl.core.BooleanBuilder;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,8 +42,17 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<Hotel> findAll() {
-        return (List<Hotel>) hotelRepository.findAll();
+    public List<Hotel> findAll(HotelFilter hotelFilter) {
+        final QHotel qHotel = QHotel.hotel;
+
+        BooleanBuilder booleanBuilder = new BooleanBuilder(qHotel.isNotNull());
+        if (hotelFilter.getCity() != null) {
+            booleanBuilder.and(qHotel.city.eq(hotelFilter.getCity()));
+        }
+        if (hotelFilter.getRating() != null) {
+            booleanBuilder.and(qHotel.rating.eq(hotelFilter.getRating()));
+        }
+        return (List<Hotel>) hotelRepository.findAll(booleanBuilder);
     }
 
     @Override

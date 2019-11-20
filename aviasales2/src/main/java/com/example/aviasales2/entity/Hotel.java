@@ -1,13 +1,12 @@
 package com.example.aviasales2.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -26,6 +25,10 @@ public class Hotel {
     private String description;
     private String image;
 
+    @ElementCollection(targetClass = RoomType.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "room_type", joinColumns = @JoinColumn(name = "hotel_id"))
+    @Enumerated(EnumType.ORDINAL)
+    private Set<RoomType> roomTypes;
 
     @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Room> rooms;

@@ -1,6 +1,7 @@
 package com.example.aviasales2.controller;
 
 
+import com.example.aviasales2.config.filterConfig.HotelFilter;
 import com.example.aviasales2.entity.Hotel;
 import com.example.aviasales2.entity.Reservation;
 import com.example.aviasales2.entity.Room;
@@ -51,10 +52,11 @@ public class HotelController {
         return mapper.map(hotelService.findByHotelName(hotelName), HotelDTO.class);
     }
 
-    @GetMapping
-    public List<HotelDTO> getAllHotels() {
-        return hotelService.findAll().stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
-
+    @PostMapping
+    public List<HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter) {
+        return hotelService.findAll(hotelFilter).stream()
+                .map(entity -> mapper.map(entity, HotelDTO.class))
+                .collect(Collectors.toList());
     }
 
     @PostMapping("/save")
