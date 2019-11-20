@@ -35,8 +35,6 @@ public class City {
     @OneToMany(mappedBy = "tourId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Tour> tours;
 
-    @OneToMany(mappedBy = "hotelId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Hotel> hotels;
 
     public City() {
     }

@@ -1,5 +1,6 @@
 package com.example.aviasales2.entity.transferObjects;
 
+import com.example.aviasales2.entity.Reservation;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +21,7 @@ public class HotelDTO {
     private List<RoomDTO> rooms;
     private List<TourDTO> tours;
     private List<CommentsDTO> comments;
+    private List<ReservationDTO> reservations;
 
 
     public HotelDTO() {

@@ -9,6 +9,7 @@ import com.example.aviasales2.service.*;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +21,8 @@ import java.util.stream.Collectors;
 
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 10000)
-
 @RestController
-@RequestMapping("/hotels")
+@RequestMapping(value = "/hotels")
 public class HotelController {
 
     @Autowired
@@ -78,6 +78,7 @@ public class HotelController {
             reservation.setСheckOut(checkOut);
             reservation.setRoomId(roomId);
             reservation.setHotel(hotel);
+            reservation.setUserId(userId);
             List<Reservation> reservations = hotel.getReservations();
             reservations.add(reservation);
             hotel.setReservations(reservations);
