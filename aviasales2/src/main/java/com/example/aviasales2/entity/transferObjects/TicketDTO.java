@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 @Setter
 @Getter
@@ -20,9 +20,5 @@ public class TicketDTO {
     private long buyer;
 
     public TicketDTO() {
-    }
-
-    void setDate(Timestamp date) {
-        this.date = date;
     }
 }
