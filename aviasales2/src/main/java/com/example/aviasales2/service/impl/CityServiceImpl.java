@@ -26,8 +26,8 @@ public class CityServiceImpl implements ICityService {
     }
 
     @Override
-    public Optional<City> findById(Long id) {
-        return cityRepository.findById(id);
+    public City findByCityId(Long id) {
+        return cityRepository.findByCityId(id);
     }
 
     @Override

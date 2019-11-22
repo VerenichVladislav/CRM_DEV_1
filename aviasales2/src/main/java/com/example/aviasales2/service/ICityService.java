@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface ICityService {
 
     City save(City city);
-    Optional<City> findById(Long id);
+    City findByCityId(Long id);
     List<City> findAll();
     City findByCityName(String name);
     void delete(City city);

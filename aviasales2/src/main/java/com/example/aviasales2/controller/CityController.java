@@ -29,7 +29,7 @@ public class CityController {
 
     @GetMapping("/{id}")
     public CityDTO findById(@PathVariable("id") Long id){
-        return mapper.map(cityService.findById(id), CityDTO.class);
+        return mapper.map(cityService.findByCityId(id), CityDTO.class);
     }
 
     @GetMapping("/")
