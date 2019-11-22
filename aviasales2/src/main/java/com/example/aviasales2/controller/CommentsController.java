@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 10000)
 @RestController
 @RequestMapping("/comments")
 public class CommentsController {
@@ -79,6 +79,18 @@ public class CommentsController {
         }
         return "Error!";
     }
+
+    @GetMapping("/hotel/{hotelId}")
+    public List<CommentsDTO> findCommentsByHotelId(@PathVariable("hotelId") Long id) {
+        return commentsServiceImpl.findByHotelId(id).stream().map(entity -> mapper.map(entity, CommentsDTO.class)).collect(Collectors.toList());}
+
+    @GetMapping("/company/{companyId}")
+    public List<CommentsDTO> findCommentsByCompanyId(@PathVariable("companyId") Long id) {
+        return commentsServiceImpl.findByCompanyId(id).stream().map(entity -> mapper.map(entity, CommentsDTO.class)).collect(Collectors.toList());}
+
+    @GetMapping("/tour/{tourId}")
+    public List<CommentsDTO> findCommentsByTourId(@PathVariable("tourId") Long id) {
+        return commentsServiceImpl.findByTourId(id).stream().map(entity -> mapper.map(entity, CommentsDTO.class)).collect(Collectors.toList());}
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id){ commentsServiceImpl.deleteById(id);}

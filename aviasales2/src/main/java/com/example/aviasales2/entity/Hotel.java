@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -24,6 +25,11 @@ public class Hotel {
     private String description;
     private String image;
 
+    @ElementCollection(targetClass = RoomType.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "room_type", joinColumns = @JoinColumn(name = "hotel_id"))
+    @Enumerated(EnumType.ORDINAL)
+    private Set<RoomType> roomTypes;
+
     @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Room> rooms;
 
@@ -34,8 +40,6 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
-    @OneToMany(mappedBy = "hotel", fetch = FetchType.EAGER)
-    private List<Tour> tours;
 
     public List<Reservation> getReservations() {
         return reservations;
@@ -44,9 +48,12 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comments> comments;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city")
-    private City city;
+
+    private String city;
+
+    public long getHotelId() {
+        return this.hotelId;
+    }
 
     private enum HotelConveniences {
 
