@@ -42,10 +42,8 @@ public class User {
             inverseJoinColumns = @JoinColumn(name="wallet_id"))
     private Wallet wallet = new Wallet();
 
-    @ManyToMany
-    @JoinTable (name="active_booking",
-            joinColumns=@JoinColumn (name="user_id"),
-            inverseJoinColumns=@JoinColumn(name="ticket_id"))
+    @OneToMany(mappedBy = "buyer",
+            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Ticket> tickets = new ArrayList<>();
 
     @ManyToMany
@@ -53,6 +51,10 @@ public class User {
             joinColumns=@JoinColumn (name="user_id"),
             inverseJoinColumns=@JoinColumn(name="tour_id"))
     private List<Tour> tours = new ArrayList<>();
+
+    @OneToMany(mappedBy = "buyer",
+            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Reservation> reservations = new ArrayList<>();
 
     public List<String> getRoleList(){
         if(this.role.length() > 0){

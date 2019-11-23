@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -34,6 +35,9 @@ public class City {
 
     @OneToMany(mappedBy = "tourId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Tour> tours;
+
+    @OneToMany(mappedBy = "city",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<Hotel> hotels;
 
 
     public City() {

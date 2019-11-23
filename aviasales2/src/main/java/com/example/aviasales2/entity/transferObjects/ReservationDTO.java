@@ -11,7 +11,7 @@ public class ReservationDTO {
     private Long reservationId;
     private Long roomId;
     private Long userId;
-    private Timestamp сheckIn;
-    private Timestamp сheckOut;
+    private Timestamp checkIn;
+    private Timestamp checkOut;
     private long hotel;
 }
