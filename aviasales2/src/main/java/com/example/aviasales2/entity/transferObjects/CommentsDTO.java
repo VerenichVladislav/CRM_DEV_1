@@ -10,6 +10,7 @@ public class CommentsDTO {
 
     private String text;
     private String type;
+    private String user;
     private long tour;
     private long company;
     private long hotel;
