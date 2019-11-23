@@ -3,10 +3,16 @@ package com.example.aviasales2.controller;
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.transferObjects.CompanyDTO;
 import com.example.aviasales2.service.CompanyService;
+import com.example.aviasales2.util.CompanyValidator;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +25,8 @@ public class CompanyController {
     public CompanyService companyService;
     @Autowired
     private DozerBeanMapper mapper;
+    @Autowired
+    private CompanyValidator companyValidator;
 
     @GetMapping()
     public List<CompanyDTO> getAllCompany(){return companyService.findAll().stream().map(entity -> mapper.map(entity, CompanyDTO.class)).collect(Collectors.toList());}
@@ -29,6 +37,11 @@ public class CompanyController {
         return mapper.map(companyService.findByCompanyId(id),CompanyDTO.class);}
         else {return null;}
 
+    }
+
+    @GetMapping("/badRequest")
+    public String badRequest(){
+        return "Something goes wrong!";
     }
 
     @GetMapping("/")
@@ -47,16 +60,26 @@ public class CompanyController {
 
 
     @PostMapping
-    public Company saveCompany(@RequestBody Company company){return companyService.save(company);}
+    public String saveCompany(@RequestBody @Valid Company company, BindingResult result){
+        companyValidator.validate(company, result);
+        if(result.hasErrors()) {
+            return String.valueOf(result.getFieldErrors());
+        }
+        companyService.save(company);
+        return "saved!";}
 
 
     @PutMapping
-    public String updateCompany(@RequestBody Company updatedCompany){
-        Company company = companyService.findByCompanyId(updatedCompany.getCompanyId());
-        if (company != null){
+    public String updateCompany(@RequestBody @Valid Company updatedCompany, BindingResult result){
+
+        if(updatedCompany.getCompanyId() != null){
+        companyValidator.validate(updatedCompany, result);
+        if (result.hasErrors()){
+            return String.valueOf(result.getFieldErrors());
+        }
         companyService.save(updatedCompany);
-        return "Updated";}
-        return "Company does not exist!";
+        return "updated";}
+        return "no such company";
     }
 
     @DeleteMapping("/{id}")

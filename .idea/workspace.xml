@@ -2,25 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6979cffe-8677-4ecb-b115-d7a0d587da14" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/aviasales2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/aviasales2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/CompanyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/CommentsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/CommentsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/HotelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/HotelController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/City.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/City.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Hotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Hotel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Repository/CommentsRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Repository/CommentsRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Repository/HotelRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Repository/HotelRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/CommentsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/CommentsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/HotelService.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/HotelService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/CommentsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/CommentsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/HotelServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/HotelServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <list id="9698d249-466d-426b-88a1-62a4cc9dc9fb" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -76,11 +61,6 @@
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="825" />
-    <option name="width" value="1100" />
-    <option name="height" value="1040" />
   </component>
   <component name="ProjectId" id="1TZ6UbUKdkuETNETDScRHRuwUdB" />
   <component name="PropertiesComponent">
@@ -193,6 +173,7 @@
       <workItem from="1574226634993" duration="790000" />
       <workItem from="1574245214219" duration="381000" />
       <workItem from="1574245659281" duration="307000" />
+      <workItem from="1574534144560" duration="10624000" />
     </task>
     <task id="LOCAL-00001" summary="Added city-tour foreign key. Added encapsulation.">
       <created>1571937388779</created>
