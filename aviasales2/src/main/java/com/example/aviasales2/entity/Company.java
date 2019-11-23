@@ -1,6 +1,5 @@
 package com.example.aviasales2.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,32 +37,5 @@ public class Company {
 
     public Company(){}
 
-    public Set<Tour> getTours() {
-        return tours;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public List<Comments> getComments() {
-        return comments;
-    }
-
-    public long getCompanyId() {
-        return companyId;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public int getTransportCount() {
-        return transportCount;
-    }
-
-    public Set<Transport> getTransportId() {
-        return transportId;
-    }
 
 }
