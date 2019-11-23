@@ -1,5 +1,6 @@
 package com.example.aviasales2.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -54,6 +55,10 @@ public class User {
             inverseJoinColumns=@JoinColumn(name="tour_id"))
     private List<Tour> tours = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    List<Comments> comments;
+
+    @JsonIgnore
     public List<String> getRoleList(){
         if(this.role.length() > 0){
             return Arrays.asList(this.role.split(","));
