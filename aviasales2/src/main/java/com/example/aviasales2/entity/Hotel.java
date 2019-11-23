@@ -48,12 +48,9 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comments> comments;
 
-
-    private String city;
-
-    public long getHotelId() {
-        return this.hotelId;
-    }
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name="city_id")
+    private City city;
 
     private enum HotelConveniences {
 

@@ -80,7 +80,7 @@ public class HotelController {
             reservation.setСheckOut(checkOut);
             reservation.setRoomId(roomId);
             reservation.setHotel(hotel);
-            reservation.setUserId(userId);
+            //reservation.setUserId(userId);
             List<Reservation> reservations = hotel.getReservations();
             reservations.add(reservation);
             hotel.setReservations(reservations);

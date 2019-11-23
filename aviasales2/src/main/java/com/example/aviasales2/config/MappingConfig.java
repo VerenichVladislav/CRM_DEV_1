@@ -28,6 +28,7 @@ public class MappingConfig {
                 mapping(Comments.class, CommentsDTO.class)
                         .fields("company.companyId", "company")
                         .fields("tour.tourId", "tour")
+                        .fields("user.userName", "user")
                         .fields("hotel.hotelId", "hotel");
                 mapping(Company.class, CompanyDTO.class)
                 .fields("transportId", "transport");
