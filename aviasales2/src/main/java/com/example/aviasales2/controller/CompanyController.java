@@ -60,24 +60,24 @@ public class CompanyController {
 
 
     @PostMapping
-    public Company saveCompany(@RequestBody @Valid Company company, BindingResult result){
+    public Company saveCompany(@RequestBody @Valid CompanyDTO company, BindingResult result){
         companyValidator.validate(company, result);
         if(result.hasErrors()) {
             return null;
         }
 
-        return companyService.save(company);}
+        return companyService.save(mapper.map(company, Company.class));}
 
 
     @PutMapping
-    public Company updateCompany(@RequestBody @Valid Company updatedCompany, BindingResult result){
+    public Company updateCompany(@RequestBody @Valid CompanyDTO updatedCompany, BindingResult result){
         if (companyService.findByCompanyId(updatedCompany.getCompanyId()) != null) {
             companyValidator.updateValidate(updatedCompany, result);
             if (result.hasErrors()) {
                 return null;
             }
 
-            return companyService.save(updatedCompany);
+            return companyService.save(mapper.map(updatedCompany, Company.class));
         }
      return null;
     }

@@ -7,16 +7,17 @@ import com.example.aviasales2.entity.Reservation;
 import com.example.aviasales2.entity.Room;
 import com.example.aviasales2.entity.transferObjects.HotelDTO;
 import com.example.aviasales2.service.*;
+import com.example.aviasales2.util.HotelValidator;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,16 +31,10 @@ public class HotelController {
     private HotelService hotelService;
     @Autowired
     private DozerBeanMapper mapper;
-    private TripService tripService;
-    @Autowired
-    private WalletService walletService;
-
-    @Autowired
-    private Validation validation;
-    @Autowired
-    private SenderService senderService;
     @Autowired
     private RoomService roomService;
+    @Autowired
+    private HotelValidator hotelValidator;
 
 
     @GetMapping("/{id}")
@@ -52,16 +47,21 @@ public class HotelController {
         return mapper.map(hotelService.findByHotelName(hotelName), HotelDTO.class);
     }
 
-//    @PostMapping
-//    public List<HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter) {
-//        return hotelService.findAll(hotelFilter).stream()
-//                .map(entity -> mapper.map(entity, HotelDTO.class))
-//                .collect(Collectors.toList());
-//    }
+    @PostMapping
+    public List<HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter) {
+        return hotelService.findAll(hotelFilter).stream()
+                .map(entity -> mapper.map(entity, HotelDTO.class))
+                .collect(Collectors.toList());
+    }
 
     @PostMapping("/save")
-    public Hotel saveHotel(@RequestBody Hotel hotel) {
-        return hotelService.save(hotel);
+    public String saveHotel(@RequestBody @Valid HotelDTO hotel, BindingResult result) {
+        hotelValidator.validate(hotel, result);
+        if (result.hasErrors()){
+            return String.valueOf(result.getFieldErrors());
+        }
+        hotelService.save(mapper.map(hotel,Hotel.class));
+        return "saved";
     }
 
     @Transactional

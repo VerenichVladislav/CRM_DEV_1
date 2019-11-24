@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Set;
@@ -23,14 +23,13 @@ public class City {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long cityId;
 
-    @NotNull(message = "City name must be not null")
+    @NotBlank(message = "City name must be not null")
     @Size(max = 15)
     private String cityName;
-    @NotNull(message = "The country must be not null")
+    @NotBlank(message = "The country must be not null")
     @Size(max = 15)
     private String country;
-    private String foundationDate;
-    private String population;
+    private Long population;
 
     @OneToMany(mappedBy = "cityFrom", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     private Set<Trip> trip_from;

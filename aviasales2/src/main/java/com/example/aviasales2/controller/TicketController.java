@@ -10,8 +10,10 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,8 +31,12 @@ public class TicketController {
     @Autowired
     private DozerBeanMapper mapper;
     @PostMapping()
-    public Ticket save(@RequestBody Ticket ticket) {
-        return ticketService.save(ticket);
+    public String save(@RequestBody @Valid Ticket ticket, BindingResult result) {
+        if (result.hasErrors()) {
+            return String.valueOf(result.getFieldErrors());
+        }
+        ticketService.save(ticket);
+        return "saved";
     }
 
     @GetMapping("/{id}")
