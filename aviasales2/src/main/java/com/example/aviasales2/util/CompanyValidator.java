@@ -26,9 +26,9 @@ public class CompanyValidator implements Validator {
             errors.rejectValue("companyName", "","A company with the same name already exists.");
         }
 
-            if (!company.getRating().matches("[\\d]") || Integer.parseInt(company.getRating()) < 0 || Integer.parseInt(company.getRating()) > 5) {
-                errors.rejectValue("rating", "", "Bad rating number(0-5).");
-            }
+        if (!company.getRating().matches("[\\d]") || Integer.parseInt(company.getRating()) < 0 || Integer.parseInt(company.getRating()) > 5) {
+            errors.rejectValue("rating", "", "Bad rating number(0-5).");
+        }
 
 
     }

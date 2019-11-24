@@ -2,6 +2,7 @@ package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.transferObjects.CompanyDTO;
+import com.example.aviasales2.exception.GlobalBadRequestException;
 import com.example.aviasales2.service.CompanyService;
 import com.example.aviasales2.util.CompanyValidator;
 import org.dozer.DozerBeanMapper;
@@ -9,15 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
-
+@Validated
 @RestController
 @RequestMapping("/companies")
 public class CompanyController {
@@ -60,13 +60,15 @@ public class CompanyController {
 
 
     @PostMapping
-    public String saveCompany(@RequestBody @Valid Company company, BindingResult result){
+    public ResponseEntity<Object> saveCompany(@RequestBody @Valid Company company, BindingResult result) throws GlobalBadRequestException {
         companyValidator.validate(company, result);
         if(result.hasErrors()) {
-            return String.valueOf(result.getFieldErrors());
+            throw new GlobalBadRequestException(result);
         }
         companyService.save(company);
-        return "saved!";}
+        return new ResponseEntity<>(HttpStatus.OK);
+
+    }
 
 
     @PutMapping
