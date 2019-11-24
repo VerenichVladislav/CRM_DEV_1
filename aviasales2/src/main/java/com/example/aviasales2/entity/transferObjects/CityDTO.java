@@ -10,8 +10,8 @@ public class CityDTO {
     private Long cityId;
     private String cityName;
     private String country;
-    private Integer foundationDate;
-    private Long population;
+    private String foundationDate;
+    private String population;
     private Set<TripDTO> trip_from;
     private Set<TripDTO> trip_dest;
     private Set<TourDTO> tours;

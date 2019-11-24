@@ -4,10 +4,13 @@ package com.example.aviasales2.controller;
 import com.example.aviasales2.entity.City;
 import com.example.aviasales2.entity.transferObjects.CityDTO;
 import com.example.aviasales2.service.ICityService;
+import com.example.aviasales2.util.CityValidator;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +23,8 @@ public class CityController {
     private ICityService cityService;
     @Autowired
     private DozerBeanMapper mapper;
+    @Autowired
+    private CityValidator cityValidator;
 
 
     @GetMapping
@@ -53,13 +58,26 @@ public class CityController {
     }
 
     @PostMapping
-    public City save(@RequestBody City city){
+    public City  save(@RequestBody @Valid City city, BindingResult result){
+        cityValidator.validate(city, result);
+        if(result.hasErrors()){
+            return null;
+        }
+
         return cityService.save(city);
     }
 
     @PutMapping
-    public void update(@RequestBody City newCity){
-        cityService.update(newCity);
+    public City update(@RequestBody @Valid City newCity, BindingResult result){
+        if(cityService.findByCityId(newCity.getCityId()) != null){
+            cityValidator.updateValidate(newCity, result);
+            if(result.hasErrors()){
+                return null;
+            }
+            return cityService.update(newCity);
+        }
+        return null;
+
     }
 }
 

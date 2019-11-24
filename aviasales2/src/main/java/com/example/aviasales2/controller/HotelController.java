@@ -52,12 +52,12 @@ public class HotelController {
         return mapper.map(hotelService.findByHotelName(hotelName), HotelDTO.class);
     }
 
-    @PostMapping
-    public List<HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter) {
-        return hotelService.findAll(hotelFilter).stream()
-                .map(entity -> mapper.map(entity, HotelDTO.class))
-                .collect(Collectors.toList());
-    }
+//    @PostMapping
+//    public List<HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter) {
+//        return hotelService.findAll(hotelFilter).stream()
+//                .map(entity -> mapper.map(entity, HotelDTO.class))
+//                .collect(Collectors.toList());
+//    }
 
     @PostMapping("/save")
     public Hotel saveHotel(@RequestBody Hotel hotel) {
