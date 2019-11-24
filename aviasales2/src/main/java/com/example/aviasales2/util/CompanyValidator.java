@@ -21,15 +21,28 @@ public class CompanyValidator implements Validator {
     public void validate(Object target, Errors errors) {
         Company company = (Company) target;
 
-        if(companyRepository.findByCompanyName(company.getCompanyName()) != null)
-        {
-            errors.rejectValue("companyName", "","A company with the same name already exists.");
+        if (companyRepository.findByCompanyName(company.getCompanyName()) != null) {
+            errors.rejectValue("companyName", "", "A company with the same name already exists.");
         }
 
-            if (!company.getRating().matches("[\\d]") || Integer.parseInt(company.getRating()) < 0 || Integer.parseInt(company.getRating()) > 5) {
-                errors.rejectValue("rating", "", "Bad rating number(0-5).");
-            }
+        if (company.getRating() != null && !company.getRating().matches("[0-5]")) {
+            errors.rejectValue("rating", "", "Bad rating number(0-5).");
+        }
+    }
 
+    public void updateValidate(Object target, Errors errors) {
+        Company company = (Company) target;
+        Company company2 = companyRepository.findByCompanyId(company.getCompanyId());
+        if (companyRepository.findByCompanyName(company.getCompanyName()) != null && !company.getCompanyName().equals(company2.getCompanyName())) {
+            errors.rejectValue("companyName", "", "A company with the same name already exists.");
+        }
+
+        if (company.getRating() != null && !company.getRating().matches("[0-5]")) {
+            errors.rejectValue("rating", "", "Bad rating number(0-5).");
+        }
+        if(company.getRating() == null){
+            company.setRating(company2.getRating());
+        }
 
     }
 }

@@ -60,26 +60,26 @@ public class CompanyController {
 
 
     @PostMapping
-    public String saveCompany(@RequestBody @Valid Company company, BindingResult result){
+    public Company saveCompany(@RequestBody @Valid Company company, BindingResult result){
         companyValidator.validate(company, result);
         if(result.hasErrors()) {
-            return String.valueOf(result.getFieldErrors());
+            return null;
         }
-        companyService.save(company);
-        return "saved!";}
+
+        return companyService.save(company);}
 
 
     @PutMapping
-    public String updateCompany(@RequestBody @Valid Company updatedCompany, BindingResult result){
+    public Company updateCompany(@RequestBody @Valid Company updatedCompany, BindingResult result){
+        if (companyService.findByCompanyId(updatedCompany.getCompanyId()) != null) {
+            companyValidator.updateValidate(updatedCompany, result);
+            if (result.hasErrors()) {
+                return null;
+            }
 
-        if(updatedCompany.getCompanyId() != null){
-        companyValidator.validate(updatedCompany, result);
-        if (result.hasErrors()){
-            return String.valueOf(result.getFieldErrors());
+            return companyService.save(updatedCompany);
         }
-        companyService.save(updatedCompany);
-        return "updated";}
-        return "no such company";
+     return null;
     }
 
     @DeleteMapping("/{id}")

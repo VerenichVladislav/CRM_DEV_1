@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Set;
 
@@ -19,6 +20,7 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long companyId;
     @NotNull(message = "company name is null")
+    @Size(max = 25)
     private String companyName;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -37,16 +39,20 @@ public class Company {
 
     public Company(){}
 
-    public String getCompanyName() {
-        return companyName;
-    }
-
     public Long getCompanyId() {
         return companyId;
     }
 
     public void setCompanyId(Long companyId) {
         this.companyId = companyId;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public List<Comments> getComments() {
@@ -87,11 +93,5 @@ public class Company {
 
     public void setTransportId(Set<Transport> transportId) {
         this.transportId = transportId;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-
-
     }
 }
