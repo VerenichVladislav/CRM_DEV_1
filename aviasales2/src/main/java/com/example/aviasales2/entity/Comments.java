@@ -18,8 +18,6 @@ public class Comments {
 
     private String text;
 
-    private String type;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tour_id")
     private Tour tour;

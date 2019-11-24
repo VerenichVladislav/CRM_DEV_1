@@ -58,23 +58,23 @@ public class CityController {
     }
 
     @PostMapping
-    public City  save(@RequestBody @Valid City city, BindingResult result){
+    public City  save(@RequestBody @Valid CityDTO city, BindingResult result){
         cityValidator.validate(city, result);
         if(result.hasErrors()){
             return null;
         }
 
-        return cityService.save(city);
+        return cityService.save(mapper.map(city, City.class));
     }
 
     @PutMapping
-    public City update(@RequestBody @Valid City newCity, BindingResult result){
+    public City update(@RequestBody @Valid CityDTO newCity, BindingResult result){
         if(cityService.findByCityId(newCity.getCityId()) != null){
             cityValidator.updateValidate(newCity, result);
             if(result.hasErrors()){
                 return null;
             }
-            return cityService.update(newCity);
+            return cityService.update(mapper.map(newCity, City.class));
         }
         return null;
 

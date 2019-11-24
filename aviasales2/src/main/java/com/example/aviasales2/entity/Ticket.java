@@ -3,6 +3,9 @@ package com.example.aviasales2.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -18,10 +21,15 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ticketId;
+    @NotBlank(message = "Name must not null")
+    @Size(max = 20)
     private String name;
+    @Size(max = 20)
+    @NotBlank(message = "Last name must not null")
     private String lastName;
     private Timestamp date;
     private long tripId;
+    //@Pattern(regexp = "[\\-?\\d+(\\.\\d{0,})?]", message ="Bad digit view" )
     private BigDecimal price;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

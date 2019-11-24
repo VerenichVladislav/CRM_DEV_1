@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Set;
 
@@ -17,13 +19,23 @@ public class Hotel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long hotelId;
 
+    @NotBlank(message = "The country must be not null")
+    @Size(max = 20)
     private String country;
+    @NotBlank(message = "The address must be not null")
+    @Size(max = 40)
     private String address;
-    private Short rating;
+    private short rating;
+    @Size(max = 20)
+    @NotBlank(message = "The hotel name must be not null")
     private String hotelName;
+    @NotBlank(message = "The city name mast be not null")
+    @Size(max = 20)
+    private String city;
     private String phoneNumber;
     private String description;
     private String image;
+
 
     @ElementCollection(targetClass = RoomType.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "room_type", joinColumns = @JoinColumn(name = "hotel_id"))
@@ -49,14 +61,9 @@ public class Hotel {
     private List<Comments> comments;
 
 
-    private String city;
 
-    public long getHotelId() {
-        return this.hotelId;
-    }
 
     private enum HotelConveniences {
-
     }
 
     public Hotel() {
