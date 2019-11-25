@@ -2,6 +2,7 @@ package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.transferObjects.CompanyDTO;
+import com.example.aviasales2.exception.GlobalBadRequestException;
 import com.example.aviasales2.service.CompanyService;
 import com.example.aviasales2.util.CompanyValidator;
 import org.dozer.DozerBeanMapper;
@@ -60,13 +61,15 @@ public class CompanyController {
 
 
     @PostMapping
-    public Company saveCompany(@RequestBody @Valid CompanyDTO company, BindingResult result){
+    public ResponseEntity<Object> saveCompany(@RequestBody @Valid Company company, BindingResult result) throws GlobalBadRequestException {
         companyValidator.validate(company, result);
         if(result.hasErrors()) {
-            return null;
+            throw new GlobalBadRequestException(result);
         }
+        companyService.save(company);
+        return new ResponseEntity<>(HttpStatus.OK);
 
-        return companyService.save(mapper.map(company, Company.class));}
+    }
 
 
     @PutMapping

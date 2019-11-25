@@ -7,6 +7,11 @@ import java.io.IOException;
 
 public class CORSFilter implements Filter {
     @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
+
+    @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         request.setAttribute("Accept", "application/json;charset=UTF-8");
@@ -20,5 +25,10 @@ public class CORSFilter implements Filter {
                 "Content-Type, Accept, Accept-Encoding, Accept-Language, Host," +
                 "Referer, Connection, User-Agent, Authorization, sw-useragent, sw-version");
         chain.doFilter(req, resp);
+    }
+
+    @Override
+    public void destroy() {
+
     }
 }
