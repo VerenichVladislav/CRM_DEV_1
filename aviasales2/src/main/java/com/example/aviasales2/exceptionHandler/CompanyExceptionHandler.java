@@ -2,6 +2,7 @@ package com.example.aviasales2.exceptionHandler;
 
 import com.example.aviasales2.exception.GlobalBadRequestException;
 
+import com.example.aviasales2.exception.NoSuchEntityException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -30,6 +31,16 @@ class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         body.put("errors", errors);
         body.put("status", HttpStatus.BAD_REQUEST.value());
 
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NoSuchEntityException.class)
+    protected ResponseEntity<Object> handleNoSuchEntityException(
+            NoSuchEntityException ex) {
+        Map<String, Object> body = new HashMap<>();
+        String error = "No such " + ex.getAClass().getSimpleName();
+        body.put("errors", error);
+        body.put("status", HttpStatus.BAD_REQUEST.value());
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 }

@@ -47,7 +47,7 @@ public class HotelServiceImpl implements HotelService {
 
         BooleanBuilder booleanBuilder = new BooleanBuilder(qHotel.isNotNull());
         if (hotelFilter.getCity() != null) {
-            booleanBuilder.and(qHotel.city.eq(hotelFilter.getCity()));
+            booleanBuilder.and(qHotel.city.cityName.eq(hotelFilter.getCity()));
         }
         if (hotelFilter.getRating() != null) {
             booleanBuilder.and(qHotel.rating.eq(hotelFilter.getRating()));

@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class HotelFilter {
-    private City city;
+    private String city;
     private Short rating;
 }

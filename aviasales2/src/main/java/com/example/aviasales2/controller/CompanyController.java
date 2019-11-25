@@ -3,6 +3,7 @@ package com.example.aviasales2.controller;
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.transferObjects.CompanyDTO;
 import com.example.aviasales2.exception.GlobalBadRequestException;
+import com.example.aviasales2.exception.NoSuchEntityException;
 import com.example.aviasales2.service.CompanyService;
 import com.example.aviasales2.util.CompanyValidator;
 import org.dozer.DozerBeanMapper;
@@ -40,10 +41,6 @@ public class CompanyController {
 
     }
 
-    @GetMapping("/badRequest")
-    public String badRequest(){
-        return "Something goes wrong!";
-    }
 
     @GetMapping("/")
     public List<Company> getCompanyByNameAndRating(
@@ -61,39 +58,37 @@ public class CompanyController {
 
 
     @PostMapping
-    public ResponseEntity<Object> saveCompany(@RequestBody @Valid Company company, BindingResult result) throws GlobalBadRequestException {
+    public ResponseEntity<Company> saveCompany(@RequestBody @Valid CompanyDTO company, BindingResult result) throws GlobalBadRequestException {
         companyValidator.validate(company, result);
         if(result.hasErrors()) {
             throw new GlobalBadRequestException(result);
         }
-        companyService.save(company);
-        return new ResponseEntity<>(HttpStatus.OK);
-
+        Company body = companyService.save(mapper.map(company, Company.class));
+        return new ResponseEntity<>(body, HttpStatus.OK);
     }
 
 
     @PutMapping
-    public Company updateCompany(@RequestBody @Valid CompanyDTO updatedCompany, BindingResult result){
+    public ResponseEntity<Company> updateCompany(@RequestBody @Valid CompanyDTO updatedCompany, BindingResult result){
         if (companyService.findByCompanyId(updatedCompany.getCompanyId()) != null) {
             companyValidator.updateValidate(updatedCompany, result);
             if (result.hasErrors()) {
-                return null;
+                throw new GlobalBadRequestException(result);
             }
-
-            return companyService.save(mapper.map(updatedCompany, Company.class));
+            Company body = companyService.save(mapper.map(updatedCompany, Company.class));
+            return new ResponseEntity<>(body, HttpStatus.OK);
         }
-     return null;
+        throw new NoSuchEntityException(Company.class);
     }
 
     @DeleteMapping("/{id}")
-    public String  deleteCompany(@PathVariable("id") long id){
+    public void  deleteCompany(@PathVariable("id") long id){
         Company company = companyService.findByCompanyId(id);
-        if (company!=null){
+        if (company != null){
             companyService.delete(id);
-            return "deleted";
         }
         else {
-            return "Company does not exist!";
+            throw new NoSuchEntityException(Company.class);
         }
     }
 }

@@ -26,7 +26,7 @@ public class CompanyValidator implements Validator {
         CompanyDTO company = (CompanyDTO) target;
 
         if (companyRepository.findByCompanyName(company.getCompanyName()) != null) {
-            errors.rejectValue("companyName", "", "A company with the same name already exists.");
+            errors.rejectValue("companyName", "", "A company with the same name already exists");
         }
     }
 
@@ -34,7 +34,7 @@ public class CompanyValidator implements Validator {
         CompanyDTO company = (CompanyDTO) target;
         CompanyDTO company2 = mapper.map(companyRepository.findByCompanyId(company.getCompanyId()), CompanyDTO.class);
         if (companyRepository.findByCompanyName(company.getCompanyName()) != null && !company.getCompanyName().equals(company2.getCompanyName())) {
-            errors.rejectValue("companyName", "", "A company with the same name already exists.");
+            errors.rejectValue("companyName", "", "A company with the same name already exists");
         }
         if(company.getRating() == null){
             company.setRating(company2.getRating());

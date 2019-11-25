@@ -3,10 +3,14 @@ package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.City;
 import com.example.aviasales2.entity.transferObjects.CityDTO;
+import com.example.aviasales2.exception.GlobalBadRequestException;
+import com.example.aviasales2.exception.NoSuchEntityException;
 import com.example.aviasales2.service.ICityService;
 import com.example.aviasales2.util.CityValidator;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,25 +62,26 @@ public class CityController {
     }
 
     @PostMapping
-    public City  save(@RequestBody @Valid CityDTO city, BindingResult result){
+    public ResponseEntity<City> save(@RequestBody @Valid CityDTO city, BindingResult result){
         cityValidator.validate(city, result);
         if(result.hasErrors()){
-            return null;
+            throw new GlobalBadRequestException(result);
         }
-
-        return cityService.save(mapper.map(city, City.class));
+        City body = cityService.save(mapper.map(city, City.class));
+        return new ResponseEntity<>(body, HttpStatus.OK);
     }
 
     @PutMapping
-    public City update(@RequestBody @Valid CityDTO newCity, BindingResult result){
+    public ResponseEntity<City> update(@RequestBody @Valid CityDTO newCity, BindingResult result){
         if(cityService.findByCityId(newCity.getCityId()) != null){
             cityValidator.updateValidate(newCity, result);
             if(result.hasErrors()){
                 return null;
             }
-            return cityService.update(mapper.map(newCity, City.class));
+            City body = cityService.update(mapper.map(newCity, City.class));
+            return new ResponseEntity<>(body, HttpStatus.OK);
         }
-        return null;
+        throw new NoSuchEntityException(City.class);
 
     }
 }
