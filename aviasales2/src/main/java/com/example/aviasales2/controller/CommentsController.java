@@ -4,10 +4,7 @@ import com.example.aviasales2.entity.Comments;
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.Hotel;
 import com.example.aviasales2.entity.Tour;
-import com.example.aviasales2.entity.transferObjects.CityDTO;
 import com.example.aviasales2.entity.transferObjects.CommentsDTO;
-import com.example.aviasales2.repository.CommentsRepository;
-import com.example.aviasales2.service.CommentsService;
 import com.example.aviasales2.service.CompanyService;
 import com.example.aviasales2.service.HotelService;
 import com.example.aviasales2.service.TourService;
@@ -18,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 10000)
 @RestController
 @RequestMapping("/comments")
