@@ -1,5 +1,6 @@
 package com.example.aviasales2.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
 
