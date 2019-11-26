@@ -61,9 +61,12 @@ public class Hotel {
     @JoinColumn(name="city_id")
     private City city;
 
-    private enum HotelConveniences {
-
-    }
+    @ElementCollection(targetClass = HotelConvenience.class)
+    @CollectionTable(name = "hotel_conveniences",
+            joinColumns = @JoinColumn(name = "hotel_id"))
+    @Enumerated(EnumType.STRING)
+    @Column(name = "convenience_id")
+    private List<HotelConvenience> hotelConveniences;
 
     public Hotel() {
     }

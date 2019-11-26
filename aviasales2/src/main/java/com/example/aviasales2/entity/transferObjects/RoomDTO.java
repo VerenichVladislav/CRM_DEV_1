@@ -17,6 +17,7 @@ public class RoomDTO {
     private long hotel;
     private double description;
     private String image;
+    private String type;
 
     public RoomDTO() {
     }
