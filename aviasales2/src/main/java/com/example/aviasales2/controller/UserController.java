@@ -9,9 +9,11 @@ import com.example.aviasales2.service.UserService;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,10 +37,12 @@ public class UserController {
             .collect(Collectors.toList());}
 
     @PostMapping
-    public User savePerson(@RequestBody User user) {
+    public UserDTO savePerson(@RequestBody @Valid UserDTO userDTO, BindingResult result) {
+        if(result.hasErrors())
+        {return null;}
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        user.setHashPass(bCryptPasswordEncoder.encode(user.getHashPass()));
-        return userService.save(user);
+        userDTO.setHashPass(bCryptPasswordEncoder.encode(userDTO.getHashPass()));
+        return mapper.map(userService.save(mapper.map(userDTO, User.class)), UserDTO.class);
     }
 
     @GetMapping("/{id}")
@@ -81,11 +85,11 @@ public class UserController {
         userService.deleteById(id);
     }
 
-    @PostMapping("/city/{city_f_id}/{city_d_id}/transport/{tr_id}/saveTrip")
-    public void tripSave(@PathVariable("city_f_id") long cityFromId,
-                         @PathVariable("city_d_id") long cityDestId,
-                         @PathVariable("tr_id") long transportId,
-                         @RequestBody Trip trip) {
-        tripService.save(cityFromId, cityDestId, transportId, trip);
-    }
+//    @PostMapping("/city/{city_f_id}/{city_d_id}/transport/{tr_id}/saveTrip")
+//    public void tripSave(@PathVariable("city_f_id") long cityFromId,
+//                         @PathVariable("city_d_id") long cityDestId,
+//                         @PathVariable("tr_id") long transportId,
+//                         @RequestBody Trip trip) {
+//        tripService.save(cityFromId, cityDestId, transportId, trip);
+//    }
 }

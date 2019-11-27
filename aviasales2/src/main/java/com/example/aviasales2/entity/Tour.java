@@ -44,6 +44,7 @@ public class Tour {
 
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "city_id")
     private City cityId;
 
     @OneToMany(mappedBy = "tour", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -53,8 +54,13 @@ public class Tour {
     @JoinColumn(name = "company_id")
     Company company;
 
+    public Hotel getHotel() {
+        return hotel;
+    }
 
-//    enum status{
+
+
+    //    enum status{
 //        ONLINE,
 //        OFFLINE
 //    }

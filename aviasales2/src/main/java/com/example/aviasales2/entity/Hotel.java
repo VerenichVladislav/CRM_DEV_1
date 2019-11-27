@@ -69,4 +69,5 @@ public class Hotel {
     public Hotel() {
     }
 
+
 }

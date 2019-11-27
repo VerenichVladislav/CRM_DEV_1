@@ -55,13 +55,12 @@ public class HotelController {
     }
 
     @PostMapping("/save")
-    public String saveHotel(@RequestBody @Valid HotelDTO hotel, BindingResult result) {
+    public Hotel saveHotel(@RequestBody @Valid HotelDTO hotel, BindingResult result) {
         hotelValidator.validate(hotel, result);
         if (result.hasErrors()){
-            return String.valueOf(result.getFieldErrors());
+            return null;
         }
-        hotelService.save(mapper.map(hotel,Hotel.class));
-        return "saved";
+        return hotelService.save(mapper.map(hotel,Hotel.class));
     }
 
     @Transactional

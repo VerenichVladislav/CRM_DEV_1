@@ -36,7 +36,7 @@ public class City {
     @OneToMany(mappedBy = "cityDest", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     private Set<Trip> trip_dest;
 
-    @OneToMany(mappedBy = "tourId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cityId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Tour> tours;
 
 
