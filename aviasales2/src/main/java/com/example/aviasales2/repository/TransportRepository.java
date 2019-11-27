@@ -12,4 +12,5 @@ public interface TransportRepository extends CrudRepository<Transport,Long> {
     Transport findByTransportId(Long id);
     List<Transport> findAll();
     Transport deleteAllByName(String name);
+    Transport findByName(String name);
 }
