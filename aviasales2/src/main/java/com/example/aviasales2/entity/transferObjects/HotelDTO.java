@@ -12,11 +12,11 @@ import java.util.List;
 @Setter
 public class HotelDTO {
     private Long hotelId;
-    @Pattern(regexp = "^[а-яА-ЯёЁa-zA-Z\\s]+$", message = "{invalid.country}")
+    @Pattern(regexp = "^[а-яА-ЯёЁa-zA-Z\\s]+$", message = "invalid.country")
     @NotBlank(message = "Bad country name")
     @Size(max = 20)
     private String country;
-    @Pattern(regexp = "^[а-яА-ЯёЁa-zA-Z0-9\\s]+$", message = "{invalid.address}")
+    @Pattern(regexp = "^[а-яА-ЯёЁa-zA-Z0-9\\s]+$", message = "invalid.address")
     @NotBlank(message = "Bad address name")
     @Size(max = 40)
     private String address;

@@ -75,8 +75,8 @@ public class HotelController {
         Room room = roomService.findByRoomId(roomId);
         if (hotel != null) {
             Reservation reservation = new Reservation();
-            reservation.setСheckIn(checkIn);
-            reservation.setСheckOut(checkOut);
+            reservation.setCheckIn(checkIn);
+            reservation.setCheckOut(checkOut);
             reservation.setRoomId(roomId);
             reservation.setHotel(hotel);
             //reservation.setUserId(userId);
@@ -87,7 +87,7 @@ public class HotelController {
             //  walletService.pay(userId,room.getDailyCost());
 
             return ResponseEntity.status(HttpStatus.OK)
-                    .body("You reserv hotel ");
+                    .body("You reserved hotel ");
         }
         return ResponseEntity.status(HttpStatus.OK)
                 .body("Error");

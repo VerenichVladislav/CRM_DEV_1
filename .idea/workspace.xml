@@ -1,65 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6979cffe-8677-4ecb-b115-d7a0d587da14" name="Default" comment="">
+    <list default="true" id="6979cffe-8677-4ecb-b115-d7a0d587da14" name="Default" comment="New entity Room. Hotel changed.">
+      <change afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/RoomController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/HotelConvenience.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/RoomConvenience.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/aviasales2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/aviasales2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/HotelFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/HotelFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/HotelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TourController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TourController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TransportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TransportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TripController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TripController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/City.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Tour.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Tour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Transport.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Transport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Trip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/TourDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/TourDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/TransportDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/TransportDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/TripDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/TripDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/TransportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/TransportRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/TourService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/TourService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/TransportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/TransportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/TripService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/TripService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/TourServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/TourServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/TransportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/TransportServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/TripServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/TripServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/CityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/CityController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/CommentsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/CommentsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/CompanyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/CompanyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/HotelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/HotelController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/TransportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/TransportController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/TripController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/TripController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/City$CityBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/City.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/City.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Comments.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Comments.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Company.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Hotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Hotel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Ticket$TicketBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Ticket$TicketBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Ticket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Transport.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Transport.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Trip.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Entity/Trip.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Repository/CommentsRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Repository/CommentsRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Repository/HotelRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Repository/HotelRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Repository/TransportRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Repository/TransportRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/CommentsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/CommentsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/HotelService.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/HotelService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/TransportService.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/TransportService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/TripService.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/TripService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/CommentsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/CommentsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/HotelServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/HotelServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/TourServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/TourServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/TransportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/TransportServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/TripServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/Service/impl/TripServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/controller/TourController.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/controller/TourController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/entity/Tour.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/entity/Tour.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/service/TourService.class" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/classes/com/example/aviasales2/service/TourService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/RoomType.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/RoomType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/RoomDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/RoomDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/HotelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/HotelRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/HotelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java" afterDir="false" />
     </list>
     <list id="9698d249-466d-426b-88a1-62a4cc9dc9fb" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/aviasales2/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +52,102 @@
       <node key="7f07d801-a2e2-43f1-afb1-02406b5e910f" />
     </checked>
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Hotel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/RoomController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/HotelController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="90" column="39" selection-start-line="90" selection-start-column="39" selection-end-line="90" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/HotelService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/HotelFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="969">
+              <caret line="77" column="1" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -99,6 +159,28 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/HotelFilter.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/RoomDTO.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Hotel.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/HotelConvenience.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Reservation.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Room.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/RoomConvenience.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/RoomType.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/HotelRepository.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/HotelService.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/RoomController.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/HotelController.java" />
+      </list>
+    </option>
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -114,7 +196,91 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="aviasales2" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="aviasales2" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="825" />
+    <option name="width" value="1100" />
+    <option name="height" value="1040" />
+  </component>
   <component name="ProjectId" id="1TZ6UbUKdkuETNETDScRHRuwUdB" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
@@ -126,7 +292,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../spring-boot-websocket-chat-demo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/aviasales2/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -226,10 +392,7 @@
       <workItem from="1574245214219" duration="381000" />
       <workItem from="1574245659281" duration="307000" />
       <workItem from="1574534144560" duration="10624000" />
-      <workItem from="1574718431449" duration="5170000" />
-      <workItem from="1574766305157" duration="1392000" />
-      <workItem from="1574854926957" duration="5244000" />
-      <workItem from="1574864035216" duration="4588000" />
+      <workItem from="1574802394749" duration="1198000" />
     </task>
     <task id="LOCAL-00001" summary="Added city-tour foreign key. Added encapsulation.">
       <created>1571937388779</created>
@@ -269,6 +432,47 @@
     <option name="localTasksCounter" value="6" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1198000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="Image Layers" />
+      <window_info id="Capture Tool" />
+      <window_info id="UI Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Web" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Spring" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.3286119" />
+      <window_info anchor="bottom" id="Java Enterprise" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39943343" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Maven" weight="0.3295302" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Bean Validation" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -278,6 +482,12 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -318,5 +528,135 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/RoomDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/HotelConvenience.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Reservation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Room.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/RoomConvenience.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="80" selection-start-line="3" selection-start-column="80" selection-end-line="3" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/RoomType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/HotelRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Hotel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="77" column="1" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/HotelFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/target/generated-sources/java/com/example/aviasales2/entity/QHotel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-463">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/HotelService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/RoomController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/HotelController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="90" column="39" selection-start-line="90" selection-start-column="39" selection-end-line="90" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
   </component>
 </project>

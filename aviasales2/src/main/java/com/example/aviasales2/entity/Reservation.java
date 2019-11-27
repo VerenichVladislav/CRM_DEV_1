@@ -18,8 +18,8 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long reservationId;
     private Long roomId;
-    private Timestamp сheckIn;
-    private Timestamp сheckOut;
+    private Timestamp checkIn;
+    private Timestamp checkOut;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
