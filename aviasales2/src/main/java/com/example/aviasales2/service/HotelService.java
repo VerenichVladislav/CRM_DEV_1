@@ -13,5 +13,6 @@ public interface HotelService {
     Hotel update(Hotel hotel);
     List<Hotel> findAll(HotelFilter hotelFilter);
     Hotel findByHotelId(long id);
+    String findImageByHotelId(long id);
     Hotel findByHotelName(String hotelName);
 }

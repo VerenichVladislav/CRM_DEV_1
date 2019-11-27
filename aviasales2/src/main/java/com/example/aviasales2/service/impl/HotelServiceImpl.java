@@ -61,6 +61,12 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
+    public String findImageByHotelId(long id) {
+        Hotel hotel = hotelRepository.findByHotelId(id);
+        return hotel.getImage();
+    }
+
+    @Override
     public Hotel findByHotelName(String hotelName) {
         return hotelRepository.findByHotelName(hotelName);
     }

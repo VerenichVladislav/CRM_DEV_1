@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface HotelRepository extends CrudRepository<Hotel, Long>, QuerydslPredicateExecutor<Hotel> {
     Hotel findByHotelName(String hotelName);
     Hotel findByHotelId(long id);
+    String findImageByHotelId(long id);
 }

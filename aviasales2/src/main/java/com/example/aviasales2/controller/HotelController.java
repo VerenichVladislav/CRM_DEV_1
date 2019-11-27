@@ -47,6 +47,11 @@ public class HotelController {
         return mapper.map(hotelService.findByHotelName(hotelName), HotelDTO.class);
     }
 
+    @GetMapping("/image/{hotelId}")
+    public String getHotelImage(@PathVariable long hotelId) {
+        return hotelService.findImageByHotelId(hotelId);
+    }
+
     @PostMapping
     public List<HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter) {
         return hotelService.findAll(hotelFilter).stream()
