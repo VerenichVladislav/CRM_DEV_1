@@ -15,4 +15,5 @@ public interface HotelService {
     List<Hotel> findAll(HotelFilter hotelFilter);
     Hotel findByHotelId(long id);
     Hotel findByHotelName(String hotelName);
+    List<Hotel> findHotelsByHotelConveniences(List<String> hotelConveniences, HotelFilter hotelFilter);
 }

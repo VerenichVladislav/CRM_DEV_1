@@ -9,7 +9,6 @@ import java.sql.Timestamp;
 @Setter
 public class RoomDTO {
     private Long roomId;
-    private int roomCapacity;
     private Timestamp checkInDate;
     private Timestamp checkOutDate;
     private Double dailyCost;

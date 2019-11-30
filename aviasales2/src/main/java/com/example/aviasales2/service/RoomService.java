@@ -15,5 +15,5 @@ public interface RoomService {
     List<Room> findRoomsByPriceAscending();
     List<Room> findRoomsByPriceDescending();
     List<Room> findRoomsByPriceInRange(double minPrice, double maxPrice);
-    //List<Room> findRoomsByRoomConveniences(List<String> roomConvenience);
+    List<Room> findRoomsByRoomConveniences(List<String> roomConvenience);
 }

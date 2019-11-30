@@ -21,7 +21,6 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long roomId;
 
-    private int roomCapacity;
     private Timestamp checkInDate;
     private Timestamp checkOutDate;
     private Double dailyCost;

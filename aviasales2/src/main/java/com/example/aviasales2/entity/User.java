@@ -1,8 +1,10 @@
 package com.example.aviasales2.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -42,8 +44,8 @@ public class User {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name = "user_wallet",
-            joinColumns = @JoinColumn(name="user_id"),
-            inverseJoinColumns = @JoinColumn(name="wallet_id"))
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "wallet_id"))
     private Wallet wallet = new Wallet();
 
     @OneToMany(mappedBy = "buyer",
@@ -51,9 +53,9 @@ public class User {
     private List<Ticket> tickets = new ArrayList<>();
 
     @ManyToMany
-    @JoinTable (name="history",
-            joinColumns=@JoinColumn (name="user_id"),
-            inverseJoinColumns=@JoinColumn(name="tour_id"))
+    @JoinTable(name = "history",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "tour_id"))
     private List<Tour> tours = new ArrayList<>();
 
     @OneToMany(mappedBy = "buyer",
@@ -63,10 +65,10 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<Comments> comments;
 
-    public List<String> getRoleList(){
-        if(this.role.length() > 0){
+    public List<String> getRoleList() {
+        if (this.role.length() > 0) {
             return Arrays.asList(this.role.split(","));
         }
-        return  new ArrayList<>();
+        return new ArrayList<>();
     }
 }
