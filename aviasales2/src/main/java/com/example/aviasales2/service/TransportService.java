@@ -10,6 +10,6 @@ public interface TransportService {
     Transport save(Transport transport);
     Optional<Transport> findById(Long id);
     List<Transport> findAll();
-    void update(Transport transport);
+    Transport update(TransportDTO transport);
     void deleteById(Long id);
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.prefs.AbstractPreferences;
 
 
@@ -20,20 +21,23 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long roomId;
 
-    private int roomCapacity;
     private Timestamp checkInDate;
     private Timestamp checkOutDate;
-    private BigDecimal dailyCost;
+    private Double dailyCost;
     private String status;
-    private String type = RoomType.ONE_SINGLE_BED.name();
+
+    @Column(name = "type")
+    @Enumerated(EnumType.STRING)
+    private RoomType type;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
-    private enum RoomConveniences {
-
-    }
-
-
+    @ElementCollection(targetClass = RoomConvenience.class)
+    @CollectionTable(name = "room_conveniences",
+            joinColumns = @JoinColumn(name = "room_id"))
+    @Enumerated(EnumType.STRING)
+    @Column(name = "convenience_id")
+    private List<RoomConvenience> roomConvenience;
 }

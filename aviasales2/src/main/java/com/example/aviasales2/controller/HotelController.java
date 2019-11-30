@@ -32,9 +32,9 @@ public class HotelController {
     @Autowired
     private DozerBeanMapper mapper;
     @Autowired
-    private RoomService roomService;
+    private WalletService walletService;
     @Autowired
-    private HotelValidator hotelValidator;
+    private RoomService roomService;
 
 
     @GetMapping("/{id}")
@@ -52,21 +52,27 @@ public class HotelController {
         return hotelService.findImageByHotelId(hotelId);
     }
 
+    @GetMapping
+    public List<HotelDTO> findAll() {
+        return hotelService.findAll().stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
+    }
+
     @PostMapping
-    public List<HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter) {
+    public List<HotelDTO> findAll(@RequestBody HotelFilter hotelFilter) {
         return hotelService.findAll(hotelFilter).stream()
                 .map(entity -> mapper.map(entity, HotelDTO.class))
                 .collect(Collectors.toList());
     }
 
+    @PostMapping("/byHotelConveniences")
+    public List<HotelDTO> findRoomsByRoomConveniences(@RequestParam List<String> hotelConveniences, HotelFilter hotelFilter){
+        List<Hotel> sortedHotels = hotelService.findHotelsByHotelConveniences(hotelConveniences, hotelFilter);
+        return sortedHotels.stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
+    }
+
     @PostMapping("/save")
-    public String saveHotel(@RequestBody @Valid HotelDTO hotel, BindingResult result) {
-        hotelValidator.validate(hotel, result);
-        if (result.hasErrors()){
-            return String.valueOf(result.getFieldErrors());
-        }
-        hotelService.save(mapper.map(hotel,Hotel.class));
-        return "saved";
+    public Hotel saveHotel(@RequestBody Hotel hotel) {
+        return hotelService.save(hotel);
     }
 
     @Transactional
@@ -81,8 +87,8 @@ public class HotelController {
         Room room = roomService.findByRoomId(roomId);
         if (hotel != null) {
             Reservation reservation = new Reservation();
-            reservation.setСheckIn(checkIn);
-            reservation.setСheckOut(checkOut);
+            reservation.setCheckIn(checkIn);
+            reservation.setCheckOut(checkOut);
             reservation.setRoomId(roomId);
             reservation.setHotel(hotel);
             //reservation.setUserId(userId);
@@ -93,7 +99,7 @@ public class HotelController {
             //  walletService.pay(userId,room.getDailyCost());
 
             return ResponseEntity.status(HttpStatus.OK)
-                    .body("You reserv hotel ");
+                    .body("You reserved hotel ");
         }
         return ResponseEntity.status(HttpStatus.OK)
                 .body("Error");

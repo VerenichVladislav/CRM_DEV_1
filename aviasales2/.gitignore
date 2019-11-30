@@ -1,5 +1,5 @@
 *.iml
-*.application.properties
+*.properties
 .DS_Store/
 .idea/
 out/

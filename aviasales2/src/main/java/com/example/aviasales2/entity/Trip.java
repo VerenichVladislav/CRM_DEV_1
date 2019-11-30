@@ -36,4 +36,20 @@ public class Trip {
     private Transport transport;
 
     public Trip (){}
+
+    public City getCityFrom() {
+        return cityFrom;
+    }
+
+    public void setCityFrom(City cityFrom) {
+        this.cityFrom = cityFrom;
+    }
+
+    public City getCityDest() {
+        return cityDest;
+    }
+
+    public void setCityDest(City cityDest) {
+        this.cityDest = cityDest;
+    }
 }

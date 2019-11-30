@@ -11,8 +11,10 @@ public interface HotelService {
     void delete(Hotel hotel);
     void deleteById(long id);
     Hotel update(Hotel hotel);
+    List<Hotel> findAll();
     List<Hotel> findAll(HotelFilter hotelFilter);
     Hotel findByHotelId(long id);
     String findImageByHotelId(long id);
     Hotel findByHotelName(String hotelName);
+    List<Hotel> findHotelsByHotelConveniences(List<String> hotelConveniences, HotelFilter hotelFilter);
 }
