@@ -1,11 +1,13 @@
 package com.example.aviasales2.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -15,9 +17,8 @@ public class Comments {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long commentId;
-
     private String text;
-
+    private Timestamp date = new Timestamp(System.currentTimeMillis());
     private byte rate;
 
     @ManyToOne(fetch = FetchType.LAZY)
