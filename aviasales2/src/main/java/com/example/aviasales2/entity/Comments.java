@@ -13,10 +13,12 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class Comments {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long commentId;
 
     private String text;
+
+    private byte rate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
