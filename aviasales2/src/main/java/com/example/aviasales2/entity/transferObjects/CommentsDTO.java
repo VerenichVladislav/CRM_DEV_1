@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class CommentsDTO {
     private Long commentId;
-
+    private byte rate;
     private String text;
     private String type;
     private String user;
