@@ -3,11 +3,14 @@ package com.example.aviasales2.entity.transferObjects;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Timestamp;
+
 @Getter
 @Setter
 public class CommentsDTO {
     private Long commentId;
-
+    private byte rate;
+    private Timestamp date;
     private String text;
     private String type;
     private String user;
