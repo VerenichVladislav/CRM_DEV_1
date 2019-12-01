@@ -2,9 +2,11 @@ package com.example.aviasales2.controller;
 
 
 import com.example.aviasales2.config.filterConfig.HotelFilter;
+import com.example.aviasales2.entity.City;
 import com.example.aviasales2.entity.Hotel;
 import com.example.aviasales2.entity.Reservation;
 import com.example.aviasales2.entity.Room;
+import com.example.aviasales2.entity.transferObjects.CityDTO;
 import com.example.aviasales2.entity.transferObjects.HotelDTO;
 import com.example.aviasales2.service.*;
 import com.example.aviasales2.util.HotelValidator;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,7 +38,10 @@ public class HotelController {
     private RoomService roomService;
     @Autowired
     private HotelValidator hotelValidator;
-
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private ICityService cityService;
 
     @GetMapping("/{id}")
     public HotelDTO getHotelById(@PathVariable("id") long id) {
@@ -80,7 +86,8 @@ public class HotelController {
             reservation.setCheckOut(checkOut);
             reservation.setRoomId(roomId);
             reservation.setHotel(hotel);
-            //reservation.setUserId(userId);
+            reservation.setBuyer(userService.findById(userId));
+            // пожулуйсто не отклбчайте ничего
             List<Reservation> reservations = hotel.getReservations();
             reservations.add(reservation);
             hotel.setReservations(reservations);
@@ -94,7 +101,22 @@ public class HotelController {
                 .body("Error");
 
     }
+    @GetMapping()
+    public List<CityDTO> getCityWithHotels(){
+        List<City> cityList =cityService.findAll();
+        List<City> ListWithHotel = new ArrayList<City>();
 
+        for (City city:
+             cityList) {
+            if(!city.getHotels().isEmpty()){
+                ListWithHotel.add(city);
+            }
+
+        }
+        return ListWithHotel.stream().map(entity -> mapper.map(entity, CityDTO.class))
+                .collect(Collectors.toList());
+
+    }
     @PutMapping()
     public Hotel updateHotel(@RequestBody Hotel hotel) {
         Hotel old = hotelService.findByHotelId(hotel.getHotelId());

@@ -26,6 +26,9 @@ public class CityDTO {
     private Set<TripDTO> trip_dest;
     private Set<TourDTO> tours;
     private Set<HotelDTO> hotels;
+    private String image;
+    private String lat;
+    private String lng;
 
     public CityDTO() {
     }

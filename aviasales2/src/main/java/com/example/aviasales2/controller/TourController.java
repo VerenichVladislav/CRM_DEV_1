@@ -1,5 +1,6 @@
 package com.example.aviasales2.controller;
 
+import com.example.aviasales2.config.filterConfig.TourFilter;
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.Tour;
 import com.example.aviasales2.entity.transferObjects.TourDTO;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 10000)
 @RestController
 @RequestMapping("/tours")
 public class TourController {
@@ -33,7 +35,7 @@ public class TourController {
         return mapper.map(tourService.findByName(name),TourDTO.class);
     }
 
-    @GetMapping
+    @PostMapping
     public List <TourDTO> findAll() {
         return tourService.findAll().stream().map(entity -> mapper.map(entity, TourDTO.class)).collect(Collectors.toList());
     }
