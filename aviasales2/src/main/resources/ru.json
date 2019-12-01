@@ -1,0 +1,13 @@
+{
+  "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
+  "login": "Вход",
+  "signup": "Регистрация",
+  "hotels": "Отели",
+  "trips": "Авиабилеты",
+  "tours": "Туры",
+  "searching": "Найти",
+  "city": "Город",
+  "checkIn": "Дата прибытия",
+  "checkOut": "Дата отправления",
+  "popularDest": "Популярные поездки"
+}

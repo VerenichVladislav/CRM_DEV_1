@@ -64,11 +64,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/tours").permitAll()
                 .antMatchers("/trips").permitAll()
                 .antMatchers("/tickets").permitAll()
+                .antMatchers("/international").permitAll()
+                .antMatchers("/international/*").permitAll()
                 .antMatchers("/users/confirm/*").permitAll()
                 .antMatchers("/users/confirm/").permitAll()
                 .antMatchers(HttpMethod.GET,"/cities/*").permitAll()
                 .antMatchers(HttpMethod.GET,"/users").permitAll()
-                .antMatchers(HttpMethod.GET,"/users/*").permitAll()
+                .antMatchers(HttpMethod.GET,"/international").permitAll()
+                .antMatchers(HttpMethod.GET,"/international/*").permitAll()
                 .antMatchers(HttpMethod.GET).permitAll()
                 .anyRequest().authenticated();
     }
