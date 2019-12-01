@@ -10,10 +10,13 @@ import com.example.aviasales2.repository.ICityRepository;
 import com.example.aviasales2.repository.TransportRepository;
 import com.example.aviasales2.repository.TripRepository;
 import com.example.aviasales2.service.TripService;
+import com.example.aviasales2.util.TripValidator;
 import com.querydsl.core.BooleanBuilder;
 import org.dozer.DozerBeanMapper;
+import org.dozer.loader.xml.DozerResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -34,6 +37,10 @@ public class TripServiceImpl implements TripService {
     private ICityRepository iCityRepository;
     @Autowired
     private TransportRepository transportRepository;
+    @Autowired
+    private DozerBeanMapper mapper;
+    @Autowired
+    private TripValidator tripValidator;
 
     @Override
     public List<Trip> findAll(TripFilter tripFilter) {
@@ -62,30 +69,33 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public String save(long cityFromId, long cityDestId, long transportId, Trip trip) {
-        Optional<City> cityFrom = iCityRepository.findById(cityFromId);
-        Optional<City> cityDest = iCityRepository.findById(cityDestId);
-        Optional<Transport> transport = transportRepository.findById(transportId);
-        if (cityFrom.isPresent()) {
-            trip.setCityFrom(cityFrom.get());
-            //cityFrom.get().getTrip_from().add(trip);
+    public Trip save(long cityFromId, long cityDestId, long transportId, TripDTO tripDTO) {
+        City cityFrom = iCityRepository.findByCityId(cityFromId);
+        City cityDest = iCityRepository.findByCityId(cityDestId);
+        Transport transport = transportRepository.findByTransportId(transportId);
+        Trip trip = mapper.map(tripDTO, Trip.class);
+        if (cityFrom!=null) {
+            trip.setCityFrom(cityFrom);
+            cityFrom.getTrip_from().add(trip);
         } else {
-            return "City_From does not exist!";
+            return null;
         }
-        if (cityDest.isPresent()) {
-            trip.setCityDest(cityDest.get());
-            //cityDest.get().getTrip_dest().add(trip);
+        if (cityDest != null) {
+            trip.setCityDest(cityDest);
+            cityDest.getTrip_dest().add(trip);
         } else {
-            return "City_Dest does not exist!";
+            return null;
         }
-        if (transport.isPresent()) {
-            trip.setTransport(transport.get());
-            transport.get().getTrips().add(trip);
+        if (transport != null) {
+            trip.setTransport(transport);
+            transport.getTrips().add(trip);
         } else {
-            return "Transport does not exist";
+            return null;
         }
-        tripRepository.save(trip);
-        return "Saved";
+        if(trip.getCityDest() == trip.getCityFrom()){
+            return null;
+        }
+        return tripRepository.save(trip);
     }
 
 
@@ -97,9 +107,8 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public String update(Trip trip) {
-        tripRepository.save(trip);
-        return "Updated";
+    public Trip update(TripDTO tripDTO) {
+        return tripRepository.save(mapper.map(tripDTO, Trip.class));
     }
 
     @Override

@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface TripService {
     List<Trip> findAll(TripFilter tripFilter);
-    String  save(long cityFromId, long cityDestId, long transportId, Trip trip);
+    Trip  save(long cityFromId, long cityDestId, long transportId, TripDTO tripDTO);
     String deleteById(long id);
-    String update(Trip trip);
+    Trip update(TripDTO trip);
     Trip findById(Long id);
     BigDecimal getPrice (Long tripId);
     int getFullCountSeats(Long tripId);

@@ -35,8 +35,10 @@ public class HotelController {
     @Autowired
     private DozerBeanMapper mapper;
     @Autowired
-    private RoomService roomService;
+    private WalletService walletService;
     @Autowired
+    private RoomService roomService;
+
     private HotelValidator hotelValidator;
     @Autowired
     private UserService userService;
@@ -53,11 +55,27 @@ public class HotelController {
         return mapper.map(hotelService.findByHotelName(hotelName), HotelDTO.class);
     }
 
+    @GetMapping("/image/{hotelId}")
+    public String getHotelImage(@PathVariable long hotelId) {
+        return hotelService.findImageByHotelId(hotelId);
+    }
+
+    @GetMapping
+    public List<HotelDTO> findAll() {
+        return hotelService.findAll().stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
+    }
+
     @PostMapping
     public List<HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter) {
         return hotelService.findAll(hotelFilter).stream()
                 .map(entity -> mapper.map(entity, HotelDTO.class))
                 .collect(Collectors.toList());
+    }
+
+    @PostMapping("/byHotelConveniences")
+    public List<HotelDTO> findRoomsByRoomConveniences(@RequestParam List<String> hotelConveniences, HotelFilter hotelFilter){
+        List<Hotel> sortedHotels = hotelService.findHotelsByHotelConveniences(hotelConveniences, hotelFilter);
+        return sortedHotels.stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
     }
 
     @PostMapping("/save")
@@ -86,8 +104,7 @@ public class HotelController {
             reservation.setCheckOut(checkOut);
             reservation.setRoomId(roomId);
             reservation.setHotel(hotel);
-            reservation.setBuyer(userService.findById(userId));
-            // пожулуйсто не отклбчайте ничего
+            //reservation.setUserId(userId);
             List<Reservation> reservations = hotel.getReservations();
             reservations.add(reservation);
             hotel.setReservations(reservations);

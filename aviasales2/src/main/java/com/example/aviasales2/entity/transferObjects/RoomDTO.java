@@ -11,7 +11,6 @@ import java.util.List;
 @Setter
 public class RoomDTO {
     private Long roomId;
-    private int roomCapacity;
     private Timestamp checkInDate;
     private Timestamp checkOutDate;
     private Double dailyCost;

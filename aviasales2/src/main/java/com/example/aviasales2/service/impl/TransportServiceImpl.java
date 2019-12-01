@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
 public class TransportServiceImpl implements TransportService {
     @Autowired
     TransportRepository transportRepository;
+    @Autowired
+    private DozerBeanMapper mapper;
 
 
     @Override public Transport save(Transport transport) {
@@ -34,9 +36,10 @@ public class TransportServiceImpl implements TransportService {
     }
 
     @Override
-    public void update(Transport transport) {
+    public Transport update(TransportDTO transport) {
         if(transportRepository.existsById(transport.getTransportId())){
-            transportRepository.save(transport);}
+            return transportRepository.save(mapper.map(transport, Transport.class));}
+        return null;
     }
 
     @Override

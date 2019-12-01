@@ -14,5 +14,7 @@ public interface HotelService {
     List<Hotel> findAll();
     List<Hotel> findAll(HotelFilter hotelFilter);
     Hotel findByHotelId(long id);
+    String findImageByHotelId(long id);
     Hotel findByHotelName(String hotelName);
+    List<Hotel> findHotelsByHotelConveniences(List<String> hotelConveniences, HotelFilter hotelFilter);
 }

@@ -5,13 +5,16 @@ import com.example.aviasales2.config.filterConfig.TripFilter;
 import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.entity.transferObjects.TripDTO;
 import com.example.aviasales2.service.*;
+import com.example.aviasales2.util.TripValidator;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +34,8 @@ public class TripController {
     private SenderService senderService;
     @Autowired
     private DozerBeanMapper mapper;
+    @Autowired
+    private TripValidator tripValidator;
 
     @GetMapping("/{id}")
     public TripDTO findById(@PathVariable("id") long id) {
@@ -38,11 +43,15 @@ public class TripController {
     }
 
     @PostMapping("/city/{city_f_id}/{city_d_id}/transport/{tr_id}")
-    public String save(@PathVariable("city_f_id") long cityFromId,
+    public TripDTO save(@PathVariable("city_f_id") long cityFromId,
                        @PathVariable("city_d_id") long cityDestId,
                        @PathVariable("tr_id") long transportId,
-                       @RequestBody Trip trip) {
-        return tripService.save(cityFromId, cityDestId, transportId, trip);
+                       @RequestBody @Valid TripDTO tripDTO,
+                       BindingResult result) {
+        if(result.hasErrors()){
+            return null;
+        }
+        return mapper.map(tripService.save(cityFromId, cityDestId, transportId, tripDTO), TripDTO.class);
     }
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") long id) {
@@ -51,12 +60,15 @@ public class TripController {
     }
 
     @PutMapping
-    public String update(@RequestBody Trip trip) {
-        Trip oldTrip = tripService.findById(trip.getTripId());
+    public TripDTO update(@RequestBody @Valid TripDTO tripDTO, BindingResult result) {
+        Trip oldTrip = tripService.findById(tripDTO.getTripId());
         if (oldTrip != null) {
-            return tripService.update(trip);
+            tripValidator.validate(tripDTO, result);
+            if(result.hasErrors())
+            {return null;}
+            return mapper.map(tripService.update(tripDTO), TripDTO.class);
         }
-        return "Trip does not exist";
+        return null;
     }
 
     @PostMapping

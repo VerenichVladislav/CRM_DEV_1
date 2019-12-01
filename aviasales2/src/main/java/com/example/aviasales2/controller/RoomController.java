@@ -74,4 +74,10 @@ public class RoomController {
         List<Room> sortedRooms = roomService.findRoomsByPriceInRange(minPrice, maxPrice);
         return sortedRooms.stream().map(entity -> mapper.map(entity, RoomDTO.class)).collect(Collectors.toList());
     }
+
+    @GetMapping("/byRoomConveniences")
+    public List<RoomDTO> findRoomsByRoomConveniences(@RequestParam List<String> roomConveniences){
+        List<Room> goodRooms = roomService.findRoomsByRoomConveniences(roomConveniences);
+        return goodRooms.stream().map(entity -> mapper.map(entity, RoomDTO.class)).collect(Collectors.toList());
+    }
 }

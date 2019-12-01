@@ -1,0 +1,14 @@
+{
+  "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
+  "login": "Login",
+  "signup": "Sign up",
+  "hotels": "Hotels",
+  "trips": "Trips",
+  "tours": "Tours",
+  "searching": "Find",
+  "city": "City",
+  "checkIn": "Check in",
+  "checkOut": "Check out",
+  "popularDest": "Popular destinations"
+
+}

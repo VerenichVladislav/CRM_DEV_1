@@ -5,10 +5,13 @@ import com.example.aviasales2.entity.Transport;
 import com.example.aviasales2.entity.transferObjects.TransportDTO;
 import com.example.aviasales2.service.CompanyService;
 import com.example.aviasales2.service.TransportService;
+import com.example.aviasales2.util.TransportValidator;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +24,8 @@ public class TransportController {
     private CompanyService companyService;
     @Autowired
     private DozerBeanMapper mapper;
+    @Autowired
+    private TransportValidator transportValidator;
 
     @GetMapping
     public List<TransportDTO> getAllTransport() {
@@ -35,8 +40,11 @@ public class TransportController {
     }
 
     @PutMapping
-    public void updateTransport(@RequestBody Transport transport) {
-        transportService.update(transport);
+    public TransportDTO updateTransport(@RequestBody @Valid TransportDTO transportDTO, BindingResult result) {
+        transportValidator.validate(transportDTO, result);
+        if (result.hasErrors())
+        {return null;}
+        return mapper.map(transportService.update(transportDTO), TransportDTO.class);
     }
 
 
@@ -47,12 +55,17 @@ public class TransportController {
 
 
     @PostMapping("/company/{companyId}")
-    public Transport save(@PathVariable(name = "companyId") long companyId, @RequestBody Transport transport) {
+    public TransportDTO save(@PathVariable(name = "companyId") long companyId, @RequestBody @Valid TransportDTO transportDto, BindingResult result) {
+        if(result.hasErrors())
+        {
+            return null;
+        }
         Company company = companyService.findByCompanyId(companyId);
+        Transport transport = mapper.map(transportDto, Transport.class);
         transport.setCompany(company);
         company.getTransportId().add(transport);
         company.setTransportCount(company.getTransportCount() + 1);
-        return transportService.save(transport);
+        return mapper.map(transportService.save(transport), TransportDTO.class);
     }
 
 
