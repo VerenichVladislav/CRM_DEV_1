@@ -39,6 +39,7 @@ public class UserDTO {
     @Null
     private Long wallet;
     private List<TicketDTO> tickets;
+    private List<ReservationDTO> reservations;
     private List<TourDTO> tours;
 
     public UserDTO() {

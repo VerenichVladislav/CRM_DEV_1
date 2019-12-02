@@ -4,10 +4,13 @@ import com.example.aviasales2.entity.Sender;
 import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.entity.User;
 import com.example.aviasales2.entity.transferObjects.UserDTO;
+import com.example.aviasales2.exception.GlobalBadRequestException;
 import com.example.aviasales2.service.TripService;
 import com.example.aviasales2.service.UserService;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -36,13 +39,14 @@ public class UserController {
     }
 
     @PostMapping
-    public UserDTO savePerson(@RequestBody @Valid UserDTO userDTO, BindingResult result) {
+    public ResponseEntity<UserDTO> savePerson(@RequestBody @Valid UserDTO userDTO, BindingResult result) {
         if (result.hasErrors()) {
-            return null;
+            throw new GlobalBadRequestException(result);
         }
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         userDTO.setHashPass(bCryptPasswordEncoder.encode(userDTO.getHashPass()));
-        return mapper.map(userService.save(mapper.map(userDTO, User.class)), UserDTO.class);
+        UserDTO body = mapper.map(userService.save(mapper.map(userDTO, User.class)), UserDTO.class);
+        return new ResponseEntity<>(body, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

@@ -58,24 +58,24 @@ public class CompanyController {
 
 
     @PostMapping
-    public ResponseEntity<Company> saveCompany(@RequestBody @Valid CompanyDTO company, BindingResult result) throws GlobalBadRequestException {
+    public ResponseEntity<CompanyDTO> saveCompany(@RequestBody @Valid CompanyDTO company, BindingResult result) throws GlobalBadRequestException {
         companyValidator.validate(company, result);
         if(result.hasErrors()) {
             throw new GlobalBadRequestException(result);
         }
-        Company body = companyService.save(mapper.map(company, Company.class));
+        CompanyDTO body = mapper.map(companyService.save(mapper.map(company, Company.class)), CompanyDTO.class);
         return new ResponseEntity<>(body, HttpStatus.OK);
     }
 
 
     @PutMapping
-    public ResponseEntity<Company> updateCompany(@RequestBody @Valid CompanyDTO updatedCompany, BindingResult result){
+    public ResponseEntity<CompanyDTO> updateCompany(@RequestBody @Valid CompanyDTO updatedCompany, BindingResult result){
         if (companyService.findByCompanyId(updatedCompany.getCompanyId()) != null) {
             companyValidator.updateValidate(updatedCompany, result);
             if (result.hasErrors()) {
                 throw new GlobalBadRequestException(result);
             }
-            Company body = companyService.save(mapper.map(updatedCompany, Company.class));
+            CompanyDTO body = mapper.map(companyService.save(mapper.map(updatedCompany, Company.class)), CompanyDTO.class);
             return new ResponseEntity<>(body, HttpStatus.OK);
         }
         throw new NoSuchEntityException(Company.class);

@@ -62,23 +62,23 @@ public class CityController {
     }
 
     @PostMapping
-    public ResponseEntity<City> save(@RequestBody @Valid CityDTO city, BindingResult result){
+    public ResponseEntity<CityDTO> save(@RequestBody @Valid CityDTO city, BindingResult result){
         cityValidator.validate(city, result);
         if(result.hasErrors()){
             throw new GlobalBadRequestException(result);
         }
-        City body = cityService.save(mapper.map(city, City.class));
+        CityDTO body = mapper.map(cityService.save(mapper.map(city, City.class)), CityDTO.class);
         return new ResponseEntity<>(body, HttpStatus.OK);
     }
 
     @PutMapping
-    public ResponseEntity<City> update(@RequestBody @Valid CityDTO newCity, BindingResult result){
+    public ResponseEntity<CityDTO> update(@RequestBody @Valid CityDTO newCity, BindingResult result){
         if(cityService.findByCityId(newCity.getCityId()) != null){
             cityValidator.updateValidate(newCity, result);
             if(result.hasErrors()){
-                return null;
+                throw new GlobalBadRequestException(result);
             }
-            City body = cityService.update(mapper.map(newCity, City.class));
+            CityDTO body = mapper.map(cityService.update(mapper.map(newCity, City.class)), CityDTO.class);
             return new ResponseEntity<>(body, HttpStatus.OK);
         }
         throw new NoSuchEntityException(City.class);
