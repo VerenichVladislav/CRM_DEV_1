@@ -5,6 +5,7 @@ import com.example.aviasales2.entity.Tour;
 import com.example.aviasales2.entity.transferObjects.TourDTO;
 import com.example.aviasales2.service.CompanyService;
 import com.example.aviasales2.service.TourService;
+import com.example.aviasales2.util.TourValidator;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;

@@ -60,11 +60,6 @@ public class HotelController {
         return hotelService.findImageByHotelId(hotelId);
     }
 
-    @GetMapping
-    public List<HotelDTO> findAll() {
-        return hotelService.findAll().stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
-    }
-
     @PostMapping
     public List<HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter) {
         return hotelService.findAll(hotelFilter).stream()
