@@ -56,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/*/*/*/*/*").permitAll()
                 .antMatchers("/tickets/buyer/{buyer_id}").permitAll()
                 .antMatchers("/{user_id}/{hotel_id}/{checkIn}/{checkOut}/{roomId}").permitAll()
-                .antMatchers("/users").permitAll()
+                //.antMatchers("/users").permitAll()
                 .antMatchers("/cities").permitAll()
                 .antMatchers("/comments").permitAll()
                 .antMatchers("/companies").permitAll()
@@ -69,9 +69,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users/confirm/*").permitAll()
                 .antMatchers("/users/confirm/").permitAll()
                 .antMatchers(HttpMethod.GET,"/cities/*").permitAll()
-                .antMatchers(HttpMethod.GET,"/users").permitAll()
+                .antMatchers(HttpMethod.GET,"/users").hasRole("USER")
+                .antMatchers(HttpMethod.GET,"/users/*").hasRole("USER")
                 .antMatchers(HttpMethod.GET,"/international").permitAll()
                 .antMatchers(HttpMethod.GET,"/international/*").permitAll()
+                .antMatchers(HttpMethod.GET,"/users/isAuthenticated").hasRole("USER")
+                .antMatchers(HttpMethod.GET,"/users/isAuthenticated/*").hasRole("USER")
                 .antMatchers(HttpMethod.GET).permitAll()
                 .anyRequest().authenticated();
     }

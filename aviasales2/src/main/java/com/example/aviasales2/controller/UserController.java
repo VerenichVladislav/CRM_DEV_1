@@ -75,6 +75,9 @@ public class UserController {
         userService.save(user);
     }
 
+    @GetMapping("/isAuthenticated")
+    public void isAuthenticated() {
+    }
 
     @GetMapping("/")
     public UserDTO findByUserName(@RequestParam String userName) {
