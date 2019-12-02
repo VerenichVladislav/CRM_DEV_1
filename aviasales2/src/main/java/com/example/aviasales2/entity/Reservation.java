@@ -27,4 +27,29 @@ public class Reservation {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User buyer;
+
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
+    }
+
+    public void setBuyer(User buyer) {
+        this.buyer = buyer;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public void setReservationId(Long reservationId) {
+        this.reservationId = reservationId;
+    }
+
+    public void setCheckIn(Timestamp checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public void setCheckOut(Timestamp checkOut) {
+        this.checkOut = checkOut;
+    }
+
 }

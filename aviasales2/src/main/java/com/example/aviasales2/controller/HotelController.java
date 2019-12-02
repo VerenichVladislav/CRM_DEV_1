@@ -2,9 +2,11 @@ package com.example.aviasales2.controller;
 
 
 import com.example.aviasales2.config.filterConfig.HotelFilter;
+import com.example.aviasales2.entity.City;
 import com.example.aviasales2.entity.Hotel;
 import com.example.aviasales2.entity.Reservation;
 import com.example.aviasales2.entity.Room;
+import com.example.aviasales2.entity.transferObjects.CityDTO;
 import com.example.aviasales2.entity.transferObjects.HotelDTO;
 import com.example.aviasales2.service.*;
 import com.example.aviasales2.util.HotelValidator;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,6 +39,11 @@ public class HotelController {
     @Autowired
     private RoomService roomService;
 
+    private HotelValidator hotelValidator;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private ICityService cityService;
 
     @GetMapping("/{id}")
     public HotelDTO getHotelById(@PathVariable("id") long id) {
@@ -52,13 +60,8 @@ public class HotelController {
         return hotelService.findImageByHotelId(hotelId);
     }
 
-    @GetMapping
-    public List<HotelDTO> findAll() {
-        return hotelService.findAll().stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
-    }
-
     @PostMapping
-    public List<HotelDTO> findAll(@RequestBody HotelFilter hotelFilter) {
+    public List<HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter) {
         return hotelService.findAll(hotelFilter).stream()
                 .map(entity -> mapper.map(entity, HotelDTO.class))
                 .collect(Collectors.toList());
@@ -71,8 +74,13 @@ public class HotelController {
     }
 
     @PostMapping("/save")
-    public Hotel saveHotel(@RequestBody Hotel hotel) {
-        return hotelService.save(hotel);
+    public String saveHotel(@RequestBody @Valid HotelDTO hotel, BindingResult result) {
+        hotelValidator.validate(hotel, result);
+        if (result.hasErrors()){
+            return String.valueOf(result.getFieldErrors());
+        }
+        hotelService.save(mapper.map(hotel,Hotel.class));
+        return "saved";
     }
 
     @Transactional
@@ -105,7 +113,22 @@ public class HotelController {
                 .body("Error");
 
     }
+    @GetMapping()
+    public List<CityDTO> getCityWithHotels(){
+        List<City> cityList =cityService.findAll();
+        List<City> ListWithHotel = new ArrayList<City>();
 
+        for (City city:
+             cityList) {
+            if(!city.getHotels().isEmpty()){
+                ListWithHotel.add(city);
+            }
+
+        }
+        return ListWithHotel.stream().map(entity -> mapper.map(entity, CityDTO.class))
+                .collect(Collectors.toList());
+
+    }
     @PutMapping()
     public Hotel updateHotel(@RequestBody Hotel hotel) {
         Hotel old = hotelService.findByHotelId(hotel.getHotelId());

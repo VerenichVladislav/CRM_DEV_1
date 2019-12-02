@@ -32,7 +32,8 @@ public class Hotel {
     private String phoneNumber;
     private String description;
     private String image;
-
+    private String lat;
+    private String lng;
 
     @ElementCollection(targetClass = RoomType.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "room_type", joinColumns = @JoinColumn(name = "hotel_id"))

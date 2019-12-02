@@ -42,8 +42,13 @@ public class City {
 
     @OneToMany(mappedBy = "city",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Hotel> hotels;
-
-
+    private String image;
+    private String lat;
+    private String lng;
     public City() {
+    }
+
+    public List<Hotel> getHotels() {
+        return hotels;
     }
 }

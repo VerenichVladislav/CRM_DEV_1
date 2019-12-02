@@ -1,5 +1,6 @@
 package com.example.aviasales2.entity.transferObjects;
 
+import com.example.aviasales2.entity.HotelConvenience;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,13 +30,14 @@ public class HotelDTO {
     private String phoneNumber;
     private String description;
     private String image;
-
+    private String lat;
+    private String lng;
     private Long cityId;
     private List<RoomDTO> rooms;
     private List<TourDTO> tours;
     private List<CommentsDTO> comments;
     private List<ReservationDTO> reservations;
-
+    private List<HotelConvenience> hotelConveniences;
 
     public HotelDTO() {
     }
