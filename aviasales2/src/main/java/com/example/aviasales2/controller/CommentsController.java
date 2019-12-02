@@ -13,6 +13,8 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,9 +33,10 @@ public class CommentsController {
     @Autowired
     private DozerBeanMapper mapper;
 
+    @Transactional
     @PostMapping
-    public Comments save(@RequestBody Comments comments){
-        return commentsServiceImpl.save(comments);
+    public void save(@RequestBody Comments comments){
+        commentsServiceImpl.save(comments);
     }
 
     @GetMapping
@@ -93,4 +96,18 @@ public class CommentsController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id){ commentsServiceImpl.deleteById(id);}
 
+    @GetMapping("/hotel/rate/{hotelid}")
+    public BigDecimal getHotelRate(@PathVariable("hotelid") Long id){
+        return commentsServiceImpl.getHotelRate(id);
+    }
+
+    @GetMapping("/company/rate/{companyId}")
+    public BigDecimal getCompanyRate(@PathVariable("companyId") Long id){
+        return commentsServiceImpl.getCompanyRate(id);
+    }
+
+    @GetMapping("/tour/rate/{tourId}")
+    public BigDecimal getTourRate(@PathVariable("tourId") Long id){
+        return commentsServiceImpl.getTourRate(id);
+    }
 }

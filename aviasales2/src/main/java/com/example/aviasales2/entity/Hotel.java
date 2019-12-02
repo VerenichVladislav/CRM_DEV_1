@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -34,6 +35,15 @@ public class Hotel {
     private String image;
     private String lat;
     private String lng;
+    private BigDecimal commentRating = new BigDecimal(0);
+
+    public BigDecimal getCommentRating() {
+        return commentRating;
+    }
+
+    public void setCommentRating(BigDecimal commentRating) {
+        this.commentRating = commentRating;
+    }
 
     @ElementCollection(targetClass = RoomType.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "room_type", joinColumns = @JoinColumn(name = "hotel_id"))
@@ -73,4 +83,11 @@ public class Hotel {
     }
 
 
+    public Long getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(Long hotelId) {
+        this.hotelId = hotelId;
+    }
 }

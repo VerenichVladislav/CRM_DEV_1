@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @Setter
 public class CommentsDTO {
     private Long commentId;
-    private byte rate;
+    public byte rate;
     private Timestamp date;
     private String text;
     private String type;

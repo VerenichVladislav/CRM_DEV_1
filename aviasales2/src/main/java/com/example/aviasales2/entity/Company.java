@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -32,6 +33,8 @@ public class Company {
 
     private short rating;
 
+    private BigDecimal commentRating = new BigDecimal(0);
+
     private int transportCount;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -43,4 +46,11 @@ public class Company {
         return companyId;
     }
 
+    public void setCommentRating(BigDecimal commentRating) {
+        this.commentRating = commentRating;
+    }
+
+    public BigDecimal getCommentRating() {
+        return commentRating;
+    }
 }

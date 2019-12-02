@@ -30,7 +30,15 @@ public class Tour {
     private int duration;
     private String city_destination;
     private short rating;
+    private BigDecimal commentRating = new BigDecimal(0);
 
+    public BigDecimal getCommentRating() {
+        return commentRating;
+    }
+
+    public void setCommentRating(BigDecimal commentRating) {
+        this.commentRating = commentRating;
+    }
 
     @ManyToMany
     @JoinTable (name="history",
@@ -58,6 +66,13 @@ public class Tour {
         return hotel;
     }
 
+    public Long getTourId() {
+        return tourId;
+    }
+
+    public void setTourId(Long tourId) {
+        this.tourId = tourId;
+    }
 
 
     //    enum status{

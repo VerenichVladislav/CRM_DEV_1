@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.List;
 
 public interface CommentsService {
-    Comments save(Comments comments);
+    void save(Comments comments);
     List<Comments> findAll();
     Comments findCommentsById(Long id);
     void deleteById(Long id);

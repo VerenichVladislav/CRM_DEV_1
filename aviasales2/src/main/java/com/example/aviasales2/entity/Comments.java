@@ -19,7 +19,7 @@ public class Comments {
     private Long commentId;
     private String text;
     private Timestamp date = new Timestamp(System.currentTimeMillis());
-    private byte rate;
+    public byte rate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -39,4 +39,27 @@ public class Comments {
 
     public Comments(){}
 
+    public Tour getTour() {
+        return tour;
+    }
+
+    public void setTour(Tour tour) {
+        this.tour = tour;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
 }

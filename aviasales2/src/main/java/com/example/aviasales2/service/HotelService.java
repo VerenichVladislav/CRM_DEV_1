@@ -1,9 +1,11 @@
 package com.example.aviasales2.service;
 
 import com.example.aviasales2.config.filterConfig.HotelFilter;
+import com.example.aviasales2.entity.Comments;
 import com.example.aviasales2.entity.Hotel;
 import com.example.aviasales2.entity.transferObjects.HotelDTO;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface HotelService {

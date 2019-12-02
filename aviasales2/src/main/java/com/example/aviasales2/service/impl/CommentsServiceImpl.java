@@ -3,6 +3,7 @@ package com.example.aviasales2.service.impl;
 import com.example.aviasales2.entity.Comments;
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.Hotel;
+import com.example.aviasales2.entity.Tour;
 import com.example.aviasales2.entity.transferObjects.CommentsDTO;
 import com.example.aviasales2.repository.CommentsRepository;
 import com.example.aviasales2.repository.CompanyRepository;
@@ -13,6 +14,9 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.print.attribute.HashPrintJobAttributeSet;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,8 +30,13 @@ public class CommentsServiceImpl implements CommentsService {
     CompanyRepository companyRepository;
     @Autowired
     TourRepository tourRepository;
+
     @Override
-    public Comments save(Comments comments){return commentsRepository.save(comments);}
+    public void save(Comments comments){
+        commentsRepository.save(comments);
+        updateCommentRating(comments);
+    }
+
     @Override
     public List<Comments> findAll(){return commentsRepository.findAll();}
 
@@ -54,4 +63,52 @@ public class CommentsServiceImpl implements CommentsService {
         return commentsRepository.findByHotel(hotelRepository.findByHotelId(id));
     }
 
+    public BigDecimal getTourRate(Long id) {
+        return tourRepository.findByTourId(id).getCommentRating();
+    }
+
+    public BigDecimal getCompanyRate(Long id) {
+        return companyRepository.findByCompanyId(id).getCommentRating();
+    }
+
+    public BigDecimal getHotelRate(Long id) {
+        return hotelRepository.findByHotelId(id).getCommentRating();
+    }
+
+    public void updateCommentRating(Comments newComment) {
+        List <Comments> comments;
+        if(newComment.getHotel() == null) {
+            if (newComment.getCompany() == null) {
+                comments = commentsRepository.findByTour(newComment.getTour());
+            } else {
+                comments = commentsRepository.findByCompany(newComment.getCompany());
+            }
+        }
+        else {
+            comments = commentsRepository.findByHotel(newComment.getHotel());
+        }
+        BigDecimal sumRate= new BigDecimal(0);
+        int n =0;
+        for (Comments comment: comments) {
+            sumRate = sumRate.add(BigDecimal.valueOf(comment.rate));
+            n++;
+        }
+        sumRate = sumRate.divide(BigDecimal.valueOf(n),2, RoundingMode.HALF_DOWN);
+        if(newComment.getHotel() == null) {
+            if (newComment.getCompany() == null) {
+                Tour tour = tourRepository.findByTourId(newComment.getTour().getTourId());
+                tour.setCommentRating(sumRate);
+                tourRepository.save(tour);
+            } else {
+                Company company = companyRepository.findByCompanyId(newComment.getCompany().getCompanyId());
+                company.setCommentRating(sumRate);
+                companyRepository.save(company);
+            }
+        }
+        else {
+            Hotel hotel = hotelRepository.findByHotelId(newComment.getHotel().getHotelId());
+            hotel.setCommentRating(sumRate);
+            hotelRepository.save(hotel);
+        }
+    }
 }

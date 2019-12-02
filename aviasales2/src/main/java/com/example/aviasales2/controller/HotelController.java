@@ -19,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -138,7 +139,7 @@ public class HotelController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteHotel(@PathVariable("id") long id) {
+    public void deleteHotel(@PathVariable("id") Long id) {
         hotelService.deleteById(id);
     }
 
