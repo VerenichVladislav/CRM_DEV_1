@@ -12,8 +12,9 @@ public class HotelValidator implements Validator {
 
     @Autowired
     private HotelRepository hotelRepository;
+
     @Override
-    public boolean supports(Class<?> aClass) {
+    public boolean supports(Class <?> aClass) {
         return HotelDTO.class.equals(aClass);
     }
 
@@ -26,7 +27,7 @@ public class HotelValidator implements Validator {
 //        if(!hotel.getAddress().matches("^[а-яА-ЯёЁa-zA-Z0-9\\s]+$")){
 //            errors.rejectValue("address", "", "Bad address name");
 //        }
-        if(hotelRepository.findByHotelName(hotel.getHotelName())!=null){
+        if (hotelRepository.findByHotelName(hotel.getHotelName()) != null) {
             errors.rejectValue("hotelName", "", "The hotel with such name already exists");
         }
 //        if(hotel.getRating() != null && !hotel.getRating().matches("[0-5]")){

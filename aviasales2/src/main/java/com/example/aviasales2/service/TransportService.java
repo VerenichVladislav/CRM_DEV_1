@@ -8,8 +8,12 @@ import java.util.Optional;
 
 public interface TransportService {
     Transport save(Transport transport);
-    Optional<Transport> findById(Long id);
-    List<Transport> findAll();
+
+    Optional <Transport> findById(Long id);
+
+    List <Transport> findAll();
+
     Transport update(TransportDTO transport);
+
     void deleteById(Long id);
 }

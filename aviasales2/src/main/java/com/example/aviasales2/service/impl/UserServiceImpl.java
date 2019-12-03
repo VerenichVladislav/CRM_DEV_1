@@ -11,10 +11,14 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private final UserRepository userRepository;
+    private final DozerBeanMapper mapper;
+
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private DozerBeanMapper mapper;
+    public UserServiceImpl(UserRepository userRepository, DozerBeanMapper mapper) {
+        this.userRepository = userRepository;
+        this.mapper = mapper;
+    }
 
     @Override
     public User save(User user) {
@@ -27,12 +31,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAll() {
+    public List <User> findAll() {
         return userRepository.findAll();
     }
 
     @Override
-    public List<User> findAllByLastName(String lastName) {
+    public List <User> findAllByLastName(String lastName) {
         return userRepository.findAllByLastName(lastName);
     }
 
@@ -42,7 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findByLastNameAndEmail(String lastName, String email) {
+    public List <User> findByLastNameAndEmail(String lastName, String email) {
         return userRepository.findByLastNameAndEmail(lastName, email);
     }
 
@@ -64,7 +68,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(Long id) {
         User user = userRepository.findByUserId(id);
-        if(user.getRole().equals("USER")){
+        if (user.getRole().equals("USER")) {
             userRepository.deleteByUserId(id);
         }
     }

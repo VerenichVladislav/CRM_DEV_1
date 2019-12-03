@@ -1,10 +1,9 @@
 package com.example.aviasales2.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -41,7 +40,7 @@ public class Ticket {
     private City cityFrom;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User buyer;
 
     public Ticket(String name, String lastName, long tripId, Timestamp date, City cityFrom, City cityDest, BigDecimal price, User buyer) {
@@ -55,19 +54,25 @@ public class Ticket {
         this.buyer = buyer;
     }
 
-    public User getBuyer(){
-        return buyer;
-    }
-
-    public Long getBuyerId() {
-        return buyer.getUserId();
-    }
     public Ticket(String name, String lastName) {
         this.name = name;
         this.lastName = lastName;
     }
 
-    public Ticket (){}
+    public Ticket() {
+    }
+
+    public User getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(User user) {
+        this.buyer = user;
+    }
+
+    public Long getBuyerId() {
+        return buyer.getUserId();
+    }
 
     public void setDate(Timestamp date) {
         this.date = date;
@@ -85,10 +90,6 @@ public class Ticket {
         return price;
     }
 
-    public void setBuyer(User user) {
-        this.buyer=user;
-    }
-
     public void setCityFrom(City cityFrom) {
         this.cityFrom = cityFrom;
     }
@@ -98,10 +99,10 @@ public class Ticket {
     }
 
     public void setLastName(String lastName) {
-        this.lastName=lastName;
+        this.lastName = lastName;
     }
 
     public void setName(String name) {
-        this.name=name;
+        this.name = name;
     }
 }

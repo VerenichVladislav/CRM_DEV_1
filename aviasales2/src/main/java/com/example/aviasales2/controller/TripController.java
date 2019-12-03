@@ -18,24 +18,29 @@ import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
+
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 10000)
 @RestController
 @RequestMapping("/trips")
 public class TripController {
+    private final TripService tripService;
+    private final WalletService walletService;
+    private final TicketService ticketService;
+    private final Validation validation;
+    private final SenderService senderService;
+    private final DozerBeanMapper mapper;
+    private final TripValidator tripValidator;
+
     @Autowired
-    private TripService tripService;
-    @Autowired
-    private WalletService walletService;
-    @Autowired
-    private TicketService ticketService;
-    @Autowired
-    private Validation validation;
-    @Autowired
-    private SenderService senderService;
-    @Autowired
-    private DozerBeanMapper mapper;
-    @Autowired
-    private TripValidator tripValidator;
+    public TripController(TripService tripService, WalletService walletService, TicketService ticketService, Validation validation, SenderService senderService, DozerBeanMapper mapper, TripValidator tripValidator) {
+        this.tripService = tripService;
+        this.walletService = walletService;
+        this.ticketService = ticketService;
+        this.validation = validation;
+        this.senderService = senderService;
+        this.mapper = mapper;
+        this.tripValidator = tripValidator;
+    }
 
     @GetMapping("/{id}")
     public TripDTO findById(@PathVariable("id") long id) {
@@ -44,15 +49,16 @@ public class TripController {
 
     @PostMapping("/city/{city_f_id}/{city_d_id}/transport/{tr_id}")
     public TripDTO save(@PathVariable("city_f_id") long cityFromId,
-                       @PathVariable("city_d_id") long cityDestId,
-                       @PathVariable("tr_id") long transportId,
-                       @RequestBody @Valid TripDTO tripDTO,
-                       BindingResult result) {
-        if(result.hasErrors()){
+                        @PathVariable("city_d_id") long cityDestId,
+                        @PathVariable("tr_id") long transportId,
+                        @RequestBody @Valid TripDTO tripDTO,
+                        BindingResult result) {
+        if (result.hasErrors()) {
             return null;
         }
         return mapper.map(tripService.save(cityFromId, cityDestId, transportId, tripDTO), TripDTO.class);
     }
+
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") long id) {
         tripService.deleteById(id);
@@ -64,15 +70,16 @@ public class TripController {
         Trip oldTrip = tripService.findById(tripDTO.getTripId());
         if (oldTrip != null) {
             tripValidator.validate(tripDTO, result);
-            if(result.hasErrors())
-            {return null;}
+            if (result.hasErrors()) {
+                return null;
+            }
             return mapper.map(tripService.update(tripDTO), TripDTO.class);
         }
         return null;
     }
 
     @PostMapping
-    public List<TripDTO> findAll(@RequestBody TripFilter tripFilter) {
+    public List <TripDTO> findAll(@RequestBody TripFilter tripFilter) {
         return tripService.findAll(tripFilter).stream()
                 .map(entity -> mapper.map(entity, TripDTO.class))
                 .collect(Collectors.toList());
@@ -80,10 +87,10 @@ public class TripController {
 
     @Transactional
     @PostMapping("/{user_id}/{trid_id}/buy")
-    ResponseEntity<String> buy(@PathVariable("trid_id") long tripId,
-                               @PathVariable("user_id") long userId,
-                               @RequestBody List<PersonRequest> passengers,
-                               @RequestParam int count) {
+    ResponseEntity <String> buy(@PathVariable("trid_id") long tripId,
+                                @PathVariable("user_id") long userId,
+                                @RequestBody List <PersonRequest> passengers,
+                                @RequestParam int count) {
 
         if (validation.checkSeats(tripId, count) != 1.0) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)

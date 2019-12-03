@@ -1,16 +1,15 @@
 package com.example.aviasales2.security;
 
 
-
 import com.example.aviasales2.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,19 +20,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private UserRepository userRepository;
     private UserPrincipalDetailsService userPrincipalDetailsService;
-    public SecurityConfiguration(UserRepository userRepository, UserPrincipalDetailsService userPrincipalDetailsService){
+
+    public SecurityConfiguration(UserRepository userRepository, UserPrincipalDetailsService userPrincipalDetailsService) {
         this.userRepository = userRepository;
         this.userPrincipalDetailsService = userPrincipalDetailsService;
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth)
-    {
+    protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
+    protected void configure(HttpSecurity http) throws Exception {
         http
                 .cors().and()
                 .csrf().disable()
@@ -42,9 +41,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), this.userRepository))
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/login").permitAll()
-                .antMatchers(HttpMethod.POST,"/users").permitAll()
-                .antMatchers(HttpMethod.POST,"/trips/*/*/buy").permitAll()
+                .antMatchers(HttpMethod.POST, "/login").permitAll()
+                .antMatchers(HttpMethod.POST, "/users").permitAll()
+                .antMatchers(HttpMethod.POST, "/trips/*/*/buy").permitAll()
                 .antMatchers(HttpMethod.POST, "/trips/city/{city_f_id}/{city_d_id}/transport/{tr_id}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/users/lockUser").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/users/unlockUser").hasRole("ADMIN")
@@ -71,18 +70,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/international/*").permitAll()
                 .antMatchers("/users/confirm/*").permitAll()
                 .antMatchers("/users/confirm/").permitAll()
-                .antMatchers(HttpMethod.GET,"/cities/*").permitAll()
-                .antMatchers(HttpMethod.GET,"/users").hasRole("USER")
-                .antMatchers(HttpMethod.GET,"/users/*").hasRole("USER")
-                .antMatchers(HttpMethod.GET,"/international").permitAll()
-                .antMatchers(HttpMethod.GET,"/international/*").permitAll()
-                .antMatchers(HttpMethod.GET,"/users/isAuthenticated").hasRole("USER")
-                .antMatchers(HttpMethod.GET,"/users/isAuthenticated/*").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/cities/*").permitAll()
+                .antMatchers(HttpMethod.GET, "/users").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/users/*").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/international").permitAll()
+                .antMatchers(HttpMethod.GET, "/international/*").permitAll()
+                .antMatchers(HttpMethod.GET, "/users/isAuthenticated").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/users/isAuthenticated/*").hasRole("USER")
                 .antMatchers(HttpMethod.GET).permitAll()
                 .anyRequest().authenticated();
     }
 
-    @Bean DaoAuthenticationProvider authenticationProvider(){
+    @Bean
+    DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         daoAuthenticationProvider.setUserDetailsService(this.userPrincipalDetailsService);
@@ -91,7 +91,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

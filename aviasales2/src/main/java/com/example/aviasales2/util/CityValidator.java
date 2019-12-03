@@ -16,7 +16,7 @@ public class CityValidator implements Validator {
     private DozerBeanMapper mapper;
 
     @Override
-    public boolean supports(Class<?> aClass) {
+    public boolean supports(Class <?> aClass) {
         return CityDTO.class.equals(aClass);
     }
 
@@ -40,9 +40,9 @@ public class CityValidator implements Validator {
 
     public void updateValidate(Object target, Errors errors) {
         CityDTO city = (CityDTO) target;
-        CityDTO city1 = mapper.map(cityRepository.findByCityId(city.getCityId()),CityDTO.class);
+        CityDTO city1 = mapper.map(cityRepository.findByCityId(city.getCityId()), CityDTO.class);
 
-        if(city.getPopulation() == null){
+        if (city.getPopulation() == null) {
             city.setPopulation(city1.getPopulation());
         }
         if (cityRepository.findByCityName(city.getCityName()) != null && !city.getCityName().equals(city1.getCityName())) {

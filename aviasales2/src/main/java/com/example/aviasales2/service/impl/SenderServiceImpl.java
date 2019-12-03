@@ -13,12 +13,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SenderServiceImpl implements SenderService {
+    private final TripRepository tripRepository;
+    private final UserRepository userRepository;
+    private final TripService tripService;
+
     @Autowired
-    private TripRepository tripRepository;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private TripService tripService;
+    public SenderServiceImpl(TripRepository tripRepository, UserRepository userRepository, TripService tripService) {
+        this.tripRepository = tripRepository;
+        this.userRepository = userRepository;
+        this.tripService = tripService;
+    }
 
     @Override
     public void buyEmail(long userId, long tripId, String list, int count) {
@@ -30,11 +34,11 @@ public class SenderServiceImpl implements SenderService {
         sb.append("Hello, " + buyer.getUserName() + "!\n\n");
         sb.append("You bought " + count + " ticket(s) from " + cityFrom.getCityName() +
                 " to " + cityDest.getCityName() + "!\n\n");
-        sb.append("Date: " + trip.getDateFrom()+"\n");
+        sb.append("Date: " + trip.getDateFrom() + "\n");
         //sb.append("Total Price: " + trip.getPrice() * count + "$\n\n");
         sb.append("Total Price: " + tripService.calculateCost(count, tripId) + "$\n\n");
         sb.append("Passengers: \n");
-        sb.append(list+"\n");
+        sb.append(list + "\n");
         sb.append("Gracios!");
         String eml = buyer.getEmail();
         String text = sb.toString();

@@ -12,21 +12,25 @@ import com.example.aviasales2.service.TourService;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class TourServiceImpl implements TourService {
+    private final TourRepository tourRepository;
+    private final DozerBeanMapper mapper;
+    private final CompanyService companyService;
+    private final HotelService hotelService;
+    private final ICityRepository cityRepository;
+
     @Autowired
-    TourRepository tourRepository;
-    @Autowired
-    DozerBeanMapper mapper;
-    @Autowired
-    private CompanyService companyService;
-    @Autowired
-    private HotelService hotelService;
-    @Autowired
-    private ICityRepository cityRepository;
+    public TourServiceImpl(TourRepository tourRepository, DozerBeanMapper mapper, CompanyService companyService, HotelService hotelService, ICityRepository cityRepository) {
+        this.tourRepository = tourRepository;
+        this.mapper = mapper;
+        this.companyService = companyService;
+        this.hotelService = hotelService;
+        this.cityRepository = cityRepository;
+    }
 
     @Override
     public Tour save(TourDTO tourDTO, long cityId, long companyId, long hotelId) {
@@ -43,7 +47,7 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public List<Tour> findAll() {
+    public List <Tour> findAll() {
         return tourRepository.findAll();
     }
 

@@ -23,7 +23,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     public JwtAuthorizationFilter(AuthenticationManager authenticationManager, UserRepository userRepository) {
         super(authenticationManager);
-        this.userRepository = userRepository ;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     private Authentication getUsernamePasswordAuthentication(HttpServletRequest request) {
         String token = request.getHeader(JwtProperties.HEADER_STRING)
-                .replace(JwtProperties.TOKEN_PREFIX,"");
+                .replace(JwtProperties.TOKEN_PREFIX, "");
 
         if (token != null) {
             // parse the token and validate it

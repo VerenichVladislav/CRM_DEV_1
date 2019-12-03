@@ -36,6 +36,29 @@ public class Hotel {
     private String lat;
     private String lng;
     private BigDecimal commentRating = new BigDecimal(0);
+    @ElementCollection(targetClass = RoomType.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "room_type", joinColumns = @JoinColumn(name = "hotel_id"))
+    @Enumerated(EnumType.ORDINAL)
+    private Set <RoomType> roomTypes;
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List <Room> rooms;
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List <Reservation> reservations;
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List <Comments> comments;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
+    private City city;
+    @ElementCollection(targetClass = HotelConvenience.class)
+    @CollectionTable(name = "hotel_conveniences",
+            joinColumns = @JoinColumn(name = "hotel_id"))
+    @Enumerated(EnumType.STRING)
+    @Column(name = "conveniences")
+    private List <HotelConvenience> hotelConveniences;
+
+
+    public Hotel() {
+    }
 
     public BigDecimal getCommentRating() {
         return commentRating;
@@ -45,43 +68,13 @@ public class Hotel {
         this.commentRating = commentRating;
     }
 
-    @ElementCollection(targetClass = RoomType.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "room_type", joinColumns = @JoinColumn(name = "hotel_id"))
-    @Enumerated(EnumType.ORDINAL)
-    private Set<RoomType> roomTypes;
-
-    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Room> rooms;
-
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
-    @OneToMany(mappedBy = "hotel",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<Reservation> reservations;
-
-
-    public List<Reservation> getReservations() {
+    public List <Reservation> getReservations() {
         return reservations;
     }
 
-    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Comments> comments;
-
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name="city_id")
-    private City city;
-
-    @ElementCollection(targetClass = HotelConvenience.class)
-    @CollectionTable(name = "hotel_conveniences",
-            joinColumns = @JoinColumn(name = "hotel_id"))
-    @Enumerated(EnumType.STRING)
-    @Column(name = "conveniences")
-    private List<HotelConvenience> hotelConveniences;
-
-    public Hotel() {
+    public void setReservations(List <Reservation> reservations) {
+        this.reservations = reservations;
     }
-
 
     public Long getHotelId() {
         return hotelId;

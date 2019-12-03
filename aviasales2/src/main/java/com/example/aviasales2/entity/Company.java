@@ -25,11 +25,11 @@ public class Company {
     private String companyName;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Comments> comments;
+    private List <Comments> comments;
 
     @OneToMany(mappedBy = "company",
             fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Tour> tours;
+    private Set <Tour> tours;
 
     private double rating;
 
@@ -38,19 +38,20 @@ public class Company {
     private int transportCount;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Transport> transportId;
+    private Set <Transport> transportId;
 
-    public Company(){}
+    public Company() {
+    }
 
     public Long getCompanyId() {
         return companyId;
     }
 
-    public void setCommentRating(BigDecimal commentRating) {
-        this.commentRating = commentRating;
-    }
-
     public BigDecimal getCommentRating() {
         return commentRating;
+    }
+
+    public void setCommentRating(BigDecimal commentRating) {
+        this.commentRating = commentRating;
     }
 }

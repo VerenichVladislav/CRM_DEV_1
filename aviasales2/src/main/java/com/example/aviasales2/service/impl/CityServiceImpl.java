@@ -13,8 +13,12 @@ import java.util.List;
 public class CityServiceImpl implements ICityService {
 
 
+    private final ICityRepository cityRepository;
+
     @Autowired
-    private ICityRepository cityRepository;
+    public CityServiceImpl(ICityRepository cityRepository) {
+        this.cityRepository = cityRepository;
+    }
 
     @Override
     public City save(City city) {
@@ -27,7 +31,7 @@ public class CityServiceImpl implements ICityService {
     }
 
     @Override
-    public List<City> findAll() {
+    public List <City> findAll() {
         return cityRepository.findAll();
     }
 

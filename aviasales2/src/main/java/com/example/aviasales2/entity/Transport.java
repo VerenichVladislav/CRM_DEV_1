@@ -24,10 +24,10 @@ public class Transport {
     private Company company;
 
     @OneToMany(mappedBy = "transport", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Trip> trips;
+    private Set <Trip> trips;
 
 
-    public Transport(){
+    public Transport() {
 
     }
 

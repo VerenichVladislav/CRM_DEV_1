@@ -10,14 +10,23 @@ public class TripFilter {
     private String cityDest;
     private String dateFrom;
 
-    public TripFilter (){}
+    public TripFilter() {
+    }
 
     public String getCityDest() {
         return cityDest;
     }
 
+    public void setCityDest(String cityDest) {
+        this.cityDest = cityDest;
+    }
+
     public String getCityFrom() {
         return cityFrom;
+    }
+
+    public void setCityFrom(String cityFrom) {
+        this.cityFrom = cityFrom;
     }
 
     public String getDateFrom() {
@@ -26,13 +35,5 @@ public class TripFilter {
 
     public void setDateFrom(String dateFrom) {
         this.dateFrom = dateFrom;
-    }
-
-    public void setCityFrom(String cityFrom) {
-        this.cityFrom = cityFrom;
-    }
-
-    public void setCityDest(String cityDest) {
-        this.cityDest = cityDest;
     }
 }

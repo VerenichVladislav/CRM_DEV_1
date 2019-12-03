@@ -16,17 +16,17 @@ import java.nio.file.Paths;
 public class PageController {
 
     @GetMapping("/international")
-    public ResponseEntity<?>
+    public ResponseEntity <?>
     getInternationalPage(@RequestParam String lang) throws Exception {
-        if(lang.equals("en.json")) {
+        if (lang.equals("en.json")) {
             Path jsonPath = Paths.get("aviasales2\\src\\main\\resources\\en.json");
             byte[] jsonEng = Files.readAllBytes(jsonPath);
-            return new ResponseEntity<>(jsonEng, HttpStatus.OK);
+            return new ResponseEntity <>(jsonEng, HttpStatus.OK);
         }
-        if(lang.equals("ru.json")) {
+        if (lang.equals("ru.json")) {
             Path jsonPath = Paths.get("aviasales2\\src\\main\\resources\\ru.json");
             byte[] jsonRus = Files.readAllBytes(jsonPath);
-            return new ResponseEntity<>(jsonRus, HttpStatus.OK);
+            return new ResponseEntity <>(jsonRus, HttpStatus.OK);
         }
         throw new Exception();
     }
