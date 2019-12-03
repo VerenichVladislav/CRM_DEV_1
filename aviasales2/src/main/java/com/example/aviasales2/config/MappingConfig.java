@@ -37,6 +37,7 @@ public class MappingConfig {
                 mapping(Room.class, RoomDTO.class)
                         .fields("hotel.hotelId", "hotel");
                 mapping(Reservation.class,ReservationDTO.class)
+                        .fields("buyer.userId","buyer")
                         .fields("hotel.hotelId","hotel");
 
                 mapping(Tour.class, TourDTO.class)

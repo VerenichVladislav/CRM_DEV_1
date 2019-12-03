@@ -12,7 +12,7 @@ import java.util.List;
 public class ReservationDTO {
     private Long reservationId;
     private Long roomId;
-    private UserDTO buyer;
+    private Long buyer;
     private Timestamp checkIn;
     private Timestamp checkOut;
     private long hotel;
