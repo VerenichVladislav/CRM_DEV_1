@@ -36,6 +36,7 @@ public class UserDTO {
     private String hashPass;
     private String state = "UnConfirmed";
     private String confirmingHash;
+    private boolean isLocked;
     @Null
     private Long wallet;
     private List<TicketDTO> tickets;
