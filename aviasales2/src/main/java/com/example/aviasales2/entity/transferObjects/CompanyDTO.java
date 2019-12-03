@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -13,7 +14,7 @@ import java.util.Set;
 @Setter
 public class CompanyDTO {
     private Long companyId;
-
+    private BigDecimal commentRating;
     @NotBlank(message = "company name is null")
     @Size(max = 25)
     private String companyName;

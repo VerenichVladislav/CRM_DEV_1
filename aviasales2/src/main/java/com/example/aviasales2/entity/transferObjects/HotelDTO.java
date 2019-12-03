@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
@@ -38,6 +39,7 @@ public class HotelDTO {
     private List<CommentsDTO> comments;
     private List<ReservationDTO> reservations;
     private List<HotelConvenience> hotelConveniences;
+    private BigDecimal commentRating;
 
     public HotelDTO() {
     }

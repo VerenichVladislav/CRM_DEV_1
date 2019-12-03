@@ -38,7 +38,7 @@ public class TourDTO {
     Timestamp date;
     private List<UserDTO> users;
     List<CommentsDTO> comments;
-
+    private BigDecimal commentRating;
 
     public TourDTO() {
     }
