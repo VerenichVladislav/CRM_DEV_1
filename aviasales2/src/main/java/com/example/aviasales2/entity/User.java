@@ -38,6 +38,8 @@ public class User {
     @NotNull
     private String hashPass;
 
+    private boolean isLocked;
+
 
     private String state = "UnConfirmed";
     private String confirmingHash;

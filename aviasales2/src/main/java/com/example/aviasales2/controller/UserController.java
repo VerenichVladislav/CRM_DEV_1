@@ -90,7 +90,17 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable("id") Integer id) {
+    public void deleteById(@PathVariable("id") Long id) {
         userService.deleteById(id);
+    }
+
+    @GetMapping("/lockUser")
+    public void lockUser(@RequestParam Long userId){
+        userService.lockUser(userId);
+    }
+
+    @GetMapping("/unlockUser")
+    public void unlockUser(@RequestParam Long userId){
+        userService.unlockUser(userId);
     }
 }

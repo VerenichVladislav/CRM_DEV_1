@@ -1,7 +1,6 @@
 package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.entity.User;
-import com.example.aviasales2.entity.transferObjects.UserDTO;
 import com.example.aviasales2.repository.UserRepository;
 import com.example.aviasales2.service.UserService;
 import org.dozer.DozerBeanMapper;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -64,8 +62,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteById(Integer id) {
-        userRepository.deleteById(id);
+    public void deleteById(Long id) {
+        User user = userRepository.findByUserId(id);
+        if(user.getRole().equals("USER")){
+            userRepository.deleteByUserId(id);
+        }
     }
 
     @Override
@@ -73,5 +74,19 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByConfirmingHash(hashConfirm);
     }
 
+    @Override
+    public void lockUser(Long userId) {
+        User user = userRepository.findByUserId(userId);
+        if (user.getRole().equals("USER")) {
+            user.setLocked(true);
+        }
+    }
 
+    @Override
+    public void unlockUser(Long userId) {
+        User user = userRepository.findByUserId(userId);
+        if (user.getRole().equals("USER")) {
+            user.setLocked(false);
+        }
+    }
 }

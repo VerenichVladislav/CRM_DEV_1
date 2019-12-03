@@ -15,6 +15,8 @@ public interface UserService {
     User findByUserName(String userName);
     void update(User user);
     void delete(User user);
-    void deleteById(Integer id);
+    void deleteById(Long id);
     User findByHashConfirm(String hashConfirm);
+    void lockUser(Long userId);
+    void unlockUser(Long userId);
 }
