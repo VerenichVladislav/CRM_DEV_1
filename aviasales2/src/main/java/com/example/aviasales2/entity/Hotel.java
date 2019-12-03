@@ -82,6 +82,13 @@ public class Hotel {
     public Hotel() {
     }
 
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
 
     public Long getHotelId() {
         return hotelId;

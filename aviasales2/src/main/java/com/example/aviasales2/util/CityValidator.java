@@ -26,16 +26,7 @@ public class CityValidator implements Validator {
         if (cityRepository.findByCityName(city.getCityName()) != null) {
             errors.rejectValue("cityName", "", "City with such name already exists");
         }
-//        if (!city.getCountry().matches("^[а-яА-ЯёЁa-zA-Z\\s]+$")) {
-//            errors.rejectValue("country", "", "Bad country name!(А-Я A-Z)");
-//        }
 
-//        if (!city.getCityName().matches("^[а-яА-ЯёЁa-zA-Z\\s]+$")) {
-//            errors.rejectValue("cityName", "", "Bad city name!(А-Я A-Z)");
-//        }
-//        if (city.getPopulation() != null && !city.getPopulation().matches("[\\d+]+$")) {
-//            errors.rejectValue("population", "", "Bad population value!(only positive digits!)");
-//        }
     }
 
     public void updateValidate(Object target, Errors errors) {
@@ -48,15 +39,6 @@ public class CityValidator implements Validator {
         if (cityRepository.findByCityName(city.getCityName()) != null && !city.getCityName().equals(city1.getCityName())) {
             errors.rejectValue("cityName", "", "A city with the same name already exists.");
         }
-//        if (!city.getCountry().matches("^[а-яА-ЯёЁa-zA-Z\\s]+$") && !city.getCountry().equals(city1.getCountry())) {
-//            errors.rejectValue("country", "", "Bad country name!(А-Я A-Z)");
-//        }
-//
-//        if (!city.getCityName().matches("^[а-яА-ЯёЁa-zA-Z\\s]+$") && !city.getCityName().equals(city1.getCityName())) {
-//            errors.rejectValue("cityName", "", "Bad city name!(А-Я A-Z)");
-//        }
-//        if (city.getPopulation() != null && !city.getPopulation().matches("[\\d+]+$")) {
-//            errors.rejectValue("population", "", "Bad population value!(only positive digits!)");
-//        }
+
     }
 }

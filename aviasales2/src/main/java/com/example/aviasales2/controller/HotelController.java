@@ -8,6 +8,7 @@ import com.example.aviasales2.entity.Reservation;
 import com.example.aviasales2.entity.Room;
 import com.example.aviasales2.entity.transferObjects.CityDTO;
 import com.example.aviasales2.entity.transferObjects.HotelDTO;
+import com.example.aviasales2.exception.GlobalBadRequestException;
 import com.example.aviasales2.service.*;
 import com.example.aviasales2.util.HotelValidator;
 import org.dozer.DozerBeanMapper;
@@ -39,7 +40,7 @@ public class HotelController {
     private WalletService walletService;
     @Autowired
     private RoomService roomService;
-
+    @Autowired
     private HotelValidator hotelValidator;
     @Autowired
     private UserService userService;
@@ -75,13 +76,17 @@ public class HotelController {
     }
 
     @PostMapping("/save")
-    public String saveHotel(@RequestBody @Valid HotelDTO hotel, BindingResult result) {
-        hotelValidator.validate(hotel, result);
+    public ResponseEntity<HotelDTO> saveHotel(@RequestBody @Valid HotelDTO data, BindingResult result) {
+        hotelValidator.validate(data, result);
         if (result.hasErrors()){
-            return String.valueOf(result.getFieldErrors());
+            throw new GlobalBadRequestException(result);
         }
-        hotelService.save(mapper.map(hotel,Hotel.class));
-        return "saved";
+        Hotel hotel = mapper.map(data, Hotel.class);
+        City city = cityService.findByCityId(data.getCityId());
+        hotel.setCity(cityService.findByCityId(data.getCityId()));
+        city.getHotels().add(hotel);
+        hotelService.save(hotel);
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
     @Transactional

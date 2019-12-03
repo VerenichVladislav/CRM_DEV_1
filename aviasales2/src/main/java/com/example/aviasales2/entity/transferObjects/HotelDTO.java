@@ -44,4 +44,11 @@ public class HotelDTO {
     public HotelDTO() {
     }
 
+    public Long getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
+    }
 }
