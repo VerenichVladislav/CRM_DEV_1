@@ -25,12 +25,17 @@ import java.util.Map;
 @Service
 public class HotelServiceImpl implements HotelService {
 
+    private final HotelRepository hotelRepository;
+    private final CompanyRepository companyRepository;
+    private final TourRepository tourRepository;
+
     @Autowired
-    private HotelRepository hotelRepository;
-    @Autowired
-    private CompanyRepository companyRepository;
-    @Autowired
-    private TourRepository tourRepository;
+    public HotelServiceImpl(HotelRepository hotelRepository, CompanyRepository companyRepository, TourRepository tourRepository) {
+        this.hotelRepository = hotelRepository;
+        this.companyRepository = companyRepository;
+        this.tourRepository = tourRepository;
+    }
+
     @Override
     public Hotel save(Hotel hotel) {
         return hotelRepository.save(hotel);
@@ -52,12 +57,12 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<Hotel> findAll() {
+    public List <Hotel> findAll() {
         return hotelRepository.findAll();
     }
 
     @Override
-    public List<Hotel> findAll(HotelFilter hotelFilter) {
+    public List <Hotel> findAll(HotelFilter hotelFilter) {
         final QHotel qHotel = QHotel.hotel;
         final QReservation qReservation = QReservation.reservation;
 
@@ -79,7 +84,7 @@ public class HotelServiceImpl implements HotelService {
 
             booleanBuilder.and(qReservation.checkIn.between(firstTimestamp, secondTimestamp));
         }
-        return (List<Hotel>) hotelRepository.findAll(booleanBuilder);
+        return (List <Hotel>) hotelRepository.findAll(booleanBuilder);
     }
 
     @Override
@@ -99,11 +104,11 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<Hotel> findHotelsByHotelConveniences(List<String> hotelConveniences, HotelFilter hotelFilter) {
-        List<Hotel> hotels = findAll(hotelFilter);
-        List<Hotel> goodHotels = new ArrayList<>();
+    public List <Hotel> findHotelsByHotelConveniences(List <String> hotelConveniences, HotelFilter hotelFilter) {
+        List <Hotel> hotels = findAll(hotelFilter);
+        List <Hotel> goodHotels = new ArrayList <>();
 
-        Map<Hotel, List<String>> enumString = new HashMap<>();
+        Map <Hotel, List <String>> enumString = new HashMap <>();
         for (Hotel hotel : hotels) {
             for (HotelConvenience hotelConvenience : hotel.getHotelConveniences()) {
                 if (hotelConveniences.contains(hotelConvenience.name())
@@ -114,7 +119,7 @@ public class HotelServiceImpl implements HotelService {
         }
 
         for (Hotel hotel : goodHotels) {
-            List<String> tempName = new ArrayList<>();
+            List <String> tempName = new ArrayList <>();
             for (HotelConvenience hotelConvenience : hotel.getHotelConveniences()) {
                 String name = hotelConvenience.name();
                 tempName.add(name);

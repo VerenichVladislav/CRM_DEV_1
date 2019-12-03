@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Set;
+
 @Getter
 @Setter
 public class CityDTO {
@@ -22,10 +23,10 @@ public class CityDTO {
     @Pattern(regexp = "[0-9]+$", message = "Bad population number")
     @Size(max = 11)
     private String population;
-    private Set<TripDTO> trip_from;
-    private Set<TripDTO> trip_dest;
-    private Set<TourDTO> tours;
-    private Set<HotelDTO> hotels;
+    private Set <TripDTO> trip_from;
+    private Set <TripDTO> trip_dest;
+    private Set <TourDTO> tours;
+    private Set <HotelDTO> hotels;
     private String image;
     private String lat;
     private String lng;

@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class NoSuchEntityException extends RuntimeException{
+public class NoSuchEntityException extends RuntimeException {
     private Class aClass;
 }

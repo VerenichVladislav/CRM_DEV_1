@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface ReservationService {
     Reservation findById(Long id);
-    List<Reservation> findAllByBuyer(User buyer);
+
+    List <Reservation> findAllByBuyer(User buyer);
 }

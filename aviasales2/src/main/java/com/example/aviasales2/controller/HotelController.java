@@ -20,7 +20,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,20 +31,24 @@ import java.util.stream.Collectors;
 @RequestMapping(value = "/hotels")
 public class HotelController {
 
-    @Autowired
-    private HotelService hotelService;
-    @Autowired
-    private DozerBeanMapper mapper;
-    @Autowired
-    private WalletService walletService;
-    @Autowired
-    private RoomService roomService;
-    @Autowired
+    private final HotelService hotelService;
+    private final DozerBeanMapper mapper;
+    private final WalletService walletService;
+    private final RoomService roomService;
+    private final UserService userService;
+    private final ICityService cityService;
     private HotelValidator hotelValidator;
+
     @Autowired
-    private UserService userService;
-    @Autowired
-    private ICityService cityService;
+    public HotelController(HotelService hotelService, DozerBeanMapper mapper, WalletService walletService, RoomService roomService, UserService userService, ICityService cityService, HotelValidator hotelValidator) {
+        this.hotelService = hotelService;
+        this.mapper = mapper;
+        this.walletService = walletService;
+        this.roomService = roomService;
+        this.userService = userService;
+        this.cityService = cityService;
+        this.hotelValidator = hotelValidator;
+    }
 
     @GetMapping("/{id}")
     public HotelDTO getHotelById(@PathVariable("id") long id) {
@@ -63,15 +66,15 @@ public class HotelController {
     }
 
     @PostMapping
-    public List<HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter) {
+    public List <HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter) {
         return hotelService.findAll(hotelFilter).stream()
                 .map(entity -> mapper.map(entity, HotelDTO.class))
                 .collect(Collectors.toList());
     }
 
     @PostMapping("/byHotelConveniences")
-    public List<HotelDTO> findRoomsByRoomConveniences(@RequestParam List<String> hotelConveniences, HotelFilter hotelFilter){
-        List<Hotel> sortedHotels = hotelService.findHotelsByHotelConveniences(hotelConveniences, hotelFilter);
+    public List <HotelDTO> findRoomsByRoomConveniences(@RequestParam List <String> hotelConveniences, HotelFilter hotelFilter) {
+        List <Hotel> sortedHotels = hotelService.findHotelsByHotelConveniences(hotelConveniences, hotelFilter);
         return sortedHotels.stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
     }
 
@@ -91,11 +94,11 @@ public class HotelController {
 
     @Transactional
     @PostMapping("/{user_id}/{hotel_id}/{checkIn}/{checkOut}/{roomId}")
-    public ResponseEntity<String> addReservation(@PathVariable("user_id") Long userId,
-                                                 @PathVariable("hotel_id") Long hotelId,
-                                                 @PathVariable("checkIn") Timestamp checkIn,
-                                                 @PathVariable("checkOut") Timestamp checkOut,
-                                                 @PathVariable("roomId") Long roomId
+    public ResponseEntity <String> addReservation(@PathVariable("user_id") Long userId,
+                                                  @PathVariable("hotel_id") Long hotelId,
+                                                  @PathVariable("checkIn") Timestamp checkIn,
+                                                  @PathVariable("checkOut") Timestamp checkOut,
+                                                  @PathVariable("roomId") Long roomId
     ) {
         Hotel hotel = hotelService.findByHotelId(hotelId);
         Room room = roomService.findByRoomId(roomId);
@@ -106,7 +109,7 @@ public class HotelController {
             reservation.setRoomId(roomId);
             reservation.setHotel(hotel);
             //reservation.setUserId(userId);
-            List<Reservation> reservations = hotel.getReservations();
+            List <Reservation> reservations = hotel.getReservations();
             reservations.add(reservation);
             hotel.setReservations(reservations);
             hotelService.save(hotel);
@@ -119,14 +122,15 @@ public class HotelController {
                 .body("Error");
 
     }
-    @GetMapping()
-    public List<CityDTO> getCityWithHotels(){
-        List<City> cityList =cityService.findAll();
-        List<City> ListWithHotel = new ArrayList<City>();
 
-        for (City city:
-             cityList) {
-            if(!city.getHotels().isEmpty()){
+    @GetMapping()
+    public List <CityDTO> getCityWithHotels() {
+        List <City> cityList = cityService.findAll();
+        List <City> ListWithHotel = new ArrayList <City>();
+
+        for (City city :
+                cityList) {
+            if (!city.getHotels().isEmpty()) {
                 ListWithHotel.add(city);
             }
 
@@ -135,6 +139,7 @@ public class HotelController {
                 .collect(Collectors.toList());
 
     }
+
     @PutMapping()
     public Hotel updateHotel(@RequestBody Hotel hotel) {
         Hotel old = hotelService.findByHotelId(hotel.getHotelId());

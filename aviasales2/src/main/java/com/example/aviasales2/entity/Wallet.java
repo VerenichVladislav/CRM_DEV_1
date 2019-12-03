@@ -17,12 +17,15 @@ public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long walletId;
+
     private BigDecimal sum = BigDecimal.valueOf(0);
+
+    private String status = "OK";
 
     @OneToOne(mappedBy = "wallet")
     private User owner;
 
-    public Wallet(){
+    public Wallet() {
 
     }
 }

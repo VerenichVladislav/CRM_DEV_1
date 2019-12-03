@@ -34,11 +34,11 @@ public class HotelDTO {
     private String lat;
     private String lng;
     private Long cityId;
-    private List<RoomDTO> rooms;
-    private List<TourDTO> tours;
-    private List<CommentsDTO> comments;
-    private List<ReservationDTO> reservations;
-    private List<HotelConvenience> hotelConveniences;
+    private List <RoomDTO> rooms;
+    private List <TourDTO> tours;
+    private List <CommentsDTO> comments;
+    private List <ReservationDTO> reservations;
+    private List <HotelConvenience> hotelConveniences;
     private BigDecimal commentRating;
 
     public HotelDTO() {

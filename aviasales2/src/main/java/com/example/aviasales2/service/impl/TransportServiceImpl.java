@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class TransportServiceImpl implements TransportService {
@@ -20,25 +19,27 @@ public class TransportServiceImpl implements TransportService {
     private DozerBeanMapper mapper;
 
 
-    @Override public Transport save(Transport transport) {
+    @Override
+    public Transport save(Transport transport) {
         return transportRepository.save(transport);
     }
 
 
-
     @Override
-    public Optional<Transport> findById(Long id) {
+    public Optional <Transport> findById(Long id) {
         return transportRepository.findById(id);
     }
+
     @Override
-    public List<Transport> findAll() {
+    public List <Transport> findAll() {
         return transportRepository.findAll();
     }
 
     @Override
     public Transport update(TransportDTO transport) {
-        if(transportRepository.existsById(transport.getTransportId())){
-            return transportRepository.save(mapper.map(transport, Transport.class));}
+        if (transportRepository.existsById(transport.getTransportId())) {
+            return transportRepository.save(mapper.map(transport, Transport.class));
+        }
         return null;
     }
 

@@ -5,12 +5,14 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
-public interface TransportRepository extends CrudRepository<Transport,Long> {
+public interface TransportRepository extends CrudRepository <Transport, Long> {
     Transport findByTransportId(Long id);
-    List<Transport> findAll();
+
+    List <Transport> findAll();
+
     Transport deleteAllByName(String name);
+
     Transport findByName(String name);
 }

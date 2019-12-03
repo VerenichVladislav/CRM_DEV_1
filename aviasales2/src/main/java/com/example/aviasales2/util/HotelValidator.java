@@ -13,10 +13,11 @@ public class HotelValidator implements Validator {
 
     @Autowired
     private HotelRepository hotelRepository;
+
     @Autowired
     private ICityRepository cityRepository;
     @Override
-    public boolean supports(Class<?> aClass) {
+    public boolean supports(Class <?> aClass) {
         return HotelDTO.class.equals(aClass);
     }
 

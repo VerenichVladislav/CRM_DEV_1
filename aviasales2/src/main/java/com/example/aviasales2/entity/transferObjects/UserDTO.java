@@ -23,7 +23,7 @@ public class UserDTO {
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Bad user name")
     private String userName;
     @NotBlank(message = "First name should be not null")
-    @Size( max = 15)
+    @Size(max = 15)
     @Pattern(regexp = "^[A-Z][a-z]+$")
     private String firstName;
     @NotBlank(message = "Last name should be not null")
@@ -39,9 +39,9 @@ public class UserDTO {
     private boolean isLocked;
     @Null
     private Long wallet;
-    private List<TicketDTO> tickets;
-    private List<ReservationDTO> reservations;
-    private List<TourDTO> tours;
+    private List <TicketDTO> tickets;
+    private List <ReservationDTO> reservations;
+    private List <TourDTO> tours;
 
     public UserDTO() {
     }

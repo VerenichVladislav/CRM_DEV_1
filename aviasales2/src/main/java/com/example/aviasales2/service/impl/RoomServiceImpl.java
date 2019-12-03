@@ -14,8 +14,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class RoomServiceImpl implements RoomService {
+    private final RoomRepository roomRepository;
+
     @Autowired
-    private RoomRepository roomRepository;
+    public RoomServiceImpl(RoomRepository roomRepository) {
+        this.roomRepository = roomRepository;
+    }
 
     @Override
     public Room save(Room room) {
@@ -28,7 +32,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<Room> findAll() {
+    public List <Room> findAll() {
         return roomRepository.findAll();
     }
 
@@ -48,28 +52,28 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<Room> getFreeRooms() {
+    public List <Room> getFreeRooms() {
         return roomRepository.findAll().stream()
                 .filter(room -> !room.getStatus().equals("busy"))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<Room> findRoomsByPriceAscending() {
+    public List <Room> findRoomsByPriceAscending() {
         return getFreeRooms().stream().
                 sorted(Comparator.comparingDouble(Room::getDailyCost)).
                 collect(Collectors.toList());
     }
 
     @Override
-    public List<Room> findRoomsByPriceDescending() {
+    public List <Room> findRoomsByPriceDescending() {
         return getFreeRooms().stream().
                 sorted(Comparator.comparingDouble(Room::getDailyCost).reversed()).
                 collect(Collectors.toList());
     }
 
     @Override
-    public List<Room> findRoomsByPriceInRange(double minPrice, double maxPrice) {
+    public List <Room> findRoomsByPriceInRange(double minPrice, double maxPrice) {
         return getFreeRooms().stream()
                 .filter(room -> room.getDailyCost() >= minPrice &&
                         room.getDailyCost() <= maxPrice)
@@ -77,9 +81,9 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<Room> findRoomsByRoomConveniences(List<String> roomConveniences) {
-        List<Room> rooms = getFreeRooms();
-        List<Room> goodRooms = new ArrayList<>();
+    public List <Room> findRoomsByRoomConveniences(List <String> roomConveniences) {
+        List <Room> rooms = getFreeRooms();
+        List <Room> goodRooms = new ArrayList <>();
 
 //        rooms.forEach(room -> room.getRoomConvenience().stream()
 //                .filter(convenience -> roomConveniences.contains(convenience.name()))
@@ -87,7 +91,7 @@ public class RoomServiceImpl implements RoomService {
 //                .filter(roomConvenience -> !goodRooms.contains(room))
 //                .forEach(convenience -> goodRooms.add(room)));
 
-        Map<Room, List<String>> enumString = new HashMap<>();
+        Map <Room, List <String>> enumString = new HashMap <>();
         for (Room room : rooms) {
             for (RoomConvenience roomConvenience : room.getRoomConvenience()) {
                 if (roomConveniences.contains(roomConvenience.name())
@@ -98,7 +102,7 @@ public class RoomServiceImpl implements RoomService {
         }
 
         for (Room room : goodRooms) {
-            List<String> tempName = new ArrayList<>();
+            List <String> tempName = new ArrayList <>();
             for (RoomConvenience roomConvenience : room.getRoomConvenience()) {
                 String name = roomConvenience.name();
                 tempName.add(name);

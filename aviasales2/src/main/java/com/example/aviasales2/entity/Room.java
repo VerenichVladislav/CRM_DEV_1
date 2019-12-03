@@ -33,5 +33,5 @@ public class Room {
             joinColumns = @JoinColumn(name = "room_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "conveniences")
-    private List<RoomConvenience> roomConvenience;
+    private List <RoomConvenience> roomConvenience;
 }

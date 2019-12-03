@@ -23,11 +23,11 @@ public class CompanyDTO {
     private String rating;
 
     private int transportCount;
-    private List<CommentsDTO> comments;
+    private List <CommentsDTO> comments;
 
-    private Set<TourDTO> tours;
+    private Set <TourDTO> tours;
 
-    private Set<TransportDTO> transport;
+    private Set <TransportDTO> transport;
 
     public CompanyDTO() {
     }
@@ -64,27 +64,27 @@ public class CompanyDTO {
         this.transportCount = transportCount;
     }
 
-    public List<CommentsDTO> getComments() {
+    public List <CommentsDTO> getComments() {
         return comments;
     }
 
-    public void setComments(List<CommentsDTO> comments) {
+    public void setComments(List <CommentsDTO> comments) {
         this.comments = comments;
     }
 
-    public Set<TourDTO> getTours() {
+    public Set <TourDTO> getTours() {
         return tours;
     }
 
-    public void setTours(Set<TourDTO> tours) {
+    public void setTours(Set <TourDTO> tours) {
         this.tours = tours;
     }
 
-    public Set<TransportDTO> getTransport() {
+    public Set <TransportDTO> getTransport() {
         return transport;
     }
 
-    public void setTransport(Set<TransportDTO> transport) {
+    public void setTransport(Set <TransportDTO> transport) {
         this.transport = transport;
     }
 }

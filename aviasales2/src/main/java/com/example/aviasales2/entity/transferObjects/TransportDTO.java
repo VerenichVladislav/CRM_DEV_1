@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.Set;
+
 @Getter
 @Setter
 public class TransportDTO {
@@ -17,7 +18,7 @@ public class TransportDTO {
     @Pattern(regexp = "[0-9]+$", message = "Bad passenger capacity number!(only positive number)")
     String passengerCapacity;
     int company;
-    private Set<TripDTO> trips;
+    private Set <TripDTO> trips;
 
     public TransportDTO() {
     }

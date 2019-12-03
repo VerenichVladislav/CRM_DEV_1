@@ -7,14 +7,22 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Integer> {
+public interface UserRepository extends CrudRepository <User, Integer> {
     User findByUserId(Long id);
+
     User findByEmail(String email);
+
     void deleteByUserId(Long id);
+
     User findByUserName(String userName);
-    List<User> findByLastNameAndEmail(String lastName, String email);
-    List<User> findAllByLastName(String lastName);
+
+    List <User> findByLastNameAndEmail(String lastName, String email);
+
+    List <User> findAllByLastName(String lastName);
+
     User findAllByUserName(String userName);
+
     User findByConfirmingHash(String confirmHash);
-    List<User> findAll();
+
+    List <User> findAll();
 }

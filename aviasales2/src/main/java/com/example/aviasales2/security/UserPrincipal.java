@@ -13,21 +13,18 @@ public class UserPrincipal implements UserDetails {
 
     private User user;
 
-    public UserPrincipal(User user)
-    {
+    public UserPrincipal(User user) {
         this.user = user;
     }
 
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities = new ArrayList<>();
-
-
+    public Collection <? extends GrantedAuthority> getAuthorities() {
+        List <GrantedAuthority> authorities = new ArrayList <>();
 
 
         this.user.getRoleList().forEach(r -> {
-            GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_"+r);
+            GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);
             authorities.add(authority);
         });
         return authorities;

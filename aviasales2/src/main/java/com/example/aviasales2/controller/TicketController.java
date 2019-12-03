@@ -3,9 +3,9 @@ package com.example.aviasales2.controller;
 import com.example.aviasales2.entity.Ticket;
 import com.example.aviasales2.entity.User;
 import com.example.aviasales2.entity.transferObjects.TicketDTO;
+import com.example.aviasales2.service.TicketService;
 import com.example.aviasales2.service.UserService;
 import com.example.aviasales2.service.WalletService;
-import com.example.aviasales2.service.TicketService;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,14 +22,19 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/tickets")
 public class TicketController {
+    private final TicketService ticketService;
+    private final WalletService walletService;
+    private final UserService userService;
+    private final DozerBeanMapper mapper;
+
     @Autowired
-    TicketService ticketService;
-    @Autowired
-    WalletService walletService;
-    @Autowired
-    UserService userService;
-    @Autowired
-    private DozerBeanMapper mapper;
+    public TicketController(TicketService ticketService, WalletService walletService, UserService userService, DozerBeanMapper mapper) {
+        this.ticketService = ticketService;
+        this.walletService = walletService;
+        this.userService = userService;
+        this.mapper = mapper;
+    }
+
     @PostMapping()
     public String save(@RequestBody @Valid Ticket ticket, BindingResult result) {
         if (result.hasErrors()) {
@@ -45,7 +50,7 @@ public class TicketController {
     }
 
     @GetMapping("/buyer/{buyer_id}")
-    public List<TicketDTO> findAllByBuyerId(@PathVariable("buyer_id") Long id) {
+    public List <TicketDTO> findAllByBuyerId(@PathVariable("buyer_id") Long id) {
         User user = userService.findById(id);
         return ticketService.findAllByBuyer(user).stream()
                 .map(entity -> mapper.map(entity, TicketDTO.class))
@@ -53,10 +58,10 @@ public class TicketController {
     }
 
     @GetMapping("/{user_id}/delete")
-    ResponseEntity<String> deleteTicket(@PathVariable("user_id") long userId,
-                                        @RequestParam long ticketId){
+    ResponseEntity <String> deleteTicket(@PathVariable("user_id") long userId,
+                                         @RequestParam long ticketId) {
         BigDecimal price = ticketService.getSum(ticketId);
-        walletService.backMoney(price,userId,ticketId);
+        walletService.backMoney(price, userId, ticketId);
         ticketService.deleteById(ticketId);
         return ResponseEntity.status(HttpStatus.OK)
                 .body("Successful! You delete this ticket!");

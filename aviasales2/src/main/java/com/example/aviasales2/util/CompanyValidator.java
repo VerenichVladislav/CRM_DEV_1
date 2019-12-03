@@ -17,7 +17,7 @@ public class CompanyValidator implements Validator {
     private DozerBeanMapper mapper;
 
     @Override
-    public boolean supports(Class<?> aClass) {
+    public boolean supports(Class <?> aClass) {
         return Company.class.equals(aClass);
     }
 
@@ -36,7 +36,7 @@ public class CompanyValidator implements Validator {
         if (companyRepository.findByCompanyName(company.getCompanyName()) != null && !company.getCompanyName().equals(company2.getCompanyName())) {
             errors.rejectValue("companyName", "", "A company with the same name already exists");
         }
-        if(company.getRating() == null){
+        if (company.getRating() == null) {
             company.setRating(company2.getRating());
         }
         company.setTransportCount(company2.getTransportCount());

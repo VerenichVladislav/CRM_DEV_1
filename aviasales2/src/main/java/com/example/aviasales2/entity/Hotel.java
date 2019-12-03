@@ -36,65 +36,28 @@ public class Hotel {
     private String lat;
     private String lng;
     private BigDecimal commentRating = new BigDecimal(0);
-
-    public BigDecimal getCommentRating() {
-        return commentRating;
-    }
-
-    public void setCommentRating(BigDecimal commentRating) {
-        this.commentRating = commentRating;
-    }
-
     @ElementCollection(targetClass = RoomType.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "room_type", joinColumns = @JoinColumn(name = "hotel_id"))
     @Enumerated(EnumType.ORDINAL)
-    private Set<RoomType> roomTypes;
-
+    private Set <RoomType> roomTypes;
     @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Room> rooms;
-
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
-    @OneToMany(mappedBy = "hotel",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<Reservation> reservations;
-
-
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
+    private List <Room> rooms;
     @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Comments> comments;
-
+    private List <Reservation> reservations;
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List <Comments> comments;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name="city_id")
+    @JoinColumn(name = "city_id")
     private City city;
-
     @ElementCollection(targetClass = HotelConvenience.class)
     @CollectionTable(name = "hotel_conveniences",
             joinColumns = @JoinColumn(name = "hotel_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "conveniences")
-    private List<HotelConvenience> hotelConveniences;
+    private List <HotelConvenience> hotelConveniences;
+
 
     public Hotel() {
     }
 
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
-    public Long getHotelId() {
-        return hotelId;
-    }
-
-    public void setHotelId(Long hotelId) {
-        this.hotelId = hotelId;
-    }
 }
