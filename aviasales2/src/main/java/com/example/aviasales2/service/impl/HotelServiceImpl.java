@@ -1,25 +1,26 @@
 package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.config.filterConfig.HotelFilter;
-import com.example.aviasales2.entity.*;
-import com.example.aviasales2.entity.transferObjects.CommentsDTO;
-import com.example.aviasales2.entity.transferObjects.HotelDTO;
+import com.example.aviasales2.entity.Hotel;
+import com.example.aviasales2.entity.HotelConvenience;
+import com.example.aviasales2.entity.QHotel;
+import com.example.aviasales2.entity.QReservation;
 import com.example.aviasales2.repository.CompanyRepository;
 import com.example.aviasales2.repository.HotelRepository;
 import com.example.aviasales2.repository.TourRepository;
 import com.example.aviasales2.service.HotelService;
 import com.querydsl.core.BooleanBuilder;
-import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class HotelServiceImpl implements HotelService {
@@ -58,7 +59,7 @@ public class HotelServiceImpl implements HotelService {
     @Override
     public List<Hotel> findAll(HotelFilter hotelFilter) {
         final QHotel qHotel = QHotel.hotel;
-        final QRoom qRoom = QRoom.room;
+        final QReservation qReservation = QReservation.reservation;
 
         BooleanBuilder booleanBuilder = new BooleanBuilder(qHotel.isNotNull());
         if (hotelFilter.getCity() != null) {
@@ -76,7 +77,7 @@ public class HotelServiceImpl implements HotelService {
             firstTimestamp = Timestamp.valueOf(localDateTime.plusHours(3));
             secondTimestamp = Timestamp.valueOf(localDateTime.plusHours(26).plusMinutes(59).plusSeconds(59).plusNanos(999999999));
 
-            booleanBuilder.and(qRoom.checkInDate.between(firstTimestamp, secondTimestamp));
+            booleanBuilder.and(qReservation.checkIn.between(firstTimestamp, secondTimestamp));
         }
         return (List<Hotel>) hotelRepository.findAll(booleanBuilder);
     }

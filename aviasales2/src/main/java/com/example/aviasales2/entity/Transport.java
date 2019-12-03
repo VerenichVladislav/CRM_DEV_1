@@ -17,7 +17,7 @@ public class Transport {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long transportId;
     private String name;
-    private int baggage;
+    private int passengerCapacity;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")

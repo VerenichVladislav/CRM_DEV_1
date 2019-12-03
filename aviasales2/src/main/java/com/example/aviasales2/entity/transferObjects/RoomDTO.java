@@ -11,12 +11,10 @@ import java.util.List;
 @Setter
 public class RoomDTO {
     private Long roomId;
-    private Timestamp checkInDate;
-    private Timestamp checkOutDate;
     private Double dailyCost;
     private String status;
-    private long hotel;
-    private double description;
+    private Long hotel;
+    private String description;
     private String image;
     private String type;
     private List<RoomConvenience> roomConvenience;

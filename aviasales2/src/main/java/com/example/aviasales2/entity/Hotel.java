@@ -76,7 +76,7 @@ public class Hotel {
     @CollectionTable(name = "hotel_conveniences",
             joinColumns = @JoinColumn(name = "hotel_id"))
     @Enumerated(EnumType.STRING)
-    @Column(name = "convenience_id")
+    @Column(name = "conveniences")
     private List<HotelConvenience> hotelConveniences;
 
     public Hotel() {

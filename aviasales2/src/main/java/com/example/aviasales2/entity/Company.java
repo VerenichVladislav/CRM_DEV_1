@@ -31,7 +31,7 @@ public class Company {
             fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Tour> tours;
 
-    private short rating;
+    private double rating;
 
     private BigDecimal commentRating = new BigDecimal(0);
 

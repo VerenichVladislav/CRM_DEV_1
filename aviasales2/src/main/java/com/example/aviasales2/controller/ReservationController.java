@@ -1,6 +1,5 @@
 package com.example.aviasales2.controller;
 
-import com.example.aviasales2.entity.Reservation;
 import com.example.aviasales2.entity.User;
 import com.example.aviasales2.entity.transferObjects.ReservationDTO;
 import com.example.aviasales2.service.ReservationService;
