@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -18,8 +17,6 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long roomId;
 
-    private Timestamp checkInDate;
-    private Timestamp checkOutDate;
     private Double dailyCost;
     private String status;
 
@@ -35,6 +32,6 @@ public class Room {
     @CollectionTable(name = "room_conveniences",
             joinColumns = @JoinColumn(name = "room_id"))
     @Enumerated(EnumType.STRING)
-    @Column(name = "convenience_id")
+    @Column(name = "conveniences")
     private List<RoomConvenience> roomConvenience;
 }
