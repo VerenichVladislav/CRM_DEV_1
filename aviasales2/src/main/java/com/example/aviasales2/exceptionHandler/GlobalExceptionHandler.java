@@ -1,7 +1,6 @@
 package com.example.aviasales2.exceptionHandler;
 
 import com.example.aviasales2.exception.GlobalBadRequestException;
-
 import com.example.aviasales2.exception.NoSuchEntityException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +17,11 @@ import java.util.stream.Collectors;
 class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(GlobalBadRequestException.class)
-    protected ResponseEntity<Object> handleGlobalBadRequestException(
+    protected ResponseEntity <Object> handleGlobalBadRequestException(
             GlobalBadRequestException ex) {
-        Map<String, Object> body = new HashMap<>();
+        Map <String, Object> body = new HashMap <>();
 
-        List<String> errors = ex.getResult()
+        List <String> errors = ex.getResult()
                 .getFieldErrors()
                 .stream()
                 .map(x -> x.getDefaultMessage())
@@ -31,16 +30,16 @@ class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         body.put("errors", errors);
         body.put("status", HttpStatus.BAD_REQUEST.value());
 
-        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity <>(body, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(NoSuchEntityException.class)
-    protected ResponseEntity<Object> handleNoSuchEntityException(
+    protected ResponseEntity <Object> handleNoSuchEntityException(
             NoSuchEntityException ex) {
-        Map<String, Object> body = new HashMap<>();
+        Map <String, Object> body = new HashMap <>();
         String error = "No such " + ex.getAClass().getSimpleName();
         body.put("errors", error);
         body.put("status", HttpStatus.BAD_REQUEST.value());
-        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity <>(body, HttpStatus.BAD_REQUEST);
     }
 }

@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
@@ -33,13 +34,21 @@ public class HotelDTO {
     private String lat;
     private String lng;
     private Long cityId;
-    private List<RoomDTO> rooms;
-    private List<TourDTO> tours;
-    private List<CommentsDTO> comments;
-    private List<ReservationDTO> reservations;
-    private List<HotelConvenience> hotelConveniences;
+    private List <RoomDTO> rooms;
+    private List <TourDTO> tours;
+    private List <CommentsDTO> comments;
+    private List <ReservationDTO> reservations;
+    private List <HotelConvenience> hotelConveniences;
+    private BigDecimal commentRating;
 
     public HotelDTO() {
     }
 
+    public Long getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
+    }
 }

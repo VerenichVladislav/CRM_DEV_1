@@ -32,23 +32,24 @@ public class City {
     private Long population;
 
     @OneToMany(mappedBy = "cityFrom", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    private Set<Trip> trip_from;
+    private Set <Trip> trip_from;
 
     @OneToMany(mappedBy = "cityDest", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    private Set<Trip> trip_dest;
+    private Set <Trip> trip_dest;
 
     @OneToMany(mappedBy = "cityId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Tour> tours;
+    private Set <Tour> tours;
 
-    @OneToMany(mappedBy = "city",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<Hotel> hotels;
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List <Hotel> hotels;
     private String image;
     private String lat;
     private String lng;
+
     public City() {
     }
 
-    public List<Hotel> getHotels() {
+    public List <Hotel> getHotels() {
         return hotels;
     }
 }

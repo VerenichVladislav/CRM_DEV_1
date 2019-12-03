@@ -1,11 +1,9 @@
 package com.example.aviasales2.controller;
 
 import com.example.aviasales2.entity.Sender;
-import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.entity.User;
 import com.example.aviasales2.entity.transferObjects.UserDTO;
 import com.example.aviasales2.exception.GlobalBadRequestException;
-import com.example.aviasales2.service.TripService;
 import com.example.aviasales2.service.UserService;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,28 +23,31 @@ import java.util.stream.Collectors;
 @RequestMapping("/users")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+    private final DozerBeanMapper mapper;
 
     @Autowired
-    private DozerBeanMapper mapper;
+    public UserController(UserService userService, DozerBeanMapper mapper) {
+        this.userService = userService;
+        this.mapper = mapper;
+    }
 
     @GetMapping
-    public List<UserDTO> findAll() {
+    public List <UserDTO> findAll() {
         return userService.findAll().stream()
                 .map(entity -> mapper.map(entity, UserDTO.class))
                 .collect(Collectors.toList());
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> savePerson(@RequestBody @Valid UserDTO userDTO, BindingResult result) {
+    public ResponseEntity <UserDTO> savePerson(@RequestBody @Valid UserDTO userDTO, BindingResult result) {
         if (result.hasErrors()) {
             throw new GlobalBadRequestException(result);
         }
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         userDTO.setHashPass(bCryptPasswordEncoder.encode(userDTO.getHashPass()));
         UserDTO body = mapper.map(userService.save(mapper.map(userDTO, User.class)), UserDTO.class);
-        return new ResponseEntity<>(body, HttpStatus.OK);
+        return new ResponseEntity <>(body, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -90,7 +91,17 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable("id") Integer id) {
+    public void deleteById(@PathVariable("id") Long id) {
         userService.deleteById(id);
+    }
+
+    @GetMapping("/lockUser")
+    public void lockUser(@RequestParam Long userId) {
+        userService.lockUser(userId);
+    }
+
+    @GetMapping("/unlockUser")
+    public void unlockUser(@RequestParam Long userId) {
+        userService.unlockUser(userId);
     }
 }

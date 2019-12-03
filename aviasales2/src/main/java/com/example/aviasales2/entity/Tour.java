@@ -1,15 +1,14 @@
 package com.example.aviasales2.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
-
 
 
 @Setter
@@ -20,23 +19,26 @@ import java.util.List;
 @NoArgsConstructor
 public class Tour {
 
+    BigDecimal price;
+    Timestamp date;
+    @OneToMany(mappedBy = "tour", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    List <Comments> comments;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id")
+    Company company;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long tourId;
-    private  String name;
-    BigDecimal price;
-    Timestamp date;
-
+    private String name;
     private int duration;
     private String city_destination;
     private short rating;
-
-
+    private BigDecimal commentRating = new BigDecimal(0);
     @ManyToMany
-    @JoinTable (name="history",
-            joinColumns=@JoinColumn (name="tour_id"),
-            inverseJoinColumns=@JoinColumn(name="user_id"))
-    private List<User> users;
+    @JoinTable(name = "history",
+            joinColumns = @JoinColumn(name = "tour_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List <User> users;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "hotel_id")
@@ -47,17 +49,25 @@ public class Tour {
     @JoinColumn(name = "city_id")
     private City cityId;
 
-    @OneToMany(mappedBy = "tour", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    List<Comments> comments;
+    public BigDecimal getCommentRating() {
+        return commentRating;
+    }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id")
-    Company company;
+    public void setCommentRating(BigDecimal commentRating) {
+        this.commentRating = commentRating;
+    }
 
     public Hotel getHotel() {
         return hotel;
     }
 
+    public Long getTourId() {
+        return tourId;
+    }
+
+    public void setTourId(Long tourId) {
+        this.tourId = tourId;
+    }
 
 
     //    enum status{

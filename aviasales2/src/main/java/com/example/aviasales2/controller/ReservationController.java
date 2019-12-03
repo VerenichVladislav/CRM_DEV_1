@@ -1,6 +1,5 @@
 package com.example.aviasales2.controller;
 
-import com.example.aviasales2.entity.Reservation;
 import com.example.aviasales2.entity.User;
 import com.example.aviasales2.entity.transferObjects.ReservationDTO;
 import com.example.aviasales2.service.ReservationService;
@@ -16,16 +15,20 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(value = "/reservations")
 public class ReservationController {
+    private final UserService userService;
+    private final ReservationService reservationService;
+    private final DozerBeanMapper mapper;
+
     @Autowired
-    UserService userService;
-    @Autowired
-    ReservationService reservationService;
-    @Autowired
-    DozerBeanMapper mapper;
+    public ReservationController(UserService userService, ReservationService reservationService, DozerBeanMapper mapper) {
+        this.userService = userService;
+        this.reservationService = reservationService;
+        this.mapper = mapper;
+    }
 
 
     @GetMapping("/buyer/{buyer_id}")
-    public List<ReservationDTO> findAllByBuyerId(@PathVariable("buyer_id") Long id) {
+    public List <ReservationDTO> findAllByBuyerId(@PathVariable("buyer_id") Long id) {
         User user = userService.findById(id);
         return reservationService.findAllByBuyer(user).stream()
                 .map(entity -> mapper.map(entity, ReservationDTO.class))

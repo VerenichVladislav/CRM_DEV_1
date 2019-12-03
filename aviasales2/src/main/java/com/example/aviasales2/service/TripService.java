@@ -8,12 +8,19 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface TripService {
-    List<Trip> findAll(TripFilter tripFilter);
-    Trip  save(long cityFromId, long cityDestId, long transportId, TripDTO tripDTO);
+    List <Trip> findAll(TripFilter tripFilter);
+
+    Trip save(long cityFromId, long cityDestId, long transportId, TripDTO tripDTO);
+
     String deleteById(long id);
+
     Trip update(TripDTO trip);
+
     Trip findById(Long id);
-    BigDecimal getPrice (Long tripId);
+
+    BigDecimal getPrice(Long tripId);
+
     int getFullCountSeats(Long tripId);
+
     BigDecimal calculateCost(int count, Long tripId);
 }

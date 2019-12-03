@@ -1,11 +1,9 @@
 package com.example.aviasales2.entity.transferObjects;
 
-import com.example.aviasales2.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 @Getter
 @Setter

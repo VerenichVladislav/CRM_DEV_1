@@ -10,7 +10,8 @@ public class Sender {
     private String username = "cracktheworld@mail.ru";
     private String password = "Nib-A7f-hq2-Nur";
     private Properties properties;
-    public Sender (){
+
+    public Sender() {
         properties = new Properties();
         properties.put("mail.smtp.host", "smtp.mail.ru");
         properties.put("mail.debug", "true");
@@ -21,20 +22,21 @@ public class Sender {
         properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         properties.put("mail.smtp.socketFactory.fallback", "false");
     }
-    public  void send(String subject,String text,String toEmail){
+
+    public void send(String subject, String text, String toEmail) {
         Session session = Session.getInstance(properties, new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication(){
-                return new PasswordAuthentication(username,password);
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
             }
         });
-        try{
+        try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
             message.setSubject(subject);
             message.setText(text);
             Transport.send(message);
-        } catch (MessagingException e){
+        } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
     }

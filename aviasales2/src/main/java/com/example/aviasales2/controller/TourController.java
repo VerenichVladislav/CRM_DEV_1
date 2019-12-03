@@ -1,9 +1,7 @@
 package com.example.aviasales2.controller;
 
-import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.Tour;
 import com.example.aviasales2.entity.transferObjects.TourDTO;
-import com.example.aviasales2.service.CompanyService;
 import com.example.aviasales2.service.TourService;
 import com.example.aviasales2.util.TourValidator;
 import org.dozer.DozerBeanMapper;
@@ -21,12 +19,16 @@ import java.util.stream.Collectors;
 @RequestMapping("/tours")
 public class TourController {
 
+    private final TourService tourService;
+    private final DozerBeanMapper mapper;
+    private final TourValidator tourValidator;
+
     @Autowired
-    private TourService tourService;
-    @Autowired
-    private DozerBeanMapper mapper;
-    @Autowired
-    private TourValidator tourValidator;
+    public TourController(TourService tourService, DozerBeanMapper mapper, TourValidator tourValidator) {
+        this.tourService = tourService;
+        this.mapper = mapper;
+        this.tourValidator = tourValidator;
+    }
 
 
     @GetMapping("/{id}")
@@ -36,7 +38,7 @@ public class TourController {
 
     @GetMapping("/")
     public TourDTO getTourByTourName(@RequestParam String name) {
-        return mapper.map(tourService.findByName(name),TourDTO.class);
+        return mapper.map(tourService.findByName(name), TourDTO.class);
     }
 
     @PostMapping
@@ -52,24 +54,21 @@ public class TourController {
     @Transactional
     @PostMapping("/company/{companyId}/hotel/{hotelId}/city/{cityId}")
     public TourDTO save(@PathVariable(name = "companyId") long companyId,
-                     @PathVariable(name = "hotelId") long hotelId,
-                     @PathVariable(name = "cityId") long cityId,
-                     @RequestBody @Valid TourDTO tourDTO,
-                     BindingResult result) {
+                        @PathVariable(name = "hotelId") long hotelId,
+                        @PathVariable(name = "cityId") long cityId,
+                        @RequestBody @Valid TourDTO tourDTO,
+                        BindingResult result) {
         tourValidator.validate(tourDTO, result);
-        if(result.hasErrors())
-        {
-            return  null;
+        if (result.hasErrors()) {
+            return null;
         }
-        return mapper.map(tourService.save(tourDTO, cityId, companyId, hotelId),TourDTO.class);
+        return mapper.map(tourService.save(tourDTO, cityId, companyId, hotelId), TourDTO.class);
     }
 
     @PutMapping
-    public TourDTO update(@RequestBody @Valid TourDTO newTour, BindingResult result)
-    {
+    public TourDTO update(@RequestBody @Valid TourDTO newTour, BindingResult result) {
         tourValidator.updateValidate(newTour, result);
-        if(result.hasErrors())
-        {
+        if (result.hasErrors()) {
             return null;
         }
         return mapper.map(tourService.update(newTour), TourDTO.class);

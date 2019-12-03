@@ -9,7 +9,7 @@ import java.util.List;
 //TEST CLASS!!!!!!!!!!!!
 
 
-public class CustomConverter extends DozerConverter<List, TransportDTO> {
+public class CustomConverter extends DozerConverter <List, TransportDTO> {
 
 
     public CustomConverter() {

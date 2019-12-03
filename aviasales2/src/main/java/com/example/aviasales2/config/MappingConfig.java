@@ -7,14 +7,12 @@ import org.dozer.loader.api.BeanMappingBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static org.dozer.loader.api.FieldsMappingOptions.*;
-
 
 @Configuration
 public class MappingConfig {
 
     @Bean
-    public BeanMappingBuilder beanMappingBuilder(){
+    public BeanMappingBuilder beanMappingBuilder() {
         return new BeanMappingBuilder() {
             @Override
             protected void configure() {
@@ -32,18 +30,19 @@ public class MappingConfig {
                         .fields("hotel.hotelId", "hotel");
                 mapping(Company.class, CompanyDTO.class)
                 .fields("transportId", "transport");
-                mapping(Hotel.class, HotelDTO.class);
+                mapping(Hotel.class, HotelDTO.class)
+                .fields("city.cityId", "cityId");
 
                 mapping(Room.class, RoomDTO.class)
                         .fields("hotel.hotelId", "hotel");
-                mapping(Reservation.class,ReservationDTO.class)
+                mapping(Reservation.class, ReservationDTO.class)
                         .fields("buyer.userId","buyer")
                         .fields("hotel.hotelId","hotel");
 
                 mapping(Tour.class, TourDTO.class)
-                .fields("hotel.hotelId", "hotel")
-                .fields("cityId.cityId", "cityId")
-                .fields("company.companyId", "company");
+                        .fields("hotel.hotelId", "hotel")
+                        .fields("cityId.cityId", "cityId")
+                        .fields("company.companyId", "company");
                 mapping(User.class, UserDTO.class)
                         .fields("wallet.walletId", "wallet");
                 mapping(Wallet.class, WalletDTO.class)
@@ -58,7 +57,7 @@ public class MappingConfig {
     }
 
     @Bean
-    public DozerBeanMapper dozerBeanMapper(){
+    public DozerBeanMapper dozerBeanMapper() {
         DozerBeanMapper dozerBeanMapper = new DozerBeanMapper();
         dozerBeanMapper.addMapping(beanMappingBuilder());
         return dozerBeanMapper;
