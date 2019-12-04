@@ -13,7 +13,7 @@ import java.util.List;
 public interface CommentsRepository extends CrudRepository <Comments, Long> {
     List <Comments> findAll();
 
-    Comments deleteByCommentId(Long id);
+    void deleteByCommentId(Long id);
 
     Comments findByCommentId(Long id);
 

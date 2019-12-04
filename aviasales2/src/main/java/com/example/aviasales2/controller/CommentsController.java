@@ -102,6 +102,7 @@ public class CommentsController {
         return commentsServiceImpl.findByTourId(id).stream().map(entity -> mapper.map(entity, CommentsDTO.class)).collect(Collectors.toList());
     }
 
+    @Transactional
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id) {
         commentsServiceImpl.deleteById(id);
