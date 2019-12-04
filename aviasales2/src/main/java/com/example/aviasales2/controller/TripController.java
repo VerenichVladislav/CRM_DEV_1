@@ -69,7 +69,7 @@ public class TripController {
     public TripDTO update(@RequestBody @Valid TripDTO tripDTO, BindingResult result) {
         Trip oldTrip = tripService.findById(tripDTO.getTripId());
         if (oldTrip != null) {
-            tripValidator.validate(tripDTO, result);
+            tripValidator.updateValidate(tripDTO, result);
             if (result.hasErrors()) {
                 return null;
             }

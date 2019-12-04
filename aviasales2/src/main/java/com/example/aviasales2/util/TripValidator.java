@@ -22,6 +22,9 @@ public class TripValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
+
+    }
+    public void updateValidate(Object target, Errors errors){
         TripDTO tripDTO = (TripDTO) target;
         TripDTO tripDTO1 = mapper.map(tripRepository.findByTripId(tripDTO.getTripId()), TripDTO.class);
         if (tripDTO.getDateFrom() == null) {
