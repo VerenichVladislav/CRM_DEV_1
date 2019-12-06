@@ -6,6 +6,7 @@ import com.example.aviasales2.entity.User;
 import com.example.aviasales2.entity.transferObjects.UserDTO;
 import com.example.aviasales2.exception.GlobalBadRequestException;
 import com.example.aviasales2.service.UserService;
+import com.example.aviasales2.util.UserValidator;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,11 +27,13 @@ public class UserController {
 
     private final UserService userService;
     private final DozerBeanMapper mapper;
+    private final UserValidator userValidator;
 
     @Autowired
-    public UserController(UserService userService, DozerBeanMapper mapper) {
+    public UserController(UserService userService, DozerBeanMapper mapper, UserValidator userValidator) {
         this.userService = userService;
         this.mapper = mapper;
+        this.userValidator = userValidator;
     }
 
     @PostMapping("/filter")
@@ -42,6 +45,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity <UserDTO> savePerson(@RequestBody @Valid UserDTO userDTO, BindingResult result) {
+        userValidator.validate(userDTO, result);
         if (result.hasErrors()) {
             throw new GlobalBadRequestException(result);
         }
