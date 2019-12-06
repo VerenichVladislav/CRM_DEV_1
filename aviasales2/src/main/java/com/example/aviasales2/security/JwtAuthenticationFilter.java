@@ -2,11 +2,12 @@ package com.example.aviasales2.security;
 
 import com.auth0.jwt.JWT;
 import com.example.aviasales2.entity.LoginViewModel;
+import com.example.aviasales2.entity.User;
+import com.example.aviasales2.repository.UserRepository;
+import com.example.aviasales2.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.InternalAuthenticationServiceException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,8 +25,8 @@ import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private AuthenticationManager authenticationManager;
 
-
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
+    public JwtAuthenticationFilter(AuthenticationManager authenticationManager,
+                                   UserRepository userRepository) {
         this.authenticationManager = authenticationManager;
     }
 
@@ -67,6 +68,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         } catch (InternalAuthenticationServiceException e) {
             try {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "NonUnique userName");
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        } catch (AccountStatusException e) {
+            try {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Locked");
             } catch (IOException e1) {
                 e1.printStackTrace();
             }

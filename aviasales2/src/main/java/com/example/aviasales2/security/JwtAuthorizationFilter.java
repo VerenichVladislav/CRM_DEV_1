@@ -2,6 +2,7 @@ package com.example.aviasales2.security;
 
 import com.auth0.jwt.JWT;
 import com.example.aviasales2.entity.User;
+import com.example.aviasales2.exception.UserIsLockedException;
 import com.example.aviasales2.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

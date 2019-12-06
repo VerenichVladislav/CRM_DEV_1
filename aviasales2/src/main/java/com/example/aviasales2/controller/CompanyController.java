@@ -10,6 +10,7 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 10000)
 @RestController
 @RequestMapping("/companies")
 public class CompanyController {
@@ -96,5 +97,17 @@ public class CompanyController {
         } else {
             throw new NoSuchEntityException(Company.class);
         }
+    }
+
+    @Transactional
+    @DeleteMapping("/")
+    public void deleteByCompanyName(@RequestParam String companyName) {
+        Company company = companyService.findByCompanyName(companyName);
+        if (company != null) {
+            companyService.deleteByCompanyName(companyName);
+        } else {
+            throw new NoSuchEntityException(Company.class);
+        }
+
     }
 }

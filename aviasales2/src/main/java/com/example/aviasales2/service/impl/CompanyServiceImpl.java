@@ -35,6 +35,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public void deleteByCompanyName(String name) {
+        companyRepository.deleteByCompanyName(name);
+    }
+
+    @Override
     public Company findByCompanyName(String name) {
         return companyRepository.findByCompanyName(name);
     }

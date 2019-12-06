@@ -11,6 +11,8 @@ public interface CompanyService {
 
     void delete(long id);
 
+    void deleteByCompanyName(String name);
+
     Company findByCompanyName(String name);
 
     List <Company> findByRating(int rating);

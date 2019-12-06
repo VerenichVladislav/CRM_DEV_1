@@ -1,9 +1,12 @@
 package com.example.aviasales2.service.impl;
 
+import com.example.aviasales2.config.filterConfig.UserFilter;
+import com.example.aviasales2.entity.QUser;
 import com.example.aviasales2.entity.User;
 import com.example.aviasales2.repository.UserRepository;
 import com.example.aviasales2.service.UserService;
 import org.dozer.DozerBeanMapper;
+import com.querydsl.core.BooleanBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +34,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List <User> findAll() {
-        return userRepository.findAll();
+    public List <User> findAll(UserFilter userFilter) {
+        final QUser qUser = QUser.user;
+
+        BooleanBuilder builder = new BooleanBuilder(qUser.isNotNull());
+        if (userFilter.getRole() != null) {
+            builder.and(qUser.role.eq(userFilter.getRole()));
+        }
+        return (List<User>) userRepository.findAll(builder);
     }
 
     @Override
@@ -83,6 +92,7 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUserId(userId);
         if (user.getRole().equals("USER")) {
             user.setLocked(true);
+            userRepository.save(user);
         }
     }
 
@@ -91,6 +101,7 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUserId(userId);
         if (user.getRole().equals("USER")) {
             user.setLocked(false);
+            userRepository.save(user);
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.aviasales2.controller;
 
+import com.example.aviasales2.config.filterConfig.UserFilter;
 import com.example.aviasales2.entity.Sender;
 import com.example.aviasales2.entity.User;
 import com.example.aviasales2.entity.transferObjects.UserDTO;
@@ -32,9 +33,9 @@ public class UserController {
         this.mapper = mapper;
     }
 
-    @GetMapping
-    public List <UserDTO> findAll() {
-        return userService.findAll().stream()
+    @PostMapping("/filter")
+    public List <UserDTO> findAll(@RequestBody UserFilter userFilter) {
+        return userService.findAll(userFilter).stream()
                 .map(entity -> mapper.map(entity, UserDTO.class))
                 .collect(Collectors.toList());
     }
@@ -93,15 +94,5 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Long id) {
         userService.deleteById(id);
-    }
-
-    @GetMapping("/lockUser")
-    public void lockUser(@RequestParam Long userId) {
-        userService.lockUser(userId);
-    }
-
-    @GetMapping("/unlockUser")
-    public void unlockUser(@RequestParam Long userId) {
-        userService.unlockUser(userId);
     }
 }

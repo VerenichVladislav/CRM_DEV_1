@@ -12,6 +12,8 @@ public interface CompanyRepository extends CrudRepository <Company, Long> {
 
     void deleteByCompanyId(Long id);
 
+    void deleteByCompanyName(String name);
+
     Company findByCompanyName(String name);
 
     List <Company> findByRating(int rating);

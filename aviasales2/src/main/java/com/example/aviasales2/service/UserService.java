@@ -1,5 +1,6 @@
 package com.example.aviasales2.service;
 
+import com.example.aviasales2.config.filterConfig.UserFilter;
 import com.example.aviasales2.entity.User;
 
 import java.util.List;
@@ -9,7 +10,7 @@ public interface UserService {
 
     User findById(Long id);
 
-    List <User> findAll();
+    List <User> findAll(UserFilter userFilter);
 
     List <User> findAllByLastName(String lastName);
 
