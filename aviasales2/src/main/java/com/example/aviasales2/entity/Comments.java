@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
 
 @Entity
@@ -17,6 +18,7 @@ public class Comments {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long commentId;
+    @NotBlank(message = "Comment must be not null")
     private String text;
     private Timestamp date = new Timestamp(System.currentTimeMillis());
     @ManyToOne(fetch = FetchType.LAZY)
