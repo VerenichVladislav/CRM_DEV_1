@@ -119,15 +119,13 @@ public class TripServiceImpl implements TripService {
     @Override
     public BigDecimal getPrice(Long tripId) {
         Trip trip = tripRepository.findByTripId(tripId);
-        BigDecimal price = trip.getPrice();
-        return price;
+        return trip.getPrice();
     }
 
     @Override
     public int getFullCountSeats(Long tripId) {
         Trip trip = tripRepository.findByTripId(tripId);
-        int fullCountSeats = trip.getFullCountSeats();
-        return fullCountSeats;
+        return trip.getFullCountSeats();
     }
 
     @Override

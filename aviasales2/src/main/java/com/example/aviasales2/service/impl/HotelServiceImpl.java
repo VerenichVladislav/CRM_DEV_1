@@ -2,7 +2,6 @@ package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.config.filterConfig.HotelFilter;
 import com.example.aviasales2.entity.Hotel;
-import com.example.aviasales2.entity.HotelConvenience;
 import com.example.aviasales2.entity.QHotel;
 import com.example.aviasales2.entity.QReservation;
 import com.example.aviasales2.repository.CompanyRepository;
@@ -17,10 +16,8 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class HotelServiceImpl implements HotelService {
@@ -105,30 +102,8 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public List <Hotel> findHotelsByHotelConveniences(List <String> hotelConveniences, HotelFilter hotelFilter) {
-        List <Hotel> hotels = findAll(hotelFilter);
-        List <Hotel> goodHotels = new ArrayList <>();
-
-        Map <Hotel, List <String>> enumString = new HashMap <>();
-        for (Hotel hotel : hotels) {
-            for (HotelConvenience hotelConvenience : hotel.getHotelConveniences()) {
-                if (hotelConveniences.contains(hotelConvenience.name())
-                        && !goodHotels.contains(hotel)) {
-                    goodHotels.add(hotel);
-                }
-            }
-        }
-
-        for (Hotel hotel : goodHotels) {
-            List <String> tempName = new ArrayList <>();
-            for (HotelConvenience hotelConvenience : hotel.getHotelConveniences()) {
-                String name = hotelConvenience.name();
-                tempName.add(name);
-            }
-            enumString.put(hotel, tempName);
-        }
-
-        goodHotels.removeIf(hotel -> !enumString.get(hotel).containsAll(hotelConveniences));
-
-        return goodHotels;
+        return findAll(hotelFilter).stream().filter(hotel -> hotel.getHotelConveniences().stream().map(Enum::name).collect(Collectors.toList())
+                .containsAll(hotelConveniences))
+                .collect(Collectors.toList());
     }
 }
