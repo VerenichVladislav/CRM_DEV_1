@@ -108,7 +108,7 @@ public class WalletServiceImpl implements WalletService {
         Sender sender = new Sender();
         String subject = "Пополнение кошелька";
         String hash = Base64.getUrlEncoder().encodeToString((userId.toString() + ";" + (newSum.toString())).getBytes());
-        String url = "http://localhost:8080/wallets/" + userId + "/confirm/" + hash;
+        String url = "https://localhost:8443/wallets/" + userId + "/confirm/" + hash;
         String text = "Добрый день " + walletRepository.findByOwnerUserId(userId).getOwner().getUserName() + "! Это очень важное письмо пришло что бы выподтвердили пополнение счёта на нашем супер сайте нажмите на эту ссылку " + url;
         sender.send(subject, text, walletRepository.findByOwnerUserId(userId).getOwner().getEmail());
         walletRepository.findByOwnerUserId(userId).setStatus("AWAITING");
