@@ -49,6 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/admin/unlockUser").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/users/{id}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/companies/*").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/comments/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/tickets/buyer/{buyer_id}").permitAll()
                 .antMatchers(HttpMethod.PUT, "/comments/hotel/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/comments").permitAll()
