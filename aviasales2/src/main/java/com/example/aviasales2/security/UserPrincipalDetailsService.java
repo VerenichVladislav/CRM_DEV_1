@@ -12,6 +12,10 @@ public class UserPrincipalDetailsService implements UserDetailsService {
 
     UserRepository userRepository;
 
+    public UserPrincipalDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = userRepository.findAllByUserName(s);
@@ -19,9 +23,6 @@ public class UserPrincipalDetailsService implements UserDetailsService {
 
         return userPrincipal;
 
-    }
-    public UserPrincipalDetailsService(UserRepository userRepository){
-        this.userRepository = userRepository;
     }
 
 }

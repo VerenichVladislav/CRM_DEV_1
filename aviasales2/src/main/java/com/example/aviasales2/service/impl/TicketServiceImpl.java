@@ -16,12 +16,16 @@ import java.util.List;
 
 @Service
 public class TicketServiceImpl implements TicketService {
+    private final TicketRepository ticketRepository;
+    private final UserRepository userRepository;
+    private final TripRepository tripRepository;
+
     @Autowired
-    TicketRepository ticketRepository;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private TripRepository tripRepository;
+    public TicketServiceImpl(TicketRepository ticketRepository, UserRepository userRepository, TripRepository tripRepository) {
+        this.ticketRepository = ticketRepository;
+        this.userRepository = userRepository;
+        this.tripRepository = tripRepository;
+    }
 
     @Override
     public Ticket findByTicketId(Long id) {
@@ -29,7 +33,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public List<Ticket> findAllByBuyer(User buyer) {
+    public List <Ticket> findAllByBuyer(User buyer) {
         return ticketRepository.findAllByBuyer(buyer);
     }
 

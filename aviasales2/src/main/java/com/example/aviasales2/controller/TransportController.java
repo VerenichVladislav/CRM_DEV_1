@@ -18,17 +18,21 @@ import java.util.stream.Collectors;
 @RequestMapping("/transports")
 @RestController
 public class TransportController {
+    private final TransportService transportService;
+    private final CompanyService companyService;
+    private final DozerBeanMapper mapper;
+    private final TransportValidator transportValidator;
+
     @Autowired
-    private TransportService transportService;
-    @Autowired
-    private CompanyService companyService;
-    @Autowired
-    private DozerBeanMapper mapper;
-    @Autowired
-    private TransportValidator transportValidator;
+    public TransportController(TransportService transportService, CompanyService companyService, DozerBeanMapper mapper, TransportValidator transportValidator) {
+        this.transportService = transportService;
+        this.companyService = companyService;
+        this.mapper = mapper;
+        this.transportValidator = transportValidator;
+    }
 
     @GetMapping
-    public List<TransportDTO> getAllTransport() {
+    public List <TransportDTO> getAllTransport() {
         return transportService.findAll().stream()
                 .map(entity -> mapper.map(entity, TransportDTO.class))
                 .collect(Collectors.toList());
@@ -42,8 +46,9 @@ public class TransportController {
     @PutMapping
     public TransportDTO updateTransport(@RequestBody @Valid TransportDTO transportDTO, BindingResult result) {
         transportValidator.validate(transportDTO, result);
-        if (result.hasErrors())
-        {return null;}
+        if (result.hasErrors()) {
+            return null;
+        }
         return mapper.map(transportService.update(transportDTO), TransportDTO.class);
     }
 
@@ -56,8 +61,7 @@ public class TransportController {
 
     @PostMapping("/company/{companyId}")
     public TransportDTO save(@PathVariable(name = "companyId") long companyId, @RequestBody @Valid TransportDTO transportDto, BindingResult result) {
-        if(result.hasErrors())
-        {
+        if (result.hasErrors()) {
             return null;
         }
         Company company = companyService.findByCompanyId(companyId);

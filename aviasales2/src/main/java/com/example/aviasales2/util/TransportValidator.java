@@ -14,8 +14,9 @@ public class TransportValidator implements Validator {
     private TransportRepository transportRepository;
     @Autowired
     private DozerBeanMapper mapper;
+
     @Override
-    public boolean supports(Class<?> aClass) {
+    public boolean supports(Class <?> aClass) {
         return TransportDTO.class.equals(aClass);
     }
 

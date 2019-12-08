@@ -19,7 +19,7 @@ public class TripDTO {
     @Size(max = 10)
     private String price;
     @NotBlank(message = "Count of seats should be >0!")
-    @Size (max = 3)
+    @Size(max = 3)
     @Pattern(regexp = "[0-9]+$", message = "Bad number of seats")
     private String fullCountSeats;
     private String transport;

@@ -11,15 +11,21 @@ import java.util.List;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
-    @Autowired
+    final
     ReservationRepository reservationRepository;
+
+    @Autowired
+    public ReservationServiceImpl(ReservationRepository reservationRepository) {
+        this.reservationRepository = reservationRepository;
+    }
+
     @Override
     public Reservation findById(Long id) {
         return reservationRepository.findByReservationId(id);
     }
 
     @Override
-    public List<Reservation> findAllByBuyer(User buyer) {
+    public List <Reservation> findAllByBuyer(User buyer) {
         return reservationRepository.findAllByBuyer(buyer);
     }
 }

@@ -9,10 +9,16 @@ import java.util.List;
 
 public interface TicketService {
     Ticket save(Ticket ticket);
-    String save(Long userId, Long tripId, int count, List<PersonRequest> passangers);
+
+    String save(Long userId, Long tripId, int count, List <PersonRequest> passangers);
+
     void delete(Ticket ticket);
+
     void deleteById(Long ticketId);
+
     Ticket findByTicketId(Long id);
-    List<Ticket> findAllByBuyer(User buyer);
+
+    List <Ticket> findAllByBuyer(User buyer);
+
     BigDecimal getSum(long id);
 }

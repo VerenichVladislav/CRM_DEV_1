@@ -1,15 +1,11 @@
 package com.example.aviasales2.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.List;
-import java.util.prefs.AbstractPreferences;
 
 
 @Entity
@@ -21,8 +17,6 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long roomId;
 
-    private Timestamp checkInDate;
-    private Timestamp checkOutDate;
     private Double dailyCost;
     private String status;
 
@@ -38,6 +32,6 @@ public class Room {
     @CollectionTable(name = "room_conveniences",
             joinColumns = @JoinColumn(name = "room_id"))
     @Enumerated(EnumType.STRING)
-    @Column(name = "convenience_id")
-    private List<RoomConvenience> roomConvenience;
+    @Column(name = "conveniences")
+    private List <RoomConvenience> roomConvenience;
 }

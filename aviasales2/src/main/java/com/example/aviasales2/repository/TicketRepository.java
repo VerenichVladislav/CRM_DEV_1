@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TicketRepository extends CrudRepository<Ticket, Long> {
+public interface TicketRepository extends CrudRepository <Ticket, Long> {
     Ticket findByTicketId(Long id);
-    List<Ticket> findAllByBuyer(User Buyer);
+
+    List <Ticket> findAllByBuyer(User Buyer);
 }

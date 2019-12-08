@@ -1,7 +1,6 @@
 package com.example.aviasales2.service;
 
 import com.example.aviasales2.entity.Company;
-import com.example.aviasales2.entity.transferObjects.CompanyDTO;
 
 import java.util.List;
 
@@ -12,11 +11,13 @@ public interface CompanyService {
 
     void delete(long id);
 
+    void deleteByCompanyName(String name);
+
     Company findByCompanyName(String name);
 
-    List<Company> findByRating(int rating);
+    List <Company> findByRating(int rating);
 
-    List<Company> findByCompanyNameAndRating(String name, int rating);
+    List <Company> findByCompanyNameAndRating(String name, int rating);
 
-    List<Company> findAll();
+    List <Company> findAll();
 }

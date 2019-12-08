@@ -13,6 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 public class TourDTO {
+    Timestamp date;
+    List <CommentsDTO> comments;
     private Long tourId;
     @NotBlank(message = "The tour name should be not null!")
     @Pattern(regexp = "^[а-яА-ЯёЁa-zA-Z\\s]+$", message = "Bad tour name!")
@@ -35,10 +37,8 @@ public class TourDTO {
     private long hotel;
     private long cityId;
     private long company;
-    Timestamp date;
-    private List<UserDTO> users;
-    List<CommentsDTO> comments;
-
+    private List <UserDTO> users;
+    private BigDecimal commentRating;
 
     public TourDTO() {
     }
@@ -123,19 +123,19 @@ public class TourDTO {
         this.date = date;
     }
 
-    public List<UserDTO> getUsers() {
+    public List <UserDTO> getUsers() {
         return users;
     }
 
-    public void setUsers(List<UserDTO> users) {
+    public void setUsers(List <UserDTO> users) {
         this.users = users;
     }
 
-    public List<CommentsDTO> getComments() {
+    public List <CommentsDTO> getComments() {
         return comments;
     }
 
-    public void setComments(List<CommentsDTO> comments) {
+    public void setComments(List <CommentsDTO> comments) {
         this.comments = comments;
     }
 }

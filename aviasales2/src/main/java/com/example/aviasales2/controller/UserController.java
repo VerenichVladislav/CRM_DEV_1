@@ -1,13 +1,16 @@
 package com.example.aviasales2.controller;
 
+import com.example.aviasales2.config.filterConfig.UserFilter;
 import com.example.aviasales2.entity.Sender;
-import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.entity.User;
 import com.example.aviasales2.entity.transferObjects.UserDTO;
-import com.example.aviasales2.service.TripService;
+import com.example.aviasales2.exception.GlobalBadRequestException;
 import com.example.aviasales2.service.UserService;
+import com.example.aviasales2.util.UserValidator;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -22,27 +25,34 @@ import java.util.stream.Collectors;
 @RequestMapping("/users")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+    private final DozerBeanMapper mapper;
+    private final UserValidator userValidator;
 
     @Autowired
-    private DozerBeanMapper mapper;
+    public UserController(UserService userService, DozerBeanMapper mapper, UserValidator userValidator) {
+        this.userService = userService;
+        this.mapper = mapper;
+        this.userValidator = userValidator;
+    }
 
-    @GetMapping
-    public List<UserDTO> findAll() {
-        return userService.findAll().stream()
+    @PostMapping("/filter")
+    public List <UserDTO> findAll(@RequestBody UserFilter userFilter) {
+        return userService.findAll(userFilter).stream()
                 .map(entity -> mapper.map(entity, UserDTO.class))
                 .collect(Collectors.toList());
     }
 
     @PostMapping
-    public UserDTO savePerson(@RequestBody @Valid UserDTO userDTO, BindingResult result) {
+    public ResponseEntity <UserDTO> savePerson(@RequestBody @Valid UserDTO userDTO, BindingResult result) {
+        userValidator.validate(userDTO, result);
         if (result.hasErrors()) {
-            return null;
+            throw new GlobalBadRequestException(result);
         }
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         userDTO.setHashPass(bCryptPasswordEncoder.encode(userDTO.getHashPass()));
-        return mapper.map(userService.save(mapper.map(userDTO, User.class)), UserDTO.class);
+        UserDTO body = mapper.map(userService.save(mapper.map(userDTO, User.class)), UserDTO.class);
+        return new ResponseEntity <>(body, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -71,6 +81,9 @@ public class UserController {
         userService.save(user);
     }
 
+    @GetMapping("/isAuthenticated")
+    public void isAuthenticated() {
+    }
 
     @GetMapping("/")
     public UserDTO findByUserName(@RequestParam String userName) {
@@ -83,7 +96,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable("id") Integer id) {
+    public void deleteById(@PathVariable("id") Long id) {
         userService.deleteById(id);
     }
 }

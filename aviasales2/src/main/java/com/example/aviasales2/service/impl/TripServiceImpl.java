@@ -13,10 +13,8 @@ import com.example.aviasales2.service.TripService;
 import com.example.aviasales2.util.TripValidator;
 import com.querydsl.core.BooleanBuilder;
 import org.dozer.DozerBeanMapper;
-import org.dozer.loader.xml.DozerResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindingResult;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -25,25 +23,27 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class TripServiceImpl implements TripService {
 
+    private final TripRepository tripRepository;
+    private final ICityRepository iCityRepository;
+    private final TransportRepository transportRepository;
+    private final DozerBeanMapper mapper;
+    private final TripValidator tripValidator;
+
     @Autowired
-    private TripRepository tripRepository;
-    @Autowired
-    private ICityRepository iCityRepository;
-    @Autowired
-    private TransportRepository transportRepository;
-    @Autowired
-    private DozerBeanMapper mapper;
-    @Autowired
-    private TripValidator tripValidator;
+    public TripServiceImpl(TripRepository tripRepository, ICityRepository iCityRepository, TransportRepository transportRepository, DozerBeanMapper mapper, TripValidator tripValidator) {
+        this.tripRepository = tripRepository;
+        this.iCityRepository = iCityRepository;
+        this.transportRepository = transportRepository;
+        this.mapper = mapper;
+        this.tripValidator = tripValidator;
+    }
 
     @Override
-    public List<Trip> findAll(TripFilter tripFilter) {
+    public List <Trip> findAll(TripFilter tripFilter) {
         final QTrip qTrip = QTrip.trip;
 
         BooleanBuilder builder = new BooleanBuilder(qTrip.isNotNull());
@@ -64,7 +64,7 @@ public class TripServiceImpl implements TripService {
 
             builder.and(qTrip.dateFrom.between(timestamp, timestamp1));
         }
-        return (List<Trip>) tripRepository.findAll(builder);
+        return (List <Trip>) tripRepository.findAll(builder);
 
     }
 
@@ -74,7 +74,7 @@ public class TripServiceImpl implements TripService {
         City cityDest = iCityRepository.findByCityId(cityDestId);
         Transport transport = transportRepository.findByTransportId(transportId);
         Trip trip = mapper.map(tripDTO, Trip.class);
-        if (cityFrom!=null) {
+        if (cityFrom != null) {
             trip.setCityFrom(cityFrom);
             cityFrom.getTrip_from().add(trip);
         } else {
@@ -92,12 +92,11 @@ public class TripServiceImpl implements TripService {
         } else {
             return null;
         }
-        if(trip.getCityDest() == trip.getCityFrom()){
+        if (trip.getCityDest() == trip.getCityFrom()) {
             return null;
         }
         return tripRepository.save(trip);
     }
-
 
 
     @Override
@@ -120,15 +119,13 @@ public class TripServiceImpl implements TripService {
     @Override
     public BigDecimal getPrice(Long tripId) {
         Trip trip = tripRepository.findByTripId(tripId);
-        BigDecimal price = trip.getPrice();
-        return price;
+        return trip.getPrice();
     }
 
     @Override
     public int getFullCountSeats(Long tripId) {
         Trip trip = tripRepository.findByTripId(tripId);
-        int fullCountSeats = trip.getFullCountSeats();
-        return fullCountSeats;
+        return trip.getFullCountSeats();
     }
 
     @Override

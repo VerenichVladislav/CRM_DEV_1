@@ -1,7 +1,6 @@
 package com.example.aviasales2.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,7 +34,8 @@ public class Trip {
     @JoinColumn(name = "transport_id")
     private Transport transport;
 
-    public Trip (){}
+    public Trip() {
+    }
 
     public City getCityFrom() {
         return cityFrom;

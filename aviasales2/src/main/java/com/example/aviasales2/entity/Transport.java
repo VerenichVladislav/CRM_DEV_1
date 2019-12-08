@@ -17,17 +17,17 @@ public class Transport {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long transportId;
     private String name;
-    private int baggage;
+    private int passengerCapacity;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company company;
 
     @OneToMany(mappedBy = "transport", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Trip> trips;
+    private Set <Trip> trips;
 
 
-    public Transport(){
+    public Transport() {
 
     }
 

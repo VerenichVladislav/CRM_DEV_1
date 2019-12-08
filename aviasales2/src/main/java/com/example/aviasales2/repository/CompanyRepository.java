@@ -7,19 +7,18 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CompanyRepository extends CrudRepository<Company, Long> {
+public interface CompanyRepository extends CrudRepository <Company, Long> {
     Company findByCompanyId(long id);
 
     void deleteByCompanyId(Long id);
 
+    void deleteByCompanyName(String name);
+
     Company findByCompanyName(String name);
 
-    List<Company> findByRating(int rating);
+    List <Company> findByRating(int rating);
 
-    List<Company> findByCompanyNameAndRating(String name, int rating);
+    List <Company> findByCompanyNameAndRating(String name, int rating);
 
-    List<Company> findAll();
-
-
-
+    List <Company> findAll();
 }

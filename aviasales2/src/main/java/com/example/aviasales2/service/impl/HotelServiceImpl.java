@@ -1,15 +1,14 @@
 package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.config.filterConfig.HotelFilter;
-import com.example.aviasales2.entity.HotelConvenience;
-import com.example.aviasales2.entity.QHotel;
-import com.example.aviasales2.entity.QRoom;
-import com.example.aviasales2.entity.transferObjects.HotelDTO;
-import com.example.aviasales2.repository.HotelRepository;
 import com.example.aviasales2.entity.Hotel;
+import com.example.aviasales2.entity.QHotel;
+import com.example.aviasales2.entity.QReservation;
+import com.example.aviasales2.repository.CompanyRepository;
+import com.example.aviasales2.repository.HotelRepository;
+import com.example.aviasales2.repository.TourRepository;
 import com.example.aviasales2.service.HotelService;
 import com.querydsl.core.BooleanBuilder;
-import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +16,22 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
 public class HotelServiceImpl implements HotelService {
 
+    private final HotelRepository hotelRepository;
+    private final CompanyRepository companyRepository;
+    private final TourRepository tourRepository;
+
     @Autowired
-    private HotelRepository hotelRepository;
+    public HotelServiceImpl(HotelRepository hotelRepository, CompanyRepository companyRepository, TourRepository tourRepository) {
+        this.hotelRepository = hotelRepository;
+        this.companyRepository = companyRepository;
+        this.tourRepository = tourRepository;
+    }
 
     @Override
     public Hotel save(Hotel hotel) {
@@ -50,14 +54,14 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<Hotel> findAll() {
+    public List <Hotel> findAll() {
         return hotelRepository.findAll();
     }
 
     @Override
-    public List<Hotel> findAll(HotelFilter hotelFilter) {
+    public List <Hotel> findAll(HotelFilter hotelFilter) {
         final QHotel qHotel = QHotel.hotel;
-        final QRoom qRoom = QRoom.room;
+        final QReservation qReservation = QReservation.reservation;
 
         BooleanBuilder booleanBuilder = new BooleanBuilder(qHotel.isNotNull());
         if (hotelFilter.getCity() != null) {
@@ -75,9 +79,9 @@ public class HotelServiceImpl implements HotelService {
             firstTimestamp = Timestamp.valueOf(localDateTime.plusHours(3));
             secondTimestamp = Timestamp.valueOf(localDateTime.plusHours(26).plusMinutes(59).plusSeconds(59).plusNanos(999999999));
 
-            booleanBuilder.and(qRoom.checkInDate.between(firstTimestamp, secondTimestamp));
+            booleanBuilder.and(qReservation.checkIn.between(firstTimestamp, secondTimestamp));
         }
-        return (List<Hotel>) hotelRepository.findAll(booleanBuilder);
+        return (List <Hotel>) hotelRepository.findAll(booleanBuilder);
     }
 
     @Override
@@ -97,31 +101,9 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<Hotel> findHotelsByHotelConveniences(List<String> hotelConveniences, HotelFilter hotelFilter) {
-        List<Hotel> hotels = findAll(hotelFilter);
-        List<Hotel> goodHotels = new ArrayList<>();
-
-        Map<Hotel, List<String>> enumString = new HashMap<>();
-        for (Hotel hotel : hotels) {
-            for (HotelConvenience hotelConvenience : hotel.getHotelConveniences()) {
-                if (hotelConveniences.contains(hotelConvenience.name())
-                        && !goodHotels.contains(hotel)) {
-                    goodHotels.add(hotel);
-                }
-            }
-        }
-
-        for (Hotel hotel : goodHotels) {
-            List<String> tempName = new ArrayList<>();
-            for (HotelConvenience hotelConvenience : hotel.getHotelConveniences()) {
-                String name = hotelConvenience.name();
-                tempName.add(name);
-            }
-            enumString.put(hotel, tempName);
-        }
-
-        goodHotels.removeIf(hotel -> !enumString.get(hotel).containsAll(hotelConveniences));
-
-        return goodHotels;
+    public List <Hotel> findHotelsByHotelConveniences(List <String> hotelConveniences, HotelFilter hotelFilter) {
+        return findAll(hotelFilter).stream().filter(hotel -> hotel.getHotelConveniences().stream().map(Enum::name).collect(Collectors.toList())
+                .containsAll(hotelConveniences))
+                .collect(Collectors.toList());
     }
 }

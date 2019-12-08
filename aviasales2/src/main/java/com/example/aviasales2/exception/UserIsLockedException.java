@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class NoSuchEntityException extends RuntimeException {
-    private Class aClass;
+public class UserIsLockedException extends RuntimeException {
+    private String message;
+    private int status;
 }
