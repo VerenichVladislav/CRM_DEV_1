@@ -24,8 +24,8 @@ public class TourController {
     private TourService tourService;
     @Autowired
     private DozerBeanMapper mapper;
-    @Autowired
-    private TourValidator tourValidator;
+    //@Autowired
+    //private TourValidator tourValidator;
 
 
     @GetMapping("/{id}")
@@ -55,7 +55,7 @@ public class TourController {
                      @PathVariable(name = "cityId") long cityId,
                      @RequestBody @Valid TourDTO tourDTO,
                      BindingResult result) {
-        tourValidator.validate(tourDTO, result);
+       // tourValidator.validate(tourDTO, result);
         if(result.hasErrors())
         {
             return  null;
@@ -66,7 +66,7 @@ public class TourController {
     @PutMapping
     public TourDTO update(@RequestBody @Valid TourDTO newTour, BindingResult result)
     {
-        tourValidator.updateValidate(newTour, result);
+       // tourValidator.updateValidate(newTour, result);
         if(result.hasErrors())
         {
             return null;
