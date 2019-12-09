@@ -1,13 +1,14 @@
 package com.example.aviasales2.repository;
 
 import com.example.aviasales2.entity.Company;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface CompanyRepository extends CrudRepository <Company, Long> {
+public interface CompanyRepository extends CrudRepository <Company, Long>, QuerydslPredicateExecutor<Company> {
     Company findByCompanyId(long id);
 
     void deleteByCompanyId(Long id);
