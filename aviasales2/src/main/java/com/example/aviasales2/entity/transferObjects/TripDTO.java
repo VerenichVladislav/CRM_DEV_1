@@ -12,8 +12,8 @@ import java.sql.Timestamp;
 @Setter
 public class TripDTO {
     private Long tripId;
-    private String cityFrom;
-    private String cityDest;
+    private long cityFrom;
+    private long cityDest;
     @NotBlank(message = "Price should be not null!")
     @Pattern(regexp = "[0-9]+$", message = "bad number of price")
     @Size(max = 10)
@@ -22,34 +22,10 @@ public class TripDTO {
     @Size(max = 3)
     @Pattern(regexp = "[0-9]+$", message = "Bad number of seats")
     private String fullCountSeats;
-    private String transport;
+    private long transport;
     private Timestamp dateFrom;
     private Timestamp dateDest;
 
     public TripDTO() {
-    }
-
-    public String getCityFrom() {
-        return cityFrom;
-    }
-
-    public void setCityFrom(String cityFrom) {
-        this.cityFrom = cityFrom;
-    }
-
-    public String getCityDest() {
-        return cityDest;
-    }
-
-    public void setCityDest(String cityDest) {
-        this.cityDest = cityDest;
-    }
-
-    public String getTransport() {
-        return transport;
-    }
-
-    public void setTransport(String transport) {
-        this.transport = transport;
     }
 }
