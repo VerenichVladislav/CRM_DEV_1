@@ -9,6 +9,7 @@ import com.example.aviasales2.service.TransportService;
 import com.example.aviasales2.util.TransportValidator;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -87,5 +88,8 @@ public class TransportController {
         return mapper.map(transportService.save(transport), TransportDTO.class);
     }
 
-
+    @GetMapping("/name/{id}")
+    public ResponseEntity<String> getTransportName(@PathVariable Long id){
+        return transportService.getCityName(id);
+    }
 }

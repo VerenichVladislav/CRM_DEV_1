@@ -5,6 +5,8 @@ import com.example.aviasales2.entity.City;
 import com.example.aviasales2.repository.ICityRepository;
 import com.example.aviasales2.service.ICityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +30,12 @@ public class CityServiceImpl implements ICityService {
     @Override
     public City findByCityId(Long id) {
         return cityRepository.findByCityId(id);
+    }
+
+    @Override
+    public ResponseEntity<String> getCityName(Long id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(cityRepository.findByCityId(id).getCityName());
     }
 
     @Override
