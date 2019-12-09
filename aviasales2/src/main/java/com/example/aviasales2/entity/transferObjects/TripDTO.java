@@ -25,6 +25,7 @@ public class TripDTO {
     private String transport;
     private Timestamp dateFrom;
     private Timestamp dateDest;
+    private int count = 1;
 
     public TripDTO() {
     }
