@@ -104,7 +104,7 @@ public class WalletServiceImpl implements WalletService {
     @Override
     public void sentConfirmToEmail(Long userId, double sum) {
         Wallet wallet = walletRepository.findByOwnerUserId(userId);
-        BigDecimal newSum = wallet.getSum().add(BigDecimal.valueOf(sum));
+        BigDecimal newSum = BigDecimal.valueOf(sum);
         Sender sender = new Sender();
         String subject = "Пополнение кошелька";
         String hash = Base64.getUrlEncoder().encodeToString((userId.toString() + ";" + (newSum.toString())).getBytes());
