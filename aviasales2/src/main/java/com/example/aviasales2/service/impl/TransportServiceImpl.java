@@ -6,6 +6,8 @@ import com.example.aviasales2.repository.TransportRepository;
 import com.example.aviasales2.service.TransportService;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,6 +43,12 @@ public class TransportServiceImpl implements TransportService {
             return transportRepository.save(mapper.map(transport, Transport.class));
         }
         return null;
+    }
+
+    @Override
+    public ResponseEntity<String> getCityName(Long id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(transportRepository.findByTransportId(id).getName());
     }
 
     @Override

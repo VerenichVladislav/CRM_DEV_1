@@ -2,6 +2,7 @@ package com.example.aviasales2.service;
 
 import com.example.aviasales2.entity.Transport;
 import com.example.aviasales2.entity.transferObjects.TransportDTO;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,4 +17,6 @@ public interface TransportService {
     Transport update(TransportDTO transport);
 
     void deleteById(Long id);
+
+    ResponseEntity<String> getCityName(Long id);
 }
