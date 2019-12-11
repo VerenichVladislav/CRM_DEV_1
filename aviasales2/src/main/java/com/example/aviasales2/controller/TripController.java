@@ -3,6 +3,7 @@ package com.example.aviasales2.controller;
 import com.example.aviasales2.PersonRequest;
 import com.example.aviasales2.config.filterConfig.TripFilter;
 import com.example.aviasales2.entity.Trip;
+import com.example.aviasales2.entity.transferObjects.SearchResultTripDto;
 import com.example.aviasales2.entity.transferObjects.TripDTO;
 import com.example.aviasales2.exception.GlobalBadRequestException;
 import com.example.aviasales2.service.*;
@@ -77,6 +78,12 @@ public class TripController {
             return mapper.map(tripService.update(tripDTO), TripDTO.class);
         }
         return null;
+    }
+    @PostMapping("/dto")
+    public List <SearchResultTripDto> findAllDto(@RequestBody TripFilter tripFilter) {
+        return tripService.findAll(tripFilter).stream()
+                .map(entity -> mapper.map(entity, SearchResultTripDto.class))
+                .collect(Collectors.toList());
     }
 
     @PostMapping

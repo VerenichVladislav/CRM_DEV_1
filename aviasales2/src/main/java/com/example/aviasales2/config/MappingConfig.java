@@ -22,6 +22,10 @@ public class MappingConfig {
                         .fields("cityFrom.cityId", "cityFrom")
                         .fields("cityDest.cityId", "cityDest")
                         .fields("transport.transportId", "transport");
+                mapping(Trip.class, SearchResultTripDto.class)
+                        .fields("cityFrom.cityName", "cityFrom")
+                        .fields("cityDest.cityName", "cityDest")
+                        .fields("transport.name", "transport");
                 mapping(City.class, CityDTO.class);
                 mapping(Comments.class, CommentsDTO.class)
                         .fields("company.companyId", "company")

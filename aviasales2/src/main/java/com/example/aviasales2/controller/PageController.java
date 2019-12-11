@@ -19,12 +19,12 @@ public class PageController {
     public ResponseEntity <?>
     getInternationalPage(@RequestParam String lang) throws Exception {
         if (lang.equals("en.json")) {
-            Path jsonPath = Paths.get("src\\main\\resources\\en.json");
+            Path jsonPath = Paths.get("aviasales2\\src\\main\\resources\\en.json");
             byte[] jsonEng = Files.readAllBytes(jsonPath);
             return new ResponseEntity <>(jsonEng, HttpStatus.OK);
         }
         if (lang.equals("ru.json")) {
-            Path jsonPath = Paths.get("src\\main\\resources\\ru.json");
+            Path jsonPath = Paths.get("aviasales2\\src\\main\\resources\\ru.json");
             byte[] jsonRus = Files.readAllBytes(jsonPath);
             return new ResponseEntity <>(jsonRus, HttpStatus.OK);
         }
