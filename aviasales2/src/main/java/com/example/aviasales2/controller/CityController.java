@@ -75,6 +75,11 @@ public class CityController {
         return new ResponseEntity <>(body, HttpStatus.OK);
     }
 
+    @GetMapping("/name/{id}")
+    public ResponseEntity<String> getCityName(@PathVariable Long id){
+        return cityService.getCityName(id);
+    }
+
     @PutMapping
     public ResponseEntity <CityDTO> update(@RequestBody @Valid CityDTO newCity, BindingResult result) {
         if (cityService.findByCityId(newCity.getCityId()) != null) {

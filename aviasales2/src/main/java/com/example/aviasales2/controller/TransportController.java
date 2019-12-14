@@ -3,11 +3,13 @@ package com.example.aviasales2.controller;
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.Transport;
 import com.example.aviasales2.entity.transferObjects.TransportDTO;
+import com.example.aviasales2.exception.GlobalBadRequestException;
 import com.example.aviasales2.service.CompanyService;
 import com.example.aviasales2.service.TransportService;
 import com.example.aviasales2.util.TransportValidator;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 10000)
 @RequestMapping("/transports")
 @RestController
 public class TransportController {
@@ -59,8 +62,21 @@ public class TransportController {
     }
 
 
+    @PostMapping
+    public TransportDTO save(@RequestBody @Valid TransportDTO transportDto, BindingResult result) {
+        if (result.hasErrors()) {
+            throw new GlobalBadRequestException(result);
+        }
+        Company company = companyService.findByCompanyId(transportDto.getCompany());
+        Transport transport = mapper.map(transportDto, Transport.class);
+        transport.setCompany(company);
+        company.getTransportId().add(transport);
+        company.setTransportCount(company.getTransportCount() + 1);
+        return mapper.map(transportService.save(transport), TransportDTO.class);
+    }
+
     @PostMapping("/company/{companyId}")
-    public TransportDTO save(@PathVariable(name = "companyId") long companyId, @RequestBody @Valid TransportDTO transportDto, BindingResult result) {
+    public TransportDTO saveCompanyId(@PathVariable(name = "companyId") long companyId, @RequestBody @Valid TransportDTO transportDto, BindingResult result) {
         if (result.hasErrors()) {
             return null;
         }
@@ -72,5 +88,8 @@ public class TransportController {
         return mapper.map(transportService.save(transport), TransportDTO.class);
     }
 
-
+    @GetMapping("/name/{id}")
+    public ResponseEntity<String> getTransportName(@PathVariable Long id){
+        return transportService.getCityName(id);
+    }
 }

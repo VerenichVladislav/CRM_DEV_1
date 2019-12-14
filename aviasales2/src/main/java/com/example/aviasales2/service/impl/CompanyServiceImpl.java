@@ -1,8 +1,11 @@
 package com.example.aviasales2.service.impl;
 
+import com.example.aviasales2.config.filterConfig.CompanyFilter;
 import com.example.aviasales2.entity.Company;
+import com.example.aviasales2.entity.QCompany;
 import com.example.aviasales2.repository.CompanyRepository;
 import com.example.aviasales2.service.CompanyService;
+import com.querydsl.core.BooleanBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,8 +58,16 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public List <Company> findAll() {
-        return companyRepository.findAll();
+    public List <Company> findAll(CompanyFilter companyFilter) {
+        final QCompany qCompany = QCompany.company;
+        BooleanBuilder booleanBuilder = new BooleanBuilder(qCompany.isNotNull());
+        if (companyFilter.getCompanyName() != null) {
+            booleanBuilder.and(qCompany.companyName.eq(companyFilter.getCompanyName()));
+        }
+        if (companyFilter.getRating() != 0) {
+            booleanBuilder.and(qCompany.rating.eq(companyFilter.getRating()));
+        }
+        return (List <Company>) companyRepository.findAll(booleanBuilder);
     }
 
 

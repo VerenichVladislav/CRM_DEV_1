@@ -1,5 +1,6 @@
 package com.example.aviasales2.controller;
 
+import com.example.aviasales2.config.filterConfig.CompanyFilter;
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.transferObjects.CompanyDTO;
 import com.example.aviasales2.exception.GlobalBadRequestException;
@@ -34,9 +35,11 @@ public class CompanyController {
         this.companyValidator = companyValidator;
     }
 
-    @GetMapping()
-    public List <CompanyDTO> getAllCompany() {
-        return companyService.findAll().stream().map(entity -> mapper.map(entity, CompanyDTO.class)).collect(Collectors.toList());
+    @PostMapping("/filter")
+    public List <CompanyDTO> getAllCompany(@RequestBody CompanyFilter companyFilter) {
+        return companyService.findAll(companyFilter)
+                .stream()
+                .map(entity -> mapper.map(entity, CompanyDTO.class)).collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")

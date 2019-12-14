@@ -1,5 +1,6 @@
 package com.example.aviasales2.service;
 
+import com.example.aviasales2.config.filterConfig.CompanyFilter;
 import com.example.aviasales2.entity.Company;
 
 import java.util.List;
@@ -19,5 +20,5 @@ public interface CompanyService {
 
     List <Company> findByCompanyNameAndRating(String name, int rating);
 
-    List <Company> findAll();
+    List <Company> findAll(CompanyFilter companyFilter);
 }
