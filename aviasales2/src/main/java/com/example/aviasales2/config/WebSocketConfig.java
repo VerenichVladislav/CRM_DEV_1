@@ -13,15 +13,15 @@ import static com.example.aviasales2.Constants.*;
 
 public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
     @Override
-    public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker(SECURED_CHAT_HISTORY, SECURED_CHAT_SPECIFIC_USER);
-        config.setApplicationDestinationPrefixes("/spring-security-mvc-socket");
-        config.setUserDestinationPrefix("/secured/user");
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/socket")
+                .setAllowedOrigins("*")
+                .withSockJS();
     }
 
     @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint(SECURED_CHAT_ROOM).withSockJS();
-        registry.addEndpoint(SECURED_CHAT).setAllowedOrigins("*").withSockJS();
+    public void configureMessageBroker(MessageBrokerRegistry registry) {
+        registry.setApplicationDestinationPrefixes("/app")
+                .enableSimpleBroker("/chat");
     }
 }
