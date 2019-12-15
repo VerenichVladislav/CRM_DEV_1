@@ -19,10 +19,10 @@ public class UserValidator implements Validator {
     public void validate(Object target, Errors errors) {
         UserDTO user = (UserDTO) target;
         if(userRepository.findByEmail(user.getEmail()) != null){
-            errors.rejectValue("email", "", "User with such email already exists");
+            errors.rejectValue("email", "", "Not unique email");
         }
         if(userRepository.findByUserName(user.getUserName()) != null){
-            errors.rejectValue("userName", "", "User with such username already exists");
+            errors.rejectValue("userName", "", "Not unique user name");
         }
 
     }

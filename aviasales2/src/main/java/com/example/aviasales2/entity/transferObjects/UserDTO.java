@@ -12,27 +12,27 @@ public class UserDTO {
 
     private Long userId;
 
-    @Email(message = "bad email")
-    @NotBlank(message = "email should be not null")
+    @Email(message = "Bad email")
+    @NotBlank(message = "Email should be not null")
     private String email;
     private String currency;
     @NotBlank(message = "Role must be not null")
     private String role;
-    @NotBlank(message = "Enter your user name!")
-    @Size(min = 4, max = 15)
+    @NotBlank(message = "User name should be not null")
+    @Size(min = 4, max = 15, message = "Bad user name length")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Bad user name")
     private String userName;
     @NotBlank(message = "First name should be not null")
-    @Size(max = 15)
-    @Pattern(regexp = "^[A-Z][a-z]+$")
+    @Size(max = 15, message = "Bad first name length")
+    @Pattern(regexp = "^[A-Z][a-z]+$", message = "Bad first name")
     private String firstName;
     @NotBlank(message = "Last name should be not null")
-    @Size(max = 15)
-    @Pattern(regexp = "^[A-Z][a-z]+$")
+    @Size(max = 15, message = "Bad last name length")
+    @Pattern(regexp = "^[A-Z][a-z]+$", message = "Bad last name")
     private String lastName;
-    @NotBlank
-    @Size(min = 4, max = 30)
-    @Pattern(regexp = "[^//.]+$")
+    @NotBlank(message = "Password should be not null")
+    @Size(min = 4, max = 30, message = "Bad password length")
+    @Pattern(regexp = "[^//.]+$", message = "Bad password")
     private String hashPass;
     private String state = "UnConfirmed";
     private String confirmingHash;
