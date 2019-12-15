@@ -64,20 +64,37 @@ public class CommentsServiceImpl implements CommentsService {
                 curRate = newComment.getHotel().getCommentRating();
                 comments = commentsRepository.findByHotel(newComment.getHotel());
         }
-        BigDecimal commentRate = BigDecimal.valueOf(newComment.getRate());
-        commentRate = commentRate.divide(BigDecimal.valueOf(comments.size()-1),2, RoundingMode.HALF_DOWN);
-        curRate = curRate.subtract(commentRate);
-        if (newComment.getHotel() == null) {
-            if (newComment.getCompany() == null) {
-                tourRepository.findByTourId(newComment.getTour().getTourId()).setCommentRating(curRate);
-                tourRepository.save(tourRepository.findByTourId(newComment.getTour().getTourId()));
+        if(comments.size()==1) {
+            if (newComment.getHotel() == null) {
+                if (newComment.getCompany() == null) {
+                    tourRepository.findByTourId(newComment.getTour().getTourId()).setCommentRating(BigDecimal.valueOf(0));
+                    tourRepository.save(tourRepository.findByTourId(newComment.getTour().getTourId()));
+                } else {
+                    companyRepository.findByCompanyId(newComment.getCompany().getCompanyId()).setCommentRating(BigDecimal.valueOf(0));
+                    companyRepository.save(companyRepository.findByCompanyId(newComment.getCompany().getCompanyId()));
+                }
             } else {
-                companyRepository.findByCompanyId(newComment.getCompany().getCompanyId()).setCommentRating(curRate);
-                companyRepository.save(companyRepository.findByCompanyId(newComment.getCompany().getCompanyId()));
+                hotelRepository.findByHotelId(newComment.getHotel().getHotelId()).setCommentRating(BigDecimal.valueOf(0));
+                hotelRepository.save(hotelRepository.findByHotelId(newComment.getHotel().getHotelId()));
             }
-        } else {
-            hotelRepository.findByHotelId(newComment.getHotel().getHotelId()).setCommentRating(curRate);
-            hotelRepository.save(hotelRepository.findByHotelId(newComment.getHotel().getHotelId()));
+            commentsRepository.deleteByCommentId(id);
+        }
+        else{
+            BigDecimal commentRate = BigDecimal.valueOf(newComment.getRate());
+            commentRate = commentRate.divide(BigDecimal.valueOf(comments.size() - 1), 2, RoundingMode.HALF_DOWN);
+            curRate = curRate.subtract(commentRate);
+            if (newComment.getHotel() == null) {
+                if (newComment.getCompany() == null) {
+                    tourRepository.findByTourId(newComment.getTour().getTourId()).setCommentRating(curRate);
+                    tourRepository.save(tourRepository.findByTourId(newComment.getTour().getTourId()));
+                } else {
+                    companyRepository.findByCompanyId(newComment.getCompany().getCompanyId()).setCommentRating(curRate);
+                    companyRepository.save(companyRepository.findByCompanyId(newComment.getCompany().getCompanyId()));
+                }
+            } else {
+                hotelRepository.findByHotelId(newComment.getHotel().getHotelId()).setCommentRating(curRate);
+                hotelRepository.save(hotelRepository.findByHotelId(newComment.getHotel().getHotelId()));
+            }
         }
         commentsRepository.deleteByCommentId(id);
     }
