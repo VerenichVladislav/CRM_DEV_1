@@ -12,6 +12,7 @@ import com.example.aviasales2.service.HotelService;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -20,10 +21,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -68,11 +66,13 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List <Hotel> findAll(HotelFilter hotelFilter) {
+    public List<Hotel> findAll(HotelFilter hotelFilter, int page) {
+        Sort sort = new Sort(Sort.Direction.ASC, "hotelId");
+        Pageable pageable = PageRequest.of(page, 10, sort);
         final QHotel qHotel = QHotel.hotel;
         final QReservation qReservation = QReservation.reservation;
         JPAQuery<Hotel> hotelQuery = new JPAQuery<>(entityManager);
-        List<Hotel> hotels;
+//        List<Hotel> hotels;
         hotelQuery.from(qHotel)
                 .leftJoin(qHotel.reservations, qReservation)
                 .on(qReservation.hotel.hotelId.eq(qHotel.hotelId))
@@ -101,13 +101,29 @@ public class HotelServiceImpl implements HotelService {
             hotelQuery.where(hotelCheckIn.and(hotelRoomsSize));
 
         }
-        hotels = hotelQuery
-                .fetch();
-        Set<Hotel> result = new HashSet<>(hotels);
-        hotels = new ArrayList<>(result);
-        hotels.sort((hotelsFirst, hotelsSorted) ->
-                (int) (hotelsFirst.getHotelId() - hotelsSorted.getHotelId()));
-        return hotels;
+
+//        hotels = hotelQuery
+//                .fetch();
+//        Set<Hotel> result = new HashSet<>(hotels);
+//        hotels = new ArrayList<>(result);
+//        hotels.sort((hotelsFirst, hotelsSorted) ->
+//                (int) (hotelsFirst.getHotelId() - hotelsSorted.getHotelId()));
+
+        long total = hotelQuery.fetchCount();
+
+        hotelQuery.offset(pageable.getOffset());
+        hotelQuery.limit(pageable.getPageSize());
+
+        List<Hotel> content = total > pageable.getOffset() ? hotelQuery.fetch() : Collections.emptyList();
+
+        Page<Hotel> hotelsPage = new PageImpl<>(content, pageable, total);
+//        PageUtils pageUtils = new PageUtils();
+//        int current = hotelsPage.getNumber() + 1;
+//        int begin = pageUtils.pagingBegin(current);
+//        int end = pageUtils.pagingEnd(hmCattlePage.getTotalPages());
+//        Page<Hotel> hotelsPage = hotelRepository.findAll(hotelQuery, pageable);
+//        return hotelsPage.getContent();
+        return hotelsPage.getContent();
     }
 
     @Override
@@ -127,8 +143,8 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List <Hotel> findHotelsByHotelConveniences(List <String> hotelConveniences, HotelFilter hotelFilter) {
-        return findAll(hotelFilter).stream().filter(hotel -> hotel.getHotelConveniences().stream().map(Enum::name).collect(Collectors.toList())
+    public List<Hotel> findHotelsByHotelConveniences(List<String> hotelConveniences, HotelFilter hotelFilter, int page) {
+        return findAll(hotelFilter, page).stream().filter(hotel -> hotel.getHotelConveniences().stream().map(Enum::name).collect(Collectors.toList())
                 .containsAll(hotelConveniences))
                 .collect(Collectors.toList());
     }
