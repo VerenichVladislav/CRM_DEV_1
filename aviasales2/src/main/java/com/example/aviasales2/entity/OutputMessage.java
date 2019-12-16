@@ -1,6 +1,6 @@
 package com.example.aviasales2.entity;
 
-public class OutputMessage extends Message {
+public class OutputMessage extends ChatMessage {
 
     private String time;
 
