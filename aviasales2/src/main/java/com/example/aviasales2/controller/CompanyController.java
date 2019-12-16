@@ -39,7 +39,7 @@ public class CompanyController {
     public List <CompanyDTO> getAllCompany(@RequestBody CompanyFilter companyFilter,
                                            @RequestParam(defaultValue = "0") Integer pageNo,
                                            @RequestParam(defaultValue = "10") Integer pageSize,
-                                           @RequestParam(defaultValue = "dateFrom") String sortBy) {
+                                           @RequestParam(defaultValue = "companyName") String sortBy) {
         return companyService.findAll(companyFilter, pageNo, pageSize, sortBy)
                 .stream()
                 .map(entity -> mapper.map(entity, CompanyDTO.class)).collect(Collectors.toList());
