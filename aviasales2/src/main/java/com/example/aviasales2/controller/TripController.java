@@ -80,15 +80,21 @@ public class TripController {
         return null;
     }
     @PostMapping("/dto")
-    public List <SearchResultTripDto> findAllDto(@RequestBody TripFilter tripFilter) {
-        return tripService.findAll(tripFilter).stream()
+    public List <SearchResultTripDto> findAllDto(@RequestBody TripFilter tripFilter,
+                                                 @RequestParam(defaultValue = "0") Integer pageNo,
+                                                 @RequestParam(defaultValue = "10") Integer pageSize,
+                                                 @RequestParam(defaultValue = "dateFrom") String sortBy) {
+        return tripService.findAll(tripFilter,pageNo, pageSize, sortBy).stream()
                 .map(entity -> mapper.map(entity, SearchResultTripDto.class))
                 .collect(Collectors.toList());
     }
 
     @PostMapping
-    public List <TripDTO> findAll(@RequestBody TripFilter tripFilter) {
-        return tripService.findAll(tripFilter).stream()
+    public List <TripDTO> findAll(@RequestBody TripFilter tripFilter,
+                                  @RequestParam(defaultValue = "0") Integer pageNo,
+                                  @RequestParam(defaultValue = "10") Integer pageSize,
+                                  @RequestParam(defaultValue = "dateFrom") String sortBy) {
+        return tripService.findAll(tripFilter,pageNo, pageSize, sortBy).stream()
                 .map(entity -> mapper.map(entity, TripDTO.class))
                 .collect(Collectors.toList());
     }

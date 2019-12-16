@@ -14,6 +14,10 @@ import com.example.aviasales2.util.TripValidator;
 import com.querydsl.core.BooleanBuilder;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -22,6 +26,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -43,7 +48,7 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public List <Trip> findAll(TripFilter tripFilter) {
+    public List <Trip> findAll(TripFilter tripFilter,Integer pageNo, Integer pageSize, String sortBy) {
         final QTrip qTrip = QTrip.trip;
 
         BooleanBuilder builder = new BooleanBuilder(qTrip.isNotNull());
@@ -64,7 +69,16 @@ public class TripServiceImpl implements TripService {
 
             builder.and(qTrip.dateFrom.between(timestamp, timestamp1));
         }
-        return (List <Trip>) tripRepository.findAll(builder);
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+
+        Page<Trip> pagedResult = tripRepository.findAll(builder,paging);
+
+        if(pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<Trip>();
+        }
+
 
     }
 
