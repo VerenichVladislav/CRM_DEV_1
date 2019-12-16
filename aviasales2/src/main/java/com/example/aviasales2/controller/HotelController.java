@@ -67,7 +67,7 @@ public class HotelController {
     }
 
     @PostMapping
-    public List <HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter, @RequestParam int page) {
+    public List <HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter, @RequestParam(defaultValue = "0") int page) {
         return hotelService.findAll(hotelFilter, page).stream()
                 .map(entity -> mapper.map(entity, HotelDTO.class))
                 .collect(Collectors.toList());
