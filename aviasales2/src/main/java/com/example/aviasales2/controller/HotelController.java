@@ -8,6 +8,7 @@ import com.example.aviasales2.entity.Reservation;
 import com.example.aviasales2.entity.Room;
 import com.example.aviasales2.entity.transferObjects.CityDTO;
 import com.example.aviasales2.entity.transferObjects.HotelDTO;
+import com.example.aviasales2.entity.transferObjects.ReservationDTO;
 import com.example.aviasales2.exception.GlobalBadRequestException;
 import com.example.aviasales2.service.*;
 import com.example.aviasales2.util.HotelValidator;
@@ -94,7 +95,7 @@ public class HotelController {
 
     @Transactional
     @PostMapping("/{user_id}/{hotel_id}/{checkIn}/{checkOut}/{roomId}")
-    public ResponseEntity <String> addReservation(@PathVariable("user_id") Long userId,
+    public ResponseEntity <ReservationDTO> addReservation(@PathVariable("user_id") Long userId,
                                                   @PathVariable("hotel_id") Long hotelId,
                                                   @PathVariable("checkIn") Timestamp checkIn,
                                                   @PathVariable("checkOut") Timestamp checkOut,
@@ -114,12 +115,10 @@ public class HotelController {
             hotel.setReservations(reservations);
             hotelService.save(hotel);
             //  walletService.pay(userId,room.getDailyCost());
-
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body("You reserved hotel ");
+            ReservationDTO body = mapper.map(reservation, ReservationDTO.class);
+            return new ResponseEntity <>(body, HttpStatus.OK);
         }
-        return ResponseEntity.status(HttpStatus.OK)
-                .body("Error");
+        throw new RuntimeException();
 
     }
 

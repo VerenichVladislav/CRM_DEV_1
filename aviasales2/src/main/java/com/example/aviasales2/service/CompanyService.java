@@ -20,5 +20,5 @@ public interface CompanyService {
 
     List <Company> findByCompanyNameAndRating(String name, int rating);
 
-    List <Company> findAll(CompanyFilter companyFilter);
+    List <Company> findAll(CompanyFilter companyFilter, Integer pageNo, Integer pageSize, String sortBy);
 }

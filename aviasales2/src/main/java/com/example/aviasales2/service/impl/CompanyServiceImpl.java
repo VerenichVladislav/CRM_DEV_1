@@ -6,9 +6,14 @@ import com.example.aviasales2.entity.QCompany;
 import com.example.aviasales2.repository.CompanyRepository;
 import com.example.aviasales2.service.CompanyService;
 import com.querydsl.core.BooleanBuilder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -58,7 +63,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public List <Company> findAll(CompanyFilter companyFilter) {
+    public List <Company> findAll(CompanyFilter companyFilter, Integer pageNo, Integer pageSize, String sortBy) {
         final QCompany qCompany = QCompany.company;
         BooleanBuilder booleanBuilder = new BooleanBuilder(qCompany.isNotNull());
         if (companyFilter.getCompanyName() != null) {
@@ -67,7 +72,15 @@ public class CompanyServiceImpl implements CompanyService {
         if (companyFilter.getRating() != 0) {
             booleanBuilder.and(qCompany.rating.eq(companyFilter.getRating()));
         }
-        return (List <Company>) companyRepository.findAll(booleanBuilder);
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+
+        Page<Company> pagedResult = companyRepository.findAll(booleanBuilder, paging);
+
+        if(pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<>();
+        }
     }
 
 
