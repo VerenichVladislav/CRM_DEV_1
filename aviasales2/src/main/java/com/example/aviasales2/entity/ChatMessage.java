@@ -1,6 +1,5 @@
 package com.example.aviasales2.entity;
-
-public class Message {
+public class ChatMessage {
 
     private String from;
     private String to;
