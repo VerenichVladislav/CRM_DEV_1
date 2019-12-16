@@ -67,15 +67,15 @@ public class HotelController {
     }
 
     @PostMapping
-    public List <HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter) {
-        return hotelService.findAll(hotelFilter).stream()
+    public List <HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter, @RequestParam int page) {
+        return hotelService.findAll(hotelFilter, page).stream()
                 .map(entity -> mapper.map(entity, HotelDTO.class))
                 .collect(Collectors.toList());
     }
 
     @PostMapping("/byHotelConveniences")
-    public List <HotelDTO> findRoomsByRoomConveniences(@RequestParam List <String> hotelConveniences, HotelFilter hotelFilter) {
-        List <Hotel> sortedHotels = hotelService.findHotelsByHotelConveniences(hotelConveniences, hotelFilter);
+    public List <HotelDTO> findRoomsByRoomConveniences(@RequestParam List <String> hotelConveniences, HotelFilter hotelFilter, int page) {
+        List <Hotel> sortedHotels = hotelService.findHotelsByHotelConveniences(hotelConveniences, hotelFilter, page);
         return sortedHotels.stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
     }
 
