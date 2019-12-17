@@ -81,18 +81,20 @@ public class CommentsServiceImpl implements CommentsService {
         }
         else{
             BigDecimal commentRate = BigDecimal.valueOf(newComment.getRate());
+            BigDecimal sumRate = commentRate.multiply(BigDecimal.valueOf(comments.size()));
+            sumRate=sumRate.divide(BigDecimal.valueOf(newComment.getRate()));
             commentRate = commentRate.divide(BigDecimal.valueOf(comments.size() - 1), 2, RoundingMode.HALF_DOWN);
-            curRate = curRate.subtract(commentRate);
+
             if (newComment.getHotel() == null) {
                 if (newComment.getCompany() == null) {
-                    tourRepository.findByTourId(newComment.getTour().getTourId()).setCommentRating(curRate);
+                    tourRepository.findByTourId(newComment.getTour().getTourId()).setCommentRating(commentRate);
                     tourRepository.save(tourRepository.findByTourId(newComment.getTour().getTourId()));
                 } else {
-                    companyRepository.findByCompanyId(newComment.getCompany().getCompanyId()).setCommentRating(curRate);
+                    companyRepository.findByCompanyId(newComment.getCompany().getCompanyId()).setCommentRating(commentRate);
                     companyRepository.save(companyRepository.findByCompanyId(newComment.getCompany().getCompanyId()));
                 }
             } else {
-                hotelRepository.findByHotelId(newComment.getHotel().getHotelId()).setCommentRating(curRate);
+                hotelRepository.findByHotelId(newComment.getHotel().getHotelId()).setCommentRating(commentRate);
                 hotelRepository.save(hotelRepository.findByHotelId(newComment.getHotel().getHotelId()));
             }
         }

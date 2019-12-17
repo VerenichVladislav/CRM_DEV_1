@@ -1,5 +1,6 @@
 package com.example.aviasales2.service.impl;
 
+import com.example.aviasales2.Constants;
 import com.example.aviasales2.entity.Sender;
 import com.example.aviasales2.entity.Ticket;
 import com.example.aviasales2.entity.Trip;
@@ -102,13 +103,13 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public void sentConfirmToEmail(Long userId, double sum) {
+    public void sendConfirmToEmail(Long userId, double sum) {
         Wallet wallet = walletRepository.findByOwnerUserId(userId);
         BigDecimal newSum = BigDecimal.valueOf(sum);
         Sender sender = new Sender();
         String subject = "Пополнение кошелька";
         String hash = Base64.getUrlEncoder().encodeToString((userId.toString() + ";" + (newSum.toString())).getBytes());
-        String url = "http://localhost:4200/wallets/" + userId + "/confirm/" + hash;
+        String url = Constants.URL + "wallets/" + userId + "/confirm/" + hash;
         String text = "Добрый день " + walletRepository.findByOwnerUserId(userId).getOwner().getUserName() + "! Это очень важное письмо пришло что бы выподтвердили пополнение счёта на нашем супер сайте нажмите на эту ссылку " + url;
         sender.send(subject, text, walletRepository.findByOwnerUserId(userId).getOwner().getEmail());
         walletRepository.findByOwnerUserId(userId).setStatus("AWAITING");

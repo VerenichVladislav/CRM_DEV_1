@@ -35,7 +35,6 @@ public class SenderServiceImpl implements SenderService {
         sb.append("You bought " + count + " ticket(s) from " + cityFrom.getCityName() +
                 " to " + cityDest.getCityName() + "!\n\n");
         sb.append("Date: " + trip.getDateFrom() + "\n");
-        //sb.append("Total Price: " + trip.getPrice() * count + "$\n\n");
         sb.append("Total Price: " + tripService.calculateCost(count, tripId) + "$\n\n");
         sb.append("Passengers: \n");
         sb.append(list + "\n");

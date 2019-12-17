@@ -18,6 +18,7 @@ public class Comments {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long commentId;
+    @Column(length = 500)
     @NotBlank(message = "Comment must be not null")
     private String text;
     private Timestamp date = new Timestamp(System.currentTimeMillis());

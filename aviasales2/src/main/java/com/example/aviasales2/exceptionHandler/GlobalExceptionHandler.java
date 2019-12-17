@@ -2,6 +2,7 @@ package com.example.aviasales2.exceptionHandler;
 
 import com.example.aviasales2.exception.GlobalBadRequestException;
 import com.example.aviasales2.exception.NoSuchEntityException;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -24,7 +25,7 @@ class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         List <String> errors = ex.getResult()
                 .getFieldErrors()
                 .stream()
-                .map(x -> x.getDefaultMessage())
+                .map(DefaultMessageSourceResolvable::getDefaultMessage)
                 .collect(Collectors.toList());
 
         body.put("errors", errors);

@@ -20,7 +20,7 @@ public interface WalletService {
 
     void pay(long userId, BigDecimal totalCost);
 
-    void sentConfirmToEmail(Long userId, double sum);
+    void sendConfirmToEmail(Long userId, double sum);
 
     ResponseEntity <String> confirm(Long userId, String hashConfirm);
 }

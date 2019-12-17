@@ -13,6 +13,7 @@ import javax.mail.MessagingException;
 @RestController
 @RequestMapping("/wallets")
 public class WalletController {
+
     private final WalletService walletService;
     private final DozerBeanMapper mapper;
 
@@ -28,9 +29,9 @@ public class WalletController {
     }
 
     @GetMapping("/{user_id}/sendConfirm")
-    public void sentConfirmToEmail(@PathVariable(name = "user_id") Long id,
+    public void sendConfirmToEmail(@PathVariable(name = "user_id") Long id,
                                    @RequestParam double sum) throws MessagingException {
-        walletService.sentConfirmToEmail(id, sum);
+        walletService.sendConfirmToEmail(id, sum);
     }
 
     @GetMapping("{userId}/confirm/{hashConfirm}")

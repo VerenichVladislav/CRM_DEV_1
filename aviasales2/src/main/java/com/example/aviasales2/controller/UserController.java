@@ -1,5 +1,6 @@
 package com.example.aviasales2.controller;
 
+import com.example.aviasales2.Constants;
 import com.example.aviasales2.config.filterConfig.UserFilter;
 import com.example.aviasales2.entity.Sender;
 import com.example.aviasales2.entity.User;
@@ -75,7 +76,7 @@ public class UserController {
         user.setConfirmingHash(Integer.toString(userName.hashCode()));
         Sender sender = new Sender();
         String subject = "Очень важное сообщение";
-        String text = "Добрый день " + userName + "! Это очень важное письмо пришло что бы выподтвердили регистрацию на нашем супер сайте нажмите на эту ссылку http://localhost:8080/users/confirm/" + user.getConfirmingHash();
+        String text = "Добрый день " + userName + "! Это очень важное письмо пришло что бы выподтвердили регистрацию на нашем супер сайте нажмите на эту ссылку" + Constants.URL + "users/confirm/" + user.getConfirmingHash();
         sender.send(subject, text, user.getEmail());
 
         userService.save(user);
