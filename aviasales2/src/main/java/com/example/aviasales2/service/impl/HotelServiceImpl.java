@@ -72,7 +72,7 @@ public class HotelServiceImpl implements HotelService {
         final QHotel qHotel = QHotel.hotel;
         final QReservation qReservation = QReservation.reservation;
         JPAQuery<Hotel> hotelQuery = new JPAQuery<>(entityManager);
-//        List<Hotel> hotels;
+        List<Hotel> hotels;
         hotelQuery.from(qHotel)
                 .leftJoin(qHotel.reservations, qReservation)
                 .on(qReservation.hotel.hotelId.eq(qHotel.hotelId))
@@ -99,22 +99,21 @@ public class HotelServiceImpl implements HotelService {
                     .or(qHotel.reservations.isEmpty());
             BooleanExpression hotelRoomsSize = qHotel.rooms.size().gt(reservations.size());
             hotelQuery.where(hotelCheckIn.and(hotelRoomsSize));
-
         }
-
-//        hotels = hotelQuery
-//                .fetch();
-//        Set<Hotel> result = new HashSet<>(hotels);
-//        hotels = new ArrayList<>(result);
-//        hotels.sort((hotelsFirst, hotelsSorted) ->
-//                (int) (hotelsFirst.getHotelId() - hotelsSorted.getHotelId()));
+        //hotelQuery.where()
+        hotels = hotelQuery
+                .fetch();
+        Set<Hotel> result = new HashSet<>(hotels);
+        hotels = new ArrayList<>(result);
+        hotels.sort((hotelsFirst, hotelsSorted) ->
+                (int) (hotelsFirst.getHotelId() - hotelsSorted.getHotelId()));
 
         long total = hotelQuery.fetchCount();
 
         hotelQuery.offset(pageable.getOffset());
         hotelQuery.limit(pageable.getPageSize());
 
-        List<Hotel> content = total > pageable.getOffset() ? hotelQuery.fetch() : Collections.emptyList();
+        List<Hotel> content = total > pageable.getOffset() ? hotels : Collections.emptyList();
 
         Page<Hotel> hotelsPage = new PageImpl<>(content, pageable, total);
 //        PageUtils pageUtils = new PageUtils();
