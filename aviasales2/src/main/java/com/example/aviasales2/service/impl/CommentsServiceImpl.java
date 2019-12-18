@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.List;
 
@@ -81,9 +82,10 @@ public class CommentsServiceImpl implements CommentsService {
         }
         else{
             BigDecimal commentRate = BigDecimal.valueOf(newComment.getRate());
-            BigDecimal sumRate = commentRate.multiply(BigDecimal.valueOf(comments.size()));
-            sumRate=sumRate.divide(BigDecimal.valueOf(newComment.getRate()));
-            commentRate = commentRate.divide(BigDecimal.valueOf(comments.size() - 1), 2, RoundingMode.HALF_DOWN);
+            BigDecimal sumRate = curRate.multiply(BigDecimal.valueOf(comments.size()));
+            sumRate = sumRate.setScale(0, RoundingMode.HALF_UP);
+            sumRate=sumRate.subtract(BigDecimal.valueOf(newComment.getRate()));
+            commentRate = sumRate.divide(BigDecimal.valueOf(comments.size() - 1), 2, RoundingMode.HALF_DOWN);
 
             if (newComment.getHotel() == null) {
                 if (newComment.getCompany() == null) {
