@@ -81,7 +81,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/wallets/*/*/*").hasAnyRole("USER","ADMIN")
                 .antMatchers(HttpMethod.GET, "/reservations/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/trips/*").permitAll()
-                .antMatchers(HttpMethod.GET, "/users").permitAll()
+                .antMatchers(HttpMethod.GET, "/users").hasAnyRole("ADMIN","USER")
                 .antMatchers(HttpMethod.GET, "/international").permitAll()
                 .antMatchers(HttpMethod.GET, "/international/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/admin/lockUser").hasRole("ADMIN")
