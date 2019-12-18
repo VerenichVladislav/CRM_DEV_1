@@ -82,6 +82,10 @@ public class UserController {
         userService.save(user);
     }
 
+    @GetMapping("/isLogin")
+    public void isLogin() {
+    }
+
     @GetMapping("/isAuthenticated")
     public void isAuthenticated() {
     }
