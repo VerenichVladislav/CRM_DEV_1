@@ -90,6 +90,11 @@ public class UserController {
     public void isAuthenticated() {
     }
 
+    @GetMapping("/isEmailConfirmed/{userId}")
+    public boolean isEmailConfirmed(@PathVariable Long userId) {
+        return userService.getStateByUserId(userId).equals("Confirmed");
+    }
+
     @GetMapping("/")
     public UserDTO findByUserName(@RequestParam String userName) {
         return mapper.map(userService.findByUserName(userName), UserDTO.class);

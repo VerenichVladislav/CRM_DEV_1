@@ -34,6 +34,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public String getStateByUserId(Long id) {
+        return userRepository.getStateByUserId(id);
+    }
+
+    @Override
     public List <User> findAll(UserFilter userFilter) {
         final QUser qUser = QUser.user;
 

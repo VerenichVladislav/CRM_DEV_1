@@ -13,6 +13,8 @@ public interface UserRepository extends CrudRepository <User, Integer>, Querydsl
 
     User findByEmail(String email);
 
+    String getStateByUserId(Long id);
+
     void deleteByUserId(Long id);
 
     User findByUserName(String userName);
