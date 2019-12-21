@@ -12,6 +12,7 @@ import com.example.aviasales2.service.CommentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
@@ -32,6 +33,7 @@ public class CommentsServiceImpl implements CommentsService {
         this.tourRepository = tourRepository;
     }
 
+    @Transactional
     @Override
     public void save(Comments comments) {
         commentsRepository.save(comments);
@@ -81,11 +83,10 @@ public class CommentsServiceImpl implements CommentsService {
             commentsRepository.deleteByCommentId(id);
         }
         else{
-            BigDecimal commentRate = BigDecimal.valueOf(newComment.getRate());
             BigDecimal sumRate = curRate.multiply(BigDecimal.valueOf(comments.size()));
             sumRate = sumRate.setScale(0, RoundingMode.HALF_UP);
-            sumRate=sumRate.subtract(BigDecimal.valueOf(newComment.getRate()));
-            commentRate = sumRate.divide(BigDecimal.valueOf(comments.size() - 1), 2, RoundingMode.HALF_DOWN);
+            sumRate = sumRate.subtract(BigDecimal.valueOf(newComment.getRate()));
+            BigDecimal commentRate = sumRate.divide(BigDecimal.valueOf(comments.size() - 1), 2, RoundingMode.HALF_DOWN);
 
             if (newComment.getHotel() == null) {
                 if (newComment.getCompany() == null) {

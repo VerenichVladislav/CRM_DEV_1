@@ -1,6 +1,7 @@
 package com.example.aviasales2.service;
 
 
+import com.example.aviasales2.PersonRequest;
 import com.example.aviasales2.entity.Wallet;
 import com.example.aviasales2.entity.transferObjects.WalletDTO;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public interface WalletService {
 
     BigDecimal getSum(long id);
 
-    void pay(long userId, BigDecimal totalCost);
+    void pay(long userId, long tripId, int count, List <PersonRequest> passengers);
 
     void sendConfirmToEmail(Long userId, double sum);
 

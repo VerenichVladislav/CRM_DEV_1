@@ -15,9 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,19 +25,15 @@ import java.util.stream.Collectors;
 public class TripController {
     private final TripService tripService;
     private final WalletService walletService;
-    private final TicketService ticketService;
     private final Validation validation;
-    private final SenderService senderService;
     private final DozerBeanMapper mapper;
     private final TripValidator tripValidator;
 
     @Autowired
-    public TripController(TripService tripService, WalletService walletService, TicketService ticketService, Validation validation, SenderService senderService, DozerBeanMapper mapper, TripValidator tripValidator) {
+    public TripController(TripService tripService, WalletService walletService, Validation validation, DozerBeanMapper mapper, TripValidator tripValidator) {
         this.tripService = tripService;
         this.walletService = walletService;
-        this.ticketService = ticketService;
         this.validation = validation;
-        this.senderService = senderService;
         this.mapper = mapper;
         this.tripValidator = tripValidator;
     }
@@ -99,7 +93,6 @@ public class TripController {
                 .collect(Collectors.toList());
     }
 
-    @Transactional
     @PostMapping("/{user_id}/{trid_id}/buy")
     ResponseEntity <String> buy(@PathVariable("trid_id") long tripId,
                                 @PathVariable("user_id") long userId,
@@ -114,10 +107,7 @@ public class TripController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("Insufficient funds! Replenish your wallet!");
         }
-        BigDecimal totalCost = tripService.calculateCost(count, tripId);
-        walletService.pay(userId, totalCost);
-        String list = ticketService.save(userId, tripId, count, passengers);
-        senderService.buyEmail(userId, tripId, list, count);
+        walletService.pay(userId, tripId, count, passengers);
         return ResponseEntity.status(HttpStatus.OK)
                 .body("You bought " + count + " ticket(s)! Check your email!");
     }

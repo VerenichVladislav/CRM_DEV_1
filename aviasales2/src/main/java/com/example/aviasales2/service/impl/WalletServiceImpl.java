@@ -1,12 +1,14 @@
 package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.Constants;
+import com.example.aviasales2.PersonRequest;
 import com.example.aviasales2.entity.Sender;
 import com.example.aviasales2.entity.Ticket;
 import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.entity.Wallet;
 import com.example.aviasales2.entity.transferObjects.WalletDTO;
 import com.example.aviasales2.repository.WalletRepository;
+import com.example.aviasales2.service.SenderService;
 import com.example.aviasales2.service.TicketService;
 import com.example.aviasales2.service.TripService;
 import com.example.aviasales2.service.WalletService;
@@ -16,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Base64;
@@ -29,17 +32,23 @@ public class WalletServiceImpl implements WalletService {
     private final DozerBeanMapper mapper;
     private final TripService tripService;
     private final TicketService ticketService;
+    private final SenderService senderService;
 
     @Autowired
-    public WalletServiceImpl(WalletRepository walletRepository, DozerBeanMapper mapper, TripService tripService, TicketService ticketService) {
+    public WalletServiceImpl(WalletRepository walletRepository, DozerBeanMapper mapper, TripService tripService, TicketService ticketService, SenderService senderService) {
         this.walletRepository = walletRepository;
         this.mapper = mapper;
         this.tripService = tripService;
         this.ticketService = ticketService;
+        this.senderService = senderService;
     }
 
+    @Transactional
     @Override
-    public void pay(long userId, BigDecimal totalCost) {
+    public void pay(long userId, long tripId, int count, List <PersonRequest> passengers) {
+        BigDecimal totalCost = tripService.calculateCost(count, tripId);
+        String list = ticketService.save(userId, tripId, count, passengers);
+        senderService.buyEmail(userId, tripId, list, count);
         Wallet userWallet = walletRepository.findByOwnerUserId(userId);
         Wallet adminWallet = walletRepository.findByWalletId(0L);
         adminWallet.setSum(adminWallet.getSum().add(totalCost));

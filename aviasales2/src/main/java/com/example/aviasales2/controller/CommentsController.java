@@ -37,7 +37,6 @@ public class CommentsController {
         this.mapper = mapper;
     }
 
-    @Transactional
     @PostMapping
     public void save(@RequestBody Comments comments) {
         commentsServiceImpl.save(comments);
