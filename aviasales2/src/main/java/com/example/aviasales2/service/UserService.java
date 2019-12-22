@@ -10,8 +10,6 @@ public interface UserService {
 
     User findById(Long id);
 
-    String getStateByUserId(Long id);
-
     List <User> findAll(UserFilter userFilter);
 
     List <User> findAllByLastName(String lastName);

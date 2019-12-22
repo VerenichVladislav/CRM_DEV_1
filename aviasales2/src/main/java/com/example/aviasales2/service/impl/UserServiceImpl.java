@@ -33,10 +33,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUserId(id);
     }
 
-    @Override
-    public String getStateByUserId(Long id) {
-        return userRepository.getStateByUserId(id);
-    }
 
     @Override
     public List <User> findAll(UserFilter userFilter) {

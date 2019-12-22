@@ -92,7 +92,7 @@ public class UserController {
 
     @GetMapping("/isEmailConfirmed/{userId}")
     public boolean isEmailConfirmed(@PathVariable Long userId) {
-        return userService.getStateByUserId(userId).equals("Confirmed");
+        return userService.findById(userId).getState().equals("Confirmed");
     }
 
     @GetMapping("/")

@@ -14,6 +14,4 @@ public interface HotelRepository extends CrudRepository <Hotel, Long>, QuerydslP
     Hotel findByHotelId(long id);
 
     List <Hotel> findAll();
-
-    String findImageByHotelId(long id);
 }
