@@ -11,8 +11,7 @@ import java.util.List;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
-    final
-    ReservationRepository reservationRepository;
+    final ReservationRepository reservationRepository;
 
     @Autowired
     public ReservationServiceImpl(ReservationRepository reservationRepository) {

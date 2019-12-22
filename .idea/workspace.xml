@@ -1,44 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6979cffe-8677-4ecb-b115-d7a0d587da14" name="Default" comment="Add Lng and lat to Hotel and City." />
-    <list id="9698d249-466d-426b-88a1-62a4cc9dc9fb" name="Default Changelist" comment="" />
+    <list default="true" id="d70e7b5c-149b-4176-933e-1072c9a3e59d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/RoomFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/aviasales2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/aviasales2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/RoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/aviasales2/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/CRM_DEV_1$Aviasales2Application.ic" NAME="Aviasales2Application Coverage Results" MODIFIED="1575154205289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
-  </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetDialog">
-    <checked>
-      <node key="7f07d801-a2e2-43f1-afb1-02406b5e910f" />
-    </checked>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1377">
+              <caret line="113" column="12" selection-start-line="113" selection-start-column="12" selection-end-line="113" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/RoomFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/RoomController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="833">
+              <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="16" column="73" selection-start-line="16" selection-start-column="73" selection-end-line="16" selection-end-column="73" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/UserServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/ReservationServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aviasales2/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -46,24 +127,145 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="D:\Projects\CRM_DEV_1\.idea" />
-      </set>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/RoomFilter.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/RoomController.java" />
+        <option value="$PROJECT_DIR$/aviasales2/src/main/resources/application.properties" />
+      </list>
     </option>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="aviasales2" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="aviasales2" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
   </component>
-  <component name="ProjectId" id="1TZ6UbUKdkuETNETDScRHRuwUdB" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="980" />
+    <option name="width" value="945" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CRM_DEV_1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CRM_DEV_1" type="462c0819:PsiDirectoryNode" />
+              <item name="aviasales2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="postgresql" />
-    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -71,25 +273,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
-    <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\zhenu\Desktop\Dev\CRM_DEV_1\aviasales2\src\main\resources" />
-    </key>
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -104,179 +292,87 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Aviasales2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="aviasales2" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.aviasales2.Aviasales2Application" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="TestNG">
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand />
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9698d249-466d-426b-88a1-62a4cc9dc9fb" name="Default Changelist" comment="" />
-      <changelist id="6979cffe-8677-4ecb-b115-d7a0d587da14" name="Default" comment="" />
-      <created>1571717658285</created>
+      <changelist id="d70e7b5c-149b-4176-933e-1072c9a3e59d" name="Default Changelist" comment="" />
+      <created>1576510394631</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1571717658285</updated>
-      <workItem from="1571717659792" duration="1371000" />
-      <workItem from="1571842681739" duration="1585000" />
-      <workItem from="1571887610028" duration="2210000" />
-      <workItem from="1571933448152" duration="25954000" />
-      <workItem from="1571717659792" duration="1058000" />
-      <workItem from="1571936177163" duration="1489000" />
-      <workItem from="1573245207169" duration="13390000" />
-      <workItem from="1573473937584" duration="4246000" />
-      <workItem from="1573478417472" duration="414000" />
-      <workItem from="1573485248611" duration="19000" />
-      <workItem from="1573485432458" duration="1613000" />
-      <workItem from="1573487181929" duration="592000" />
-      <workItem from="1573551131090" duration="185000" />
-      <workItem from="1573551418189" duration="3959000" />
-      <workItem from="1573568757624" duration="609000" />
-      <workItem from="1573655296344" duration="1458000" />
-      <workItem from="1573675235429" duration="528000" />
-      <workItem from="1574189712901" duration="430000" />
-      <workItem from="1574226518588" duration="55000" />
-      <workItem from="1574226634993" duration="790000" />
-      <workItem from="1574245214219" duration="381000" />
-      <workItem from="1574245659281" duration="307000" />
-      <workItem from="1574534144560" duration="10624000" />
-      <workItem from="1574857179024" duration="740000" />
-      <workItem from="1574857974043" duration="205000" />
-      <workItem from="1574858814554" duration="319000" />
-      <workItem from="1574863371008" duration="4334000" />
-      <workItem from="1574872061242" duration="1299000" />
-      <workItem from="1575096895621" duration="3153000" />
-      <workItem from="1575106889252" duration="317000" />
-      <workItem from="1575188256821" duration="135000" />
-      <workItem from="1575188484241" duration="4403000" />
-      <workItem from="1575216762006" duration="1549000" />
-      <workItem from="1575299194410" duration="1264000" />
-      <workItem from="1575352580427" duration="615000" />
-      <workItem from="1575366351950" duration="1231000" />
-      <workItem from="1575377180234" duration="572000" />
-      <workItem from="1575453736336" duration="520000" />
-      <workItem from="1575469243531" duration="5618000" />
-      <workItem from="1575478439663" duration="115000" />
-      <workItem from="1575704096369" duration="1083000" />
-      <workItem from="1575789838830" duration="301000" />
-      <workItem from="1575790508389" duration="2928000" />
-      <workItem from="1575793990362" duration="274000" />
-      <workItem from="1575795053416" duration="4154000" />
-      <workItem from="1575831982014" duration="1378000" />
-      <workItem from="1575873604415" duration="11177000" />
-      <workItem from="1576130128341" duration="1197000" />
-      <workItem from="1576394569183" duration="7158000" />
-      <workItem from="1576501466479" duration="240000" />
-      <workItem from="1576508962183" duration="476000" />
+      <updated>1576510394631</updated>
+      <workItem from="1576510397074" duration="2698000" />
+      <workItem from="1576614508886" duration="1610000" />
+      <workItem from="1576668154524" duration="17000" />
+      <workItem from="1576668204905" duration="3740000" />
+      <workItem from="1576677921127" duration="1471000" />
+      <workItem from="1577013924580" duration="13000" />
     </task>
-    <task id="LOCAL-00001" summary="Added city-tour foreign key. Added encapsulation.">
-      <created>1571937388779</created>
+    <task id="LOCAL-00001" summary="Filter fixed">
+      <created>1576671560096</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1571937388779</updated>
+      <updated>1576671560096</updated>
     </task>
-    <task id="LOCAL-00002" summary="deleted .idea">
-      <created>1573301122472</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1573301122472</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Admin trip save added">
-      <created>1573478012851</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1573478012851</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Admin trip save added (bug fixed)">
-      <created>1573478814787</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1573478814787</updated>
-    </task>
-    <task id="LOCAL-00005" summary="New entity Room. Hotel changed.">
-      <created>1573568603666</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1573568603667</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Add Lng and lat to Hotel and City.">
-      <created>1575215135501</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1575215135501</updated>
-    </task>
-    <task id="LOCAL-00007" summary="https and fix wallet confirm">
-      <created>1575828714905</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1575828714905</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="9694000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2181208" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39518413" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3286119" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.32831326" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -293,25 +389,218 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added city-tour foreign key. Added encapsulation." />
-    <MESSAGE value="Resolved conflicts" />
-    <MESSAGE value="deleted .idea" />
-    <MESSAGE value="Admin trip save added" />
-    <MESSAGE value="Admin trip save added (bug fixed)" />
-    <MESSAGE value="New entity Room. Hotel changed." />
-    <MESSAGE value="Add Lng and lat to Hotel and City." />
-    <MESSAGE value="https and fix wallet confirm" />
-    <option name="LAST_COMMIT_MESSAGE" value="https and fix wallet confirm" />
+    <MESSAGE value="Filter fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Filter fixed" />
   </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="timestamp" />
-      </configuration>
-    </watches-manager>
+  <component name="editorHistoryManager">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/querydsl/querydsl-core/4.2.1/querydsl-core-4.2.1-sources.jar!/com/querydsl/core/BooleanBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1652">
+          <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/CompanyFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TripController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Sender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/HotelService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="26" column="115" selection-start-line="26" selection-start-column="115" selection-end-line="26" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/HotelFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/TripServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="71" column="43" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/HotelController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/ReservationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="113" column="12" selection-start-line="113" selection-start-column="12" selection-end-line="113" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/RoomFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/RoomController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="73" selection-start-line="16" selection-start-column="73" selection-end-line="16" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/ReservationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aviasales2/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
