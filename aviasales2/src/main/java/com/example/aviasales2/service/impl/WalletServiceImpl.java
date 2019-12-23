@@ -123,8 +123,8 @@ public class WalletServiceImpl implements WalletService {
 
         html.append( "<body>\n" );
         html.append("<h2>Добрый день, ").append(wallet.getOwner().getUserName()).append("!</h2>\n");
-        html.append("<p>Это очень важное письмо пришло, чтобы вы подтвердили пополнение счёта на нашем супер сайте нажмите на эту ссылку: ");
-        html.append("<a href=\"").append(url).append("\">Aviasales 2.0</a>\n</p>\n");
+        html.append("<p>Это очень важное письмо пришло, чтобы вы подтвердили пополнение счёта на нашем супер сайте.</p>\n");
+        html.append("<p>Нажмите на эту ссылку:<a href=\"").append(url).append("\">Aviasales 2.0</a>\n</p>\n");
         html.append( "</body>\n" );
         html.append( "</html>" );
 
