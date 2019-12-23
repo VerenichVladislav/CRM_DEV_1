@@ -34,7 +34,7 @@ public class Sender {
             message.setFrom(new InternetAddress(username));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
             message.setSubject(subject);
-            message.setText(text);
+            message.setContent(text, "text/html; charset=utf-8");
             Transport.send(message);
         } catch (MessagingException e) {
             throw new RuntimeException(e);

@@ -10,6 +10,7 @@ import com.example.aviasales2.service.UserService;
 import com.example.aviasales2.util.UserValidator;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,12 +30,15 @@ public class UserController {
     private final UserService userService;
     private final DozerBeanMapper mapper;
     private final UserValidator userValidator;
+    private final Environment environment;
 
     @Autowired
-    public UserController(UserService userService, DozerBeanMapper mapper, UserValidator userValidator) {
+    public UserController(UserService userService, DozerBeanMapper mapper,
+                          UserValidator userValidator, Environment environment) {
         this.userService = userService;
         this.mapper = mapper;
         this.userValidator = userValidator;
+        this.environment = environment;
     }
 
     @PostMapping("/filter")
@@ -74,12 +78,33 @@ public class UserController {
     public void sentConfirmToEmail(@RequestParam(name = "userName") String userName) throws MessagingException {
         User user = userService.findByUserName(userName);
         user.setConfirmingHash(Integer.toString(userName.hashCode()));
+
+        StringBuilder url = new StringBuilder();
+        url.append("https://localhost:").append(environment.getProperty("server.port"))
+                .append("/users/confirm/").append(user.getConfirmingHash());
+
+        StringBuilder html = new StringBuilder();
+        html.append("<html>\n");
+
+        html.append( "<body>\n" );
+        html.append("<h2>Добрый день, ").append(userName).append("!</h2>\n");
+        html.append("<p>Это очень важное письмо пришло что бы выподтвердили регистрацию на нашем супер сайте.</p>\n");
+        html.append("<p>Нажмите на эту ссылку: ");
+        html.append("<a href=\"").append(url).append("\">Aviasales 2.0</a>\n</p>\n");
+        html.append( "</body>\n" );
+
+        html.append( "</html>" );
+
         Sender sender = new Sender();
-        String subject = "Очень важное сообщение";
-        String text = "Добрый день " + userName + "! Это очень важное письмо пришло что бы выподтвердили регистрацию на нашем супер сайте нажмите на эту ссылку https://localhost:8443/users/confirm/" + user.getConfirmingHash();
-        sender.send(subject, text, user.getEmail());
+        String subject = "Подтверждение электроннной почты";
+        sender.send(subject, html.toString(), user.getEmail());
 
         userService.save(user);
+    }
+
+    @GetMapping("/sendPassword")
+    public void sendPassword(@RequestParam(name = "userName") String userName) {
+        userService.sendPasswordToEmail(userName);
     }
 
     @GetMapping("/isLogin")

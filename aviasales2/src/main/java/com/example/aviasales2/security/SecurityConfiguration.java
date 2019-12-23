@@ -71,6 +71,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/international/*").permitAll()
                 .antMatchers("/users/confirm/*").permitAll()
                 .antMatchers("/users/confirm/").permitAll()
+
+                .antMatchers(HttpMethod.GET, "/users/sendPassword/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/sendConfirm/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/cities/name/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/transports/name/*").permitAll()

@@ -20,6 +20,8 @@ public interface UserService {
 
     User findByUserName(String userName);
 
+    void sendPasswordToEmail(String userName);
+
     void update(User user);
 
     void delete(User user);
