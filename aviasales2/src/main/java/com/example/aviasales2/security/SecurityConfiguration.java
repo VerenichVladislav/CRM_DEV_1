@@ -49,6 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/trips/*/*/buy").permitAll()
                 .antMatchers(HttpMethod.POST, "/trips/city/{city_f_id}/{city_d_id}/transport/{tr_id}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/transports").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/transports/filter").hasAnyRole("USER","ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/users/{id}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/companies/*").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/comments/*").permitAll()

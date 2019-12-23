@@ -1,5 +1,7 @@
 package com.example.aviasales2.service.impl;
 
+import com.example.aviasales2.config.filterConfig.TransportFilter;
+import com.example.aviasales2.entity.QTransport;
 import com.example.aviasales2.entity.Transport;
 import com.example.aviasales2.entity.transferObjects.TransportDTO;
 import com.example.aviasales2.repository.TransportRepository;
@@ -8,8 +10,14 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import com.querydsl.core.BooleanBuilder;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,8 +41,24 @@ public class TransportServiceImpl implements TransportService {
     }
 
     @Override
-    public List <Transport> findAll() {
-        return transportRepository.findAll();
+    public List <Transport> findAll(TransportFilter transportFilter, Integer pageNo, Integer pageSize, String sortBy) {
+        final QTransport qTransport = QTransport.transport;
+        BooleanBuilder booleanBuilder = new BooleanBuilder(qTransport.isNotNull());
+        if (transportFilter.getName() != null) {
+            booleanBuilder.and(qTransport.name.eq(transportFilter.getName()));
+        }
+        if (transportFilter.getPassengerCapacity() != null) {
+            booleanBuilder.and(qTransport.passengerCapacity.eq(Integer.valueOf(transportFilter.getPassengerCapacity())));
+        }
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+
+        Page<Transport> pagedResult = transportRepository.findAll(booleanBuilder, paging);
+
+        if(pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<>();
+        }
     }
 
     @Override

@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/companies")
 public class CompanyController {
-    public final CompanyService companyService;
+    private final CompanyService companyService;
     private final DozerBeanMapper mapper;
     private final CompanyValidator companyValidator;
 
@@ -54,22 +54,6 @@ public class CompanyController {
         }
 
     }
-
-
-    @GetMapping("/")
-    public List <Company> getCompanyByNameAndRating(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) Long rating) {
-        if (name != null && rating != null) {
-            return companyService.findByCompanyNameAndRating(name, Math.toIntExact(rating));
-        } else if (name != null) {
-            return Collections.singletonList(companyService.findByCompanyName(name));
-        } else if (rating != null) {
-            return companyService.findByRating(Math.toIntExact(rating));
-        }
-        return null;
-    }
-
 
     @PostMapping
     public ResponseEntity <CompanyDTO> saveCompany(@RequestBody @Valid CompanyDTO company, BindingResult result) throws GlobalBadRequestException {
