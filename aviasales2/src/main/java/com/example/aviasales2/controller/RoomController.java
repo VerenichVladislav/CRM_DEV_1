@@ -1,5 +1,6 @@
 package com.example.aviasales2.controller;
 
+import com.example.aviasales2.config.filterConfig.RoomFilter;
 import com.example.aviasales2.entity.Room;
 import com.example.aviasales2.entity.transferObjects.RoomDTO;
 import com.example.aviasales2.service.impl.RoomServiceImpl;
@@ -25,9 +26,13 @@ public class RoomController {
     }
 
 
-    @GetMapping
-    public List <RoomDTO> findAll() {
-        return roomService.findAll().stream().map(entity -> mapper.map(entity, RoomDTO.class)).collect(Collectors.toList());
+    @PostMapping("/all")
+    public List <RoomDTO> findAll(@RequestBody RoomFilter roomFilter,
+                                  @RequestParam(defaultValue = "0") int page,
+                                  @RequestParam(defaultValue = "10") int pageSize,
+                                  @RequestParam(defaultValue = "asc") String order) {
+        return roomService.findAll(roomFilter, page, pageSize, order)
+                .stream().map(entity -> mapper.map(entity, RoomDTO.class)).collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
@@ -59,24 +64,6 @@ public class RoomController {
     public List <RoomDTO> getFreeRooms() {
         List <Room> rooms = roomService.getFreeRooms();
         return rooms.stream().map(entity -> mapper.map(entity, RoomDTO.class)).collect(Collectors.toList());
-    }
-
-    @GetMapping("/priceSortAscending")
-    public List <RoomDTO> findRoomsByPriceAscending() {
-        List <Room> sortedRooms = roomService.findRoomsByPriceAscending();
-        return sortedRooms.stream().map(entity -> mapper.map(entity, RoomDTO.class)).collect(Collectors.toList());
-    }
-
-    @GetMapping("/priceSortDescending")
-    public List <RoomDTO> findRoomsByPriceDescending() {
-        List <Room> sortedRooms = roomService.findRoomsByPriceDescending();
-        return sortedRooms.stream().map(entity -> mapper.map(entity, RoomDTO.class)).collect(Collectors.toList());
-    }
-
-    @GetMapping("/byPriceInRange")
-    public List <RoomDTO> findRoomsByPriceInRange(@RequestParam double minPrice, @RequestParam double maxPrice) {
-        List <Room> sortedRooms = roomService.findRoomsByPriceInRange(minPrice, maxPrice);
-        return sortedRooms.stream().map(entity -> mapper.map(entity, RoomDTO.class)).collect(Collectors.toList());
     }
 
     @GetMapping("/byRoomConveniences")
