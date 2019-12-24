@@ -1,5 +1,6 @@
 package com.example.aviasales2.controller;
 
+import com.example.aviasales2.config.filterConfig.TransportFilter;
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.Transport;
 import com.example.aviasales2.entity.transferObjects.TransportDTO;
@@ -34,9 +35,12 @@ public class TransportController {
         this.transportValidator = transportValidator;
     }
 
-    @GetMapping
-    public List <TransportDTO> getAllTransport() {
-        return transportService.findAll().stream()
+    @PostMapping("/filter")
+    public List <TransportDTO> getAllTransport(@RequestBody TransportFilter transportFilter,
+                                               @RequestParam(defaultValue = "0") Integer pageNo,
+                                               @RequestParam(defaultValue = "10") Integer pageSize,
+                                               @RequestParam(defaultValue = "name") String sortBy) {
+        return transportService.findAll(transportFilter, pageNo, pageSize, sortBy).stream()
                 .map(entity -> mapper.map(entity, TransportDTO.class))
                 .collect(Collectors.toList());
     }

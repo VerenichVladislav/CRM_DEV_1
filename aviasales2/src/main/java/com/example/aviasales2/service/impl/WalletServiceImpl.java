@@ -115,13 +115,24 @@ public class WalletServiceImpl implements WalletService {
     public void sendConfirmToEmail(Long userId, double sum) {
         Wallet wallet = walletRepository.findByOwnerUserId(userId);
         BigDecimal newSum = BigDecimal.valueOf(sum);
-        Sender sender = new Sender();
-        String subject = "Пополнение кошелька";
         String hash = Base64.getUrlEncoder().encodeToString((userId.toString() + ";" + (newSum.toString())).getBytes());
         String url = Constants.URL + "wallets/" + userId + "/confirm/" + hash;
-        String text = "Добрый день " + walletRepository.findByOwnerUserId(userId).getOwner().getUserName() + "! Это очень важное письмо пришло что бы выподтвердили пополнение счёта на нашем супер сайте нажмите на эту ссылку " + url;
-        sender.send(subject, text, walletRepository.findByOwnerUserId(userId).getOwner().getEmail());
-        walletRepository.findByOwnerUserId(userId).setStatus("AWAITING");
-        walletRepository.save(walletRepository.findByOwnerUserId(userId));
+
+        StringBuilder html = new StringBuilder();
+        html.append("<html>\n");
+
+        html.append( "<body>\n" );
+        html.append("<h2>Добрый день, ").append(wallet.getOwner().getUserName()).append("!</h2>\n");
+        html.append("<p>Это очень важное письмо пришло, чтобы вы подтвердили пополнение счёта на нашем супер сайте.</p>\n");
+        html.append("<p>Нажмите на эту ссылку:<a href=\"").append(url).append("\">Aviasales 2.0</a>\n</p>\n");
+        html.append( "</body>\n" );
+        html.append( "</html>" );
+
+        Sender sender = new Sender();
+        String subject = "Пополнение кошелька";
+
+        sender.send(subject, html.toString(), wallet.getOwner().getEmail());
+        wallet.setStatus("AWAITING");
+        walletRepository.save(wallet);
     }
 }
