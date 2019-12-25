@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6979cffe-8677-4ecb-b115-d7a0d587da14" name="Default" comment="Add Lng and lat to Hotel and City.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="699ecda1-3a98-486a-affc-33454823517c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/util/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/util/UserValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/aviasales2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/aviasales2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/HotelFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/HotelFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/HotelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/RoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/HotelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java" afterDir="false" />
     </list>
-    <list id="9698d249-466d-426b-88a1-62a4cc9dc9fb" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +38,11 @@
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="805" />
+    <option name="width" value="1120" />
+    <option name="height" value="1040" />
   </component>
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
@@ -98,7 +107,9 @@
       <workItem from="1576668204905" duration="3740000" />
       <workItem from="1576677921127" duration="1471000" />
       <workItem from="1577013924580" duration="13000" />
-      <workItem from="1577284053805" duration="269000" />
+      <workItem from="1577284053805" duration="384000" />
+      <workItem from="1577289697958" duration="82000" />
+      <workItem from="1577290365651" duration="242000" />
     </task>
     <task id="LOCAL-00001" summary="Filter fixed">
       <created>1576671560096</created>
@@ -107,22 +118,20 @@
       <option name="project" value="LOCAL" />
       <updated>1576671560096</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="User lock/unlock fixed&#10;Reservation dates list controller added">
+      <created>1577284398459</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577284398459</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -140,7 +149,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Filter fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Filter fixed" />
+    <MESSAGE value="User lock/unlock fixed&#10;Reservation dates list controller added" />
+    <option name="LAST_COMMIT_MESSAGE" value="User lock/unlock fixed&#10;Reservation dates list controller added" />
   </component>
   <component name="masterDetails">
     <states>
