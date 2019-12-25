@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface TripService {
-    List <Trip> findAll(TripFilter tripFilter,Integer pageNo, Integer pageSize, String sortBy);
+    List <Trip> findAll(TripFilter tripFilter, Integer pageNo, Integer pageSize, String sortBy);
 
     Trip save(long cityFromId, long cityDestId, long transportId, TripDTO tripDTO);
 

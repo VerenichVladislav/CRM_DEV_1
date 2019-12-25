@@ -142,27 +142,27 @@ public class UserDTO {
         this.wallet = wallet;
     }
 
-    public List<TicketDTO> getTickets() {
+    public List <TicketDTO> getTickets() {
         return tickets;
     }
 
-    public void setTickets(List<TicketDTO> tickets) {
+    public void setTickets(List <TicketDTO> tickets) {
         this.tickets = tickets;
     }
 
-    public List<ReservationDTO> getReservations() {
+    public List <ReservationDTO> getReservations() {
         return reservations;
     }
 
-    public void setReservations(List<ReservationDTO> reservations) {
+    public void setReservations(List <ReservationDTO> reservations) {
         this.reservations = reservations;
     }
 
-    public List<TourDTO> getTours() {
+    public List <TourDTO> getTours() {
         return tours;
     }
 
-    public void setTours(List<TourDTO> tours) {
+    public void setTours(List <TourDTO> tours) {
         this.tours = tours;
     }
 }

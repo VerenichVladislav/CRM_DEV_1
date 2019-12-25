@@ -2,7 +2,6 @@ package com.example.aviasales2.repository;
 
 import com.example.aviasales2.entity.Trip;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

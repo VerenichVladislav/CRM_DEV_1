@@ -76,8 +76,9 @@ public class CityController {
     }
 
     @GetMapping("/name/{id}")
-    public ResponseEntity<String> getCityName(@PathVariable Long id){
-        return cityService.getCityName(id);
+    public ResponseEntity <String> getCityName(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(cityService.getCityName(id));
     }
 
     @PutMapping

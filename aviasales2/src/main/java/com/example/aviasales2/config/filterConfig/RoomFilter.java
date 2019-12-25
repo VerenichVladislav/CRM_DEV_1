@@ -12,5 +12,5 @@ import java.util.List;
 public class RoomFilter {
     private Double minPrice = 0.0;
     private Double maxPrice = 2000.0;
-    private List<String> roomConveniences;
+    private List <String> roomConveniences;
 }

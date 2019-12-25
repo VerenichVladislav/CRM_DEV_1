@@ -107,7 +107,7 @@ public class WalletServiceImpl implements WalletService {
             walletRepository.save(walletRepository.findByOwnerUserId(userId));
             return new ResponseEntity <>("Good! You replenish your wallet!", HttpStatus.OK);
 
-        } else return new ResponseEntity<>("Oh no, we have a problem! This link has already been used!",
+        } else return new ResponseEntity <>("Oh no, we have a problem! This link has already been used!",
                 HttpStatus.BAD_GATEWAY);
     }
 
@@ -121,12 +121,12 @@ public class WalletServiceImpl implements WalletService {
         StringBuilder html = new StringBuilder();
         html.append("<html>\n");
 
-        html.append( "<body>\n" );
+        html.append("<body>\n");
         html.append("<h2>Добрый день, ").append(wallet.getOwner().getUserName()).append("!</h2>\n");
         html.append("<p>Это очень важное письмо пришло, чтобы вы подтвердили пополнение счёта на нашем супер сайте.</p>\n");
         html.append("<p>Нажмите на эту ссылку:<a href=\"").append(url).append("\">Aviasales 2.0</a>\n</p>\n");
-        html.append( "</body>\n" );
-        html.append( "</html>" );
+        html.append("</body>\n");
+        html.append("</html>");
 
         Sender sender = new Sender();
         String subject = "Пополнение кошелька";

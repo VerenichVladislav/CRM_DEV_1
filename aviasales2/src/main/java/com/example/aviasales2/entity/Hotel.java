@@ -45,7 +45,7 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List <Reservation> reservations;
     @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List <Comments> comments;
+    private List <Comment> comments;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
     private City city;

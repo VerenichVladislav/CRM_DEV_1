@@ -14,13 +14,13 @@ public class ChatController {
     private final SimpMessagingTemplate template;
 
     @Autowired
-    ChatController(SimpMessagingTemplate template){
+    ChatController(SimpMessagingTemplate template) {
         this.template = template;
     }
 
     @MessageMapping("/send/message")
-    public void onReceivedMesage(String message){
-        this.template.convertAndSend("/chat",  new SimpleDateFormat("HH:mm:ss").format(new Date())+"- "+message);
+    public void onReceivedMesage(String message) {
+        this.template.convertAndSend("/chat", new SimpleDateFormat("HH:mm:ss").format(new Date()) + "- " + message);
     }
 
 //    @Autowired

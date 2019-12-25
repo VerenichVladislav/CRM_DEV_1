@@ -19,5 +19,5 @@ public interface TransportService {
 
     void deleteById(Long id);
 
-    ResponseEntity<String> getCityName(Long id);
+    ResponseEntity <String> getCityName(Long id);
 }

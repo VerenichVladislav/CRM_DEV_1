@@ -66,13 +66,13 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<Hotel> findAll(HotelFilter hotelFilter, int page) {
+    public List <Hotel> findAll(HotelFilter hotelFilter, int page) {
         Sort sort = new Sort(Sort.Direction.ASC, "hotelId");
         Pageable pageable = PageRequest.of(page, 10, sort);
         final QHotel qHotel = QHotel.hotel;
         final QReservation qReservation = QReservation.reservation;
-        JPAQuery<Hotel> hotelQuery = new JPAQuery<>(entityManager);
-        List<Hotel> hotels;
+        JPAQuery <Hotel> hotelQuery = new JPAQuery <>(entityManager);
+        List <Hotel> hotels;
         hotelQuery.from(qHotel)
                 .leftJoin(qHotel.reservations, qReservation)
                 .on(qReservation.hotel.hotelId.eq(qHotel.hotelId))
@@ -93,8 +93,8 @@ public class HotelServiceImpl implements HotelService {
             LocalDateTime localDateTime = localTime.atDate(localDate);
             firstTimestamp = Timestamp.valueOf(localDateTime.plusHours(3));
             secondTimestamp = Timestamp.valueOf(localDateTime.plusHours(26).plusMinutes(59).plusSeconds(59).plusNanos(999999999));
-            JPAQuery<Reservation> reservationQuery = new JPAQuery<>(entityManager);
-            List<Reservation> reservations = reservationQuery.from(qReservation).where(qReservation.checkIn.between(firstTimestamp, secondTimestamp)).fetch();
+            JPAQuery <Reservation> reservationQuery = new JPAQuery <>(entityManager);
+            List <Reservation> reservations = reservationQuery.from(qReservation).where(qReservation.checkIn.between(firstTimestamp, secondTimestamp)).fetch();
             BooleanExpression hotelCheckIn = qReservation.checkIn.notBetween(firstTimestamp, secondTimestamp)
                     .or(qHotel.reservations.isEmpty());
             BooleanExpression hotelRoomsSize = qHotel.rooms.size().gt(reservations.size());
@@ -103,8 +103,8 @@ public class HotelServiceImpl implements HotelService {
         //hotelQuery.where()
         hotels = hotelQuery
                 .fetch();
-        Set<Hotel> result = new HashSet<>(hotels);
-        hotels = new ArrayList<>(result);
+        Set <Hotel> result = new HashSet <>(hotels);
+        hotels = new ArrayList <>(result);
         hotels.sort((hotelsFirst, hotelsSorted) ->
                 (int) (hotelsFirst.getHotelId() - hotelsSorted.getHotelId()));
 
@@ -113,9 +113,9 @@ public class HotelServiceImpl implements HotelService {
         hotelQuery.offset(pageable.getOffset());
         hotelQuery.limit(pageable.getPageSize());
 
-        List<Hotel> content = total > pageable.getOffset() ? hotels : Collections.emptyList();
+        List <Hotel> content = total > pageable.getOffset() ? hotels : Collections.emptyList();
 
-        Page<Hotel> hotelsPage = new PageImpl<>(content, pageable, total);
+        Page <Hotel> hotelsPage = new PageImpl <>(content, pageable, total);
 //        PageUtils pageUtils = new PageUtils();
 //        int current = hotelsPage.getNumber() + 1;
 //        int begin = pageUtils.pagingBegin(current);
@@ -142,7 +142,7 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<Hotel> findHotelsByHotelConveniences(List<String> hotelConveniences, HotelFilter hotelFilter, int page) {
+    public List <Hotel> findHotelsByHotelConveniences(List <String> hotelConveniences, HotelFilter hotelFilter, int page) {
         return findAll(hotelFilter, page).stream().filter(hotel -> hotel.getHotelConveniences().stream().map(Enum::name).collect(Collectors.toList())
                 .containsAll(hotelConveniences))
                 .collect(Collectors.toList());

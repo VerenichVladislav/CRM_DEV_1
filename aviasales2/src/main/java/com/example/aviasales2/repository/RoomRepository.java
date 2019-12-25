@@ -14,5 +14,5 @@ public interface RoomRepository extends CrudRepository <Room, Long> {
     List <Room> findAll();
 
     @Query(value = "SELECT * FROM room WHERE status = 'ok'", nativeQuery = true)
-    List<Room> getFreeRooms();
+    List <Room> getFreeRooms();
 }

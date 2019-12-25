@@ -80,9 +80,9 @@ public class HotelController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<HotelDTO> saveHotel(@RequestBody @Valid HotelDTO data, BindingResult result) {
+    public ResponseEntity <HotelDTO> saveHotel(@RequestBody @Valid HotelDTO data, BindingResult result) {
         hotelValidator.validate(data, result);
-        if (result.hasErrors()){
+        if (result.hasErrors()) {
             throw new GlobalBadRequestException(result);
         }
         Hotel hotel = mapper.map(data, Hotel.class);
@@ -90,16 +90,16 @@ public class HotelController {
         hotel.setCity(cityService.findByCityId(data.getCityId()));
         city.getHotels().add(hotel);
         hotelService.save(hotel);
-        return new ResponseEntity<>(data, HttpStatus.OK);
+        return new ResponseEntity <>(data, HttpStatus.OK);
     }
 
     @Transactional
     @PostMapping("/{user_id}/{hotel_id}/{checkIn}/{checkOut}/{roomId}")
     public ResponseEntity <ReservationDTO> addReservation(@PathVariable("user_id") Long userId,
-                                                  @PathVariable("hotel_id") Long hotelId,
-                                                  @PathVariable("checkIn") Timestamp checkIn,
-                                                  @PathVariable("checkOut") Timestamp checkOut,
-                                                  @PathVariable("roomId") Long roomId
+                                                          @PathVariable("hotel_id") Long hotelId,
+                                                          @PathVariable("checkIn") Timestamp checkIn,
+                                                          @PathVariable("checkOut") Timestamp checkOut,
+                                                          @PathVariable("roomId") Long roomId
     ) {
         Hotel hotel = hotelService.findByHotelId(hotelId);
         Room room = roomService.findByRoomId(roomId);

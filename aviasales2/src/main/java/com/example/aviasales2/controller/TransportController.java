@@ -93,7 +93,7 @@ public class TransportController {
     }
 
     @GetMapping("/name/{id}")
-    public ResponseEntity<String> getTransportName(@PathVariable Long id){
+    public ResponseEntity <String> getTransportName(@PathVariable Long id) {
         return transportService.getCityName(id);
     }
 }

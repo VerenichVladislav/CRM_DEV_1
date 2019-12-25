@@ -6,11 +6,11 @@ import com.example.aviasales2.entity.QCompany;
 import com.example.aviasales2.repository.CompanyRepository;
 import com.example.aviasales2.service.CompanyService;
 import com.querydsl.core.BooleanBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -74,12 +74,12 @@ public class CompanyServiceImpl implements CompanyService {
         }
         Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
 
-        Page<Company> pagedResult = companyRepository.findAll(booleanBuilder, paging);
+        Page <Company> pagedResult = companyRepository.findAll(booleanBuilder, paging);
 
-        if(pagedResult.hasContent()) {
+        if (pagedResult.hasContent()) {
             return pagedResult.getContent();
         } else {
-            return new ArrayList<>();
+            return new ArrayList <>();
         }
     }
 

@@ -2,7 +2,6 @@ package com.example.aviasales2.service;
 
 
 import com.example.aviasales2.entity.City;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -24,5 +23,5 @@ public interface ICityService {
 
     void deleteByCityName(String name);
 
-    ResponseEntity<String> getCityName(Long id);
+    String getCityName(Long id);
 }

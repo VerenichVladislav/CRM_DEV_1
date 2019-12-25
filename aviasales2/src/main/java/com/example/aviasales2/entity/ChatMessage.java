@@ -1,4 +1,5 @@
 package com.example.aviasales2.entity;
+
 public class ChatMessage {
 
     private String from;
@@ -8,6 +9,7 @@ public class ChatMessage {
     public String getFrom() {
         return from;
     }
+
     public void setFrom(String from) {
         this.from = from;
     }
@@ -15,12 +17,15 @@ public class ChatMessage {
     public String getTo() {
         return to;
     }
+
     public void setTo(String to) {
         this.to = to;
     }
+
     public String getText() {
         return text;
     }
+
     public void setText(String text) {
         this.text = text;
     }

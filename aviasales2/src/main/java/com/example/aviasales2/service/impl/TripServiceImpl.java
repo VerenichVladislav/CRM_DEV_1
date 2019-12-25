@@ -48,7 +48,7 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public List <Trip> findAll(TripFilter tripFilter,Integer pageNo, Integer pageSize, String sortBy) {
+    public List <Trip> findAll(TripFilter tripFilter, Integer pageNo, Integer pageSize, String sortBy) {
         final QTrip qTrip = QTrip.trip;
 
         BooleanBuilder builder = new BooleanBuilder(qTrip.isNotNull());
@@ -71,12 +71,12 @@ public class TripServiceImpl implements TripService {
         }
         Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
 
-        Page<Trip> pagedResult = tripRepository.findAll(builder,paging);
+        Page <Trip> pagedResult = tripRepository.findAll(builder, paging);
 
-        if(pagedResult.hasContent()) {
+        if (pagedResult.hasContent()) {
             return pagedResult.getContent();
         } else {
-            return new ArrayList<Trip>();
+            return new ArrayList <Trip>();
         }
 
 

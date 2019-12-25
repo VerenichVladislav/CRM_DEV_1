@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Comments {
+public class Comment {
     public byte rate;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,6 +38,6 @@ public class Comments {
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
-    public Comments() {
+    public Comment() {
     }
 }

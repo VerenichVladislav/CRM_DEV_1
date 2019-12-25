@@ -1,6 +1,5 @@
 package com.example.aviasales2.controller;
 
-import com.example.aviasales2.Constants;
 import com.example.aviasales2.config.filterConfig.UserFilter;
 import com.example.aviasales2.entity.Sender;
 import com.example.aviasales2.entity.User;
@@ -86,14 +85,14 @@ public class UserController {
         StringBuilder html = new StringBuilder();
         html.append("<html>\n");
 
-        html.append( "<body>\n" );
+        html.append("<body>\n");
         html.append("<h2>Добрый день, ").append(userName).append("!</h2>\n");
         html.append("<p>Это очень важное письмо пришло что бы выподтвердили регистрацию на нашем супер сайте.</p>\n");
         html.append("<p>Нажмите на эту ссылку: ");
         html.append("<a href=\"").append(url).append("\">Aviasales 2.0</a>\n</p>\n");
-        html.append( "</body>\n" );
+        html.append("</body>\n");
 
-        html.append( "</html>" );
+        html.append("</html>");
 
         Sender sender = new Sender();
         String subject = "Подтверждение электроннной почты";

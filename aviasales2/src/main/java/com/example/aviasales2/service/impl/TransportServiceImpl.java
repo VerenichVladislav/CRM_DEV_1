@@ -6,16 +6,16 @@ import com.example.aviasales2.entity.Transport;
 import com.example.aviasales2.entity.transferObjects.TransportDTO;
 import com.example.aviasales2.repository.TransportRepository;
 import com.example.aviasales2.service.TransportService;
+import com.querydsl.core.BooleanBuilder;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import com.querydsl.core.BooleanBuilder;
-import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,12 +52,12 @@ public class TransportServiceImpl implements TransportService {
         }
         Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
 
-        Page<Transport> pagedResult = transportRepository.findAll(booleanBuilder, paging);
+        Page <Transport> pagedResult = transportRepository.findAll(booleanBuilder, paging);
 
-        if(pagedResult.hasContent()) {
+        if (pagedResult.hasContent()) {
             return pagedResult.getContent();
         } else {
-            return new ArrayList<>();
+            return new ArrayList <>();
         }
     }
 
@@ -70,7 +70,7 @@ public class TransportServiceImpl implements TransportService {
     }
 
     @Override
-    public ResponseEntity<String> getCityName(Long id) {
+    public ResponseEntity <String> getCityName(Long id) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(transportRepository.findByTransportId(id).getName());
     }
