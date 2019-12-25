@@ -32,7 +32,7 @@ public class UserDTO {
     private String lastName;
     @NotBlank(message = "Password should be not null")
     @Size(min = 4, max = 30, message = "Bad password length")
-    @Pattern(regexp = "[^//.]+$", message = "Bad password")
+    @Pattern(regexp = "^[A-Za-z0-9]+$", message = "Bad password")
     private String hashPass;
     private String state = "UnConfirmed";
     private String confirmingHash;

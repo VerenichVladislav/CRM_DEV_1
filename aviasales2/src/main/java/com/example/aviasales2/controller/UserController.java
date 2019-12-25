@@ -130,7 +130,7 @@ public class UserController {
         UserDTO userDto = mapper.map(user, UserDTO.class);
         userDto.setHashPass(data.getHashPass());
 
-        userValidator.validate(userDto, result);
+        userValidator.updateValidate(userDto, result);
         if (result.hasErrors()) {
             throw new GlobalBadRequestException(result);
         }
