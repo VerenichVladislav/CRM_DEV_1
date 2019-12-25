@@ -11,6 +11,8 @@ import com.example.aviasales2.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+
 @Service
 public class SenderServiceImpl implements SenderService {
     private final TripRepository tripRepository;
@@ -30,11 +32,12 @@ public class SenderServiceImpl implements SenderService {
         User buyer = userRepository.findByUserId(userId);
         City cityFrom = trip.getCityFrom();
         City cityDest = trip.getCityDest();
+        String date = new SimpleDateFormat("HH:mm MM/dd/yyyy").format(trip.getDateFrom());
         StringBuffer sb = new StringBuffer();
         sb.append("Hello, " + buyer.getUserName() + "!\n\n");
         sb.append("You bought " + count + " ticket(s) from " + cityFrom.getCityName() +
                 " to " + cityDest.getCityName() + "!\n\n");
-        sb.append("Date: " + trip.getDateFrom() + "\n");
+        sb.append("Date: " + date + "\n");
         sb.append("Total Price: " + tripService.calculateCost(count, tripId) + "$\n\n");
         sb.append("Passengers: \n");
         sb.append(list + "\n");
