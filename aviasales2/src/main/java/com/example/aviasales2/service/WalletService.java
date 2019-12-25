@@ -26,5 +26,5 @@ public interface WalletService {
 
     void sendConfirmToEmail(Long userId, double sum);
 
-    ResponseEntity <String> confirm(Long userId, String hashConfirm);
+    void confirm(Long userId, String hashConfirm) throws Exception;
 }

@@ -120,7 +120,7 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public ResponseEntity <String> confirm(Long userId, String hashConfirm) {
+    public void confirm(Long userId, String hashConfirm) throws Exception {
         if (walletRepository.findByOwnerUserId(userId).getStatus().equals("AWAITING")) {
             String[] strArr;
             String delimeter = ";";
@@ -131,10 +131,7 @@ public class WalletServiceImpl implements WalletService {
             walletRepository.findByOwnerUserId(userId).setSum(walletRepository.findByOwnerUserId(userId).getSum().add(BigDecimal.valueOf(sum)));
             walletRepository.findByOwnerUserId(userId).setStatus("OK");
             walletRepository.save(walletRepository.findByOwnerUserId(userId));
-            return new ResponseEntity <>("Good! You replenish your wallet!", HttpStatus.OK);
-
-        } else return new ResponseEntity <>("Oh no, we have a problem! This link has already been used!",
-                HttpStatus.BAD_GATEWAY);
+        } else throw new Exception("Oh no, we have a problem! This link has already been used!");
     }
 
     @Transactional

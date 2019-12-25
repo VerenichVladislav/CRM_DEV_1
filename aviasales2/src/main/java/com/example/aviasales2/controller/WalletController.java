@@ -4,6 +4,7 @@ import com.example.aviasales2.entity.transferObjects.WalletDTO;
 import com.example.aviasales2.service.WalletService;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,9 +36,8 @@ public class WalletController {
     }
 
     @GetMapping("{userId}/confirm/{hashConfirm}")
-    public ResponseEntity <String> confirm(@PathVariable(name = "userId") Long userId,
-                                           @PathVariable(name = "hashConfirm") String hashConfirm) {
-        return walletService.confirm(userId, hashConfirm);
-
+    public void confirm(@PathVariable(name = "userId") Long userId,
+                                           @PathVariable(name = "hashConfirm") String hashConfirm) throws Exception {
+        walletService.confirm(userId, hashConfirm);
     }
 }
