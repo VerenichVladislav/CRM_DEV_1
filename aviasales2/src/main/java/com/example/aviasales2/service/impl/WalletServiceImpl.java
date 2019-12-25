@@ -2,10 +2,7 @@ package com.example.aviasales2.service.impl;
 
 import com.example.aviasales2.Constants;
 import com.example.aviasales2.PersonRequest;
-import com.example.aviasales2.entity.Sender;
-import com.example.aviasales2.entity.Ticket;
-import com.example.aviasales2.entity.Trip;
-import com.example.aviasales2.entity.Wallet;
+import com.example.aviasales2.entity.*;
 import com.example.aviasales2.entity.transferObjects.WalletDTO;
 import com.example.aviasales2.repository.WalletRepository;
 import com.example.aviasales2.service.SenderService;
@@ -20,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
@@ -54,6 +52,26 @@ public class WalletServiceImpl implements WalletService {
         adminWallet.setSum(adminWallet.getSum().add(totalCost));
         userWallet.setSum(userWallet.getSum().subtract(totalCost));
         walletRepository.saveAll(Arrays.asList(adminWallet, userWallet));
+    }
+    @Transactional
+    @Override
+    public void payForTour(TourRequest tourRequest) {
+        PersonRequest passanger = new PersonRequest();
+        passanger.setFirstName(tourRequest.getFirstName());
+        passanger.setLastName(tourRequest.getLastName());
+        List<PersonRequest> passangers = new ArrayList<PersonRequest>();
+        passangers.add(passanger);
+        tourRequest.getTripIdList().forEach(tripId->{
+            BigDecimal totalCost = tripService.calculateCost(1, tripId);
+            String list = ticketService.save(tourRequest.getUserId(), tripId, 1, passangers);
+            Wallet userWallet = walletRepository.findByOwnerUserId(tourRequest.getUserId());
+            Wallet adminWallet = walletRepository.findByWalletId(0L);
+            adminWallet.setSum(adminWallet.getSum().add(totalCost));
+            userWallet.setSum(userWallet.getSum().subtract(totalCost));
+            walletRepository.saveAll(Arrays.asList(adminWallet, userWallet));
+        });
+        senderService.buyEmailTour(tourRequest.getUserId());
+
     }
 
     @Override

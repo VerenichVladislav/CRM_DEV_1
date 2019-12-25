@@ -44,4 +44,18 @@ public class SenderServiceImpl implements SenderService {
         Sender sender = new Sender();
         sender.send("Purchase information from AviaSales2.0", text, eml);
     }
+    @Override
+    public void buyEmailTour(long userId) {
+
+        User buyer = userRepository.findByUserId(userId);
+
+        StringBuffer sb = new StringBuffer();
+        sb.append("Hello, " + buyer.getUserName() + "!\n\n");
+        sb.append("You bouth tour");
+        sb.append("Gracios!");
+        String eml = buyer.getEmail();
+        String text = sb.toString();
+        Sender sender = new Sender();
+        sender.send("Purchase information from AviaSales2.0", text, eml);
+    }
 }

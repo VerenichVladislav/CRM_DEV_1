@@ -2,6 +2,7 @@ package com.example.aviasales2.controller;
 
 import com.example.aviasales2.PersonRequest;
 import com.example.aviasales2.config.filterConfig.TripFilter;
+import com.example.aviasales2.entity.TourRequest;
 import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.entity.transferObjects.SearchResultTripDto;
 import com.example.aviasales2.entity.transferObjects.TripDTO;
@@ -110,6 +111,29 @@ public class TripController {
         walletService.pay(userId, tripId, count, passengers);
         return ResponseEntity.status(HttpStatus.OK)
                 .body("You bought " + count + " ticket(s)! Check your email!");
+    }
+    @PostMapping("/byTour")
+    ResponseEntity <String> buyTour(@RequestBody TourRequest tourRequest){
+
+        try{
+            tourRequest.getTripIdList().forEach(tripId->{
+                if (validation.checkSeats(tripId, 1) != 1.0) {
+                    throw new NullPointerException("Not enough seats!");
+                }
+                if (validation.checkSum(tourRequest.getUserId(), tripId, 1) != 1.0) {
+                    throw new NullPointerException("Insufficient funds! Replenish your wallet!");
+                }
+            });
+            walletService.payForTour(tourRequest);
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("You bought ticket(s)! Check your email!");
+        }
+        catch (NullPointerException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(e.getMessage());
+        }
+
+
     }
 }
 
