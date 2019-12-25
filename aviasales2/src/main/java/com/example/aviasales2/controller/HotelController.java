@@ -89,7 +89,6 @@ public class HotelController {
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
-    @Transactional
     @PostMapping("/{user_id}/{hotel_id}/{checkIn}/{checkOut}/{roomId}")
     public ResponseEntity <ReservationDTO> addReservation(@PathVariable("user_id") Long userId,
                                                           @PathVariable("hotel_id") Long hotelId,

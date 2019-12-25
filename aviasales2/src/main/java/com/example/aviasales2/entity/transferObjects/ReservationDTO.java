@@ -14,4 +14,12 @@ public class ReservationDTO {
     private Timestamp checkIn;
     private Timestamp checkOut;
     private long hotel;
+
+    public Timestamp getCheckIn() {
+        return checkIn;
+    }
+
+    public Timestamp getCheckOut() {
+        return checkOut;
+    }
 }

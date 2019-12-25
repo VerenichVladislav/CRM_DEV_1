@@ -54,4 +54,15 @@ public class Reservation {
         this.checkOut = checkOut;
     }
 
+    public Timestamp getCheckOut() {
+        return checkOut;
+    }
+
+    public Timestamp getCheckIn() {
+        return checkIn;
+    }
+
+    public Long getRoomId() {
+        return roomId;
+    }
 }
