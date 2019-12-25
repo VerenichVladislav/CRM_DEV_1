@@ -27,21 +27,21 @@ public class MappingConfig {
                         .fields("cityDest.cityName", "cityDest")
                         .fields("transport.name", "transport");
                 mapping(City.class, CityDTO.class);
-                mapping(Comments.class, CommentsDTO.class)
+                mapping(Comment.class, CommentsDTO.class)
                         .fields("company.companyId", "company")
                         .fields("tour.tourId", "tour")
                         .fields("user.userName", "user")
                         .fields("hotel.hotelId", "hotel");
                 mapping(Company.class, CompanyDTO.class)
-                .fields("transportId", "transport");
+                        .fields("transportId", "transport");
                 mapping(Hotel.class, HotelDTO.class)
-                .fields("city.cityId", "cityId");
+                        .fields("city.cityId", "cityId");
 
                 mapping(Room.class, RoomDTO.class)
                         .fields("hotel.hotelId", "hotel");
                 mapping(Reservation.class, ReservationDTO.class)
-                        .fields("buyer.userId","buyer")
-                        .fields("hotel.hotelId","hotel");
+                        .fields("buyer.userId", "buyer")
+                        .fields("hotel.hotelId", "hotel");
 
                 mapping(Tour.class, TourDTO.class)
                         .fields("hotel.hotelId", "hotel")

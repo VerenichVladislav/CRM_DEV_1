@@ -6,7 +6,9 @@ import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.entity.transferObjects.SearchResultTripDto;
 import com.example.aviasales2.entity.transferObjects.TripDTO;
 import com.example.aviasales2.exception.GlobalBadRequestException;
-import com.example.aviasales2.service.*;
+import com.example.aviasales2.service.TripService;
+import com.example.aviasales2.service.Validation;
+import com.example.aviasales2.service.WalletService;
 import com.example.aviasales2.util.TripValidator;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,12 +75,13 @@ public class TripController {
         }
         return null;
     }
+
     @PostMapping("/dto")
     public List <SearchResultTripDto> findAllDto(@RequestBody TripFilter tripFilter,
                                                  @RequestParam(defaultValue = "0") Integer pageNo,
                                                  @RequestParam(defaultValue = "10") Integer pageSize,
                                                  @RequestParam(defaultValue = "dateFrom") String sortBy) {
-        return tripService.findAll(tripFilter,pageNo, pageSize, sortBy).stream()
+        return tripService.findAll(tripFilter, pageNo, pageSize, sortBy).stream()
                 .map(entity -> mapper.map(entity, SearchResultTripDto.class))
                 .collect(Collectors.toList());
     }
@@ -88,7 +91,7 @@ public class TripController {
                                   @RequestParam(defaultValue = "0") Integer pageNo,
                                   @RequestParam(defaultValue = "10") Integer pageSize,
                                   @RequestParam(defaultValue = "dateFrom") String sortBy) {
-        return tripService.findAll(tripFilter,pageNo, pageSize, sortBy).stream()
+        return tripService.findAll(tripFilter, pageNo, pageSize, sortBy).stream()
                 .map(entity -> mapper.map(entity, TripDTO.class))
                 .collect(Collectors.toList());
     }

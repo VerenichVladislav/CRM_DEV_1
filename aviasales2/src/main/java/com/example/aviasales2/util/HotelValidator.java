@@ -16,6 +16,7 @@ public class HotelValidator implements Validator {
 
     @Autowired
     private ICityRepository cityRepository;
+
     @Override
     public boolean supports(Class <?> aClass) {
         return HotelDTO.class.equals(aClass);
@@ -24,11 +25,10 @@ public class HotelValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         HotelDTO hotel = (HotelDTO) target;
-        if(hotelRepository.findByHotelName(hotel.getHotelName())!=null){
+        if (hotelRepository.findByHotelName(hotel.getHotelName()) != null) {
             errors.rejectValue("hotelName", "", "The hotel with such name already exists");
         }
-        if(hotel.getCityId() == null || cityRepository.findByCityId(hotel.getCityId()) == null)
-        {
+        if (hotel.getCityId() == null || cityRepository.findByCityId(hotel.getCityId()) == null) {
             errors.rejectValue("cityId", "", "No such City");
         }
     }

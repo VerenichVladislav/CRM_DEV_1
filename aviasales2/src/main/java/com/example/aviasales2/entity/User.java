@@ -21,7 +21,7 @@ import java.util.List;
 @Table(name = "user_t")
 public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    List <Comments> comments;
+    List <Comment> comments;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;

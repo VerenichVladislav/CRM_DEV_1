@@ -25,7 +25,7 @@ public class Company {
     private String companyName;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List <Comments> comments;
+    private List <Comment> comments;
 
     @OneToMany(mappedBy = "company",
             fetch = FetchType.LAZY, cascade = CascadeType.ALL)

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CompanyRepository extends PagingAndSortingRepository<Company, Long>, QuerydslPredicateExecutor<Company> {
+public interface CompanyRepository extends PagingAndSortingRepository <Company, Long>, QuerydslPredicateExecutor <Company> {
     Company findByCompanyId(long id);
 
     void deleteByCompanyId(Long id);

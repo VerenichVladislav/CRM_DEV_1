@@ -6,6 +6,8 @@ import com.example.aviasales2.entity.Sender;
 import com.example.aviasales2.entity.Ticket;
 import com.example.aviasales2.entity.Trip;
 import com.example.aviasales2.entity.Wallet;
+import com.example.aviasales2.entity.transferObjects.CompanyDTO;
+import com.example.aviasales2.entity.transferObjects.TripDTO;
 import com.example.aviasales2.entity.transferObjects.WalletDTO;
 import com.example.aviasales2.repository.WalletRepository;
 import com.example.aviasales2.service.SenderService;
@@ -63,6 +65,7 @@ public class WalletServiceImpl implements WalletService {
         return userSum;
     }
 
+    @Transactional
     @Override
     public void backMoney(BigDecimal price, long userId, long ticketId) {
         Wallet adminWallet = walletRepository.findByWalletId(0L);
@@ -79,6 +82,7 @@ public class WalletServiceImpl implements WalletService {
         int k = trip.getFullCountSeats();
         k++;
         trip.setFullCountSeats(k);
+        tripService.update(mapper.map(trip, TripDTO.class));
     }
 
     @Override
@@ -93,10 +97,11 @@ public class WalletServiceImpl implements WalletService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     @Override
     public void confirm(Long userId, String hashConfirm) throws Exception {
         if (walletRepository.findByOwnerUserId(userId).getStatus().equals("AWAITING")) {
-            String[] strArr = new String[2];
+            String[] strArr;
             String delimeter = ";";
             byte[] decodedBytes = Base64.getUrlDecoder().decode(hashConfirm);
             String hash = new String(decodedBytes);
@@ -108,6 +113,7 @@ public class WalletServiceImpl implements WalletService {
         } else throw new Exception("Oh no, we have a problem! This link has already been used!");
     }
 
+    @Transactional
     @Override
     public void sendConfirmToEmail(Long userId, double sum) {
         Wallet wallet = walletRepository.findByOwnerUserId(userId);
@@ -118,12 +124,12 @@ public class WalletServiceImpl implements WalletService {
         StringBuilder html = new StringBuilder();
         html.append("<html>\n");
 
-        html.append( "<body>\n" );
+        html.append("<body>\n");
         html.append("<h2>Добрый день, ").append(wallet.getOwner().getUserName()).append("!</h2>\n");
         html.append("<p>Это очень важное письмо пришло, чтобы вы подтвердили пополнение счёта на нашем супер сайте.</p>\n");
         html.append("<p>Нажмите на эту ссылку:<a href=\"").append(url).append("\">Aviasales 2.0</a>\n</p>\n");
-        html.append( "</body>\n" );
-        html.append( "</html>" );
+        html.append("</body>\n");
+        html.append("</html>");
 
         Sender sender = new Sender();
         String subject = "Пополнение кошелька";

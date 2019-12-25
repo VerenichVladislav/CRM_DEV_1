@@ -22,7 +22,7 @@ public class Tour {
     BigDecimal price;
     Timestamp date;
     @OneToMany(mappedBy = "tour", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    List <Comments> comments;
+    List <Comment> comments;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     Company company;

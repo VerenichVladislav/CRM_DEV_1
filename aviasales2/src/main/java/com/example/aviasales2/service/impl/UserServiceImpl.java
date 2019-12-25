@@ -7,17 +7,14 @@ import com.example.aviasales2.entity.Sender;
 import com.example.aviasales2.entity.User;
 import com.example.aviasales2.repository.UserRepository;
 import com.example.aviasales2.service.UserService;
+import com.querydsl.core.BooleanBuilder;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.dozer.DozerBeanMapper;
-import com.querydsl.core.BooleanBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.swing.*;
-import java.awt.print.PrinterException;
-import java.io.BufferedWriter;
-import java.io.Writer;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -31,6 +28,7 @@ public class UserServiceImpl implements UserService {
         this.mapper = mapper;
     }
 
+    @Transactional
     @Override
     public User save(User user) {
         return userRepository.save(user);
@@ -50,7 +48,7 @@ public class UserServiceImpl implements UserService {
         if (userFilter.getRole() != null) {
             builder.and(qUser.role.eq(userFilter.getRole()));
         }
-        return (List<User>) userRepository.findAll(builder);
+        return (List <User>) userRepository.findAll(builder);
     }
 
     @Override
@@ -84,13 +82,13 @@ public class UserServiceImpl implements UserService {
         StringBuilder html = new StringBuilder();
         html.append("<html>\n");
 
-        html.append( "<body>\n" );
+        html.append("<body>\n");
         html.append("<h2>Здравствуйте, ").append(user.getFirstName()).append("!</h2>\n");
         html.append("<p>Вы отправили запрос на восстановление пароля.</p>\n");
         html.append("<p>Ваш новый пароль: ").append(generatedPassword).append("</p>\n");
 
-        html.append( "</body>\n" );
-        html.append( "</html>" );
+        html.append("</body>\n");
+        html.append("</html>");
 
         Sender sender = new Sender();
         String url = Constants.URL;
@@ -98,6 +96,7 @@ public class UserServiceImpl implements UserService {
         sender.send(subject, html.toString(), user.getEmail());
     }
 
+    @Transactional
     @Override
     public void update(User user) {
         userRepository.save(user);
@@ -121,19 +120,21 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByConfirmingHash(hashConfirm);
     }
 
+    @Transactional
     @Override
     public void lockUser(Long userId) {
         User user = userRepository.findByUserId(userId);
-        if (user.getRole().equals("USER")) {
+        if (!user.getRole().equals("ADMIN")) {
             user.setLocked(true);
             userRepository.save(user);
         }
     }
 
+    @Transactional
     @Override
     public void unlockUser(Long userId) {
         User user = userRepository.findByUserId(userId);
-        if (user.getRole().equals("USER")) {
+        if (!user.getRole().equals("ADMIN")) {
             user.setLocked(false);
             userRepository.save(user);
         }
