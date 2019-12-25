@@ -1,5 +1,6 @@
 package com.example.aviasales2.controller;
 
+import com.example.aviasales2.entity.Reservation;
 import com.example.aviasales2.entity.User;
 import com.example.aviasales2.entity.transferObjects.ReservationDTO;
 import com.example.aviasales2.service.ReservationService;
@@ -8,6 +9,8 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,8 +39,8 @@ public class ReservationController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/rooms")
-    public List<Date> findReservationByRoom(@RequestParam Long roomId) {
+    @GetMapping("/rooms/{room_id}")
+    public List<LocalDate> findReservationByRoom(@PathVariable("room_id") Long roomId) {
         return reservationService.findReservationDatesByRoomId(roomId);
     }
 }
