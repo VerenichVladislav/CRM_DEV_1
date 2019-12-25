@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -14,5 +15,5 @@ public class HotelFilter {
     private Short rating;
     private String dateFrom;
     private String dateTo;
-    private List<String> hotelConveniences;
+    private List<String> hotelConveniences = new ArrayList<>();
 }

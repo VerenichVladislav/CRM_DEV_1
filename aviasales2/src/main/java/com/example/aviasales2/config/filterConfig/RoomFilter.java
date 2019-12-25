@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -12,5 +13,5 @@ import java.util.List;
 public class RoomFilter {
     private Double minPrice = 0.0;
     private Double maxPrice = 2000.0;
-    private List <String> roomConveniences;
+    private List <String> roomConveniences = new ArrayList<>();
 }
