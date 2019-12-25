@@ -67,22 +67,18 @@ public class HotelController {
     }
 
     @PostMapping
-    public List <HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter, @RequestParam(defaultValue = "0") int page) {
-        return hotelService.findAll(hotelFilter, page).stream()
+    public List <HotelDTO> getAllHotels(@RequestBody HotelFilter hotelFilter,
+                                        @RequestParam(defaultValue = "0") int page,
+                                        @RequestParam(defaultValue = "10") int pageSize) {
+        return hotelService.findAll(hotelFilter, page, pageSize).stream()
                 .map(entity -> mapper.map(entity, HotelDTO.class))
                 .collect(Collectors.toList());
     }
 
-    @PostMapping("/byHotelConveniences")
-    public List <HotelDTO> findRoomsByRoomConveniences(@RequestParam List <String> hotelConveniences, HotelFilter hotelFilter, int page) {
-        List <Hotel> sortedHotels = hotelService.findHotelsByHotelConveniences(hotelConveniences, hotelFilter, page);
-        return sortedHotels.stream().map(entity -> mapper.map(entity, HotelDTO.class)).collect(Collectors.toList());
-    }
-
     @PostMapping("/save")
-    public ResponseEntity <HotelDTO> saveHotel(@RequestBody @Valid HotelDTO data, BindingResult result) {
+    public ResponseEntity<HotelDTO> saveHotel(@RequestBody @Valid HotelDTO data, BindingResult result) {
         hotelValidator.validate(data, result);
-        if (result.hasErrors()) {
+        if (result.hasErrors()){
             throw new GlobalBadRequestException(result);
         }
         Hotel hotel = mapper.map(data, Hotel.class);
@@ -90,7 +86,7 @@ public class HotelController {
         hotel.setCity(cityService.findByCityId(data.getCityId()));
         city.getHotels().add(hotel);
         hotelService.save(hotel);
-        return new ResponseEntity <>(data, HttpStatus.OK);
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
     @Transactional

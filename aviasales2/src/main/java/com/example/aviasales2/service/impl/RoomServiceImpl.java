@@ -13,9 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -32,7 +30,6 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    @Transactional
     public Room save(Room room) {
         return roomRepository.save(room);
     }
@@ -48,32 +45,33 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List <Room> findAll(RoomFilter roomFilter, int page, int pageSize, String order) {
+    public List<Room> findAll(RoomFilter roomFilter, int page, int pageSize, String order) {
         Sort sort = new Sort(Sort.Direction.ASC, "roomId");
         Pageable pageable = PageRequest.of(page, pageSize, sort);
-        final QRoom qRoom = QRoom.room;
-        JPAQuery <Room> roomQuery = new JPAQuery <>(entityManager);
-        roomQuery.from(qRoom).where(qRoom.isNotNull()
-                .and(qRoom.status.eq("ok"))
-                .and(qRoom.dailyCost.goe(roomFilter.getMinPrice())
-                        .and(qRoom.dailyCost.loe(roomFilter.getMaxPrice()))));
-//        if (!roomFilter.getRoomConveniences().isEmpty()) {
-//            roomQuery.
-//        }
-        if (order.equals("desc")) {
-            roomQuery.orderBy(qRoom.dailyCost.desc());
-        } else {
-            roomQuery.orderBy(qRoom.dailyCost.asc());
-        }
+
+        JPAQuery<Room> roomQuery = roomDatabaseFilter(roomFilter, order);
+
+        List<Room> rooms = roomQuery
+                .fetch();
+        Set<Room> result = new HashSet<>(rooms);
+        rooms = new ArrayList<>(result);
+        rooms.sort((roomsFirst, roomsSorted) ->
+                (int) (roomsFirst.getRoomId() - roomsSorted.getRoomId()));
 
         long total = roomQuery.fetchCount();
-
         roomQuery.offset(pageable.getOffset());
         roomQuery.limit(pageable.getPageSize());
 
-        List <Room> content = total > pageable.getOffset() ? roomQuery.fetch() : Collections.emptyList();
+        List<Room> content = total > pageable.getOffset() ? rooms : Collections.emptyList();
 
-        Page <Room> roomsPage = new PageImpl <>(content, pageable, total);
+        if (!roomFilter.getRoomConveniences().isEmpty()) {
+            content = content.stream().filter(room -> room.getRoomConvenience().stream().map(Enum::name).collect(Collectors.toList())
+                    .containsAll(roomFilter.getRoomConveniences()))
+                    .collect(Collectors.toList());
+        }
+
+        Page<Room> roomsPage = new PageImpl<>(content, pageable, total);
+
         return roomsPage.getContent();
     }
 
@@ -89,22 +87,22 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    @Transactional
     public void update(Room room) {
         roomRepository.save(room);
     }
 
-    @Override
-    public List <Room> getFreeRooms() {
-        return roomRepository.findAll().stream()
-                .filter(room -> !room.getStatus().equals("busy"))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List <Room> findRoomsByRoomConveniences(List <String> roomConveniences) {
-        return getFreeRooms().stream().filter(room1 -> room1.getRoomConvenience().stream().map(Enum::name).collect(Collectors.toList())
-                .containsAll(roomConveniences))
-                .collect(Collectors.toList());
+    private JPAQuery<Room> roomDatabaseFilter(RoomFilter roomFilter, String order){
+        final QRoom qRoom = QRoom.room;
+        JPAQuery<Room> roomQuery = new JPAQuery<>(entityManager);
+        roomQuery.from(qRoom).where(qRoom.isNotNull()
+                .and(qRoom.status.eq("ok"))
+                .and(qRoom.dailyCost.goe(roomFilter.getMinPrice())
+                        .and(qRoom.dailyCost.loe(roomFilter.getMaxPrice()))));
+        if (order.equals("desc")) {
+            roomQuery.orderBy(qRoom.dailyCost.desc());
+        } else {
+            roomQuery.orderBy(qRoom.dailyCost.asc());
+        }
+        return roomQuery;
     }
 }

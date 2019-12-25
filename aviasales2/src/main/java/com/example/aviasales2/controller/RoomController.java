@@ -59,16 +59,4 @@ public class RoomController {
     public void update(@RequestBody Room newCity) {
         roomService.update(newCity);
     }
-
-    @GetMapping("/freeRooms")
-    public List <RoomDTO> getFreeRooms() {
-        List <Room> rooms = roomService.getFreeRooms();
-        return rooms.stream().map(entity -> mapper.map(entity, RoomDTO.class)).collect(Collectors.toList());
-    }
-
-    @GetMapping("/byRoomConveniences")
-    public List <RoomDTO> findRoomsByRoomConveniences(@RequestParam List <String> roomConveniences) {
-        List <Room> goodRooms = roomService.findRoomsByRoomConveniences(roomConveniences);
-        return goodRooms.stream().map(entity -> mapper.map(entity, RoomDTO.class)).collect(Collectors.toList());
-    }
 }

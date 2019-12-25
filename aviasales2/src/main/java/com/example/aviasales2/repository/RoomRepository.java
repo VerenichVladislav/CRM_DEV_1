@@ -12,7 +12,4 @@ public interface RoomRepository extends CrudRepository <Room, Long> {
     Room findByRoomId(long id);
 
     List <Room> findAll();
-
-    @Query(value = "SELECT * FROM room WHERE status = 'ok'", nativeQuery = true)
-    List <Room> getFreeRooms();
 }

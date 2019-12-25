@@ -16,13 +16,11 @@ public interface HotelService {
 
     List <Hotel> findAll();
 
-    List <Hotel> findAll(HotelFilter hotelFilter, int page);
+    List <Hotel> findAll(HotelFilter hotelFilter, int page, int pageSize);
 
     Hotel findByHotelId(long id);
 
     String findImageByHotelId(long id);
 
     Hotel findByHotelName(String hotelName);
-
-    List <Hotel> findHotelsByHotelConveniences(List <String> hotelConveniences, HotelFilter hotelFilter, int page);
 }
