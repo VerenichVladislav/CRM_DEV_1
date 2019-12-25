@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +32,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    @Transactional
     public Room save(Room room) {
         return roomRepository.save(room);
     }
@@ -46,11 +48,11 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<Room> findAll(RoomFilter roomFilter, int page, int pageSize, String order) {
+    public List <Room> findAll(RoomFilter roomFilter, int page, int pageSize, String order) {
         Sort sort = new Sort(Sort.Direction.ASC, "roomId");
         Pageable pageable = PageRequest.of(page, pageSize, sort);
         final QRoom qRoom = QRoom.room;
-        JPAQuery<Room> roomQuery = new JPAQuery<>(entityManager);
+        JPAQuery <Room> roomQuery = new JPAQuery <>(entityManager);
         roomQuery.from(qRoom).where(qRoom.isNotNull()
                 .and(qRoom.status.eq("ok"))
                 .and(qRoom.dailyCost.goe(roomFilter.getMinPrice())
@@ -69,9 +71,9 @@ public class RoomServiceImpl implements RoomService {
         roomQuery.offset(pageable.getOffset());
         roomQuery.limit(pageable.getPageSize());
 
-        List<Room> content = total > pageable.getOffset() ? roomQuery.fetch() : Collections.emptyList();
+        List <Room> content = total > pageable.getOffset() ? roomQuery.fetch() : Collections.emptyList();
 
-        Page<Room> roomsPage = new PageImpl<>(content, pageable, total);
+        Page <Room> roomsPage = new PageImpl <>(content, pageable, total);
         return roomsPage.getContent();
     }
 
@@ -87,6 +89,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    @Transactional
     public void update(Room room) {
         roomRepository.save(room);
     }

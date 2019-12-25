@@ -1,6 +1,6 @@
 package com.example.aviasales2.controller;
 
-import com.example.aviasales2.entity.Comments;
+import com.example.aviasales2.entity.Comment;
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.Hotel;
 import com.example.aviasales2.entity.Tour;
@@ -38,8 +38,8 @@ public class CommentsController {
     }
 
     @PostMapping
-    public void save(@RequestBody Comments comments) {
-        commentsServiceImpl.save(comments);
+    public void save(@RequestBody Comment comment) {
+        commentsServiceImpl.save(comment);
     }
 
     @GetMapping
@@ -48,39 +48,39 @@ public class CommentsController {
     }
 
     @PutMapping("/tour/{tourId}")
-    public String updateTourComment(@PathVariable("tourId") long tourId, @RequestBody Comments comments) {
-        Comments old = commentsServiceImpl.findCommentsById(comments.getCommentId());
+    public String updateTourComment(@PathVariable("tourId") long tourId, @RequestBody Comment comment) {
+        Comment old = commentsServiceImpl.findCommentsById(comment.getCommentId());
         if (old != null) {
             Tour tour = tourService.findByTourId(tourId);
-            comments.setTour(tour);
-            tour.getComments().add(comments);
-            commentsServiceImpl.save(comments);
+            comment.setTour(tour);
+            tour.getComments().add(comment);
+            commentsServiceImpl.save(comment);
             return "Updated";
         }
         return "Error!";
     }
 
     @PutMapping("/company/{companyId}")
-    public String updateCompanyComment(@PathVariable("companyId") long companyId, @RequestBody Comments comments) {
-        Comments old = commentsServiceImpl.findCommentsById(comments.getCommentId());
+    public String updateCompanyComment(@PathVariable("companyId") long companyId, @RequestBody Comment comment) {
+        Comment old = commentsServiceImpl.findCommentsById(comment.getCommentId());
         if (old != null) {
             Company company = companyService.findByCompanyId(companyId);
-            comments.setCompany(company);
-            company.getComments().add(comments);
-            commentsServiceImpl.save(comments);
+            comment.setCompany(company);
+            company.getComments().add(comment);
+            commentsServiceImpl.save(comment);
             return "Updated";
         }
         return "Error!";
     }
 
     @PutMapping("/hotel/{hotelId}")
-    public String updateHotelComment(@PathVariable("hotelId") long hotelId, @RequestBody Comments comments) {
-        Comments old = commentsServiceImpl.findCommentsById(comments.getCommentId());
+    public String updateHotelComment(@PathVariable("hotelId") long hotelId, @RequestBody Comment comment) {
+        Comment old = commentsServiceImpl.findCommentsById(comment.getCommentId());
         if (old != null) {
             Hotel hotel = hotelService.findByHotelId(hotelId);
-            comments.setHotel(hotel);
-            hotel.getComments().add(comments);
-            commentsServiceImpl.save(comments);
+            comment.setHotel(hotel);
+            hotel.getComments().add(comment);
+            commentsServiceImpl.save(comment);
             return "Updated";
         }
         return "Error!";

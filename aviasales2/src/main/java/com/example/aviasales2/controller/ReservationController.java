@@ -8,6 +8,7 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,10 +29,15 @@ public class ReservationController {
 
 
     @GetMapping("/buyer/{buyer_id}")
-    public List <ReservationDTO> findAllByBuyerId(@PathVariable("buyer_id") Long id) {
+    public List<ReservationDTO> findAllByBuyerId(@PathVariable("buyer_id") Long id) {
         User user = userService.findById(id);
         return reservationService.findAllByBuyer(user).stream()
                 .map(entity -> mapper.map(entity, ReservationDTO.class))
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("/rooms")
+    public List<Date> findReservationByRoom(@RequestParam Long roomId) {
+        return reservationService.findReservationDatesByRoomId(roomId);
     }
 }

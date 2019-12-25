@@ -3,6 +3,12 @@ package com.example.aviasales2.service.impl;
 import com.example.aviasales2.Constants;
 import com.example.aviasales2.PersonRequest;
 import com.example.aviasales2.entity.*;
+import com.example.aviasales2.entity.Sender;
+import com.example.aviasales2.entity.Ticket;
+import com.example.aviasales2.entity.Trip;
+import com.example.aviasales2.entity.Wallet;
+import com.example.aviasales2.entity.transferObjects.CompanyDTO;
+import com.example.aviasales2.entity.transferObjects.TripDTO;
 import com.example.aviasales2.entity.transferObjects.WalletDTO;
 import com.example.aviasales2.repository.WalletRepository;
 import com.example.aviasales2.service.SenderService;
@@ -81,6 +87,7 @@ public class WalletServiceImpl implements WalletService {
         return userSum;
     }
 
+    @Transactional
     @Override
     public void backMoney(BigDecimal price, long userId, long ticketId) {
         Wallet adminWallet = walletRepository.findByWalletId(0L);
@@ -97,6 +104,7 @@ public class WalletServiceImpl implements WalletService {
         int k = trip.getFullCountSeats();
         k++;
         trip.setFullCountSeats(k);
+        tripService.update(mapper.map(trip, TripDTO.class));
     }
 
     @Override
@@ -114,7 +122,7 @@ public class WalletServiceImpl implements WalletService {
     @Override
     public ResponseEntity <String> confirm(Long userId, String hashConfirm) {
         if (walletRepository.findByOwnerUserId(userId).getStatus().equals("AWAITING")) {
-            String[] strArr = new String[2];
+            String[] strArr;
             String delimeter = ";";
             byte[] decodedBytes = Base64.getUrlDecoder().decode(hashConfirm);
             String hash = new String(decodedBytes);
@@ -125,10 +133,11 @@ public class WalletServiceImpl implements WalletService {
             walletRepository.save(walletRepository.findByOwnerUserId(userId));
             return new ResponseEntity <>("Good! You replenish your wallet!", HttpStatus.OK);
 
-        } else return new ResponseEntity<>("Oh no, we have a problem! This link has already been used!",
+        } else return new ResponseEntity <>("Oh no, we have a problem! This link has already been used!",
                 HttpStatus.BAD_GATEWAY);
     }
 
+    @Transactional
     @Override
     public void sendConfirmToEmail(Long userId, double sum) {
         Wallet wallet = walletRepository.findByOwnerUserId(userId);

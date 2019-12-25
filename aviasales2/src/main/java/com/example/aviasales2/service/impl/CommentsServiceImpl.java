@@ -1,6 +1,6 @@
 package com.example.aviasales2.service.impl;
 
-import com.example.aviasales2.entity.Comments;
+import com.example.aviasales2.entity.Comment;
 import com.example.aviasales2.entity.Company;
 import com.example.aviasales2.entity.Hotel;
 import com.example.aviasales2.entity.Tour;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.List;
 
@@ -35,26 +34,26 @@ public class CommentsServiceImpl implements CommentsService {
 
     @Transactional
     @Override
-    public void save(Comments comments) {
-        commentsRepository.save(comments);
-        updateCommentRating(comments);
+    public void save(Comment comment) {
+        commentsRepository.save(comment);
+        updateCommentRating(comment);
     }
 
     @Override
-    public List <Comments> findAll() {
+    public List <Comment> findAll() {
         return commentsRepository.findAll();
     }
 
     @Override
-    public Comments findCommentsById(Long id) {
+    public Comment findCommentsById(Long id) {
         return commentsRepository.findByCommentId(id);
     }
 
     @Override
     public void deleteById(Long id) {
-        List <Comments> comments;
-        Comments newComment = commentsRepository.findByCommentId(id);
-        BigDecimal curRate = new BigDecimal(0);
+        List <Comment> comments;
+        Comment newComment = commentsRepository.findByCommentId(id);
+        BigDecimal curRate;
         if (newComment.getHotel() == null) {
             if (newComment.getCompany() == null) {
                 curRate = newComment.getTour().getCommentRating();
@@ -63,11 +62,11 @@ public class CommentsServiceImpl implements CommentsService {
                 curRate = newComment.getCompany().getCommentRating();
                 comments = commentsRepository.findByCompany(newComment.getCompany());
             }
-            } else {
-                curRate = newComment.getHotel().getCommentRating();
-                comments = commentsRepository.findByHotel(newComment.getHotel());
+        } else {
+            curRate = newComment.getHotel().getCommentRating();
+            comments = commentsRepository.findByHotel(newComment.getHotel());
         }
-        if(comments.size()==1) {
+        if (comments.size() == 1) {
             if (newComment.getHotel() == null) {
                 if (newComment.getCompany() == null) {
                     tourRepository.findByTourId(newComment.getTour().getTourId()).setCommentRating(BigDecimal.valueOf(0));
@@ -81,8 +80,7 @@ public class CommentsServiceImpl implements CommentsService {
                 hotelRepository.save(hotelRepository.findByHotelId(newComment.getHotel().getHotelId()));
             }
             commentsRepository.deleteByCommentId(id);
-        }
-        else{
+        } else {
             BigDecimal sumRate = curRate.multiply(BigDecimal.valueOf(comments.size()));
             sumRate = sumRate.setScale(0, RoundingMode.HALF_UP);
             sumRate = sumRate.subtract(BigDecimal.valueOf(newComment.getRate()));
@@ -105,61 +103,65 @@ public class CommentsServiceImpl implements CommentsService {
     }
 
     @Override
-    public List <Comments> findByCompanyId(Long id) {
+    public List <Comment> findByCompanyId(Long id) {
         return commentsRepository.findByCompany(companyRepository.findByCompanyId(id));
     }
 
     @Override
-    public List <Comments> findByTourId(Long id) {
+    public List <Comment> findByTourId(Long id) {
         return commentsRepository.findByTour(tourRepository.findByTourId(id));
     }
 
     @Override
-    public List <Comments> findByHotelId(Long id) {
+    public List <Comment> findByHotelId(Long id) {
         return commentsRepository.findByHotel(hotelRepository.findByHotelId(id));
     }
 
+    @Override
     public BigDecimal getTourRate(Long id) {
         return tourRepository.findByTourId(id).getCommentRating();
     }
 
+    @Override
     public BigDecimal getCompanyRate(Long id) {
         return companyRepository.findByCompanyId(id).getCommentRating();
     }
 
+    @Override
     public BigDecimal getHotelRate(Long id) {
         return hotelRepository.findByHotelId(id).getCommentRating();
     }
 
-    public void updateCommentRating(Comments newComment) {
-        List <Comments> comments;
+    private BigDecimal getSumRate(List <Comment> comments) {
+        BigDecimal sumRate = new BigDecimal(0);
+        for (Comment comment : comments)
+            sumRate = sumRate.add(BigDecimal.valueOf(comment.rate));
+
+        sumRate = sumRate.divide(BigDecimal.valueOf(comments.size()), 2, RoundingMode.HALF_DOWN);
+        return sumRate;
+    }
+
+    @Transactional
+    public void updateCommentRating(Comment newComment) {
+        List <Comment> comments;
+        BigDecimal sumRate;
         if (newComment.getHotel() == null) {
             if (newComment.getCompany() == null) {
                 comments = commentsRepository.findByTour(newComment.getTour());
-            } else {
-                comments = commentsRepository.findByCompany(newComment.getCompany());
-            }
-        } else {
-            comments = commentsRepository.findByHotel(newComment.getHotel());
-        }
-        BigDecimal sumRate = new BigDecimal(0);
-        int n = 0;
-        for (Comments comment : comments) {
-            sumRate = sumRate.add(BigDecimal.valueOf(comment.rate));
-            n++;
-        }
-        sumRate = sumRate.divide(BigDecimal.valueOf(n), 2, RoundingMode.HALF_DOWN);
-        if (newComment.getHotel() == null) {
-            if (newComment.getCompany() == null) {
+                sumRate = getSumRate(comments);
                 Tour tour = tourRepository.findByTourId(newComment.getTour().getTourId());
                 tour.setCommentRating(sumRate);
                 tourRepository.save(tour);
             } else {
+                comments = commentsRepository.findByCompany(newComment.getCompany());
+                sumRate = getSumRate(comments);
                 Company company = companyRepository.findByCompanyId(newComment.getCompany().getCompanyId());
                 company.setCommentRating(sumRate);
                 companyRepository.save(company);
             }
         } else {
+            comments = commentsRepository.findByHotel(newComment.getHotel());
+            sumRate = getSumRate(comments);
             Hotel hotel = hotelRepository.findByHotelId(newComment.getHotel().getHotelId());
             hotel.setCommentRating(sumRate);
             hotelRepository.save(hotel);

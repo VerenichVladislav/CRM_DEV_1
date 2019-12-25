@@ -2,11 +2,8 @@ package com.example.aviasales2.security;
 
 import com.auth0.jwt.JWT;
 import com.example.aviasales2.entity.LoginViewModel;
-import com.example.aviasales2.entity.User;
 import com.example.aviasales2.repository.UserRepository;
-import com.example.aviasales2.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;

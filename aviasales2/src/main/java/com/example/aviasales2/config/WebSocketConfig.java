@@ -6,8 +6,6 @@ import org.springframework.web.socket.config.annotation.AbstractWebSocketMessage
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 
-import static com.example.aviasales2.Constants.*;
-
 @Configuration
 @EnableWebSocketMessageBroker
 
