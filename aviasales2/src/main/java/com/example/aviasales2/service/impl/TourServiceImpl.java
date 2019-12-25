@@ -13,6 +13,7 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -33,6 +34,7 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
+    @Transactional
     public Tour save(TourDTO tourDTO, long cityId, long companyId, long hotelId) {
 
         Company company = companyService.findByCompanyId(companyId);
@@ -61,9 +63,9 @@ public class TourServiceImpl implements TourService {
         return tourRepository.deleteByTourId(id);
     }
 
+    @Transactional
     @Override
     public Tour update(TourDTO tour) {
-
         return tourRepository.save(mapper.map(tour, Tour.class));
     }
 

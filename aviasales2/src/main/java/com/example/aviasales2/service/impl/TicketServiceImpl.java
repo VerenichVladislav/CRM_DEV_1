@@ -11,6 +11,7 @@ import com.example.aviasales2.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -38,11 +39,12 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
+    @Transactional
     public Ticket save(Ticket ticket) {
         return ticketRepository.save(ticket);
     }
 
-
+    @Transactional
     public String save(Long userId, Long tripId, int count, List <PersonRequest> passangers) {
         Trip trip = tripRepository.findByTripId(tripId);
         String listt = ("");

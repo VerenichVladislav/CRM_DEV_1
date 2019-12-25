@@ -10,7 +10,6 @@ import com.example.aviasales2.repository.ICityRepository;
 import com.example.aviasales2.repository.TransportRepository;
 import com.example.aviasales2.repository.TripRepository;
 import com.example.aviasales2.service.TripService;
-import com.example.aviasales2.util.TripValidator;
 import com.querydsl.core.BooleanBuilder;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Timestamp;
@@ -36,15 +36,13 @@ public class TripServiceImpl implements TripService {
     private final ICityRepository iCityRepository;
     private final TransportRepository transportRepository;
     private final DozerBeanMapper mapper;
-    private final TripValidator tripValidator;
 
     @Autowired
-    public TripServiceImpl(TripRepository tripRepository, ICityRepository iCityRepository, TransportRepository transportRepository, DozerBeanMapper mapper, TripValidator tripValidator) {
+    public TripServiceImpl(TripRepository tripRepository, ICityRepository iCityRepository, TransportRepository transportRepository, DozerBeanMapper mapper) {
         this.tripRepository = tripRepository;
         this.iCityRepository = iCityRepository;
         this.transportRepository = transportRepository;
         this.mapper = mapper;
-        this.tripValidator = tripValidator;
     }
 
     @Override
@@ -82,6 +80,7 @@ public class TripServiceImpl implements TripService {
 
     }
 
+    @Transactional
     @Override
     public Trip save(long cityFromId, long cityDestId, long transportId, TripDTO tripDTO) {
         City cityFrom = iCityRepository.findByCityId(cityFromId);
@@ -119,6 +118,7 @@ public class TripServiceImpl implements TripService {
         return "Deleted";
     }
 
+    @Transactional
     @Override
     public Trip update(TripDTO tripDTO) {
         return tripRepository.save(mapper.map(tripDTO, Trip.class));

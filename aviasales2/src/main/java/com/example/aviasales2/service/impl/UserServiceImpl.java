@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService {
         this.mapper = mapper;
     }
 
+    @Transactional
     @Override
     public User save(User user) {
         return userRepository.save(user);
@@ -94,6 +96,7 @@ public class UserServiceImpl implements UserService {
         sender.send(subject, html.toString(), user.getEmail());
     }
 
+    @Transactional
     @Override
     public void update(User user) {
         userRepository.save(user);
@@ -117,6 +120,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByConfirmingHash(hashConfirm);
     }
 
+    @Transactional
     @Override
     public void lockUser(Long userId) {
         User user = userRepository.findByUserId(userId);
@@ -126,6 +130,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Transactional
     @Override
     public void unlockUser(Long userId) {
         User user = userRepository.findByUserId(userId);

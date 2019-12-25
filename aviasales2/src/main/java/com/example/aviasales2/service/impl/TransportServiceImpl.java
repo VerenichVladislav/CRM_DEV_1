@@ -17,23 +17,27 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class TransportServiceImpl implements TransportService {
-    @Autowired
-    TransportRepository transportRepository;
-    @Autowired
-    private DozerBeanMapper mapper;
+    private final TransportRepository transportRepository;
+    private final DozerBeanMapper mapper;
 
+    @Autowired
+    public TransportServiceImpl(TransportRepository transportRepository, DozerBeanMapper mapper) {
+        this.transportRepository = transportRepository;
+        this.mapper = mapper;
+    }
 
     @Override
+    @Transactional
     public Transport save(Transport transport) {
         return transportRepository.save(transport);
     }
-
 
     @Override
     public Optional <Transport> findById(Long id) {
@@ -61,6 +65,7 @@ public class TransportServiceImpl implements TransportService {
         }
     }
 
+    @Transactional
     @Override
     public Transport update(TransportDTO transport) {
         if (transportRepository.existsById(transport.getTransportId())) {

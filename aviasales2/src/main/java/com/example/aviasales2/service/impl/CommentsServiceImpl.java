@@ -53,7 +53,7 @@ public class CommentsServiceImpl implements CommentsService {
     public void deleteById(Long id) {
         List <Comment> comments;
         Comment newComment = commentsRepository.findByCommentId(id);
-        BigDecimal curRate = new BigDecimal(0);
+        BigDecimal curRate;
         if (newComment.getHotel() == null) {
             if (newComment.getCompany() == null) {
                 curRate = newComment.getTour().getCommentRating();
@@ -141,6 +141,7 @@ public class CommentsServiceImpl implements CommentsService {
         return sumRate;
     }
 
+    @Transactional
     public void updateCommentRating(Comment newComment) {
         List <Comment> comments;
         BigDecimal sumRate;

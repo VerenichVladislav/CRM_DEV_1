@@ -7,6 +7,7 @@ import com.example.aviasales2.service.ICityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -21,6 +22,7 @@ public class CityServiceImpl implements ICityService {
     }
 
     @Override
+    @Transactional
     public City save(City city) {
         return cityRepository.save(city);
     }
@@ -51,6 +53,7 @@ public class CityServiceImpl implements ICityService {
     }
 
     @Override
+    @Transactional
     public City update(City city) {
         cityRepository.save(city);
         return city;
