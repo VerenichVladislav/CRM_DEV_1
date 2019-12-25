@@ -105,10 +105,10 @@ public class WalletServiceImpl implements WalletService {
             walletRepository.findByOwnerUserId(userId).setSum(walletRepository.findByOwnerUserId(userId).getSum().add(BigDecimal.valueOf(sum)));
             walletRepository.findByOwnerUserId(userId).setStatus("OK");
             walletRepository.save(walletRepository.findByOwnerUserId(userId));
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body("Good! You replenish your wallet!");
-        } else return ResponseEntity.status(HttpStatus.BAD_GATEWAY)
-                .body("Oh no, we have a problem! This link has already been used!");
+            return new ResponseEntity <>("Good! You replenish your wallet!", HttpStatus.OK);
+
+        } else return new ResponseEntity<>("Oh no, we have a problem! This link has already been used!",
+                HttpStatus.BAD_GATEWAY);
     }
 
     @Override

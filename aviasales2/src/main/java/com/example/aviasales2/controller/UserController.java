@@ -126,8 +126,19 @@ public class UserController {
     }
 
     @PutMapping
-    public void update(@RequestBody User newUser) {
-        userService.save(newUser);
+    public void update(@RequestBody UserDTO data, BindingResult result) {
+        User user = userService.findByUserName(data.getUserName());
+        UserDTO userDto = mapper.map(user, UserDTO.class);
+        userDto.setHashPass(data.getHashPass());
+
+        userValidator.validate(userDto, result);
+        if (result.hasErrors()) {
+            throw new GlobalBadRequestException(result);
+        }
+
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        userDto.setHashPass(bCryptPasswordEncoder.encode(data.getHashPass()));
+        userService.save(mapper.map(userDto, User.class));
     }
 
     @DeleteMapping("/{id}")
