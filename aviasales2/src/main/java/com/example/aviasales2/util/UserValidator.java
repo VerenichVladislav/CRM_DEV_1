@@ -1,7 +1,11 @@
 package com.example.aviasales2.util;
 
+import com.example.aviasales2.entity.Wallet;
 import com.example.aviasales2.entity.transferObjects.UserDTO;
+import com.example.aviasales2.entity.transferObjects.WalletDTO;
 import com.example.aviasales2.repository.UserRepository;
+import com.example.aviasales2.repository.WalletRepository;
+import com.example.aviasales2.service.impl.WalletServiceImpl;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,6 +16,8 @@ import org.springframework.validation.Validator;
 public class UserValidator implements Validator {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private WalletRepository walletRepository;
     @Autowired
     private DozerBeanMapper mapper;
 

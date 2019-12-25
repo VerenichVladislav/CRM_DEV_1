@@ -137,7 +137,8 @@ public class UserController {
 
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         userDto.setHashPass(bCryptPasswordEncoder.encode(data.getHashPass()));
-        userService.save(mapper.map(userDto, User.class));
+
+        userService.update(mapper.map(userDto, User.class));
     }
 
     @DeleteMapping("/{id}")

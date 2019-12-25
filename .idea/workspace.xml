@@ -3,15 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="699ecda1-3a98-486a-affc-33454823517c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/aviasales2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/aviasales2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/HotelFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/config/filterConfig/HotelFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/HotelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/RoomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/repository/RoomRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/HotelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/RoomService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/HotelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/RoomServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Wallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/Wallet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/WalletDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/entity/transferObjects/WalletDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/util/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/util/UserValidator.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

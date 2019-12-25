@@ -5,7 +5,11 @@ import com.example.aviasales2.config.filterConfig.UserFilter;
 import com.example.aviasales2.entity.QUser;
 import com.example.aviasales2.entity.Sender;
 import com.example.aviasales2.entity.User;
+import com.example.aviasales2.entity.Wallet;
+import com.example.aviasales2.entity.transferObjects.UserDTO;
+import com.example.aviasales2.entity.transferObjects.WalletDTO;
 import com.example.aviasales2.repository.UserRepository;
+import com.example.aviasales2.repository.WalletRepository;
 import com.example.aviasales2.service.UserService;
 import com.querydsl.core.BooleanBuilder;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -15,17 +19,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final DozerBeanMapper mapper;
+    private final WalletRepository walletRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, DozerBeanMapper mapper) {
+    public UserServiceImpl(UserRepository userRepository, DozerBeanMapper mapper, WalletRepository walletRepository) {
         this.userRepository = userRepository;
         this.mapper = mapper;
+        this.walletRepository = walletRepository;
     }
 
     @Transactional
@@ -99,7 +106,12 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void update(User user) {
-        userRepository.save(user);
+        BigDecimal sum;
+        Wallet wallet = walletRepository.findByWalletId(user.getWallet().getWalletId());
+        sum = wallet.getSum();
+        userRepository.save(mapper.map(user, User.class));
+        wallet.setSum(sum);
+        walletRepository.save(wallet);
     }
 
     @Override

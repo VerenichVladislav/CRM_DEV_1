@@ -2,6 +2,7 @@ package com.example.aviasales2.service;
 
 import com.example.aviasales2.config.filterConfig.UserFilter;
 import com.example.aviasales2.entity.User;
+import com.example.aviasales2.entity.transferObjects.UserDTO;
 
 import java.util.List;
 

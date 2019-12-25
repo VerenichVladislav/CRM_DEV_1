@@ -72,4 +72,12 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+    }
 }
