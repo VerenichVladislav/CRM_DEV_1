@@ -124,7 +124,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void lockUser(Long userId) {
         User user = userRepository.findByUserId(userId);
-        if (user.getRole().equals("USER")) {
+        if (!user.getRole().equals("ADMIN")) {
             user.setLocked(true);
             userRepository.save(user);
         }
@@ -134,7 +134,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void unlockUser(Long userId) {
         User user = userRepository.findByUserId(userId);
-        if (user.getRole().equals("USER")) {
+        if (!user.getRole().equals("ADMIN")) {
             user.setLocked(false);
             userRepository.save(user);
         }
