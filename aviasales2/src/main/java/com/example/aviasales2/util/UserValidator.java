@@ -39,7 +39,8 @@ public class UserValidator implements Validator {
 
     public void updateValidate(Object target, Errors errors){
         UserDTO user = (UserDTO) target;
-        if(!user.getHashPass().matches("^[A-Za-z0-9]+$")){
+        if(!user.getHashPass().matches("^[A-Za-z0-9]+$")
+                || user.getHashPass().length() < 4 || user.getHashPass().length() > 15){
             errors.rejectValue("hashPass", "", "Invalid password!(a-Z 0-9)");
         }
     }
