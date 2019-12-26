@@ -86,6 +86,12 @@ public class TripController {
                 .map(entity -> mapper.map(entity, SearchResultTripDto.class))
                 .collect(Collectors.toList());
     }
+    @PostMapping("/cnt")
+    public List <SearchResultTripDto> findAllCnt(@RequestBody TripFilter tripFilter) {
+        return tripService.findAllCnt(tripFilter).stream()
+                .map(entity -> mapper.map(entity, SearchResultTripDto.class))
+                .collect(Collectors.toList());
+    }
 
     @PostMapping
     public List <TripDTO> findAll(@RequestBody TripFilter tripFilter,
