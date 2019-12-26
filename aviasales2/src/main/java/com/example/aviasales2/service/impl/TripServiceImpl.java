@@ -46,6 +46,12 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
+    public List<Trip> findAllCnt(TripFilter tripFilter){
+        BooleanBuilder builder = tripDatabaseFilter(tripFilter);
+        return (List<Trip>) tripRepository.findAll(builder);
+    }
+
+    @Override
     public List<Trip> findAll(TripFilter tripFilter, Integer pageNo, Integer pageSize, String sortBy) {
         BooleanBuilder builder = tripDatabaseFilter(tripFilter);
 

@@ -90,6 +90,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/wallets/{userId}/confirm/{hashConfirm}/*").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.GET, "/comments/*").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.GET, "/comments").permitAll()
+                .antMatchers(HttpMethod.GET, "/socket").permitAll()
                 .antMatchers(HttpMethod.GET, "/comments/*/*").hasAnyRole("USER", "ADMIN")
 
 

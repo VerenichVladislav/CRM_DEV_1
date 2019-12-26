@@ -22,5 +22,7 @@ public interface TripService {
 
     int getFullCountSeats(Long tripId);
 
+    List<Trip> findAllCnt(TripFilter tripFilter);
+
     BigDecimal calculateCost(int count, Long tripId);
 }

@@ -25,7 +25,6 @@ public class ChatController {
 
 //    @Autowired
 //    private SimpMessagingTemplate simpMessagingTemplate;
-//    private static final Logger log = LoggerFactory.getLogger(ChatController.class);
 //
 //    @MessageMapping(SECURED_CHAT)
 //    @SendTo(SECURED_CHAT_HISTORY)
