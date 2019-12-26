@@ -5,9 +5,7 @@ import com.example.aviasales2.entity.Hotel;
 import com.example.aviasales2.entity.QHotel;
 import com.example.aviasales2.entity.QReservation;
 import com.example.aviasales2.entity.Reservation;
-import com.example.aviasales2.repository.CompanyRepository;
 import com.example.aviasales2.repository.HotelRepository;
-import com.example.aviasales2.repository.TourRepository;
 import com.example.aviasales2.service.HotelService;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
@@ -28,16 +26,12 @@ import java.util.stream.Collectors;
 public class HotelServiceImpl implements HotelService {
 
     private final HotelRepository hotelRepository;
-    private final CompanyRepository companyRepository;
-    private final TourRepository tourRepository;
     @PersistenceContext
     private EntityManager entityManager;
 
     @Autowired
-    public HotelServiceImpl(HotelRepository hotelRepository, CompanyRepository companyRepository, TourRepository tourRepository) {
+    public HotelServiceImpl(HotelRepository hotelRepository) {
         this.hotelRepository = hotelRepository;
-        this.companyRepository = companyRepository;
-        this.tourRepository = tourRepository;
     }
 
     @Override
@@ -96,22 +90,6 @@ public class HotelServiceImpl implements HotelService {
         return hotelsPage.getContent();
     }
 
-    @Override
-    public Hotel findByHotelId(long id) {
-        return hotelRepository.findByHotelId(id);
-    }
-
-    @Override
-    public String findImageByHotelId(long id) {
-        Hotel hotel = hotelRepository.findByHotelId(id);
-        return hotel.getImage();
-    }
-
-    @Override
-    public Hotel findByHotelName(String hotelName) {
-        return hotelRepository.findByHotelName(hotelName);
-    }
-
     private JPAQuery<Hotel> hotelDatabaseFilter(HotelFilter hotelFilter) {
         final QHotel qHotel = QHotel.hotel;
         final QReservation qReservation = QReservation.reservation;
@@ -142,13 +120,35 @@ public class HotelServiceImpl implements HotelService {
             Timestamp timestampDateTo = Timestamp.valueOf(localDateToTime.plusHours(3));
 
             JPAQuery<Reservation> reservationQuery = new JPAQuery<>(entityManager);
-            List<Reservation> reservations = reservationQuery.from(qReservation).where(qReservation.checkIn.between(timestampDateFrom, timestampDateTo)).fetch();
+
+            List<Reservation> reservations = reservationQuery.from(qReservation)
+                    .where(qReservation.checkIn.between(timestampDateFrom, timestampDateTo))
+                    .fetch();
+
             BooleanExpression hotelCheckIn = qReservation.checkIn.notBetween(timestampDateFrom, timestampDateTo)
                     .or(qHotel.reservations.isEmpty());
+
             BooleanExpression hotelRoomsSize = qHotel.rooms.size().gt(reservations.size());
+
             hotelQuery.where(hotelCheckIn.and(hotelRoomsSize));
         }
 
         return hotelQuery;
+    }
+
+    @Override
+    public Hotel findByHotelName(String hotelName) {
+        return hotelRepository.findByHotelName(hotelName);
+    }
+
+    @Override
+    public Hotel findByHotelId(long id) {
+        return hotelRepository.findByHotelId(id);
+    }
+
+    @Override
+    public String findImageByHotelId(long id) {
+        Hotel hotel = hotelRepository.findByHotelId(id);
+        return hotel.getImage();
     }
 }

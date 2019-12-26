@@ -46,7 +46,21 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public List <Trip> findAll(TripFilter tripFilter, Integer pageNo, Integer pageSize, String sortBy) {
+    public List<Trip> findAll(TripFilter tripFilter, Integer pageNo, Integer pageSize, String sortBy) {
+        BooleanBuilder builder = tripDatabaseFilter(tripFilter);
+
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+
+        Page<Trip> pagedResult = tripRepository.findAll(builder, paging);
+
+        if (pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
+    private BooleanBuilder tripDatabaseFilter(TripFilter tripFilter){
         final QTrip qTrip = QTrip.trip;
 
         BooleanBuilder builder = new BooleanBuilder(qTrip.isNotNull());
@@ -60,24 +74,14 @@ public class TripServiceImpl implements TripService {
             LocalTime localTime = LocalTime.of(0, 0, 0);
             LocalDate localDate = LocalDate.parse(tripFilter.getDateFrom());
             LocalDateTime localDateTime = localTime.atDate(localDate);
-            Timestamp timestamp;
-            Timestamp timestamp1;
-            timestamp = Timestamp.valueOf(localDateTime.plusHours(3));
-            timestamp1 = Timestamp.valueOf(localDateTime.plusHours(26).plusMinutes(59).plusSeconds(59).plusNanos(999999999));
 
-            builder.and(qTrip.dateFrom.between(timestamp, timestamp1));
-        }
-        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+            Timestamp startTimestamp = Timestamp.valueOf(localDateTime.plusHours(3));
+            Timestamp endTimestamp = Timestamp.valueOf(localDateTime.plusHours(26).plusMinutes(59).plusSeconds(59).plusNanos(999999999));
 
-        Page <Trip> pagedResult = tripRepository.findAll(builder, paging);
-
-        if (pagedResult.hasContent()) {
-            return pagedResult.getContent();
-        } else {
-            return new ArrayList <Trip>();
+            builder.and(qTrip.dateFrom.between(startTimestamp, endTimestamp));
         }
 
-
+        return builder;
     }
 
     @Transactional
