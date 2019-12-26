@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="699ecda1-3a98-486a-affc-33454823517c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TripController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/controller/TripController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/security/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/security/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/TripService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/TripService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/TripServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/java/com/example/aviasales2/service/impl/TripServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aviasales2/src/main/resources/ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/aviasales2/src/main/resources/ru.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +157,7 @@
       <workItem from="1577289697958" duration="82000" />
       <workItem from="1577290365651" duration="242000" />
       <workItem from="1577378480974" duration="1545000" />
-      <workItem from="1577384742352" duration="2051000" />
+      <workItem from="1577384742352" duration="6216000" />
     </task>
     <task id="LOCAL-00001" summary="Filter fixed">
       <created>1576671560096</created>
