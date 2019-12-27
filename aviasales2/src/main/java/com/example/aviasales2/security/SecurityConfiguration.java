@@ -44,6 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .antMatchers(HttpMethod.POST, "/users").permitAll()
                 .antMatchers(HttpMethod.POST, "/hotels/filter").permitAll()
+                .antMatchers(HttpMethod.POST, "/hotels/filter/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/trips").permitAll()
                 .antMatchers(HttpMethod.POST, "/trips/dto").permitAll()
                 .antMatchers(HttpMethod.POST, "/trips/*").permitAll()
@@ -104,7 +105,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/admin/lockUser/*").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/admin/unlockUser").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/admin/unlockUser/*").hasRole("ADMIN")
-                .antMatchers("/socket/*").hasAnyRole("USER", "ADMIN")
 
                 .antMatchers(HttpMethod.GET, "/users/isLogin").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.GET, "/users/isAuthenticated").hasRole("USER")

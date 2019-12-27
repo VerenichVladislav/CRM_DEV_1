@@ -54,6 +54,11 @@ public class CompanyController {
 
     }
 
+    @GetMapping("/")
+    public CompanyDTO findByCompanyName(@RequestParam String name) {
+        return mapper.map(companyService.findByCompanyName(name), CompanyDTO.class);
+    }
+
     @PostMapping
     public ResponseEntity <CompanyDTO> saveCompany(@RequestBody @Valid CompanyDTO company, BindingResult result) throws GlobalBadRequestException {
         companyValidator.validate(company, result);

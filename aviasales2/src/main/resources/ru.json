@@ -33,5 +33,6 @@
   "please": "Пожалуйста",
   "enter": "Введите",
   "Go back": "Вернуться",
-  "password": "пароль"
+  "password": "пароль",
+  "The password change is successful": "Пароль успешно изменён"
 }
