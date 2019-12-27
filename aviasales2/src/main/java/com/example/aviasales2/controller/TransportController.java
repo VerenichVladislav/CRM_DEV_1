@@ -45,6 +45,11 @@ public class TransportController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/")
+    public TransportDTO findByCompanyName(@RequestParam String name) {
+        return mapper.map(transportService.findByName(name), TransportDTO.class);
+    }
+
     @GetMapping("/{id}")
     public TransportDTO getTransportById(@PathVariable("id") Long id) {
         return mapper.map(transportService.findById(id), TransportDTO.class);

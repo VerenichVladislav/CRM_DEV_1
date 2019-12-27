@@ -11,6 +11,8 @@ import java.util.Optional;
 public interface TransportService {
     Transport save(Transport transport);
 
+    Transport findByName(String name);
+
     Optional <Transport> findById(Long id);
 
     List <Transport> findAll(TransportFilter transportFilter, Integer pageNo, Integer pageSize, String sortBy);

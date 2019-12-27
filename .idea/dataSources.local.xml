@@ -2,7 +2,7 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="aviasales@localhost" uuid="7f07d801-a2e2-43f1-afb1-02406b5e910f">
-      <database-info product="PostgreSQL" version="9.5.19" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="9.5.19">
+      <database-info product="PostgreSQL" version="9.5.19" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
@@ -24,6 +24,15 @@
           </node>
         </introspection-scope>
       </schema-mapping>
+    </data-source>
+    <data-source name="aaa@localhost" uuid="4fb60b1a-8a20-4e57-9f39-1ac496a8ed4c">
+      <database-info product="PostgreSQL" version="12.0" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <introspection-schemas>aaa:public</introspection-schemas>
     </data-source>
   </component>
 </project>
